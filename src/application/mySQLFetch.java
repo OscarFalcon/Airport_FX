@@ -14,6 +14,9 @@ public class mySQLFetch {
 		int [] resultType = {MySQL.INTEGER};
 		
 		ArrayList<Object[]> table = MySQL.executeQuery(usersTable, arguments, resultType);
+		if(table == null){
+			return false;
+		}
 		if(table.size() > 0)
 			authorized = true;
 		
@@ -25,6 +28,7 @@ public class mySQLFetch {
 		String resetPassword = "UPDATE users SET password = ? WHERE username = ?";
 		Object[] arguments = {password, username};
 		reset = MySQL.execute(resetPassword, arguments);
+		
 		return reset;
 	}
 	
