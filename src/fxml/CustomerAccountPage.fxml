@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerAccountPageController">
+   <children>
+      <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="478.0" prefWidth="617.0">
+         <top>
+            <AnchorPane prefHeight="68.0" prefWidth="643.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutX="400.0" layoutY="14.0">
+                     <children>
+                        <Button fx:id="MyAccButtCusAcc" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
+                        <Button fx:id="MyTripButtCusAcc" layoutX="488.0" layoutY="14.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
+                        <Button fx:id="SignoutCusAcc" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab fx:id="AccOverCusAcc" text="Account Overview">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="639.0">
+                           <children>
+                              <Label layoutX="8.0" layoutY="27.0" prefHeight="17.0" prefWidth="61.0" text="Name:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="65.0" text="E-mail Address:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="102.0" text="Phone Number:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="143.0" text="Street:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="accountOverNa" layoutX="107.0" layoutY="23.0" />
+                              <TextField fx:id="accountOverEm" layoutX="107.0" layoutY="61.0" />
+                              <TextField fx:id="accountOverPh" layoutX="107.0" layoutY="98.0" />
+                              <TextField fx:id="accountOverCi" layoutX="107.0" layoutY="178.0" />
+                              <Label layoutX="15.0" layoutY="182.0" text="City:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="12.0" layoutY="216.0" text="State:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="accountOverStr" layoutX="107.0" layoutY="139.0" />
+                              <TextField fx:id="accountOverState" layoutX="107.0" layoutY="212.0" />
+                              <Label layoutX="12.0" layoutY="250.0" text="Zip Code:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="accountOverZip" layoutX="107.0" layoutY="246.0" />
+                              <Button layoutX="114.0" layoutY="314.0" mnemonicParsing="false" onAction="#save" prefHeight="47.0" prefWidth="106.0" text="Save">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="SignInCusAcc" text="Sign-in Settings">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="24.0" text="E-mail Address:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="150.0" text="Old Password:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="208.0" text="New Password:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="268.0" text="Re-type Password:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="SignInEmailCusAcc" layoutX="125.0" layoutY="20.0" />
+                              <Button fx:id="SignInSaveEmailCusAcc" layoutX="16.0" layoutY="66.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Save">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                              <TextField fx:id="SignInOldCusAcc" layoutX="125.0" layoutY="146.0" />
+                              <TextField fx:id="SignInNewCusAcc" layoutX="125.0" layoutY="204.0" />
+                              <TextField fx:id="SignInReCusAcc" layoutX="125.0" layoutY="264.0" />
+                              <Button fx:id="SignInSavePassCusAcc" layoutX="16.0" layoutY="310.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="74.0" text="Save">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
