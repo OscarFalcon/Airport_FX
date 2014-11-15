@@ -13,6 +13,7 @@ public class Main extends Application {
 		
 	mySQLFetch fetch = new mySQLFetch();
 	fetch.resetPassword("oscar", "blah");
+	fetch.searchFlightNoDates("SAT", "DEN");
 		
 	}
 	
