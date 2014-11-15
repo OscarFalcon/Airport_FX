@@ -8,6 +8,7 @@ import database.MySQL;
 public class mySQLFetch {
 
 	// authorize a user logging into the system
+	
 	public boolean authorizeUser(String username, String password){
 		boolean authorized = false;
 		String usersTable = "SELECT ID FROM users WHERE username = ? && password = ?";
@@ -26,6 +27,7 @@ public class mySQLFetch {
 	}
 	
 	// Reset a forgotten password for a user
+	
 	public boolean resetPassword(String username, String password){
 		boolean reset = false;
 		String resetPassword = "UPDATE users SET password = ? WHERE username = ?";
@@ -35,8 +37,9 @@ public class mySQLFetch {
 		return reset;
 	}
 	
-	// If case 0 then choose all flight information
-	// If case 0 then search by src and des
+	// If case 0 then chose to search by src, des, leaveDate, returnDate
+	// If case 1 then search by src and des
+	
 	public boolean searchFlights(int selection){
 		Date leaveDate = null;
 		Date returnDate = null;
@@ -51,16 +54,28 @@ public class mySQLFetch {
 	}
 	
 	// search flights by source, destination,leave date, and return date
-	public boolean searchFlightDates(String src, String des, Date leaveDate, Date returnDate){
+	
+	public boolean searchFlightDates(String srcLocation, String desLocation, Date srcDate, Date depDate){
 		boolean found = false;
+		String flightDataTable = "SELECT flightID FROM flightinfo WHERE srcLocation = ? && desLocation = ?"
+								+ "&& arrDate = ? && depDate = ?";
+		Object[] arguments = {srcLocation, desLocation, srcDate, depDate};
+		int [] resultType = {MySQL.INTEGER};
+		ArrayList<Object[]> table = MySQL.executeQuery(flightDataTable, arguments, resultType);
 		
+		if(table == null){
+			return false;
+		}
+		if(table.size() > 0)
+			found = true;
 		return found;
 	}
 	
 	// search flights by source and destination
+	
 	public boolean searchFlightNoDates(String srcLocation, String desLocation){
 		boolean found = false;
-		String flightDataTable = "SELECT flightID FROM flightinfo WHERE airline = ? && flightNumber = ?";
+		String flightDataTable = "SELECT flightID FROM flightinfo WHERE srcLocation = ? && desLocation = ?";
 		Object[] arguments = {srcLocation, desLocation};
 		int [] resultType = {MySQL.INTEGER};
 		ArrayList<Object[]> table = MySQL.executeQuery(flightDataTable, arguments, resultType);
