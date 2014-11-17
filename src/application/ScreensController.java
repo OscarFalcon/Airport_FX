@@ -1,4 +1,4 @@
-package fxml;
+package application;
 
 import java.util.HashMap;
 import javafx.animation.KeyFrame;
@@ -40,6 +40,7 @@ public class ScreensController  extends StackPane {
     //finally injects the screenPane to the controller.
     public boolean loadScreen(String name, String resource) {
         try {
+        	//System.out.println("this is resource "+ resource);
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadScreen = (Parent) myLoader.load();
             ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
@@ -56,7 +57,9 @@ public class ScreensController  extends StackPane {
     //First it makes sure the screen has been already loaded.  Then if there is more than
     //one screen the new screen is been added second, and then the current screen is removed.
     // If there isn't any screen being displayed, the new screen is just added to the root.
-    public boolean setScreen(final String name) {       
+    public boolean setScreen(final String name) { 
+    	
+    	//System.out.print("this is "+name);
         if (screens.get(name) != null) {   //screen loaded
             final DoubleProperty opacity = opacityProperty();
 

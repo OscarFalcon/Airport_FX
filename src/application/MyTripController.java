@@ -1,4 +1,4 @@
-package fxml;
+package application;
 
 import java.awt.Button;
 import java.net.URL;
@@ -24,7 +24,7 @@ private Button myAccount;
 
 @FXML
 void myAccount(ActionEvent event) {
-
+	myController.setScreen(ScreensFramework.screen2ID);
 }
 
 @FXML
@@ -34,7 +34,7 @@ void myTrip(ActionEvent event) {
 
 @FXML
 void signOut(ActionEvent event) {
-
+	myController.setScreen(ScreensFramework.screen1ID);
 }
 
 @Override

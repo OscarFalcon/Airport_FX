@@ -12,7 +12,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 
 
@@ -54,6 +56,7 @@ public class MySQL {
     public static final int LONG = 7;
     public static final int OBJECT = 8;
     public static final int STRING = 9;
+    public static final int TIME = 10;
     
 
     
@@ -247,6 +250,10 @@ public class MySQL {
 			{
 				preparedStatement.setString(position,(String)value);
 			}
+			else if (value instanceof Time)
+			{
+				preparedStatement.setTime(position,(Time)value);
+			}
 			else
 			{
 				preparedStatement.setObject(position,value);					
@@ -370,6 +377,10 @@ public class MySQL {
 						case STRING:
 							tmp[i] = resultSet.getString(i+1);
 							break;
+						case TIME:
+							tmp[i] = resultSet.getTime(i+1);
+							break;
+							
 						default:
 							errorno = INVALID_ARGUMENTS;
 							return null;

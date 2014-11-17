@@ -1,8 +1,9 @@
-package fxml;
+package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -77,6 +78,32 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 
     @FXML
     private Tab RoundTPassFli;
+    
+    
+    
+    @FXML
+    void myAccount(ActionEvent event) {
+    	
+    	myController.setScreen(ScreensFramework.screen2ID);
+
+    }
+
+    @FXML
+    void myTrip(ActionEvent event) {
+    	System.out.println("myTrip");
+    	myController.setScreen(ScreensFramework.screen5ID);
+
+    }
+
+    @FXML
+    void signOut(ActionEvent event) {
+    	
+    	myController.setScreen(ScreensFramework.screen1ID);
+
+    }
+    
+    
+    
 
 	@Override
 	public void setScreenParent(ScreensController screenParent) {

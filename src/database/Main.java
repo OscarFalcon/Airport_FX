@@ -1,10 +1,8 @@
-package application;
+package database;
 	
-import java.util.ArrayList;
-
+import application.mySQLFetch;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import database.MySQL;
 
 
 public class Main extends Application {
@@ -13,7 +11,6 @@ public class Main extends Application {
 		
 	mySQLFetch fetch = new mySQLFetch();
 	fetch.resetPassword("oscar", "blah");
-	fetch.searchFlightNoDates("SAT", "DEN");
 		
 	}
 	

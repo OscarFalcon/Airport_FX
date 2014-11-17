@@ -1,4 +1,4 @@
-package fxml;
+package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,12 +52,12 @@ public class CreateAccountController implements Initializable, ControlledScreen{
 
     @FXML
     void createAccount(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen3ID);
     }
 
     @FXML
     void logIn(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
 	@Override

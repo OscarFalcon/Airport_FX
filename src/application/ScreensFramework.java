@@ -1,9 +1,13 @@
-package fxml;
+package application;
+
+import java.sql.Date;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import core.Flight;
 
 /**
  *
@@ -12,15 +16,15 @@ import javafx.stage.Stage;
 public class ScreensFramework extends Application {
     
     public static String screen1ID = "main";
-    public static String screen1File = "SignInPage.fxml";
+    public static String screen1File = "/fxml/SignInPage.fxml";
     public static String screen2ID = "screen2";
-    public static String screen2File = "CustomerAccountPage.fxml";
+    public static String screen2File = "fxml/CustomerAccountPage.fxml";
     public static String screen3ID = "screen3";
-    public static String screen3File = "PassengerFlightSearch.fxml";
+    public static String screen3File = "/fxml/PassengerFlightSearch.fxml";
     public static String screen4ID = "screen4";
-    public static String screen4File = "createAccountPage.fxml";
+    public static String screen4File = "/fxml/createAccountPage.fxml";
     public static String screen5ID = "screen5";
-    public static String screen5File = "MyTrip.fxml";
+    public static String screen5File = "/fxml/MyTrip.fxml";
     
     
     @Override
@@ -40,6 +44,29 @@ public class ScreensFramework extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
+        mySQLFetch fetch = new mySQLFetch();
+        ObservableList<Flight> list;
+    	list = fetch.searchFlightDates("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));
+    	for(int i = 0; i < list.size(); i++)
+    	{
+    		System.out.println("Airline: " + list.get(i).getAirline());
+    		System.out.println("Arrival Date: " + list.get(i).getArrivalDate());
+    		System.out.println("Arrival Time: " + list.get(i).getArrivalTime());
+    		System.out.println("Departure Date: " + list.get(i).getDeptDate());
+    		System.out.println("Departure Time: " + list.get(i).getDeptTime());
+    		System.out.println("Destination Location: " + list.get(i).getDestinationLocation());
+    		System.out.println("Source Location: " + list.get(i).getSrcLocation());
+    		System.out.println("Flight ID: " + list.get(i).getFlightId());
+    		System.out.println("Flight Number: " + list.get(i).getFlightNumber());
+    		System.out.println("Flight Price: " + list.get(i).getFlightPrice());
+
+
+
+    	}
+        
+        
     }
 
     /**

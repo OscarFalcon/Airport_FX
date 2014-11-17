@@ -1,4 +1,4 @@
-package fxml;
+package application;
 
 public interface ControlledScreen {
     

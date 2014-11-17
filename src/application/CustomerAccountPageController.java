@@ -1,4 +1,4 @@
-package fxml;
+package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -81,17 +81,18 @@ public class CustomerAccountPageController implements Initializable, ControlledS
 
     @FXML
     void myAccount(ActionEvent event) {
+    	//myController.setScreen(ScreensFramework.screen1ID);
 
     }
 
     @FXML
     void myTrip(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen5ID);
     }
 
     @FXML
     void signOut(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
 	@Override

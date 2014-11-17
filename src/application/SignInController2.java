@@ -1,4 +1,4 @@
-package fxml;
+package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -6,11 +6,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class SignInController2 implements Initializable, ControlledScreen{
 	ScreensController myController;
+	mySQLFetch fetch = new mySQLFetch();
     /**
      * Initializes the controller class.
      */
@@ -19,6 +21,10 @@ public class SignInController2 implements Initializable, ControlledScreen{
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
+    
+    @FXML
+    private Label error;
+    
     @FXML
     private PasswordField password;
 
@@ -44,12 +50,20 @@ public class SignInController2 implements Initializable, ControlledScreen{
 
     @FXML
     void signIn(ActionEvent event) {
-    	myController.setScreen(ScreensFramework.screen3ID);
+    	if(userName.getText().equals("") || password.getText().equals("")){
+    		error.setText("Please Enter all fields");
+    	}else if(fetch.authorizeUser(userName.getText(), password.getText())){
+    		error.setText("Login Successful");
+    		myController.setScreen(ScreensFramework.screen3ID);
+    	}
+    	else {
+    		error.setText("Login Failed");
+    	}
     }
 
     @FXML
     void forgotPassword(ActionEvent event) {
-    	myController.setScreen(ScreensFramework.screen2ID);
+    	//myController.setScreen(ScreensFramework.screen2ID);
     }
 
     @FXML
