@@ -44,6 +44,7 @@ public class ScreensFramework extends Application {
         primaryStage.show();
         
         
+        
         mySQLFetch fetch = new mySQLFetch();
         ObservableList<Flight> flightList;
   
