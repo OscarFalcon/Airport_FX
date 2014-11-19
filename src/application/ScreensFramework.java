@@ -7,12 +7,10 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import core.AirportLookups;
 import core.Flight;
+import core.Person;
 
-/**
- *
- * @author Angie
- */
 public class ScreensFramework extends Application {
     
     public static String screen1ID = "main";
@@ -48,29 +46,41 @@ public class ScreensFramework extends Application {
         
         
         mySQLFetch fetch = new mySQLFetch();
-        ObservableList<Flight> list;
-    	list = fetch.searchFlightDates("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));
-    	for(int i = 0; i < list.size(); i++)
+        ObservableList<Flight> flightList;
+  
+    	flightList = fetch.searchFlightDates("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));
+    	for(int i = 0; i < flightList.size(); i++)
     	{
-    		System.out.println("Airline: " + list.get(i).getAirline());
-    		System.out.println("Arrival Date: " + list.get(i).getArrivalDate());
-    		System.out.println("Arrival Time: " + list.get(i).getArrivalTime());
-    		System.out.println("Departure Date: " + list.get(i).getDeptDate());
-    		System.out.println("Departure Time: " + list.get(i).getDeptTime());
-    		System.out.println("Destination Location: " + list.get(i).getDestinationLocation());
-    		System.out.println("Source Location: " + list.get(i).getSrcLocation());
-    		System.out.println("Flight ID: " + list.get(i).getFlightId());
-    		System.out.println("Flight Number: " + list.get(i).getFlightNumber());
-    		System.out.println("Flight Price: " + list.get(i).getFlightPrice());
-
-
-
+    		System.out.println("Airline: " + flightList.get(i).getAirline());
+    		System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
+    		System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
+    		System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
+    		System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
+    		System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
+    		System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
+    		System.out.println("Flight ID: " + flightList.get(i).getFlightId());
+    		System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
+    		System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
     	}
-        
-        
+    		ObservableList<AirportLookups> codeList;
+    		codeList = fetch.getAirportCodes("SAT");
+    		for(int i = 0; i < codeList.size(); i++)
+    		{
+    			System.out.println("Code: " + codeList.get(i).getAirportCode());
+    			System.out.println("Aiport: " + codeList.get(i).getAirportName());
+    			System.out.println("City: " + codeList.get(i).getAirportCity());
+    			System.out.println("State: " + codeList.get(i).getAirportState());
+    		}
+    		
+    		Person person = new Person("mike","password");
+    		if(person.authorize("mike", "password"))
+    		{
+    			
+    		}
+    	
     }
 
-    /**
+    /*
      * The main() method is ignored in correctly deployed JavaFX application.
      * main() serves only as fallback in case the application can not be
      * launched through deployment artifacts, e.g., in IDEs with limited FX

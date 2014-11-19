@@ -54,10 +54,14 @@ public class SignInController2 implements Initializable, ControlledScreen{
     		error.setText("Please Enter all fields");
     	}else if(fetch.authorizeUser(userName.getText(), password.getText())){
     		error.setText("Login Successful");
+    		userName.setText("");
+    		password.setText("");
     		myController.setScreen(ScreensFramework.screen3ID);
     	}
     	else {
     		error.setText("Login Failed");
+    		userName.setText("");
+    		password.setText("");
     	}
     }
 

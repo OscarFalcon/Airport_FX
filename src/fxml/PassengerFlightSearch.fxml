@@ -1,66 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PassengerFlightSearchController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PassengerFlightSearchController">
    <children>
-      <BorderPane layoutX="2.0" layoutY="2.0" prefHeight="407.0" prefWidth="600.0">
+      <BorderPane layoutX="2.0" layoutY="2.0" prefHeight="608.0" prefWidth="600.0">
          <center>
             <TabPane prefHeight="377.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
                 <Tab fx:id="RoundTPassFli" text="Roundtrip">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="328.0" prefWidth="550.0">
+                     <content>
+                        <GridPane hgap="10.0" vgap="5.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
                            <children>
-                              <Label layoutX="14.0" layoutY="22.0" text="Flying from" />
-                              <Label layoutX="14.0" layoutY="92.0" text="Departing" />
-                              <Label layoutX="14.0" layoutY="163.0" text="Passenger" />
-                              <Label layoutX="255.0" layoutY="22.0" text="Flying to" />
-                              <Label fx:id="rReturning" layoutX="255.0" layoutY="92.0" text="Returning" />
-                              <Label layoutX="255.0" layoutY="163.0" text="Preferred Class" />
-                              <TextField fx:id="rFlyingFromPassFli" layoutX="14.0" layoutY="39.0" />
-                              <TextField fx:id="rFlyingToPassFli" layoutX="255.0" layoutY="39.0" />
-                              <DatePicker fx:id="rDepartingPassFli" layoutX="14.0" layoutY="109.0" />
-                              <DatePicker fx:id="rReturningPassFli" layoutX="255.0" layoutY="109.0" />
-                              <Button fx:id="rSearchButtPassFli" layoutX="15.0" layoutY="254.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="105.0" text="Search">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <CheckBox fx:id="rNonStopPassFli" layoutX="15.0" layoutY="218.0" mnemonicParsing="false" text="Non-stop" />
-                              <TextField fx:id="pasnumPassFli" layoutX="13.0" layoutY="180.0" />
-                              <TextField fx:id="classPassFli" layoutX="255.0" layoutY="180.0" />
+                              <Label text="Flying From" />
+                              <Label text="Departing" GridPane.rowIndex="2" />
+                              <Label text="Passenger" GridPane.rowIndex="4" />
+                              <Label text="Flying To" GridPane.columnIndex="1" />
+                              <Label text="Preferred Class" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <ChoiceBox fx:id="rPreferredClass" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="rPassenger" GridPane.rowIndex="5" />
+                              <ChoiceBox fx:id="rFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
+                              <ChoiceBox fx:id="rFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="rDepart" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
+                              <Button fx:id="rSearch" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rSearchAction" text="Search" GridPane.rowIndex="7" />
+                              <Label fx:id="rErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
                            </children>
-                        </AnchorPane>
-                  </content>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </GridPane>
+                     </content>
                 </Tab>
                 <Tab fx:id="oDepartingPassFli" text="One way">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <content>
+                        <GridPane hgap="10.0" vgap="5.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
                            <children>
-                              <Label layoutX="14.0" layoutY="21.0" text="Flying from" />
-                              <Label layoutX="260.0" layoutY="21.0" text="Flying to" />
-                              <Label layoutX="14.0" layoutY="92.0" text="Departing" />
-                              <Label layoutX="14.0" layoutY="167.0" text="Passenger" />
-                              <Label layoutX="260.0" layoutY="167.0" text="Preferred Class" />
-                              <TextField fx:id="oFlyingFrom" layoutX="14.0" layoutY="38.0" />
-                              <TextField fx:id="orFlyingTo" layoutX="260.0" layoutY="38.0" />
-                              <DatePicker fx:id="oDeparting" layoutX="14.0" layoutY="109.0" />
-                              <CheckBox fx:id="oNonStopPassFli" layoutX="14.0" layoutY="221.0" mnemonicParsing="false" text="Non-stop" />
-                              <Button fx:id="oSearchButtPassFli" layoutX="13.0" layoutY="254.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="103.0" text="Search">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
-                              <TextField fx:id="owPassNumPassFli" layoutX="14.0" layoutY="184.0" />
-                              <TextField fx:id="owClassPassFli" layoutX="260.0" layoutY="184.0" />
+                              <Label text="Flying From" />
+                              <Label text="Departing" GridPane.rowIndex="2" />
+                              <Label text="Passenger" GridPane.rowIndex="4" />
+                              <Label text="Flying To" GridPane.columnIndex="1" />
+                              <Label text="Arriving" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="Preferred Class" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="oPassenger" GridPane.rowIndex="5" />
+                              <ChoiceBox fx:id="oPreferredClass" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <ChoiceBox fx:id="oFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
+                              <ChoiceBox fx:id="oFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="oDepart" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
+                              <DatePicker fx:id="oArrive" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Button fx:id="oSearch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#oSearchAction" text="Search" GridPane.rowIndex="7" />
+                              <Label fx:id="oErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
                            </children>
-                        </AnchorPane>
-                  </content>
+                        </GridPane>
+                     </content>
                 </Tab>
               </tabs>
             </TabPane>
@@ -75,10 +104,23 @@
                         <Button fx:id="signOutButtonPassFli" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
                      </children>
                   </HBox>
-                  <Label layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="94.0" text="Hello" />
+                  <Label fx:id="HeaderLabel" layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="330.0" text="Hello" />
                </children>
             </AnchorPane>
          </top>
+         <bottom>
+            <TableView fx:id="searchResults" prefHeight="235.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Airline" />
+                <TableColumn prefWidth="75.0" text="Depart Date:Time" />
+                  <TableColumn prefWidth="75.0" text="Arrival Date:Time" />
+                  <TableColumn prefWidth="75.0" text="Price" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

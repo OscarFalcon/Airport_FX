@@ -1,2 +1,8 @@
 /application/
+<<<<<<< HEAD
 /json/
+=======
+/core/
+/database/
+/fxml/
+>>>>>>> bbd09dae753444b66638b1461545ff4a7b6e2e8c
