@@ -18,10 +18,11 @@ public class Person {
    
     public Person(String username,String password)
     {
+    	authorized(username,password);
     }
     
      
-    public boolean authorize(String username, String password){
+    public boolean initialize(String username, String password){
 		boolean authorized = false;
 		String usersTable = "SELECT userID,username,password,email,telephone,type FROM users WHERE userID = ? && username = ? && password = ?"
 				+ 																				   "email = ? && telephone = ? && type = ?";
@@ -30,14 +31,43 @@ public class Person {
 		int [] resultType = {MySQL.INTEGER,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING};
 		
 		ArrayList<Object[]> table = MySQL.executeQuery(usersTable, arguments, resultType);
+		if(table == null)
+		{
+			return false;
+		}
+		if(table.size() > 0)
+		{
+			authorized = true;
+		}
+		getId();
+		getFirstName();
+		getLastName();
+		getUserName();
+		getEmail();
+		getPhone();
+		
+	return authorized;	
+    } 
+    
+    public boolean authorized(String username, String password)
+    {
+    	boolean authorized = false;
+		String usersTable = "SELECT ID FROM users WHERE username = ? && password = ?";
+		
+		Object[] arguments = {username, password};
+		int [] resultType = {MySQL.INTEGER};
+		
+		ArrayList<Object[]> table = MySQL.executeQuery(usersTable, arguments, resultType);
 		if(table == null){
 			return false;
 		}
 		if(table.size() > 0)
 			authorized = true;
 		
+		initialize(username,password);
+		
 	return authorized;	
-    } 
+    }
     
     public String getId()
     {
