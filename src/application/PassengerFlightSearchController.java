@@ -7,99 +7,105 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
 
     @FXML
-    private TextField owPassNumPassFli;
+    private ChoiceBox<?> rPreferredClass;
 
     @FXML
-    private DatePicker rReturningPassFli;
+    private ChoiceBox<?> oFlyFrom;
 
     @FXML
-    private Button rSearchButtPassFli;
+    private DatePicker oDepart;
 
     @FXML
-    private TextField owClassPassFli;
+    private Button oSearch;
 
     @FXML
-    private DatePicker oDeparting;
+    private Label rErrorLabel;
 
     @FXML
     private Button myTripButtonPassFli;
 
     @FXML
-    private CheckBox oNonStopPassFli;
+    private ChoiceBox<?> oFlyTo;
 
     @FXML
-    private Label rReturning;
+    private ChoiceBox<?> rFlyTo;
 
     @FXML
-    private TextField rFlyingToPassFli;
+    private TableView<?> searchResults;
+
+    @FXML
+    private Label HeaderLabel;
+
+    @FXML
+    private ChoiceBox<?> oPreferredClass;
 
     @FXML
     private Button signOutButtonPassFli;
 
     @FXML
-    private TextField classPassFli;
-
-    @FXML
-    private TextField oFlyingFrom;
+    private TextField oPassenger;
 
     @FXML
     private Button myAccountButtonPassFli;
 
     @FXML
-    private TextField rFlyingFromPassFli;
+    private DatePicker rDepart;
 
     @FXML
-    private DatePicker rDepartingPassFli;
+    private Label oErrorLabel;
 
     @FXML
     private Tab oDepartingPassFli;
 
     @FXML
-    private TextField orFlyingTo;
+    private ChoiceBox<?> rFlyFrom;
 
     @FXML
-    private CheckBox rNonStopPassFli;
+    private DatePicker oArrive;
 
     @FXML
-    private TextField pasnumPassFli;
-
-    @FXML
-    private Button oSearchButtPassFli;
+    private TextField rPassenger;
 
     @FXML
     private Tab RoundTPassFli;
-    
-    
-    
+
+    @FXML
+    private Button rSearch;
+
+    @FXML
+    void rSearchAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void oSearchAction(ActionEvent event) {
+
+    }
+
     @FXML
     void myAccount(ActionEvent event) {
-    	
     	myController.setScreen(ScreensFramework.screen2ID);
-
     }
 
     @FXML
     void myTrip(ActionEvent event) {
-    	System.out.println("myTrip");
     	myController.setScreen(ScreensFramework.screen5ID);
-
     }
 
     @FXML
     void signOut(ActionEvent event) {
-    	
     	myController.setScreen(ScreensFramework.screen1ID);
-
     }
     
     

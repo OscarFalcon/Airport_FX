@@ -11,14 +11,14 @@ import core.Flight;
 
 /**
  *
- * @author Angie
+ * @author Fahad
  */
 public class ScreensFramework extends Application {
     
     public static String screen1ID = "main";
     public static String screen1File = "/fxml/SignInPage.fxml";
     public static String screen2ID = "screen2";
-    public static String screen2File = "fxml/CustomerAccountPage.fxml";
+    public static String screen2File = "/fxml/CustomerAccountPage.fxml";
     public static String screen3ID = "screen3";
     public static String screen3File = "/fxml/PassengerFlightSearch.fxml";
     public static String screen4ID = "screen4";
