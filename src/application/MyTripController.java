@@ -1,51 +1,52 @@
 package application;
 
-import java.awt.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 public class MyTripController implements Initializable, ControlledScreen{
-ScreensController myController;
+	ScreensController myController;
+    @FXML
+    private Button signOut;
 
+    @FXML
+    private Button myAccount;
 
+    @FXML
+    private Button mytrip;
 
-@FXML
-private Button myTrip;
+    @FXML
+    void myAccount(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen2ID);
+    }
 
-@FXML
-private Button signOut;
+    @FXML
+    void myTrip(ActionEvent event) {
+    	
 
-@FXML
-private Button myAccount;
+    }
 
-@FXML
-void myAccount(ActionEvent event) {
-	myController.setScreen(ScreensFramework.screen2ID);
-}
+    @FXML
+    void signOut(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen1ID);
 
-@FXML
-void myTrip(ActionEvent event) {
+    }
 
-}
+	@Override
+	public void setScreenParent(ScreensController screenParent) {
+		// TODO Auto-generated method stub
+		myController = screenParent;
+		
+	}
 
-@FXML
-void signOut(ActionEvent event) {
-	myController.setScreen(ScreensFramework.screen1ID);
-}
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 
-@Override
-public void setScreenParent(ScreensController screenParent) {
-	// TODO Auto-generated method stub
-	myController = screenParent;
-}
-
-@Override
-public void initialize(URL location, ResourceBundle resources) {
-	// TODO Auto-generated method stub
-	
-}
 }
