@@ -24,6 +24,8 @@ public class Person {
     }
     
      
+    /* Initialize the user if authorization was successful */
+    
     public boolean initialize(String username, String password){
 		boolean initialized = false;
 		String userData = "SELECT userID, firstName, lastName, userName, password, email, telephone, type FROM userinfo WHERE userName = ? && password = ?";
@@ -44,8 +46,8 @@ public class Person {
 	return initialized;	
     } 
   
-
-
+    /* Authorize User */
+    
 	public boolean authorized(String username, String password)
     {
     	boolean authorized = false;
@@ -67,6 +69,8 @@ public class Person {
 
 	return authorized;	
     }
+	
+	/* Getters and Setters */
     
     public String getId()
     {
