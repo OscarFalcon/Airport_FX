@@ -33,7 +33,7 @@
                           </rowConstraints>
                            <children>
                               <Label text="Flying From" />
-                              <Label text="Departing" GridPane.rowIndex="2" />
+                              <Label text="Leaving" GridPane.rowIndex="2" />
                               <Label text="Passenger" GridPane.rowIndex="4" />
                               <Label text="Flying To" GridPane.columnIndex="1" />
                               <Label text="Preferred Class" GridPane.columnIndex="1" GridPane.rowIndex="4" />
@@ -44,6 +44,8 @@
                               <DatePicker fx:id="rDepart" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
                               <Button fx:id="rSearch" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rSearchAction" text="Search" GridPane.rowIndex="7" />
                               <Label fx:id="rErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
+                              <Label text="Returning" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="rArrive" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                            <padding>
                               <Insets left="10.0" right="10.0" />
@@ -77,14 +79,12 @@
                               <Label text="Departing" GridPane.rowIndex="2" />
                               <Label text="Passenger" GridPane.rowIndex="4" />
                               <Label text="Flying To" GridPane.columnIndex="1" />
-                              <Label text="Arriving" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="Preferred Class" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                               <TextField fx:id="oPassenger" GridPane.rowIndex="5" />
                               <ChoiceBox fx:id="oPreferredClass" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                               <ChoiceBox fx:id="oFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
                               <ChoiceBox fx:id="oFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <DatePicker fx:id="oDepart" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
-                              <DatePicker fx:id="oArrive" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Button fx:id="oSearch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#oSearchAction" text="Search" GridPane.rowIndex="7" />
                               <Label fx:id="oErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
                            </children>
