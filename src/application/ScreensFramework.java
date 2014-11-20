@@ -71,13 +71,8 @@ public class ScreensFramework extends Application {
     			System.out.println("City: " + codeList.get(i).getAirportCity());
     			System.out.println("State: " + codeList.get(i).getAirportState());
     		}
-    		
-    		Person person = new Person("mike","password");
-    		if(person.authorize("mike", "password"))
-    		{
-    			
-    		}
-    	
+    		Person person = new Person("mike", "mikepass");
+    		person.authorized("mike", "mikepass");
     }
 
     /*
