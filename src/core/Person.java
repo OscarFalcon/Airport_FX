@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import database.MySQL;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 
 public class Person {
 
@@ -40,7 +41,6 @@ public class Person {
 		}	
 		
 		System.out.println("Initialization successful");
-		
 	return initialized;	
     } 
   

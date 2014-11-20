@@ -45,7 +45,7 @@ public class ScreensFramework extends Application {
         
         
         
-        mySQLFetch fetch = new mySQLFetch();
+        MySQLData fetch = new MySQLData();
         ObservableList<Flight> flightList;
   
     	flightList = fetch.searchFlightDates("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));

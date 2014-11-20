@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 
 public class SignInController2 implements Initializable, ControlledScreen{
 	ScreensController myController;
-	mySQLFetch fetch = new mySQLFetch();
+	MySQLData fetch = new MySQLData();
     /**
      * Initializes the controller class.
      */

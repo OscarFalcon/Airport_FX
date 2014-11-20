@@ -8,7 +8,7 @@ import core.AirportLookups;
 import core.Flight;
 import database.MySQL;
 
-public class mySQLFetch {
+public class MySQLData {
 	
 	
 	//Get authorized user info
