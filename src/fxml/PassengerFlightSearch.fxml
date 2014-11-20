@@ -84,7 +84,6 @@
                               <ChoiceBox fx:id="oFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
                               <ChoiceBox fx:id="oFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <DatePicker fx:id="oDepart" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
-                              <DatePicker fx:id="oArrive" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Button fx:id="oSearch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#oSearchAction" text="Search" GridPane.rowIndex="7" />
                               <Label fx:id="oErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
                            </children>
