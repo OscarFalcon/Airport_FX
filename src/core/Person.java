@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import database.MySQL;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ObservableList;
 
 public class Person {
 
@@ -18,65 +17,55 @@ public class Person {
     private  SimpleStringProperty type;
     
    
-    public Person(String username,String password)
+ 
+    
+    private Person(String id,String first,String last,String username,String email,String phone,String type)
     {
-    	authorized(username,password);
+    	this.id.set(id);
+    	this.firstName.set(first);
+    	this.lastName.set(last);
+    	this.username.set(username);
+    	this.email.set(email);
+    	this.phone.set(phone);
+    	this.type.set(type);
+    
     }
     
-     
-    /* Initialize the user if authorization was successful */
-    
-    public boolean initialize(String username, String password){
-		boolean initialized = false;
-		String userData = "SELECT userID, firstName, lastName, userName, password, email, telephone, type FROM userinfo WHERE userName = ? && password = ?";
-		
-		Object[] arguments = {username, password};
-		int [] resultType = {MySQL.INTEGER, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING};
-		ArrayList<Object[]> table = MySQL.executeQuery(userData, arguments, resultType);
-		if(table == null)
-		{
-			return false;
-		}
-		else if(table.size() > 0)
-		{
-			initialized = true;
-		}
-		getId();
-		setFirstName(table.get(1).toString());
-		setLastName(table.get(2).toString());
-		setEmail(table.get(4).toString());
-		setPhone(table.get(5).toString());
-		setType(table.get(6).toString());
-		initialized = true;
-			
-		
-		System.out.println("Initialization successful");
-		return initialized;	
-    } 
-  
-    /* Authorize User */
-    
-	public boolean authorized(String username, String password)
+	public static Person retrievePerson(String username, String password)
     {
-    	boolean authorized = false;
-		String usersTable = "SELECT userID FROM userinfo WHERE userName = ? && password = ?";
-		
+		String query = "SELECT userID, firstName, lastName, userName, email, telephone, type "
+							+ "FROM userinfo WHERE userName = ? && password = ?";
 		Object[] arguments = {username, password};
-		int [] resultType = {MySQL.INTEGER};
+		int [] resultType = {MySQL.INTEGER, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, 
+								MySQL.STRING, MySQL.STRING, MySQL.STRING};
 		
-		ArrayList<Object[]> table = MySQL.executeQuery(usersTable, arguments, resultType);
-		if(table == null){
-			System.out.println("Error: Authentication Failed!!!");
-			return false;
+		
+		
+		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
+		if(result == null)
+		{
+			return null;
 		}
-		if(table.size() > 0)
-			authorized = true;
-		System.out.println("Authentication Successful!!!");
-		System.out.println("Attempting to initialize user");
-		initialize(username,password);
+		
+		Person person = new Person(result.get(0).toString(),result.get(1).toString(),result.get(2).toString(),
+										result.get(3).toString(),result.get(4).toString(),result.get(5).toString(),
+										result.get(6).toString());
 
-	return authorized;	
+		return person;	
     }
+	
+	public boolean save()
+	{
+		String statement = "UPDATE userinfo set firstName = ?, lastName = ?,email = ?, telephone = ?"
+							+ "WHERE userID = ?";
+		Object[] arguments = {firstName.get(),lastName.get(),email.get(),phone.get(),id.get()};
+	
+		return MySQL.execute(statement, arguments);
+	}
+	
+	
+	
+	
 	
 	/* Getters and Setters */
     
@@ -84,6 +73,14 @@ public class Person {
     {
     	return id.get();
     } 
+    
+    
+    public String getUserName()
+    {
+    	return username.get();
+    }
+    
+    
     public String getFirstName() 
     {
         return firstName.get();
@@ -92,6 +89,8 @@ public class Person {
     {
         firstName.set(fName);
     }
+
+    
     public String getLastName()
     {
         return lastName.get();
@@ -100,10 +99,7 @@ public class Person {
     {
         lastName.set(fName);
     }
-    public String getUserName()
-    {
-    	return username.get();
-    }
+   
     public String getEmail() 
     {
         return email.get();
@@ -112,6 +108,7 @@ public class Person {
     {
         email.set(fName);
     }
+    
     public String getPhone()
     {
     	return phone.get();
@@ -120,13 +117,11 @@ public class Person {
     {
     	this.phone.set(phone);
     }
+    
     public String getType()
     {
     	return type.get();
     }
-    public void setType(String type)
-    {
-    	this.type.set(type);
-    }
+  
     
 }

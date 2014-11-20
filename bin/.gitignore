@@ -1,4 +1,3 @@
-/application/
 /core/
-/database/
-/fxml/
+/application/
+/json/
