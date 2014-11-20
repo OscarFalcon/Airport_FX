@@ -40,12 +40,12 @@ public class MySQLData {
 	}
 	
 	//Query database by src, des, srcDate, desDate
-	public ObservableList<Flight> searchFlightDates(String srcLocation, String desLocation, Date srcDate, Date depDate){
-		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ?"
-								+ "&& arrDate = ? && depDate = ?";
+	public ObservableList<Flight> searchFlightRoundTrip(String srcLocation, String desLocation, Date srcDate, Date depDate){
+		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ? && depDate = ? ||"
+				+ "srcLocation = ? && desLocation = ? && depDate = ?";
 		
 		
-		Object[] arguments = {srcLocation, desLocation, srcDate, depDate};
+		Object[] arguments = {srcLocation, desLocation, srcDate, desLocation, srcLocation, depDate};
 		int [] resultType = {MySQL.INTEGER,MySQL.STRING,MySQL.STRING,MySQL.DATE,MySQL.TIME,MySQL.DATE,MySQL.TIME,MySQL.STRING,MySQL.STRING,MySQL.FLOAT};
 		ArrayList<Object[]> table = MySQL.executeQuery(flightDataTable, arguments, resultType);
 		
@@ -69,13 +69,11 @@ public class MySQLData {
 		
 	}
 
-	//Query database by src, des
-	
-	public ObservableList<Flight> searchFlightNoDates(String srcLocation, String desLocation){
-		
-		String flightDataTable = "SELECT flightID FROM flightinfo WHERE srcLocation = ? && desLocation = ?";
-		Object[] arguments = {srcLocation, desLocation};
-		int [] resultType = {MySQL.INTEGER};
+	public ObservableList<Flight> searchFlightOneWay(String srcLocation, String desLocation, Date srcDate){
+		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ?"
+								+ "&& depDate = ?";
+		Object[] arguments = {srcLocation, desLocation, srcDate};
+		int [] resultType = {MySQL.INTEGER,MySQL.STRING,MySQL.STRING,MySQL.DATE,MySQL.TIME,MySQL.DATE,MySQL.TIME,MySQL.STRING,MySQL.STRING,MySQL.FLOAT};
 		ArrayList<Object[]> table = MySQL.executeQuery(flightDataTable, arguments, resultType);
 		
 		if(table == null)
@@ -94,6 +92,7 @@ public class MySQLData {
 			
 		}
 		return data;
+		
 		
 	}
 	
