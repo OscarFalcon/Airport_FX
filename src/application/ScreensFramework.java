@@ -45,9 +45,7 @@ public class ScreensFramework extends Application {
         
         
         
-        
-        
-        mySQLFetch fetch = new mySQLFetch();
+        MySQLData fetch = new MySQLData();
         ObservableList<Flight> flightList;
   
     	flightList = fetch.searchFlightDates("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));
@@ -73,10 +71,8 @@ public class ScreensFramework extends Application {
     			System.out.println("City: " + codeList.get(i).getAirportCity());
     			System.out.println("State: " + codeList.get(i).getAirportState());
     		}
-    		
-    		//Person person = new Person("mike","password");
-    		
-    	
+    		Person person = new Person("mike", "mikepass");
+    		person.authorized("mike", "mikepass");
     }
 
     /*

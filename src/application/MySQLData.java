@@ -8,13 +8,13 @@ import core.AirportLookups;
 import core.Flight;
 import database.MySQL;
 
-public class mySQLFetch {
+public class MySQLData {
 	
 	
 	//Get authorized user info
 	public boolean authorizeUser(String username, String password){
 		boolean authorized = false;
-		String usersTable = "SELECT ID FROM users WHERE username = ? && password = ?";
+		String usersTable = "SELECT userID FROM userinfo WHERE username = ? && password = ?";
 		
 		Object[] arguments = {username, password};
 		int [] resultType = {MySQL.INTEGER};
@@ -32,7 +32,7 @@ public class mySQLFetch {
 	//Reset password
 	public boolean resetPassword(String username, String password){
 		boolean reset = false;
-		String resetPassword = "UPDATE users SET password = ? WHERE username = ?";
+		String resetPassword = "UPDATE userinfo SET password = ? WHERE username = ?";
 		Object[] arguments = {password, username};
 		reset = MySQL.execute(resetPassword, arguments);
 		

@@ -33,13 +33,13 @@
             </AnchorPane>
          </center>
          <top>
-            <AnchorPane prefHeight="53.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="367.0" layoutY="14.0">
+                  <HBox layoutX="372.0" layoutY="12.0">
                      <children>
-                        <Button fx:id="myAccount" layoutX="341.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
-                        <Button fx:id="myTrip" layoutX="448.0" layoutY="14.0" mnemonicParsing="false" onAction="#myTrip" text="My Trip" />
-                        <Button fx:id="signOut" layoutX="518.0" layoutY="14.0" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
+                        <Button fx:id="myAccount" layoutX="275.0" layoutY="12.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
+                        <Button fx:id="mytrip" layoutX="417.0" layoutY="12.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
+                        <Button fx:id="signOut" layoutX="489.0" layoutY="12.0" mnemonicParsing="false" onAction="#signOut" text="sign out" />
                      </children>
                   </HBox>
                </children>

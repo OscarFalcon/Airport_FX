@@ -1,2 +1,4 @@
-/json/
 /application/
+/core/
+/database/
+/fxml/
