@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import database.MySQL;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Person {
+public class Person 
+{
 
 	
 	private  SimpleStringProperty id;
@@ -21,13 +22,13 @@ public class Person {
     
     private Person(String id,String first,String last,String username,String email,String phone,String type)
     {
-    	this.id.set(id);
-    	this.firstName.set(first);
-    	this.lastName.set(last);
-    	this.username.set(username);
-    	this.email.set(email);
-    	this.phone.set(phone);
-    	this.type.set(type);
+    	this.id 		= new SimpleStringProperty(id);
+    	this.firstName 	= new SimpleStringProperty(first);
+    	this.lastName 	= new SimpleStringProperty(last);
+    	this.username 	= new SimpleStringProperty(username);
+    	this.email 		= new SimpleStringProperty(email);
+    	this.phone 		= new SimpleStringProperty(phone);
+    	this.type 		= new SimpleStringProperty(type);
     
     }
     
@@ -35,21 +36,22 @@ public class Person {
     {
 		String query = "SELECT userID, firstName, lastName, userName, email, telephone, type "
 							+ "FROM userinfo WHERE userName = ? && password = ?";
+		
 		Object[] arguments = {username, password};
-		int [] resultType = {MySQL.INTEGER, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, 
+		
+		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
 								MySQL.STRING, MySQL.STRING, MySQL.STRING};
-		
-		
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
 		if(result == null)
 		{
 			return null;
 		}
+		Object[] tmp = result.get(0);
 		
-		Person person = new Person(result.get(0).toString(),result.get(1).toString(),result.get(2).toString(),
-										result.get(3).toString(),result.get(4).toString(),result.get(5).toString(),
-										result.get(6).toString());
+		Person person = new Person(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
+										tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),
+										tmp[6].toString());
 
 		return person;	
     }
@@ -58,6 +60,7 @@ public class Person {
 	{
 		String statement = "UPDATE userinfo set firstName = ?, lastName = ?,email = ?, telephone = ?"
 							+ "WHERE userID = ?";
+		
 		Object[] arguments = {firstName.get(),lastName.get(),email.get(),phone.get(),id.get()};
 	
 		return MySQL.execute(statement, arguments);
