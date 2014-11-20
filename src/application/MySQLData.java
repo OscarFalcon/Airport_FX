@@ -42,7 +42,7 @@ public class MySQLData {
 	//Query database by src, des, srcDate, desDate
 	public ObservableList<Flight> searchFlightRoundTrip(String srcLocation, String desLocation, Date srcDate, Date depDate){
 		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ? && depDate = ? ||"
-				+ "srcLocation = ? && desLocation = ? && depDate = ?";
+				+ "desLocation = ? && srcLocation = ? && depDate = ?";
 		
 		
 		Object[] arguments = {srcLocation, desLocation, srcDate, desLocation, srcLocation, depDate};
