@@ -24,11 +24,12 @@ public class Person
     {
     	this.id 		= new SimpleStringProperty(id);
     	this.firstName 	= new SimpleStringProperty(first);
-    	this.lastName 	= new SimpleStringProperty(last);
+  
     	this.username 	= new SimpleStringProperty(username);
     	this.email 		= new SimpleStringProperty(email);
     	this.phone 		= new SimpleStringProperty(phone);
     	this.type 		= new SimpleStringProperty(type);
+    	System.out.println("TESTING FOR LIFE");
     
     }
     
