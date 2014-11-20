@@ -14,6 +14,7 @@ public class Person {
     private  SimpleStringProperty username;
     private  SimpleStringProperty email;
     private  SimpleStringProperty phone;
+    private  SimpleStringProperty type;
     
    
     public Person(String username,String password)
@@ -40,11 +41,11 @@ public class Person {
 			authorized = true;
 		}
 		getId();
-		getFirstName();
-		getLastName();
-		getUserName();
-		getEmail();
-		getPhone();
+		setFirstName(table.get(1).toString());
+		setLastName(table.get(2).toString());
+		setEmail(table.get(4).toString());
+		setPhone(table.get(5).toString());
+		setType(table.get(6).toString());
 		
 	return authorized;	
     } 
@@ -108,6 +109,14 @@ public class Person {
     public void setPhone(String phone)
     {
     	this.phone.set(phone);
+    }
+    public String getType()
+    {
+    	return type.get();
+    }
+    public void setType(String type)
+    {
+    	this.type.set(type);
     }
     
 }
