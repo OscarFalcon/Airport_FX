@@ -44,11 +44,11 @@ public class ScreensFramework extends Application {
         primaryStage.show();
         
         
-        
+        /*
         MySQLData fetch = new MySQLData();
         ObservableList<Flight> flightList;
   
-    	flightList = fetch.searchFlightDates("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));
+    	flightList = fetch.searchFlightRoundTrip("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));
     	for(int i = 0; i < flightList.size(); i++)
     	{
     		System.out.println("Airline: " + flightList.get(i).getAirline());
@@ -71,6 +71,8 @@ public class ScreensFramework extends Application {
     			System.out.println("City: " + codeList.get(i).getAirportCity());
     			System.out.println("State: " + codeList.get(i).getAirportState());
     		}
+    		*/
+    		
     		Person person = Person.retrievePerson("mike", "mikepass");
     		
     }
