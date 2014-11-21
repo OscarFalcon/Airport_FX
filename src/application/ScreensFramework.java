@@ -44,36 +44,7 @@ public class ScreensFramework extends Application {
         primaryStage.show();
         
         
-        /*
-        MySQLData fetch = new MySQLData();
-        ObservableList<Flight> flightList;
-  
-    	flightList = fetch.searchFlightRoundTrip("SAT", "DEN",Date.valueOf( "2014-12-19" ),Date.valueOf( "2014-12-19" ));
-    	for(int i = 0; i < flightList.size(); i++)
-    	{
-    		System.out.println("Airline: " + flightList.get(i).getAirline());
-    		System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
-    		System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
-    		System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
-    		System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
-    		System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
-    		System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
-    		System.out.println("Flight ID: " + flightList.get(i).getFlightId());
-    		System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
-    		System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
-    	}
-    		ObservableList<AirportLookups> codeList;
-    		codeList = fetch.getAirportCodes("SAT");
-    		for(int i = 0; i < codeList.size(); i++)
-    		{
-    			System.out.println("Code: " + codeList.get(i).getAirportCode());
-    			System.out.println("Aiport: " + codeList.get(i).getAirportName());
-    			System.out.println("City: " + codeList.get(i).getAirportCity());
-    			System.out.println("State: " + codeList.get(i).getAirportState());
-    		}
-    		*/
-    		
-    		Person person = Person.retrievePerson("mike", "mikepass");
+       
     		
     }
 
