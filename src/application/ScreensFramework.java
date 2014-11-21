@@ -30,13 +30,15 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen(ScreensFramework.screen5ID, ScreensFramework.screen5File);
         
         mainContainer.setScreen(ScreensFramework.screen1ID);
+       
+     
         
         Group root = new Group();
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();  
-    		
+            		
     }
 
     /*

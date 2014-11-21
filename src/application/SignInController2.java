@@ -59,9 +59,9 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	else if( (Person.retrievePerson(userName.getText(), password.getText()) != null))
     	{
     		error.setText("Login Successful");
+    		myController.setScreen(ScreensFramework.screen3ID);
     		userName.setText("");
     		password.setText("");
-    		myController.setScreen(ScreensFramework.screen3ID);
     	}
     	else 
     	{

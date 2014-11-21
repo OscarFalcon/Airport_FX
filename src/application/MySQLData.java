@@ -90,6 +90,7 @@ public class MySQLData {
 			Flight flight = new Flight(tmp);
 			data.add(flight);
 			
+			
 		}
 		return data;
 		
