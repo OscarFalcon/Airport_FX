@@ -56,7 +56,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	{
     		error.setText("Please Enter all fields");
     	}
-    	else if( (Person.retrievePerson(userName.getText(), password.getText()) == null))
+    	else if( (Person.retrievePerson(userName.getText(), password.getText()) != null))
     	{
     		error.setText("Login Successful");
     		userName.setText("");

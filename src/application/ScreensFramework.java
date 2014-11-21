@@ -1,15 +1,9 @@
 package application;
 
-import java.sql.Date;
-
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import core.AirportLookups;
-import core.Flight;
-import core.Person;
 
 public class ScreensFramework extends Application {
     
@@ -41,10 +35,7 @@ public class ScreensFramework extends Application {
         root.getChildren().addAll(mainContainer);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.show();
-        
-        
-       
+        primaryStage.show();  
     		
     }
 
