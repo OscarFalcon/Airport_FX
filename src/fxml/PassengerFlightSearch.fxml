@@ -111,10 +111,10 @@
          <bottom>
             <TableView fx:id="searchResults" prefHeight="235.0" prefWidth="600.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="75.0" text="Airline" />
-                <TableColumn prefWidth="75.0" text="Depart Date:Time" />
-                <TableColumn prefWidth="75.0" text="Arrival Date:Time" />
-                <TableColumn prefWidth="75.0" text="Price" />
+                <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Airline" />
+                <TableColumn fx:id="depDateCol" prefWidth="75.0" text="Depart Date:Time" />
+                <TableColumn fx:id="arrDateCol" prefWidth="75.0" text="Arrival Date:Time" />
+                <TableColumn fx:id="priceCol" prefWidth="75.0" text="Price" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

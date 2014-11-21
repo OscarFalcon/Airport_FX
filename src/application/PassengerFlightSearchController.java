@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.util.ResourceBundle;
 
 import core.Flight;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,8 +17,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.util.Callback;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
@@ -47,8 +52,20 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private ChoiceBox<String> rFlyTo;
 
     @FXML
-    private TableView<String> searchResults;
-
+    private TableView<Flight> searchResults;
+    
+    @FXML
+    private TableColumn<Flight,String> airlineCol;
+   
+    @FXML
+    private TableColumn<Flight,String> depDateCol;
+    
+    @FXML
+    private TableColumn<Flight,String> arrDateCol;
+    
+    @FXML
+    private TableColumn<Flight,String> priceCol;
+    
     @FXML
     private Label HeaderLabel;
 
@@ -117,6 +134,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	}
     }
 
+   
     @FXML
     void oSearchAction(ActionEvent event) {
     	System.out.println("One Way Trip Seach Action");
@@ -124,6 +142,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	//To do fix dates.
     	ObservableList<Flight> flightList;
     	flightList = fetch.searchFlightOneWay(oFlyFrom.getValue(), oFlyTo.getValue(), Date.valueOf(oDepart.getValue()));
+    	searchResults.setItems(flightList);
     	for(int i = 0; i < flightList.size(); i++)
     	{
 	    	System.out.println("Airline: " + flightList.get(i).getAirline());
@@ -136,6 +155,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			System.out.println("Flight ID: " + flightList.get(i).getFlightId());
 			System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
 			System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
+			
     	}
     }
 
@@ -167,12 +187,62 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		oFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX"));
-		oFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX"));
-		rFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX"));
-		rFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX"));
-		rPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
+		oFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		oFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
 		oPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
+		rFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		rFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		rPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
+		  
+			if(airlineCol == null)
+			{
+				System.out.println("Airline Column is " + null);
+			}
+	        airlineCol.setMinWidth(100);
+	       
+	        airlineCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
+	        {
+	        	@Override
+	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
+	        	{	        		
+	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getAirline());
+	        	}
+	       });
+	        
+	        depDateCol.setMinWidth(75);
+	        
+	        depDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
+	    	        {
+	    	        	@Override
+	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
+	    	        	{	        		
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate());
+	    	        	}
+	    	       });
+	        
+	        arrDateCol.setMinWidth(75);
+	        
+	        arrDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
+	    	        {
+	    	        	@Override
+	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
+	    	        	{	        		
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate());
+	    	        	}
+	    	       });
+	        
+	        
+	        priceCol.setMinWidth(100);
+	        
+	        priceCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
+	    	        {
+	    	        	@Override
+	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
+	    	        	{	        		
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getFlightPrice());
+	    	        	}
+	    	       });
+	       
 	}
 
 }
