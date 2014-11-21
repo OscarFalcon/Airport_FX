@@ -9,5 +9,7 @@
 	<classpathentry kind="lib" path="Jars/commons-pool2-2.2.jar"/>
 	<classpathentry kind="lib" path="Jars/mysql-connector-java-5.1.28-bin.jar"/>
 	<classpathentry kind="lib" path="Jars/gson-2.1.jar"/>
+	<classpathentry kind="lib" path="Jars/httpclient-4.3.6.jar"/>
+	<classpathentry kind="lib" path="Jars/httpcore-4.3.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
