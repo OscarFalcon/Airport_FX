@@ -12,19 +12,19 @@
    
       <TextField fx:id="userName" layoutX="253.0" layoutY="153.0" />
       <PasswordField fx:id="password" layoutX="253.0" layoutY="195.0" />
-      <Label layoutX="147.0" layoutY="158.0" text="User Name">
+      <Label layoutX="147.0" layoutY="158.0" text="User Name" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="151.0" layoutY="200.0" text="Password">
+      <Label layoutX="151.0" layoutY="200.0" text="Password" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <Button fx:id="signInButton" layoutX="255.0" layoutY="251.0" mnemonicParsing="false" onAction="#signIn" prefHeight="26.0" prefWidth="163.0" text="Sign in" />
       <Button fx:id="forgotBotton" layoutX="255.0" layoutY="283.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="26.0" prefWidth="163.0" text="Forgot Password" />
-      <Label layoutX="147.0" layoutY="61.0" text="Welcome" underline="false">
+      <Label layoutX="147.0" layoutY="61.0" text="Welcome" textFill="WHITE" underline="false">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>

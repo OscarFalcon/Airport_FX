@@ -1,9 +1,4 @@
-.label {
-    /*-fx-font-size: 11pt;*/
-    /*-fx-font-family: "Segoe UI Semibold";*/
-    -fx-text-fill: white;
-   /* -fx-opacity: 0.6;*/
-}
+
 
 .label-bright {
     -fx-font-size: 11pt;
@@ -79,11 +74,12 @@
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: black;
 }
 
 .button {
     -fx-padding: 5 22 5 22;   
-    -fx-border-color: #e2e2e2;
+    -fx-border-color: LIGHTBLUE;
     -fx-border-width: 0;
     -fx-background-radius: 0;
     -fx-background-color: LIGHTBLUE;
@@ -113,24 +109,20 @@
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
     -fx-background-color: #1d1d1d;
-    -fx-text-fill: white;
+    -fx-text-fill: WHITE;
 }
 
 .button:default {
     -fx-background-color: -fx-focus-color;
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: WHITE;
+}
+
+.context-menu {
+  -fx-background-color: #006699;
+  -fx-text-fill: WHITE;
+  -fx-text-fill: -fx-selection-bar-text;
 }
 
 .button:default:hover {
     -fx-background-color: derive(-fx-focus-color,30%);
 }
-
-.context-menu {
-    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
-    -fx-background-color: #006699;
-    -fx-background-insets: 0, 1, 2;
-    -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
-/*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 */
-    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
-}
-

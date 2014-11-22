@@ -42,6 +42,7 @@ public class ScreensFramework extends Application {
         
         root.getStylesheets().add("/application/application.css");
         
+ 
         
     }
 

@@ -52,7 +52,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
 //    void 1f93ff00(ActionEvent event) {
 //    	myController.setScreen(ScreensFramework.screen2ID);
 //    }
-
+    
     @FXML
     void signIn(ActionEvent event) {
     	
@@ -73,6 +73,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
     		userName.setText("");
     		password.setText("");
     	}
+    	
     }
 
     @FXML

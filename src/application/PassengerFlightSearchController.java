@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
+import core.AirportLookups;
 import core.Flight;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -211,15 +212,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		oFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
-		oFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
-		oPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
-		rFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
-		rFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
-		rPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
-		  
-		
+	  
+		populateSrcandDesFields();
 	    oneWayFlightTable();
 	    roundTripFlightTable();
 	       
@@ -347,6 +341,17 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getFlightPrice());
 	    	        	}
 	    	       });
+	}
+	
+	void populateSrcandDesFields()
+	{
+		oFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		oFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		oPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
+		rFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		rFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+	
+		rPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
 	}
 
 }

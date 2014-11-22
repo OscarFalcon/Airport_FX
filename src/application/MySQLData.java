@@ -2,6 +2,7 @@ package application;
 
 import java.sql.Date;
 import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import core.AirportLookups;
@@ -101,7 +102,7 @@ public class MySQLData {
 	public ObservableList<AirportLookups> getAirportCodes(String code)
 	{
 		
-		String airportDataTable = "SELECT ID, city, airport, state, iata FROM airport_lookups WHERE iata = ?";
+		String airportDataTable = "SELECT ID, city, airport, state, iata FROM airport_lookups WHERE ID = ?";
 		Object [] arguments = {code};
 		int [] resultType ={MySQL.INTEGER,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING}; 
 		ArrayList<Object[]> table = MySQL.executeQuery(airportDataTable, arguments, resultType);
