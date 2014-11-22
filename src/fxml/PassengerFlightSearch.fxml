@@ -91,11 +91,11 @@
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
                                  <children>
-                                    <Label text="Flying From" />
-                                    <Label text="Departing" GridPane.rowIndex="2" />
-                                    <Label text="Passenger" GridPane.rowIndex="4" />
-                                    <Label text="Flying To" GridPane.columnIndex="1" />
-                                    <Label text="Preferred Class" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label text="Flying From" textFill="WHITE" />
+                                    <Label text="Departing" textFill="WHITE" GridPane.rowIndex="2" />
+                                    <Label text="Passenger" textFill="WHITE" GridPane.rowIndex="4" />
+                                    <Label text="Flying To" textFill="WHITE" GridPane.columnIndex="1" />
+                                    <Label text="Preferred Class" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     <TextField fx:id="oPassenger" GridPane.rowIndex="5" />
                                     <ChoiceBox fx:id="oPreferredClass" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                     <ChoiceBox fx:id="oFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
