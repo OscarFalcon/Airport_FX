@@ -21,7 +21,7 @@
 
 .table-view {
     -fx-base: #1d1d1d;
-    -fx-control-inner-background: #1d1d1d;
+    -fx-control-inner-background: WHITE;
     -fx-background-color: WHITE;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
@@ -98,7 +98,7 @@
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: RED;
+  -fx-background-color: LIGHTBLUE;
   -fx-text-fill: #1d1d1d;
 }
 
