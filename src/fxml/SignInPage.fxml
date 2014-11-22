@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignInController2">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignInController2">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="288.0" layoutX="95.0" layoutY="74.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" width="410.0" />
+   
       <TextField fx:id="userName" layoutX="253.0" layoutY="153.0" />
       <PasswordField fx:id="password" layoutX="253.0" layoutY="195.0" />
       <Label layoutX="147.0" layoutY="158.0" text="User Name">
@@ -24,9 +24,9 @@
       </Label>
       <Button fx:id="signInButton" layoutX="255.0" layoutY="251.0" mnemonicParsing="false" onAction="#signIn" prefHeight="26.0" prefWidth="163.0" text="Sign in" />
       <Button fx:id="forgotBotton" layoutX="255.0" layoutY="283.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="26.0" prefWidth="163.0" text="Forgot Password" />
-      <Label layoutX="149.0" layoutY="115.0" text="Sign in using Email or User name" underline="true">
+      <Label layoutX="147.0" layoutY="61.0" text="Welcome" underline="false">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="System Bold" size="35.0" />
          </font>
       </Label>
       <Button fx:id="createAcc" layoutX="255.0" layoutY="316.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="26.0" prefWidth="163.0" text="Create Account" />

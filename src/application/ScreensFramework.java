@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -33,21 +32,16 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen(ScreensFramework.screen5ID, ScreensFramework.screen5File);
         
         mainContainer.setScreen(ScreensFramework.screen1ID);
-       
      
         StackPane root = new StackPane();
         root.getChildren().addAll(mainContainer);
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
         
-        root.getStylesheets().add("application.css/background.jpg");
-        root.setStyle("-fx-background-image: url('application/background.jpg')");
+        root.setStyle("-fx-background-image: url('application/Plane.jpg')");
         
-       // Group root = new Group();
-       // root.getChildren().addAll(mainContainer);
-       // Scene scene = new Scene(root);
-        //primaryStage.setScene(scene);
-        //primaryStage.show();  
+        root.getStylesheets().add("/application/application.css");
+        
         
     }
 
