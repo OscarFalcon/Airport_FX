@@ -13,10 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-/**
- *
- * @author Angie
- */
 public class ScreensController  extends StackPane {
     //Holds the screens to be displayed
 
@@ -62,7 +58,7 @@ public class ScreensController  extends StackPane {
     	//System.out.print("this is "+name);
         if (screens.get(name) != null) {   //screen loaded
             final DoubleProperty opacity = opacityProperty();
-
+            
             if (!getChildren().isEmpty()) {    //if there is more than one screen
                 Timeline fade = new Timeline(
                         new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),

@@ -228,7 +228,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	public void roundTripFlightTable()
 	{
-		  rAirlineCol.setMinWidth(100);
+		  rAirlineCol.setMinWidth(150);
 	       
 	        rAirlineCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	        {
@@ -239,53 +239,53 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	        	}
 	       });
 	        
-	        rLeaveDateCol.setMinWidth(75);
+	        rLeaveDateCol.setMinWidth(150);
 	        
 	        rLeaveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
 	    	        	@Override
 	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
 	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate());
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate() + "     " + p.getValue().getDeptTime());
 	    	        	}
 	    	       });
 	        
-	        rArriveDateCol.setMinWidth(75);
+	        rArriveDateCol.setMinWidth(150);
 	        
 	        rArriveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
 	    	        	@Override
 	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
 	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate());
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate() + "     " + p.getValue().getArrivalTime());
 	    	        	}
 	    	       });
 	        
-	        rReturnDateCol.setMinWidth(100);
+	        rReturnDateCol.setMinWidth(150);
 	        
 	        rReturnDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
 	    	        	@Override
 	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
 	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate());
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate() + "     " + p.getValue().getArrivalTime());
 	    	        	}
 	    	       });
 	        
-	        rArriveSrcDateCol.setMinWidth(100);
+	        rArriveSrcDateCol.setMinWidth(150);
 	        
 	        rArriveSrcDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
 	    	        	@Override
 	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
 	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate());
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate() + "     " + p.getValue().getDeptTime());
 	    	        	}
 	    	       });
 	        
 	        
 	        
-	        rPriceCol.setMinWidth(100);
+	        rPriceCol.setMinWidth(150);
 	        
 	        rPriceCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
@@ -302,7 +302,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	public void oneWayFlightTable()
 	{
-		  oAirlineCol.setMinWidth(100);
+		  oAirlineCol.setMinWidth(150);
 	       
 	        oAirlineCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	        {
@@ -313,30 +313,30 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	        	}
 	       });
 	        
-	        oDepDateCol.setMinWidth(75);
+	        oDepDateCol.setMinWidth(150);
 	        
 	        oDepDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
 	    	        	@Override
 	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
 	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate());
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate() + "     " + p.getValue().getDeptTime());
 	    	        	}
 	    	       });
 	        
-	        oArrDateCol.setMinWidth(75);
+	        oArrDateCol.setMinWidth(150);
 	        
 	        oArrDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
 	    	        	@Override
 	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
 	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate());
+	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate() + "     " + p.getValue().getArrivalTime());
 	    	        	}
 	    	       });
 	        
 	        
-	        oPriceCol.setMinWidth(100);
+	        oPriceCol.setMinWidth(150);
 	        
 	        oPriceCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
 	    	        {
