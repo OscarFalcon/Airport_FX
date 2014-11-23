@@ -4,8 +4,6 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
-import core.AirportLookups;
-import core.Flight;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -19,10 +17,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
+import core.Flight;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
@@ -200,9 +199,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	myController.setScreen(ScreensFramework.screen1ID);
     }
     
-    
-    
-
 	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		// TODO Auto-generated method stub
@@ -342,6 +338,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	        	}
 	    	       });
 	}
+	
+	/* Populates src and des fields for searching flights */
 	
 	void populateSrcandDesFields()
 	{

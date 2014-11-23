@@ -43,8 +43,6 @@ public class SignInController2 implements Initializable, ControlledScreen{
     
     public void setScreenParent(ScreensController screenParent){
         myController = screenParent;
-        
-
     }
     
     

@@ -40,7 +40,7 @@ public class MySQLData {
 		return reset;
 	}
 	
-	//Query database by src, des, srcDate, desDate
+	/*Query database by src, des, srcDate, desDate (Get flight info for round trip */
 	public ObservableList<Flight> searchFlightRoundTrip(String srcLocation, String desLocation, Date srcDate, Date depDate){
 		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ? && depDate = ? ||"
 				+ "desLocation = ? && srcLocation = ? && depDate = ?";
@@ -70,6 +70,8 @@ public class MySQLData {
 		
 	}
 
+	/* Get flight info for one way trips */
+	
 	public ObservableList<Flight> searchFlightOneWay(String srcLocation, String desLocation, Date srcDate){
 		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ?"
 								+ "&& depDate = ?";
@@ -126,5 +128,19 @@ public class MySQLData {
 		return data;
 	}
 	
-	
+	//Reset password
+		public boolean createPassengerAccount(String first,String last,String username, String password, String email,String phone,
+				String street, String city, String state, String zip){
+			boolean created = false;
+			String createAccount = " insert into userinfo (firstName, lastName, userName, password, email, telephone, street, city, state, zip)"
+	        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			Object[] arguments = {first, last, username, password, email, phone, street, city, state, zip};
+			created = MySQL.execute(createAccount, arguments);
+			
+			if(created == false)
+			{
+				return created;
+			}
+			return created;
+		}
 }
