@@ -55,29 +55,25 @@ public class SignInController2 implements Initializable, ControlledScreen{
     
     @FXML
     void signIn(ActionEvent event) {
-    	int attemptCount = 0;
-    	while(attemptCount < 3)
-    	{	
-    		if(userName.getText().equals("") || password.getText().equals(""))
-    		{
-    			error.setText("Please Enter all fields");
-    		}
-    		else if( (Person.retrievePerson(userName.getText(), password.getText()) != null))
-    		{
-    			error.setText("Login Successful");
-    			myController.setScreen(ScreensFramework.screen3ID);
-    			userName.setText("");
-    			password.setText("");
-    		}
-    		else 
-    		{
-    			error.setText("Login Failed");
-    			userName.setText("");
-    			password.setText("");
-    			attemptCount++;
-    		}
+    	
+    	if(userName.getText().equals("") || password.getText().equals(""))
+    	{
+    		error.setText("Please Enter all fields");
     	}
-    	error.setText("Please reset password");
+    	else if( (Person.retrievePerson(userName.getText(), password.getText()) != null))
+    	{
+    		error.setText("Login Successful");
+    		myController.setScreen(ScreensFramework.screen3ID);
+    		userName.setText("");
+    		password.setText("");
+    	}
+    	else 
+    	{
+    		error.setText("Login Failed");
+    		userName.setText("");
+    		password.setText("");
+    	}
+    	
     }
 
     @FXML
