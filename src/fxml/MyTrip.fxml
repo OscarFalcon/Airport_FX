@@ -35,7 +35,7 @@
          <top>
             <AnchorPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="145.0" layoutY="12.0" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="145.0">
+                  <HBox layoutX="145.0" layoutY="12.0" maxWidth="1.7976931348623157E308">
                      <children>
                         <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" text="Search Flight" />
                         <Button fx:id="myAccount" layoutX="275.0" layoutY="12.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />

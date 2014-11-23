@@ -30,7 +30,7 @@ public class MyTripController implements Initializable, ControlledScreen{
 
     @FXML
     void myAccount(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen2ID);
+    	myController.setScreen(ScreensFramework.screen2ID);
     }
 
     @FXML
