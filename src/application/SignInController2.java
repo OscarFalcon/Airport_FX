@@ -20,6 +20,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
 	
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+    	error.setText("");
         // TODO
     }
     
