@@ -9,35 +9,35 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CreateAccountController">
    <children>
-      <Label layoutX="95.0" layoutY="45.0" text="First Name">
+      <Label layoutX="95.0" layoutY="45.0" text="First Name" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="289.0" layoutY="45.0" prefHeight="16.0" prefWidth="75.0" text="Last Name">
+      <Label layoutX="333.0" layoutY="45.0" prefHeight="16.0" prefWidth="75.0" text="Last Name" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <TextField fx:id="fName" layoutX="97.0" layoutY="61.0" />
-      <TextField fx:id="lName" layoutX="289.0" layoutY="61.0" />
+      <TextField fx:id="lName" layoutX="329.0" layoutY="61.0" prefHeight="26.0" prefWidth="165.0" />
       <TextField fx:id="email" layoutX="97.0" layoutY="114.0" prefHeight="26.0" prefWidth="355.0" />
-      <Label layoutX="95.0" layoutY="14.0" prefHeight="16.0" prefWidth="349.0" text="Create Account">
+      <Label layoutX="95.0" layoutY="14.0" prefHeight="16.0" prefWidth="349.0" text="Create Account" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="97.0" layoutY="98.0" prefHeight="16.0" prefWidth="92.0" text="Email Address">
+      <Label layoutX="97.0" layoutY="98.0" prefHeight="16.0" prefWidth="92.0" text="Email Address" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="97.0" layoutY="282.0" prefHeight="16.0" prefWidth="65.0" text="Password">
+      <Label layoutX="97.0" layoutY="282.0" prefHeight="16.0" prefWidth="65.0" text="Password" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="289.0" layoutY="282.0" text="Confirm Password">
+      <Label layoutX="331.0" layoutY="282.0" text="Confirm Password" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -48,7 +48,7 @@
          </font>
       </Button>
       <TextField fx:id="phone" layoutX="97.0" layoutY="244.0" prefHeight="26.0" prefWidth="163.0" />
-      <Label layoutX="96.0" layoutY="222.0" text="Phone Number ( optional )">
+      <Label layoutX="96.0" layoutY="222.0" text="Phone Number ( optional )" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -57,32 +57,32 @@
       <TextField fx:id="city" layoutX="318.0" layoutY="180.0" prefHeight="26.0" prefWidth="104.0" />
       <TextField fx:id="state" layoutX="432.0" layoutY="180.0" prefHeight="26.0" prefWidth="41.0" />
       <TextField fx:id="zipcode" layoutX="491.0" layoutY="180.0" prefHeight="26.0" prefWidth="65.0" />
-      <Label layoutX="100.0" layoutY="157.0" text="Street">
+      <Label layoutX="100.0" layoutY="157.0" text="Street" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="318.0" layoutY="157.0" text="City">
+      <Label layoutX="318.0" layoutY="157.0" text="City" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="433.0" layoutY="157.0" text="State">
+      <Label layoutX="433.0" layoutY="157.0" text="State" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="494.0" layoutY="157.0" text="Zip Code">
+      <Label layoutX="494.0" layoutY="157.0" text="Zip Code" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <Button fx:id="logInButton" layoutX="97.0" layoutY="365.0" mnemonicParsing="false" onAction="#logIn" prefHeight="26.0" prefWidth="163.0" text="Log in">
+      <Button fx:id="logInButton" layoutX="97.0" layoutY="365.0" mnemonicParsing="false" onAction="#logIn" prefHeight="26.0" prefWidth="163.0" text="Cancel">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
       <PasswordField fx:id="password" layoutX="97.0" layoutY="303.0" />
-      <PasswordField fx:id="cPassword" layoutX="289.0" layoutY="303.0" />
+      <PasswordField fx:id="cPassword" layoutX="327.0" layoutY="303.0" />
    </children>
 </AnchorPane>

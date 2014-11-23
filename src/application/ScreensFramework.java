@@ -32,14 +32,18 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen(ScreensFramework.screen5ID, ScreensFramework.screen5File);
         
         mainContainer.setScreen(ScreensFramework.screen1ID);
-     
+      
         StackPane root = new StackPane();
         root.getChildren().addAll(mainContainer);
         primaryStage.setScene(new Scene(root, 1200, 800));
+        primaryStage.setTitle("Airport Management System");
+        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreenExitHint("ESC to exit full screen");
         primaryStage.show();
         
+        // Setting background image
         root.setStyle("-fx-background-image: url('application/Plane.jpg')");
-        
+        // Applying css
         root.getStylesheets().add("/application/application.css");
         
  
