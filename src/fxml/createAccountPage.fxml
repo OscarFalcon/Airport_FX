@@ -22,7 +22,7 @@
       <TextField fx:id="fName" layoutX="97.0" layoutY="61.0" />
       <TextField fx:id="lName" layoutX="289.0" layoutY="61.0" />
       <TextField fx:id="email" layoutX="97.0" layoutY="114.0" prefHeight="26.0" prefWidth="355.0" />
-      <Label layoutX="95.0" layoutY="14.0" prefHeight="16.0" prefWidth="349.0" text="Create an account with your Email">
+      <Label layoutX="95.0" layoutY="14.0" prefHeight="16.0" prefWidth="349.0" text="Create Account">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

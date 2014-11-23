@@ -35,7 +35,7 @@
          <top>
             <AnchorPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="372.0" layoutY="12.0">
+                  <HBox layoutX="142.0" layoutY="12.0">
                      <children>
                         <Button fx:id="myAccount" layoutX="275.0" layoutY="12.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
                         <Button fx:id="mytrip" layoutX="417.0" layoutY="12.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
