@@ -126,8 +126,9 @@
          <top>
             <AnchorPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="370.0" layoutY="10.0">
+                  <HBox layoutX="344.0" layoutY="10.0" maxWidth="1.7976931348623157E308">
                      <children>
+                        <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" text="Search Flight" />
                         <Button fx:id="myAccountButtonPassFli" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
                         <Button fx:id="myTripButtonPassFli" layoutX="517.0" layoutY="14.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
                         <Button fx:id="signOutButtonPassFli" mnemonicParsing="false" onAction="#signOut" text="Sign out" />

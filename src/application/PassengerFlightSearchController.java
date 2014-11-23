@@ -126,36 +126,46 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 
     @FXML
     private Button rSearch;
+    
+    @FXML
+    private Button searchFlightButton;
 
     
     @FXML
     void rSearchAction(ActionEvent event) {
     	//Debug info
-    	System.out.println("RoundTrip Seach Action");
-    	System.out.println("SRC: " + rFlyFrom.getValue());
-    	System.out.println("DES: " + rFlyTo.getValue());
-    	System.out.println("LEAVE DATE: " + Date.valueOf(rDepart.getValue()).toString());
-    	System.out.println("AFTER LEAVE DATE");
-    	System.out.println("ARR DATE: " + Date.valueOf(rArrive.getValue()).toString());
-
-
-    	/* Retrieve Data from mysql databases for round-trip search */
-    	ObservableList<Flight> flightList;
-    	flightList = fetch.searchFlightRoundTrip(rFlyFrom.getValue(), rFlyTo.getValue(), Date.valueOf(rDepart.getValue()), Date.valueOf(rArrive.getValue()));
-    	rSearchResults.setItems(flightList);
-    	System.out.println("searchFlightRoundTrip");
-    	for(int i = 0; i < flightList.size(); i++)
-    	{
-	    	System.out.println("Airline: " + flightList.get(i).getAirline());
-			System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
-			System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
-			System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
-			System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
-			System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
-			System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
-			System.out.println("Flight ID: " + flightList.get(i).getFlightId());
-			System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
-			System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
+    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    		rErrorLabel.setText("Please specify Source and Destination of your trip!");
+    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
+    		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    	else{
+    		rErrorLabel.setText("");
+	    	System.out.println("RoundTrip Seach Action");
+	    	System.out.println("SRC: " + rFlyFrom.getValue());
+	    	System.out.println("DES: " + rFlyTo.getValue());
+	    	System.out.println("LEAVE DATE: " + Date.valueOf(rDepart.getValue()).toString());
+	    	System.out.println("AFTER LEAVE DATE");
+	    	System.out.println("ARR DATE: " + Date.valueOf(rArrive.getValue()).toString());
+	
+	
+	    	/* Retrieve Data from mysql databases for round-trip search */
+	    	ObservableList<Flight> flightList;
+	    	flightList = fetch.searchFlightRoundTrip(rFlyFrom.getValue(), rFlyTo.getValue(), Date.valueOf(rDepart.getValue()), Date.valueOf(rArrive.getValue()));
+	    	rSearchResults.setItems(flightList);
+	    	System.out.println("searchFlightRoundTrip");
+	    	for(int i = 0; i < flightList.size(); i++)
+	    	{
+		    	System.out.println("Airline: " + flightList.get(i).getAirline());
+				System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
+				System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
+				System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
+				System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
+				System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
+				System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
+				System.out.println("Flight ID: " + flightList.get(i).getFlightId());
+				System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
+				System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
+	    	}
     	}
     }
 
@@ -163,25 +173,35 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     @FXML
     void oSearchAction(ActionEvent event) {
     	System.out.println("One Way Trip Seach Action");
-
-    	//To do fix dates.
-    	ObservableList<Flight> flightList;
-    	flightList = fetch.searchFlightOneWay(oFlyFrom.getValue(), oFlyTo.getValue(), Date.valueOf(oDepart.getValue()));
-    	searchResults.setItems(flightList);
-    	for(int i = 0; i < flightList.size(); i++)
-    	{
-	    	System.out.println("Airline: " + flightList.get(i).getAirline());
-			System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
-			System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
-			System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
-			System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
-			System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
-			System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
-			System.out.println("Flight ID: " + flightList.get(i).getFlightId());
-			System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
-			System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
-			
+    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    		rErrorLabel.setText("Please specify Source and Destination of your trip!");
+    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
+    		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    	else{
+    		rErrorLabel.setText("");
+	    	ObservableList<Flight> flightList;
+	    	flightList = fetch.searchFlightOneWay(oFlyFrom.getValue(), oFlyTo.getValue(), Date.valueOf(oDepart.getValue()));
+	    	searchResults.setItems(flightList);
+	    	for(int i = 0; i < flightList.size(); i++)
+	    	{
+		    	System.out.println("Airline: " + flightList.get(i).getAirline());
+				System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
+				System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
+				System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
+				System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
+				System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
+				System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
+				System.out.println("Flight ID: " + flightList.get(i).getFlightId());
+				System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
+				System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
+				
+	    	}
     	}
+    }
+    
+    @FXML
+    void searchFlight(ActionEvent event){
+    	//do Nothing
     }
 
     @FXML

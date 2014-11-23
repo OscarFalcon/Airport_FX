@@ -13,8 +13,9 @@
          <top>
             <AnchorPane prefHeight="68.0" prefWidth="643.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="200.0" layoutY="16.0" prefHeight="26.0" prefWidth="217.0">
+                  <HBox layoutX="150.0" layoutY="21.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="318.0">
                      <children>
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" text="Search Flight" />
                         <Button fx:id="MyAccButtCusAcc" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" prefHeight="14.0" prefWidth="88.0" text="My account" />
                         <Button fx:id="MyTripButtCusAcc" layoutX="488.0" layoutY="14.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
                         <Button fx:id="SignoutCusAcc" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
