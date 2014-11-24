@@ -35,7 +35,7 @@ public class ScreensFramework extends Application {
         root.getChildren().addAll(mainContainer);
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.setTitle("Airport Management System");
-        primaryStage.setFullScreen(true);
+      //  primaryStage.setFullScreen(true);
         primaryStage.setFullScreenExitHint("ESC to exit full screen");
         primaryStage.show();
         

@@ -20,6 +20,9 @@ public class CreateAccountController implements Initializable, ControlledScreen{
 	@FXML
 	private Label usernameError;
 	
+	@FXML
+	private Label passwordError;
+	
     @FXML
     private TextField firstName;
 
@@ -62,14 +65,16 @@ public class CreateAccountController implements Initializable, ControlledScreen{
     @FXML
     void createAccount(ActionEvent event) {
     	
-         if(insert.authorizeUser(username.getText(),null) == true)
-         {
-         	usernameError.setText("Username Taken");
-         }else{
-         	insert.createPassengerAccount(firstName.getText(), lastName.getText(), username.getText(), password.getText(),
-         	email.getText(), phone.getText(), street.getText(), city.getText(), state.getText(), zip.getText());
-         	myController.setScreen(ScreensFramework.screen3ID);
-         }
+    	if(insert.authorizeUser(username.getText(), null) == true)
+    	{
+    		usernameError.setText("Username Taken");
+    	}
+    	 if(insert.authorizeUser(username.getText(), null) == false)
+    	 {
+    		 insert.createPassengerAccount(firstName.getText(), lastName.getText(), username.getText(), password.getText(),
+    	     email.getText(), phone.getText(), street.getText(), city.getText(), state.getText(), zip.getText());
+    	     myController.setScreen(ScreensFramework.screen3ID);
+    	 }
     }
 
     @FXML
