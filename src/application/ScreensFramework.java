@@ -21,7 +21,7 @@ public class ScreensFramework extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        
+            	
         ScreensController mainContainer = new ScreensController();
         mainContainer.loadScreen(ScreensFramework.screen1ID, ScreensFramework.screen1File);
         mainContainer.loadScreen(ScreensFramework.screen2ID, ScreensFramework.screen2File);
@@ -45,7 +45,7 @@ public class ScreensFramework extends Application {
         root.getStylesheets().add("/application/application.css");
     }
 
-
+    
     public static void main(String[] args) {
         launch(args);
     }

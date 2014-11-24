@@ -132,8 +132,8 @@ public class MySQLData {
 		public boolean createPassengerAccount(String first,String last,String username, String password, String email,String phone,
 				String street, String city, String state, String zip){
 			boolean created = false;
-			String createAccount = " insert into userinfo (firstName, lastName, userName, password, email, telephone, street, city, state, zip)"
-	        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String createAccount = " insert into userinfo (firstName, lastName, userName, password, email, telephone, street, city, state, zip, type)"
+	        + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'P')";
 			Object[] arguments = {first, last, username, password, email, phone, street, city, state, zip};
 			created = MySQL.execute(createAccount, arguments);
 			
