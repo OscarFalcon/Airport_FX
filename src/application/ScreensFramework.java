@@ -1,5 +1,7 @@
 package application;
 
+import java.util.HashMap;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -7,28 +9,26 @@ import javafx.stage.Stage;
 
 public class ScreensFramework extends Application {
     
-    public static String screen1ID = "main";
-    public static String screen1File = "/fxml/SignInPage.fxml";
-    public static String screen2ID = "screen2";
-    public static String screen2File = "/fxml/CustomerAccountPage.fxml";
-    public static String screen3ID = "screen3";
-    public static String screen3File = "/fxml/PassengerFlightSearch.fxml";
-    public static String screen4ID = "screen4";
-    public static String screen4File = "/fxml/createAccountPage.fxml";
-    public static String screen5ID = "screen5";
-    public static String screen5File = "/fxml/MyTrip.fxml";
+    public static String screen1ID = "signInPage";
+    public static String screen2ID = "AccountPage";
+    public static String screen3ID = "FlightSearch";
+    public static String screen4ID = "CreateAccount";
+    public static String screen5ID = "MyTrip";
     
+    public static HashMap<String, String> screens = new HashMap<>();
+  
     
     @Override
     public void start(Stage primaryStage) {
             	
         ScreensController mainContainer = new ScreensController();
-        mainContainer.loadScreen(ScreensFramework.screen1ID, ScreensFramework.screen1File);
-        mainContainer.loadScreen(ScreensFramework.screen2ID, ScreensFramework.screen2File);
-        mainContainer.loadScreen(ScreensFramework.screen3ID, ScreensFramework.screen3File);
-        mainContainer.loadScreen(ScreensFramework.screen4ID, ScreensFramework.screen4File);
-        mainContainer.loadScreen(ScreensFramework.screen5ID, ScreensFramework.screen5File);
-        
+
+        screens.put("signInPage", "/fxml/SignInPage.fxml");
+        screens.put("AccountPage", "/fxml/CustomerAccountPage.fxml");
+        screens.put("FlightSearch", "/fxml/PassengerFlightSearch.fxml");
+        screens.put("CreateAccount", "/fxml/createAccountPage.fxml");
+        screens.put("MyTrip", "/fxml/MyTrip.fxml");
+     
         mainContainer.setScreen(ScreensFramework.screen1ID);
       
         StackPane root = new StackPane();
