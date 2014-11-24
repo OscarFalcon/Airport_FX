@@ -44,7 +44,10 @@ public class ScreensFramework extends Application {
         // Applying css
         root.getStylesheets().add("/application/application.css");
         
-           }
+        MySQLData update = new MySQLData();
+        //update.updateAccountInfo("M", "Price", "mike@utsa.edu", "111-111-1111", "Elkton", "San Antonio", "TX", "78232");
+        //update.resetPassword("mike", "mikepass");
+     }
 
     
     public static void main(String[] args) {

@@ -15,7 +15,7 @@ public class MySQLData {
 	//Get authorized user info
 	public boolean authorizeUser(String username, String password){
 		boolean authorized = false;
-		String usersTable = "SELECT userID FROM userinfo WHERE userName = ?";
+		String usersTable = "SELECT userID FROM userinfo WHERE userName = ? && password = ?";
 		
 		Object[] arguments = {username, password};
 		int [] resultType = {MySQL.INTEGER};
@@ -30,6 +30,22 @@ public class MySQLData {
 	return authorized;	
 	}
 	
+		public boolean checkUserName(String username, String password){
+			boolean authorized = false;
+			String usersTable = "SELECT userID FROM userinfo WHERE userName = ?";
+			
+			Object[] arguments = {username, password};
+			int [] resultType = {MySQL.INTEGER};
+			
+			ArrayList<Object[]> table = MySQL.executeQuery(usersTable, arguments, resultType);
+			if(table == null){
+				return false;
+			}
+			if(table.size() > 0)
+				authorized = true;
+			
+		return authorized;	
+		}
 	//Reset password
 	public boolean resetPassword(String username, String password){
 		boolean reset = false;
@@ -128,7 +144,7 @@ public class MySQLData {
 		return data;
 	}
 	
-	//Reset password
+	// Create user account
 		public boolean createPassengerAccount(String first,String last,String username, String password, String email,String phone,
 				String street, String city, String state, String zip){
 			boolean created = false;
@@ -142,5 +158,19 @@ public class MySQLData {
 				return created;
 			}
 			return created;
+		}
+		
+		// Update Account Info
+		public boolean updateAccountInfo(String first, String last, String email, String phone, String street, String city, String state, String zip){
+			boolean updated = false;
+			String updateAccount = " UPDATE userinfo SET firstName = ? && lastName = ? && email = ? && telephone = ? && street = ? && city = ? && state = ? && zip = ? WHERE userName";
+			Object[] arguments = {zip, state, city, street, phone, email, last, first};
+			updated = MySQL.execute(updateAccount, arguments);
+		
+			if(updated == false)
+			{
+				return updated;
+			}
+			return updated;
 		}
 }
