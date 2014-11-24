@@ -18,10 +18,7 @@ public class CreateAccountController implements Initializable, ControlledScreen{
 	ScreensController myController;
 
 	@FXML
-	private Label usernameError;
-	
-	@FXML
-	private Label passwordError;
+	private Label ErrorLabel;
 	
     @FXML
     private TextField firstName;
@@ -65,16 +62,19 @@ public class CreateAccountController implements Initializable, ControlledScreen{
     @FXML
     void createAccount(ActionEvent event) {
     	
-    	if(insert.authorizeUser(username.getText(), null) == true)
-    	{
-    		usernameError.setText("Username Taken");
-    	}
-    	 if(insert.authorizeUser(username.getText(), null) == false)
-    	 {
-    		 insert.createPassengerAccount(firstName.getText(), lastName.getText(), username.getText(), password.getText(),
-    	     email.getText(), phone.getText(), street.getText(), city.getText(), state.getText(), zip.getText());
-    	     myController.setScreen(ScreensFramework.screen3ID);
-    	 }
+    	if (firstName.getText().equals("") || lastName.getText().equals("") || username.getText().equals("") || email.getText().equals("")
+       		 || street.getText().equals("") || state.getText().equals("") || zip.getText().equals("") || password.getText().equals("") || cPassword.getText().equals("")){
+       	 	ErrorLabel.setText("Please enter all fields!");
+    	 }else if(insert.authorizeUser(username.getText(),null) == true){
+         	ErrorLabel.setText("Username Taken");
+         } else if (!password.getText().equals(cPassword.getText())){
+        	 ErrorLabel.setText("Passwords do not match!");
+         } else {
+         	insert.createPassengerAccount(firstName.getText(), lastName.getText(), username.getText(), password.getText(),
+         	email.getText(), phone.getText(), street.getText(), city.getText(), state.getText(), zip.getText());
+         	ErrorLabel.setText("Successfully Created Account!");
+         	myController.setScreen(ScreensFramework.screen3ID);
+         }
     }
 
     @FXML

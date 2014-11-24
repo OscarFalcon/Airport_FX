@@ -9,96 +9,118 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CreateAccountController">
    <children>
-      <Label layoutX="95.0" layoutY="114.0" text="First Name" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="226.0" layoutY="114.0" prefHeight="16.0" prefWidth="75.0" text="Last Name" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <TextField fx:id="firstName" layoutX="95.0" layoutY="131.0" prefHeight="26.0" prefWidth="117.0" />
-      <TextField fx:id="lastName" layoutX="226.0" layoutY="131.0" prefHeight="26.0" prefWidth="117.0" />
-      <TextField fx:id="email" layoutX="97.0" layoutY="196.0" prefHeight="26.0" prefWidth="355.0" />
-      <Label layoutX="95.0" layoutY="14.0" prefHeight="16.0" prefWidth="349.0" text="Create Account" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="97.0" layoutY="180.0" prefHeight="16.0" prefWidth="92.0" text="Email Address" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="97.0" layoutY="334.0" prefHeight="16.0" prefWidth="65.0" text="Password" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="298.0" layoutY="334.0" text="Confirm Password" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Button fx:id="createButton" layoutX="98.0" layoutY="399.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="26.0" prefWidth="163.0" text="Create Account">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <TextField fx:id="phone" layoutX="98.0" layoutY="300.0" prefHeight="26.0" prefWidth="174.0" />
-      <Label layoutX="98.0" layoutY="284.0" text="Phone Number ( optional )" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <TextField fx:id="street" layoutX="97.0" layoutY="245.0" prefHeight="26.0" prefWidth="201.0" />
-      <TextField fx:id="city" layoutX="318.0" layoutY="245.0" prefHeight="26.0" prefWidth="104.0" />
-      <TextField fx:id="state" layoutX="438.0" layoutY="245.0" prefHeight="26.0" prefWidth="41.0" />
-      <TextField fx:id="zip" layoutX="494.0" layoutY="245.0" prefHeight="26.0" prefWidth="65.0" />
-      <Label layoutX="98.0" layoutY="229.0" text="Street" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="319.0" layoutY="229.0" text="City" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="441.0" layoutY="229.0" text="State" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="494.0" layoutY="229.0" text="Zip Code" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="13.0" />
-         </font>
-      </Label>
-      <Button fx:id="logInButton" layoutX="99.0" layoutY="436.0" mnemonicParsing="false" onAction="#logIn" prefHeight="26.0" prefWidth="163.0" text="Cancel">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Button>
-      <PasswordField fx:id="password" layoutX="98.0" layoutY="350.0" prefHeight="26.0" prefWidth="174.0" />
-      <PasswordField fx:id="cPassword" layoutX="298.0" layoutY="350.0" />
-      <Label layoutX="365.0" layoutY="114.0" text="User Name" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <TextField fx:id="username" layoutX="363.0" layoutY="131.0" prefHeight="26.0" prefWidth="140.0" />
-      <Label fx:id="usernameError" layoutX="365.0" layoutY="164.0" prefHeight="16.0" prefWidth="140.0" textFill="RED">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label fx:id="passwordError" layoutX="300.0" layoutY="383.0" prefHeight="16.0" prefWidth="182.0" textFill="RED">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
+      <GridPane hgap="5.0" layoutX="140.0" layoutY="58.0" vgap="5.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="firstName" prefHeight="26.0" prefWidth="117.0" GridPane.rowIndex="2" />
+            <TextField fx:id="lastName" prefHeight="26.0" prefWidth="117.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="username" prefHeight="26.0" prefWidth="140.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="First Name" textFill="WHITE" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Last Name" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="User Name" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="email" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <Label text="Email Address" textFill="WHITE" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Create Account" textFill="WHITE" GridPane.columnSpan="3">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label text="Street" textFill="WHITE" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="City" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="State" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Zip Code" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="street" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+            <TextField fx:id="city" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <TextField fx:id="state" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <TextField fx:id="zip" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Label text="Phone Number ( optional )" textFill="WHITE" GridPane.columnSpan="2" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="phone" GridPane.columnSpan="2" GridPane.rowIndex="8" />
+            <Label text="Password" textFill="WHITE" GridPane.rowIndex="9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Confirm Password" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="9">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="password" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+            <PasswordField fx:id="cPassword" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10" />
+            <Button fx:id="createButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createAccount" text="Create Account" GridPane.columnSpan="2" GridPane.rowIndex="12">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="logInButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#logIn" text="Cancel" GridPane.columnSpan="2" GridPane.rowIndex="13">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+            <Label fx:id="ErrorLabel" textFill="RED" GridPane.columnSpan="4" GridPane.rowIndex="11">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
