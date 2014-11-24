@@ -1,6 +1,8 @@
 package application;
 
 import java.util.HashMap;
+
+import core.Person;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -13,15 +15,26 @@ import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
+
+//TODO
+//NEED TO MAKE IT SO THE SCREENS LOAD UPON SETTING IT! 
+
+
 public class ScreensController  extends StackPane {
     //Holds the screens to be displayed
-
+	
+	public static Person person;
+	
     private HashMap<String, Node> screens = new HashMap<>();
     
     public ScreensController() {
         super();
     }
 
+    public void setPerson(Person obj){
+    	person = obj;
+    }
+    
     //Add the screen to the collection
     public void addScreen(String name, Node screen) {
         screens.put(name, screen);
@@ -53,9 +66,12 @@ public class ScreensController  extends StackPane {
     //First it makes sure the screen has been already loaded.  Then if there is more than
     //one screen the new screen is been added second, and then the current screen is removed.
     // If there isn't any screen being displayed, the new screen is just added to the root.
-    public boolean setScreen(final String name) { 
+    public boolean setScreen(final String name) {
     	
-    	//System.out.print("this is "+name);
+    	//We keep loading screens, may need to unload the screen currently being displayed.
+    	loadScreen(name, ScreensFramework.screens.get(name));
+    	
+    	System.out.print("this is "+name +" "+ScreensFramework.screens.get(name));
         if (screens.get(name) != null) {   //screen loaded
             final DoubleProperty opacity = opacityProperty();
             

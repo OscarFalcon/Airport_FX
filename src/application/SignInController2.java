@@ -49,14 +49,15 @@ public class SignInController2 implements Initializable, ControlledScreen{
         
     @FXML
     void signIn(ActionEvent event) {
-    	
+    	Person person;
     	if(userName.getText().equals("") || password.getText().equals(""))
     	{
     		error.setText("Please Enter all fields");
     	}
-    	else if( (Person.retrievePerson(userName.getText(), password.getText()) != null))
+    	else if( ((person = Person.retrievePerson(userName.getText(), password.getText())) != null))
     	{
     		error.setText("Login Successful");
+    		myController.setPerson(person);
     		myController.setScreen(ScreensFramework.screen3ID);
     		userName.setText("");
     		password.setText("");

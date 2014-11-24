@@ -52,7 +52,7 @@ public class Person
 		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
-		if(result == null)
+		if(result.isEmpty())
 		{
 			return null;
 		}
