@@ -15,7 +15,7 @@ public class MySQLData {
 	//Get authorized user info
 	public boolean authorizeUser(String username, String password){
 		boolean authorized = false;
-		String usersTable = "SELECT userID FROM userinfo WHERE username = ? && password = ?";
+		String usersTable = "SELECT userID FROM userinfo WHERE userName = ?";
 		
 		Object[] arguments = {username, password};
 		int [] resultType = {MySQL.INTEGER};

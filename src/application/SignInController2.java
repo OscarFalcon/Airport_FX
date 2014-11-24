@@ -46,12 +46,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
         myController = screenParent;
     }
     
-    
-//    @FXML
-//    void 1f93ff00(ActionEvent event) {
-//    	myController.setScreen(ScreensFramework.screen2ID);
-//    }
-    
+        
     @FXML
     void signIn(ActionEvent event) {
     	

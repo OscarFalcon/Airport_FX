@@ -7,52 +7,69 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class CreateAccountController implements Initializable, ControlledScreen{
 	
+	MySQLData insert = new MySQLData();
+	
 	ScreensController myController;
 
+	@FXML
+	private Label usernameError;
+	
     @FXML
-    private TextField zipcode;
+    private TextField firstName;
 
     @FXML
-    private TextField lName;
+    private TextField lastName;
+    
+    @FXML
+    private TextField username;
 
     @FXML
-    private PasswordField password;
-
+    private TextField email;
+    
     @FXML
-    private TextField fName;
-
+    private TextField street;
+    
+    @FXML
+    private TextField city;
+    
+    @FXML
+    private TextField state;
+    
+    @FXML
+    private TextField zip;
+    
     @FXML
     private TextField phone;
 
     @FXML
-    private TextField city;
-
+    private PasswordField password;
+    
     @FXML
     private PasswordField cPassword;
-
-    @FXML
-    private TextField street;
-
+    
     @FXML
     private Button createButton;
 
     @FXML
-    private TextField state;
-
-    @FXML
     private Button logInButton;
-
-    @FXML
-    private TextField email;
-
+    
     @FXML
     void createAccount(ActionEvent event) {
-    	myController.setScreen(ScreensFramework.screen3ID);
+    	
+         if(insert.authorizeUser(username.getText(),null) == true)
+         {
+         	usernameError.setText("Username Taken");
+         }else{
+         	insert.createPassengerAccount(firstName.getText(), lastName.getText(), username.getText(), password.getText(),
+         	email.getText(), phone.getText(), street.getText(), city.getText(), state.getText(), zip.getText());
+         	myController.setScreen(ScreensFramework.screen3ID);
+         }
     }
 
     @FXML
@@ -60,7 +77,6 @@ public class CreateAccountController implements Initializable, ControlledScreen{
     	myController.setScreen(ScreensFramework.screen1ID);
     }
 
-	@Override
 	public void setScreenParent(ScreensController screenParent) {
 		// TODO Auto-generated method stub
 		myController = screenParent;
@@ -72,5 +88,5 @@ public class CreateAccountController implements Initializable, ControlledScreen{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 }

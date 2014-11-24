@@ -35,15 +35,16 @@ public class ScreensFramework extends Application {
         root.getChildren().addAll(mainContainer);
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.setTitle("Airport Management System");
-     //   primaryStage.setFullScreen(true);
-     //   primaryStage.setFullScreenExitHint("ESC to exit full screen");
+        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreenExitHint("ESC to exit full screen");
         primaryStage.show();
         
         // Setting background image
         root.setStyle("-fx-background-image: url('application/Plane.jpg')");
         // Applying css
         root.getStylesheets().add("/application/application.css");
-    }
+        
+           }
 
     
     public static void main(String[] args) {
