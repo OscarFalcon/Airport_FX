@@ -10,6 +10,9 @@ import javafx.scene.control.Button;
 
 public class MyTripController implements Initializable, ControlledScreen{
 	ScreensController myController;
+	@FXML
+	private Button searchFlightButton;
+	
     @FXML
     private Button signOut;
 
@@ -18,6 +21,12 @@ public class MyTripController implements Initializable, ControlledScreen{
 
     @FXML
     private Button mytrip;
+    
+    @FXML 
+    void searchFlight(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen3ID);
+    	
+    }
 
     @FXML
     void myAccount(ActionEvent event) {

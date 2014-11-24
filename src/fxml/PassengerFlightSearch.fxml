@@ -45,7 +45,7 @@
                                     <ChoiceBox fx:id="rFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <DatePicker fx:id="rDepart" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
                                     <Button fx:id="rSearch" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rSearchAction" text="Search" GridPane.rowIndex="7" />
-                                    <Label fx:id="rErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
+                                    <Label fx:id="rErrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.rowIndex="6" />
                                     <Label text="Returning" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <DatePicker fx:id="rArrive" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                  </children>
@@ -102,7 +102,7 @@
                                     <ChoiceBox fx:id="oFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <DatePicker fx:id="oDepart" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
                                     <Button fx:id="oSearch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#oSearchAction" text="Search" GridPane.rowIndex="7" />
-                                    <Label fx:id="oErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
+                                    <Label fx:id="oErrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.rowIndex="6" />
                                  </children>
                               </GridPane>
                               <TableView fx:id="searchResults" prefHeight="235.0" prefWidth="600.0">
@@ -126,8 +126,9 @@
          <top>
             <AnchorPane prefHeight="46.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="370.0" layoutY="10.0">
+                  <HBox layoutX="344.0" layoutY="10.0" maxWidth="1.7976931348623157E308">
                      <children>
+                        <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" text="Search Flight" />
                         <Button fx:id="myAccountButtonPassFli" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
                         <Button fx:id="myTripButtonPassFli" layoutX="517.0" layoutY="14.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
                         <Button fx:id="signOutButtonPassFli" mnemonicParsing="false" onAction="#signOut" text="Sign out" />

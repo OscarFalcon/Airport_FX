@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -13,9 +15,10 @@
          <top>
             <AnchorPane prefHeight="68.0" prefWidth="643.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="200.0" layoutY="16.0" prefHeight="26.0" prefWidth="217.0">
+                  <HBox layoutX="150.0" layoutY="21.0" maxWidth="1.7976931348623157E308">
                      <children>
-                        <Button fx:id="MyAccButtCusAcc" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" prefHeight="14.0" prefWidth="88.0" text="My account" />
+                        <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" text="Search Flight" />
+                        <Button fx:id="MyAccButtCusAcc" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
                         <Button fx:id="MyTripButtCusAcc" layoutX="488.0" layoutY="14.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
                         <Button fx:id="SignoutCusAcc" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
                      </children>
@@ -30,53 +33,76 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="639.0">
                            <children>
-                              <Label layoutX="8.0" layoutY="27.0" prefHeight="17.0" prefWidth="61.0" text="Name:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="14.0" layoutY="65.0" text="E-mail Address:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="14.0" layoutY="102.0" text="Phone Number:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="14.0" layoutY="143.0" text="Street:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="accountOverNa" layoutX="107.0" layoutY="23.0" />
-                              <TextField fx:id="accountOverEm" layoutX="107.0" layoutY="61.0" />
-                              <TextField fx:id="accountOverPh" layoutX="107.0" layoutY="98.0" />
-                              <TextField fx:id="accountOverCi" layoutX="107.0" layoutY="178.0" />
-                              <Label layoutX="15.0" layoutY="182.0" text="City:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="12.0" layoutY="216.0" text="State:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="accountOverStr" layoutX="107.0" layoutY="139.0" />
-                              <TextField fx:id="accountOverState" layoutX="107.0" layoutY="212.0" />
-                              <Label layoutX="12.0" layoutY="250.0" text="Zip Code:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="accountOverZip" layoutX="107.0" layoutY="246.0" />
-                              <Button layoutX="114.0" layoutY="314.0" mnemonicParsing="false" onAction="#save" prefHeight="47.0" prefWidth="106.0" text="Save">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Button>
+                              <GridPane layoutX="220.0" layoutY="79.0" prefHeight="377.0" prefWidth="617.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="10.0" prefWidth="130.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="511.0" minWidth="10.0" prefWidth="487.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label prefHeight="17.0" prefWidth="61.0" text="Name:" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="accountOverNa" GridPane.columnIndex="1" />
+                                    <Label text="E-mail Address:" textFill="WHITE" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="accountOverEm" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="Phone Number:" textFill="WHITE" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="accountOverPh" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="Street:" textFill="WHITE" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="accountOverStr" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label text="City:" textFill="WHITE" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="accountOverCi" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label text="State:" textFill="WHITE" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="accountOverState" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label text="Zip Code:" textFill="WHITE" GridPane.rowIndex="6">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="accountOverZip" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#save" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label fx:id="AOerrorLabel" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </GridPane>
                            </children>
                         </AnchorPane>
                   </content>
@@ -85,40 +111,63 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="24.0" text="E-mail Address:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="14.0" layoutY="150.0" text="Old Password:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="14.0" layoutY="208.0" text="New Password:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="14.0" layoutY="268.0" text="Re-type Password:">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="SignInEmailCusAcc" layoutX="125.0" layoutY="20.0" />
-                              <Button fx:id="SignInSaveEmailCusAcc" layoutX="16.0" layoutY="66.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Save">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Button>
-                              <TextField fx:id="SignInOldCusAcc" layoutX="125.0" layoutY="146.0" />
-                              <TextField fx:id="SignInNewCusAcc" layoutX="125.0" layoutY="204.0" />
-                              <TextField fx:id="SignInReCusAcc" layoutX="125.0" layoutY="264.0" />
-                              <Button fx:id="SignInSavePassCusAcc" layoutX="16.0" layoutY="310.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="74.0" text="Save">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Button>
+                              <GridPane layoutX="343.0" layoutY="80.0" prefHeight="377.0" prefWidth="617.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="125.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="472.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="E-mail Address:" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="SignInEmailCusAcc" GridPane.columnIndex="1" />
+                                    <Button fx:id="SignInSaveEmailCusAcc" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Save" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label text="Old Password:" textFill="WHITE" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="SignInOldCusAcc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label text="New Password:" textFill="WHITE" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="SignInNewCusAcc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label text="Re-type Password:" textFill="WHITE" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="SignInReCusAcc" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Button fx:id="SignInSavePassCusAcc" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Save" GridPane.rowIndex="7">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label fx:id="emailErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="2" />
+                                    <Label fx:id="passwordErrorLabel" maxWidth="1.7976931348623157E308" GridPane.rowIndex="6" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </GridPane>
                            </children>
                         </AnchorPane>
                   </content>

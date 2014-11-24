@@ -30,6 +30,6 @@
          </font>
       </Label>
       <Button fx:id="createAcc" layoutX="255.0" layoutY="316.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="26.0" prefWidth="163.0" text="Create Account" />
-      <Label fx:id="error" layoutX="253.0" layoutY="228.0" prefHeight="16.0" prefWidth="163.0" textAlignment="CENTER" />
+      <Label fx:id="error" layoutX="253.0" layoutY="228.0" prefHeight="16.0" prefWidth="163.0" textAlignment="CENTER" textFill="WHITE" />
    </children>
 </AnchorPane>
