@@ -134,7 +134,7 @@
                         <Button fx:id="signOutButtonPassFli" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
                      </children>
                   </HBox>
-                  <Label fx:id="HeaderLabel" layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="330.0" />
+                  <Label fx:id="HeaderLabel" layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="330.0" textFill="WHITE" />
                </children>
             </AnchorPane>
          </top>
