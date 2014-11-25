@@ -161,10 +161,11 @@ public class MySQLData {
 		}
 		
 		// Update Account Info
-		public boolean updateAccountInfo(String first, String last, String email, String phone, String street, String city, String state, String zip){
+		public boolean updateAccountInfo(String first, String last, String email, String phone, String street, String city, String state, String zip, int id){
 			boolean updated = false;
-			String updateAccount = " UPDATE userinfo SET firstName = ? && lastName = ? && email = ? && telephone = ? && street = ? && city = ? && state = ? && zip = ? WHERE userName";
-			Object[] arguments = {zip, state, city, street, phone, email, last, first};
+			String updateAccount = " UPDATE userinfo SET firstName = ?, lastName = ?, email = ?, telephone = ?, street = ?,"
+					+ "city = ?, state = ?, zip = ? WHERE userID = ?";
+			Object[] arguments = {first, last, email, phone, street, city, state, zip, id};
 			updated = MySQL.execute(updateAccount, arguments);
 		
 			if(updated == false)

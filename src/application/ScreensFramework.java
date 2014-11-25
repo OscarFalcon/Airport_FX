@@ -2,6 +2,7 @@ package application;
 
 import java.util.HashMap;
 
+import core.Person;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -44,9 +45,9 @@ public class ScreensFramework extends Application {
         // Applying css
         root.getStylesheets().add("/application/application.css");
         
-        MySQLData update = new MySQLData();
-        //update.updateAccountInfo("M", "Price", "mike@utsa.edu", "111-111-1111", "Elkton", "San Antonio", "TX", "78232");
-        //update.resetPassword("mike", "mikepass");
+       // Person person = Person.retrievePerson("oscar", "oscarpass");
+       // person.setFirstName("BIRDMAN");
+       // person.save();
      }
 
     
