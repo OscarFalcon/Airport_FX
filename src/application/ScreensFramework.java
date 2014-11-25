@@ -42,6 +42,8 @@ public class ScreensFramework extends Application {
         
         // Setting background image
         root.setStyle("-fx-background-image: url('application/Plane.jpg')");
+        
+        
         // Applying css
         root.getStylesheets().add("/application/application.css");
         

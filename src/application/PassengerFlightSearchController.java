@@ -144,14 +144,17 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private Button searchFlightButton;
 
     
+    /**************************************** Beginning of roundtrip search ********************************************/
+    
     @FXML
     void rSearchAction(ActionEvent event) {
     	//Debug info
-    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
-    		rErrorLabel.setText("Please specify Source and Destination of your trip!");
-    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
-    		rErrorLabel.setText("Please specify departure and return date of your trip!");
-    	else{
+    	
+    //	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    //		rErrorLabel.setText("Please specify Source and Destination of your trip!");
+    //	else if(rDepart.getValue() == null || rArrive.getValue() == null)
+    //		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    //	else{
     		rErrorLabel.setText("");
 	    	System.out.println("RoundTrip Seach Action");
 	    	System.out.println("SRC: " + rFlyFrom.getValue());
@@ -184,9 +187,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		    	}
 	    	}
     	}
-    }
+    //}
+    /****************************************** End of roundtrip search ********************************************/
 
-   
+    
+
+    /****************************************** Beginning of Oneway search ********************************************/
+
     @FXML
     void oSearchAction(ActionEvent event) {
     	System.out.println("One Way Trip Seach Action");
@@ -219,6 +226,9 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	}
     	}
     }
+    /*********************************************End of Oneway search ********************************************/
+
+    
     
     @FXML
     void searchFlight(ActionEvent event){
@@ -250,6 +260,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		HeaderLabel.setText("WELCOME    "+ myController.person.getFirstName());
+		
 		populateSrcandDesFields();
 	    oneWayFlightTable();
 	    roundTripFlightTable();
@@ -257,8 +268,11 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	       
 	}
 	
-	/* Populates a table based on round-trip search criteria */
 	
+	
+	/********************************** Beginning Populate RoundTrip Table with Data ******************************************/
+	
+	/* Populates a table based on round-trip search criteria */
 	public void roundTripFlightTable()
 	{
 		  rAirlineCol.setMinWidth(150);
@@ -329,8 +343,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	        	}
 	    	       });
 	}
+	/********************************** End Populate RoundTrip Table with Data ******************************************/
+
 	
 	
+	
+	/********************************** Beginning Populate Oneway Table with Data ******************************************/
+
 	/* Populates a table based on one-way trip search criteria */
 	
 	public void oneWayFlightTable()
@@ -379,10 +398,17 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getFlightPrice());
 	    	        	}
 	    	       });
+	        
 	}
 	
-	/* Populates src and des fields for searching flights */
+	/********************************** End Populates Oneway Table with Data ******************************************/
+
 	
+	
+	
+	/********************************** Beginning of Populate src/des fields ******************************************/
+
+	/* Populates src and des fields for searching flights */
 	void populateSrcandDesFields()
 	{
 		oFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
@@ -394,7 +420,14 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		rPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
 	}
 	
+	/********************************** End of Populate src/des fields ******************************************/
+
 	
+	
+	
+	/********************************** Beginning of make reservation ******************************************/
+
+	// Select row for reservation for either oneway or roundtrip flights
 	public void selectFlightRow()
 	{
 		searchResults.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -406,6 +439,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	    	            public void handle(ActionEvent event) {
     	    	                //will store info from table using sql statement
     	    	            	reservationSubmitLabel.setText("Reservation Submitted");
+    	    	            	System.out.println("\n\n\n " + "Reservation Submitted");
     	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().getAirline());
     	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDeptDate());
     	    	            	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
@@ -439,4 +473,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	});
 		
 	}
+	/********************************** End of make reservation ******************************************/
+
 }
