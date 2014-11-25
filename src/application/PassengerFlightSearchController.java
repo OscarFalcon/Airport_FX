@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
+import airline.Solution;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,12 +23,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.util.Callback;
 import core.Flight;
+import core.QPXExpressRequest;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
 	
-	MySQLData fetch = new MySQLData();
-
 	@FXML
     private ChoiceBox<String> rPreferredClass;
 
@@ -53,19 +53,19 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private ChoiceBox<String> rFlyTo;
 
     @FXML
-    private TableView<Flight> searchResults;
+    private TableView<Solution> searchResults;
     
     @FXML
-    private TableColumn<Flight,String> oAirlineCol;
+    private TableColumn<Solution,String> oAirlineCol;
    
     @FXML
-    private TableColumn<Flight,String> oDepDateCol;
+    private TableColumn<Solution,String> oDepDateCol;
     
     @FXML
-    private TableColumn<Flight,String> oArrDateCol;
+    private TableColumn<Solution,String> oArrDateCol;
     
     @FXML
-    private TableColumn<Flight,String> oPriceCol;
+    private TableColumn<Solution,String> oPriceCol;
     
     @FXML
     private TableView<Flight> rSearchResults;
@@ -135,9 +135,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     void rSearchAction(ActionEvent event) {
     	//Debug info
     	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    	{
     		rErrorLabel.setText("Please specify Source and Destination of your trip!");
+    	}
     	else if(rDepart.getValue() == null || rArrive.getValue() == null)
+    	{
     		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    	}
     	else{
     		rErrorLabel.setText("");
 	    	System.out.println("RoundTrip Seach Action");
@@ -149,11 +153,12 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	
 	    	/* Retrieve Data from mysql databases for round-trip search */
-	    	ObservableList<Flight> flightList;
-	    	flightList = fetch.searchFlightRoundTrip(rFlyFrom.getValue(), rFlyTo.getValue(), Date.valueOf(rDepart.getValue()), Date.valueOf(rArrive.getValue()));
-	    	if(flightList.isEmpty()){
+	    	ObservableList<Flight> flightList = null;
+	    	if(flightList.isEmpty())
+	    	{
 	    		rErrorLabel.setText("No Flights available");
-	    	} else {
+	    	} else 
+	    	{
 		    	rSearchResults.setItems(flightList);
 		    	System.out.println("searchFlightRoundTrip");
 		    	for(int i = 0; i < flightList.size(); i++)
@@ -177,35 +182,42 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     @FXML
     void oSearchAction(ActionEvent event) {
     	System.out.println("One Way Trip Seach Action");
-    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    	
+    	if(oFlyFrom.getValue() == null || oFlyTo.getValue() == null)
+    	{
     		oErrorLabel.setText("Please specify Source and Destination of your trip!");
-    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
-    		oErrorLabel.setText("Please specify departure and return date of your trip!");
-    	else{
-    		oErrorLabel.setText("");
-	    	ObservableList<Flight> flightList;
-	    	flightList = fetch.searchFlightOneWay(oFlyFrom.getValue(), oFlyTo.getValue(), Date.valueOf(oDepart.getValue()));
-	    	if(flightList.isEmpty()){
-	    		oErrorLabel.setText("No Flights available");
-	    	} else {
-		    	searchResults.setItems(flightList);
-		    	for(int i = 0; i < flightList.size(); i++)
-		    	{
-			    	System.out.println("Airline: " + flightList.get(i).getAirline());
-					System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
-					System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
-					System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
-					System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
-					System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
-					System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
-					System.out.println("Flight ID: " + flightList.get(i).getFlightId());
-					System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
-					System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
-					
-		    	}
-	    	}
+    		return;
     	}
+    	if(oDepart.getValue() == null )
+    	{
+    		oErrorLabel.setText("Please specify departure and return date of your trip!");
+    		return;
+    	}	
+    	oErrorLabel.setText("");
+	    ObservableList<Solution> flightList;
+	    	
+	    //flightList = fetch.searchFlightOneWay(oFlyFrom.getValue(), oFlyTo.getValue(), Date.valueOf(oDepart.getValue()));
+	    QPXExpressRequest request = new QPXExpressRequest();
+	    request.setAdultCount(1);
+	    request.setDate(Date.valueOf(oDepart.getValue()));
+	    request.setDestination(oFlyTo.getValue());
+	    request.setOrigin(oFlyFrom.getValue());
+	    request.setSolutions(20);
+	    flightList = request.getResponse();
+	    System.out.println("****************************");
+	    System.out.println(request.toJson());
+	    searchResults.setItems(flightList);
+	    
+	    /**
+	    if(flightList.isEmpty())
+	    {
+	    	oErrorLabel.setText("No Flights available");
+	    } else 
+	    {
+		   	searchResults.setItems(flightList);
+	   	}**/
     }
+    
     
     @FXML
     void searchFlight(ActionEvent event){
@@ -235,7 +247,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL location, ResourceBundle resources)
+	{
 		HeaderLabel.setText("WELCOME "+ myController.person.getFirstName());
 		populateSrcandDesFields();
 	    oneWayFlightTable();
@@ -247,124 +260,127 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	public void roundTripFlightTable()
 	{
-		  rAirlineCol.setMinWidth(150);
-	       
-	        rAirlineCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	        {
-	        	@Override
-	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	        	{	        		
-	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getAirline());
-	        	}
-	       });
-	        
-	        rLeaveDateCol.setMinWidth(150);
-	        
-	        rLeaveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate() + "     " + p.getValue().getDeptTime());
-	    	        	}
-	    	       });
-	        
-	        rArriveDateCol.setMinWidth(150);
-	        
-	        rArriveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate() + "     " + p.getValue().getArrivalTime());
-	    	        	}
-	    	       });
-	        
-	        rReturnDateCol.setMinWidth(150);
-	        
-	        rReturnDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate() + "     " + p.getValue().getArrivalTime());
-	    	        	}
-	    	       });
-	        
-	        rArriveSrcDateCol.setMinWidth(150);
-	        
-	        rArriveSrcDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate() + "     " + p.getValue().getDeptTime());
-	    	        	}
-	    	       });
-	        
-	        
-	        
-	        rPriceCol.setMinWidth(150);
-	        
-	        rPriceCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getFlightPrice());
-	    	        	}
-	    	       });
+		
+
+		rAirlineCol.setMinWidth(150);
+		rAirlineCol
+			.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Flight, String> p) {
+						return new ReadOnlyObjectWrapper<String>(p.getValue()
+								.getAirline());
+					}
+				});
+
+		rLeaveDateCol.setMinWidth(150);
+
+		rLeaveDateCol
+				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Flight, String> p) {
+						return new ReadOnlyObjectWrapper<String>(p.getValue()
+								.getDeptDate()
+								+ "     "
+								+ p.getValue().getDeptTime());
+					}
+				});
+
+		rArriveDateCol.setMinWidth(150);
+
+		rArriveDateCol
+				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Flight, String> p) {
+						return new ReadOnlyObjectWrapper<String>(p.getValue()
+								.getArrivalDate()
+								+ "     "
+								+ p.getValue().getArrivalTime());
+					}
+				});
+
+		rReturnDateCol.setMinWidth(150);
+
+		rReturnDateCol
+				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Flight, String> p) {
+						return new ReadOnlyObjectWrapper<String>(p.getValue()
+								.getArrivalDate()
+								+ "     "
+								+ p.getValue().getArrivalTime());
+					}
+				});
+
+		rArriveSrcDateCol.setMinWidth(150);
+
+		rArriveSrcDateCol
+				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Flight, String> p) {
+						return new ReadOnlyObjectWrapper<String>(p.getValue()
+								.getDeptDate()
+								+ "     "
+								+ p.getValue().getDeptTime());
+					}
+				});
+
+		rPriceCol.setMinWidth(150);
+
+		rPriceCol
+				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(
+							CellDataFeatures<Flight, String> p) {
+						return new ReadOnlyObjectWrapper<String>(p.getValue()
+								.getFlightPrice());
+					}
+				});
 	}
-	
-	
+
 	/* Populates a table based on one-way trip search criteria */
-	
+
 	public void oneWayFlightTable()
 	{
-		  oAirlineCol.setMinWidth(150);
-	       
-	        oAirlineCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	        {
-	        	@Override
-	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	        	{	        		
-	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getAirline());
-	        	}
-	       });
-	        
-	        oDepDateCol.setMinWidth(150);
-	        
-	        oDepDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getDeptDate() + "     " + p.getValue().getDeptTime());
-	    	        	}
-	    	       });
-	        
-	        oArrDateCol.setMinWidth(150);
-	        
-	        oArrDateCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalDate() + "     " + p.getValue().getArrivalTime());
-	    	        	}
-	    	       });
-	        
-	        
-	        oPriceCol.setMinWidth(150);
-	        
-	        oPriceCol.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>()
-	    	        {
-	    	        	@Override
-	    	        	public ObservableValue<String> call(CellDataFeatures<Flight, String> p)
-	    	        	{	        		
-	    	        		return new ReadOnlyObjectWrapper<String>(p.getValue().getFlightPrice());
-	    	        	}
-	    	       });
+		oAirlineCol.setMinWidth(150);
+		oAirlineCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p)
+			{
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getRoutes().get(0).getAirlineName());
+			}
+	});
+
+		
+	oDepDateCol.setMinWidth(150);
+	oDepDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+		@Override
+		public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+			return new ReadOnlyObjectWrapper<String>(p.getValue().getDepatureTime());
+								
+		}
+	});
+
+	oArrDateCol.setMinWidth(150);
+	oArrDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+		@Override
+		public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+			return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalTime());
+							
+			}
+	});
+
+	oPriceCol.setMinWidth(150);
+	oPriceCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+		@Override
+		public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+			return new ReadOnlyObjectWrapper<String>(p.getValue().getSaleTotal());
+		}
+	});
 	}
 	
 	/* Populates src and des fields for searching flights */
