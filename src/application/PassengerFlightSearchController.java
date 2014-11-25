@@ -2,6 +2,8 @@ package application;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import airline.Solution;
@@ -10,6 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -21,12 +24,22 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import core.Flight;
 import core.QPXExpressRequest;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
+	
+	@FXML
+	private Button oneWayReserveFlightButton;
+	
+	@FXML
+	private Button roundTripReserveFlightButton;
+	
+	@FXML
+	private Label reservationSubmitLabel;
 	
 	@FXML
     private ChoiceBox<String> rPreferredClass;
@@ -131,18 +144,17 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private Button searchFlightButton;
 
     
+    /**************************************** Beginning of roundtrip search ********************************************/
+    
     @FXML
     void rSearchAction(ActionEvent event) {
     	//Debug info
-    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
-    	{
-    		rErrorLabel.setText("Please specify Source and Destination of your trip!");
-    	}
-    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
-    	{
-    		rErrorLabel.setText("Please specify departure and return date of your trip!");
-    	}
-    	else{
+    	
+    //	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    //		rErrorLabel.setText("Please specify Source and Destination of your trip!");
+    //	else if(rDepart.getValue() == null || rArrive.getValue() == null)
+    //		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    //	else{
     		rErrorLabel.setText("");
 	    	System.out.println("RoundTrip Seach Action");
 	    	System.out.println("SRC: " + rFlyFrom.getValue());
@@ -153,9 +165,9 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	
 	    	/* Retrieve Data from mysql databases for round-trip search */
-	    	ObservableList<Flight> flightList = null;
-	    	if(flightList.isEmpty())
-	    	{
+	    	ObservableList<Flight> flightList;
+	    	flightList = fetch.searchFlightRoundTrip(rFlyFrom.getValue(), rFlyTo.getValue(), Date.valueOf(rDepart.getValue()), Date.valueOf(rArrive.getValue()));
+	    	if(flightList.isEmpty()){
 	    		rErrorLabel.setText("No Flights available");
 	    	} else 
 	    	{
@@ -176,9 +188,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		    	}
 	    	}
     	}
-    }
+    //}
+    /****************************************** End of roundtrip search ********************************************/
 
-   
+    
+
+    /****************************************** Beginning of Oneway search ********************************************/
+
     @FXML
     void oSearchAction(ActionEvent event) {
     	System.out.println("One Way Trip Seach Action");
@@ -217,6 +233,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		   	searchResults.setItems(flightList);
 	   	}**/
     }
+    /*********************************************End of Oneway search ********************************************/
+
     
     
     @FXML
@@ -253,11 +271,15 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		populateSrcandDesFields();
 	    oneWayFlightTable();
 	    roundTripFlightTable();
+	    selectFlightRow();
 	       
 	}
 	
-	/* Populates a table based on round-trip search criteria */
 	
+	
+	/********************************** Beginning Populate RoundTrip Table with Data ******************************************/
+	
+	/* Populates a table based on round-trip search criteria */
 	public void roundTripFlightTable()
 	{
 		
@@ -341,6 +363,12 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 					}
 				});
 	}
+	/********************************** End Populate RoundTrip Table with Data ******************************************/
+
+	
+	
+	
+	/********************************** Beginning Populate Oneway Table with Data ******************************************/
 
 	/* Populates a table based on one-way trip search criteria */
 
@@ -383,8 +411,14 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	});
 	}
 	
-	/* Populates src and des fields for searching flights */
+	/********************************** End Populates Oneway Table with Data ******************************************/
+
 	
+	
+	
+	/********************************** Beginning of Populate src/des fields ******************************************/
+
+	/* Populates src and des fields for searching flights */
 	void populateSrcandDesFields()
 	{
 		oFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
@@ -395,5 +429,60 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 		rPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
 	}
+	
+	/********************************** End of Populate src/des fields ******************************************/
+
+	
+	
+	
+	/********************************** Beginning of make reservation ******************************************/
+
+	// Select row for reservation for either oneway or roundtrip flights
+	public void selectFlightRow()
+	{
+		searchResults.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    	    public void handle(MouseEvent event) {
+    	    	if(event.getClickCount() > 1)
+    	    	{
+    	    		oneWayReserveFlightButton.setOnAction(new EventHandler<ActionEvent>() {
+    	    	            @Override
+    	    	            public void handle(ActionEvent event) {
+    	    	                //will store info from table using sql statement
+    	    	            	reservationSubmitLabel.setText("Reservation Submitted");
+    	    	            	System.out.println("\n\n\n " + "Reservation Submitted");
+    	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().getAirline());
+    	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDeptDate());
+    	    	            	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
+    	    	            	System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
+
+    	    	            }
+    	    	     });
+    	    	}
+    	    }
+    	});
+		
+
+		rSearchResults.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			
+    	    public void handle(MouseEvent event) {
+    	    	if(event.getClickCount() > 1)
+    	    	{
+    	    		roundTripReserveFlightButton.setOnAction(new EventHandler<ActionEvent>() {
+	    	            @Override
+	    	            public void handle(ActionEvent event) {
+	    	                //will store info from table using sql statement
+	    	            	reservationSubmitLabel.setText("Reservation Submitted");
+	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().getAirline());
+	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDeptDate());
+	    	            	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
+	    	            	System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
+	    	            }
+	    	        });	
+    	    	}
+    	    }
+    	});
+		
+	}
+	/********************************** End of make reservation ******************************************/
 
 }

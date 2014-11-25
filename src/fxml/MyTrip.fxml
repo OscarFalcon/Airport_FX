@@ -6,19 +6,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyTripController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyTripController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0">
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="600.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <TabPane prefHeight="343.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane prefHeight="545.0" prefWidth="794.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Upcoming">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
                                  <children>
-                                    <TextField layoutX="6.0" layoutY="32.0" prefHeight="39.0" prefWidth="559.0" text="No Upcoming Trip" />
+                                    <TableView fx:id="myTripTable" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+                                      <columns>
+                                        <TableColumn prefWidth="203.0" text="Airline" />
+                                        <TableColumn prefWidth="175.0" text="Departing     Time" />
+                                          <TableColumn prefWidth="194.0" text="Arriving     Time" />
+                                          <TableColumn prefWidth="225.0" text="Price" />
+                                      </columns>
+                                    </TableView>
                                  </children></AnchorPane>
                         </content>
                       </Tab>
@@ -35,12 +42,12 @@
          <top>
             <AnchorPane prefHeight="50.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="145.0" layoutY="12.0" maxWidth="1.7976931348623157E308">
+                  <HBox layoutX="124.0" layoutY="12.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="519.0">
                      <children>
-                        <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" text="Search Flight" />
-                        <Button fx:id="myAccount" layoutX="275.0" layoutY="12.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
-                        <Button fx:id="mytrip" layoutX="417.0" layoutY="12.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
-                        <Button fx:id="signOut" layoutX="489.0" layoutY="12.0" mnemonicParsing="false" onAction="#signOut" text="sign out" />
+                        <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" prefHeight="26.0" prefWidth="162.0" text="Search Flight" />
+                        <Button fx:id="myAccount" layoutX="275.0" layoutY="12.0" mnemonicParsing="false" onAction="#myAccount" prefHeight="26.0" prefWidth="163.0" text="My account" />
+                        <Button fx:id="mytrip" layoutX="417.0" layoutY="12.0" mnemonicParsing="false" onAction="#myTrip" prefHeight="26.0" prefWidth="145.0" text="My trip" />
+                        <Button fx:id="signOut" layoutX="489.0" layoutY="12.0" mnemonicParsing="false" onAction="#signOut" prefHeight="26.0" prefWidth="140.0" text="sign out" />
                      </children>
                   </HBox>
                </children>
