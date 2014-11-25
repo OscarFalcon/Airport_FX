@@ -77,6 +77,15 @@ public class Person
 	}
 	
 	
+	public boolean resetPassword(String newPassword){
+		boolean reset = false;
+		String resetPassword = "UPDATE userinfo SET password = ? WHERE userName = ?";
+		Object[] arguments = {newPassword, username.get()};
+		reset = MySQL.execute(resetPassword, arguments);
+		
+		return reset;
+	}
+	
 	/* Getters and Setters */
     
     public String getId()

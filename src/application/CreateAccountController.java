@@ -65,7 +65,7 @@ public class CreateAccountController implements Initializable, ControlledScreen{
     	if (firstName.getText().equals("") || lastName.getText().equals("") || username.getText().equals("") || email.getText().equals("")
        		 || street.getText().equals("") || state.getText().equals("") || zip.getText().equals("") || password.getText().equals("") || cPassword.getText().equals("")){
        	 	ErrorLabel.setText("Please enter all fields!");
-    	 }else if(insert.authorizeUser(username.getText(),null) == true){
+    	 }else if(insert.checkUserName(username.getText(),null) == true){
          	ErrorLabel.setText("Username Taken");
          } else if (!password.getText().equals(cPassword.getText())){
         	 ErrorLabel.setText("Passwords do not match!");
@@ -85,7 +85,6 @@ public class CreateAccountController implements Initializable, ControlledScreen{
 	public void setScreenParent(ScreensController screenParent) {
 		// TODO Auto-generated method stub
 		myController = screenParent;
-		
 	}
 
 	@Override
