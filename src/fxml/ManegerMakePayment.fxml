@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManegerMakePaymentController">
+   <children>
+      <SplitPane dividerPositions="0.31453634085213034" orientation="VERTICAL" prefHeight="800.0" prefWidth="1000.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="998.0">
+               <children>
+                  <HBox layoutX="792.0" layoutY="14.0">
+                     <children>
+                        <Button fx:id="home" layoutX="792.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" text="Home" />
+                        <Button fx:id="myAccount" layoutX="852.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" text="My Account" />
+                        <Button fx:id="signout" layoutX="932.0" layoutY="14.0" mnemonicParsing="false" onAction="#SignOut" text="Sign Out" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="19.0" layoutY="13.0" text="Who's Traveling..." underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="34.0" layoutY="79.0" text="Reservation Number" />
+                  <Label layoutX="34.0" layoutY="133.0" text="Name" />
+                  <TextField fx:id="reservationNumber" layoutX="160.0" layoutY="75.0" />
+                  <TextField fx:id="name" layoutX="160.0" layoutY="129.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="998.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="25.0" text="Enter Card Information..." underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="125.0" text="Credit Card Number" />
+                  <Label layoutX="23.0" layoutY="188.0" text="Expiration Day" />
+                  <Label layoutX="23.0" layoutY="249.0" text="Card Identication Number" />
+                  <Label layoutX="23.0" layoutY="304.0" text="Billing Zip Code" />
+                  <Label layoutX="18.0" layoutY="356.0" text="Cardholder Name" />
+                  <TextField fx:id="creditCardNumber" layoutX="187.0" layoutY="121.0" />
+                  <TextField fx:id="expirationDay" layoutX="187.0" layoutY="184.0" />
+                  <TextField fx:id="cardIdenticationNumber" layoutX="187.0" layoutY="245.0" />
+                  <TextField fx:id="billingZipCode" layoutX="187.0" layoutY="300.0" />
+                  <TextField fx:id="cardholderName" layoutX="187.0" layoutY="352.0" />
+                  <Button fx:id="pay" layoutX="39.0" layoutY="460.0" mnemonicParsing="false" onAction="#Pay" prefHeight="39.0" prefWidth="109.0" text="Pay">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
