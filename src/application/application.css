@@ -123,6 +123,19 @@
   -fx-text-fill: -fx-selection-bar-text;
 }
 
-.button:default:hover {
-    -fx-background-color: derive(-fx-focus-color,30%);
+#signinpage{
+    -fx-background-image: url("Images/Plane.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1100 675;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
 }
+
+#passengerflightsearch{
+    -fx-background-image: url("Images/background.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1100 675;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+

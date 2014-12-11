@@ -31,6 +31,8 @@ import core.Flight;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
+	MySQLData fetch = new MySQLData();
+	
 	
 	@FXML
 	private Button oneWayReserveFlightButton;
@@ -165,27 +167,23 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	
 	    	/* Retrieve Data from mysql databases for round-trip search */
-	    	ObservableList<Flight> flightList = null;
-	    	if(flightList.isEmpty()){
-	    		rErrorLabel.setText("No Flights available");
-	    	} else 
-	    	{
-		    	rSearchResults.setItems(flightList);
-		    	System.out.println("searchFlightRoundTrip");
-		    	for(int i = 0; i < flightList.size(); i++)
-		    	{
-			    	System.out.println("Airline: " + flightList.get(i).getAirline());
-					System.out.println("Arrival Date: " + flightList.get(i).getArrivalDate());
-					System.out.println("Arrival Time: " + flightList.get(i).getArrivalTime());
-					System.out.println("Departure Date: " + flightList.get(i).getDeptDate());
-					System.out.println("Departure Time: " + flightList.get(i).getDeptTime());
-					System.out.println("Destination Location: " + flightList.get(i).getDestinationLocation());
-					System.out.println("Source Location: " + flightList.get(i).getSrcLocation());
-					System.out.println("Flight ID: " + flightList.get(i).getFlightId());
-					System.out.println("Flight Number: " + flightList.get(i).getFlightNumber());
-					System.out.println("Flight Price: " + flightList.get(i).getFlightPrice());
-		    	}
-	    	}
+	    
+	    		ObservableList<Solution> flightList;
+		    	
+	    	    QPXExpressRequest request = new QPXExpressRequest();
+	    	    request.setAdultCount(1);
+	    	    request.setDate(Date.valueOf(oDepart.getValue()));
+	    	    request.setDestination(oFlyTo.getValue());
+	    	    request.setOrigin(oFlyFrom.getValue());
+	    	    request.setSolutions(20);
+	    	    flightList = request.getResponse();
+	    	    System.out.println("****************************");
+	    	    System.out.println(request.toJson());
+	    	    searchResults.setItems(flightList);
+	    	    
+	    		if(flightList.isEmpty()){
+		    		rErrorLabel.setText("No Flights available");
+		    	} 
     	}
     //}
     /****************************************** End of roundtrip search ********************************************/
@@ -196,6 +194,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 
     @FXML
     void oSearchAction(ActionEvent event) {
+    	System.out.println("One Way Trip Seach Action");
     	
     	if(oFlyFrom.getValue() == null || oFlyTo.getValue() == null)
     	{
@@ -208,8 +207,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     		return;
     	}	
     	oErrorLabel.setText("");
-    	
-	    ObservableList<Solution> flightList;	
+	    ObservableList<Solution> flightList;
+	    	
 	    QPXExpressRequest request = new QPXExpressRequest();
 	    
 	    request.setAdultCount(1);
@@ -430,6 +429,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	/********************************** Beginning of make reservation ******************************************/
 
+	ObservableList<Solution> flightList;
 	// Select row for reservation for either oneway or roundtrip flights
 	public void selectFlightRow()
 	{
@@ -443,10 +443,10 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	    	                //will store info from table using sql statement
     	    	            	reservationSubmitLabel.setText("Reservation Submitted");
     	    	            	System.out.println("\n\n\n " + "Reservation Submitted");
-    	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().);
-    	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDeptDate());
-    	    	            	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
-    	    	            	System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
+    	    	            	System.out.println("Arrival Time Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalTime());
+    	    	            	System.out.println("Departure Time Selected: " + searchResults.getSelectionModel().getSelectedItem().getDepatureTime());
+    	    	            //	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
+    	    	            //	System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
 
     	    	            }
     	    	     });
@@ -465,10 +465,11 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	            public void handle(ActionEvent event) {
 	    	                //will store info from table using sql statement
 	    	            	reservationSubmitLabel.setText("Reservation Submitted");
-	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().getAirline());
-	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDeptDate());
-	    	            	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
-	    	            	System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
+	    	            	//System.out.println(searchResults.getSelectionModel().getSelectedItem().getArrivalTime());
+	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalTime());
+	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDepatureTime());
+	    	            	//System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
+	    	            	//System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
 	    	            }
 	    	        });	
     	    	}
