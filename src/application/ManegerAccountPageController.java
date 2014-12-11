@@ -98,12 +98,12 @@ public class ManegerAccountPageController implements Initializable, ControlledSc
 
     @FXML
     void MyAccount(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML
     void SignOut(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
 	@Override
