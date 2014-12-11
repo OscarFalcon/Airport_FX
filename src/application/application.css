@@ -124,7 +124,7 @@
 }
 
 #signinpage{
-    -fx-background-image: url("Plane.jpg");
+    -fx-background-image: url("Images/Plane.jpg");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1100 675;
     -fx-background-position: center center;
@@ -132,7 +132,7 @@
 }
 
 #passengerflightsearch{
-    -fx-background-image: url("background.jpg");
+    -fx-background-image: url("Images/background.jpg");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1100 675;
     -fx-background-position: center center;
