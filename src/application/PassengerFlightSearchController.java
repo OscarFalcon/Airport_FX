@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import airline.QPXExpressRequest;
 import airline.Solution;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -27,7 +28,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import core.Flight;
-import core.QPXExpressRequest;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
@@ -165,8 +165,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	
 	    	/* Retrieve Data from mysql databases for round-trip search */
-	    	ObservableList<Flight> flightList;
-	    	flightList = fetch.searchFlightRoundTrip(rFlyFrom.getValue(), rFlyTo.getValue(), Date.valueOf(rDepart.getValue()), Date.valueOf(rArrive.getValue()));
+	    	ObservableList<Flight> flightList = null;
 	    	if(flightList.isEmpty()){
 	    		rErrorLabel.setText("No Flights available");
 	    	} else 
@@ -197,7 +196,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 
     @FXML
     void oSearchAction(ActionEvent event) {
-    	System.out.println("One Way Trip Seach Action");
     	
     	if(oFlyFrom.getValue() == null || oFlyTo.getValue() == null)
     	{
@@ -210,28 +208,23 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     		return;
     	}	
     	oErrorLabel.setText("");
-	    ObservableList<Solution> flightList;
-	    	
-	    //flightList = fetch.searchFlightOneWay(oFlyFrom.getValue(), oFlyTo.getValue(), Date.valueOf(oDepart.getValue()));
+    	
+	    ObservableList<Solution> flightList;	
 	    QPXExpressRequest request = new QPXExpressRequest();
+	    
 	    request.setAdultCount(1);
 	    request.setDate(Date.valueOf(oDepart.getValue()));
 	    request.setDestination(oFlyTo.getValue());
 	    request.setOrigin(oFlyFrom.getValue());
-	    request.setSolutions(20);
-	    flightList = request.getResponse();
-	    System.out.println("****************************");
-	    System.out.println(request.toJson());
+	    request.setSolutions(500);
+	    flightList = request.getResponse();	    
 	    searchResults.setItems(flightList);
-	    
-	    /**
 	    if(flightList.isEmpty())
 	    {
 	    	oErrorLabel.setText("No Flights available");
-	    } else 
-	    {
-		   	searchResults.setItems(flightList);
-	   	}**/
+	    }
+	    
+	    
     }
     /*********************************************End of Oneway search ********************************************/
 
@@ -450,7 +443,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	    	                //will store info from table using sql statement
     	    	            	reservationSubmitLabel.setText("Reservation Submitted");
     	    	            	System.out.println("\n\n\n " + "Reservation Submitted");
-    	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().getAirline());
+    	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().);
     	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDeptDate());
     	    	            	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
     	    	            	System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
