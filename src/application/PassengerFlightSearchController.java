@@ -210,24 +210,20 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    ObservableList<Solution> flightList;
 	    	
 	    QPXExpressRequest request = new QPXExpressRequest();
+	    
 	    request.setAdultCount(1);
 	    request.setDate(Date.valueOf(oDepart.getValue()));
 	    request.setDestination(oFlyTo.getValue());
 	    request.setOrigin(oFlyFrom.getValue());
-	    request.setSolutions(20);
-	    flightList = request.getResponse();
-	    System.out.println("****************************");
-	    System.out.println(request.toJson());
+	    request.setSolutions(500);
+	    flightList = request.getResponse();	    
 	    searchResults.setItems(flightList);
-	    
-	    /**
 	    if(flightList.isEmpty())
 	    {
 	    	oErrorLabel.setText("No Flights available");
-	    } else 
-	    {
-		   	searchResults.setItems(flightList);
-	   	}**/
+	    }
+	    
+	    
     }
     /*********************************************End of Oneway search ********************************************/
 
