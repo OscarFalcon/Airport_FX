@@ -18,6 +18,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
      * Initializes the controller class.
      */
 	
+	
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     	error.setText("");
