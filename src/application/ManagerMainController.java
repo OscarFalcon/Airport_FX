@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 
 public class ManagerMainController implements Initializable, ControlledScreen{
 	ScreensController myController;
+
     @FXML
     private TableColumn<?, ?> oAirlineCol;
 
@@ -144,37 +145,37 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 
     @FXML
     void MakePayment(ActionEvent event) {
-
+    	//myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
     void BoardingPass(ActionEvent event) {
-
+    	//myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
     void ManegeVoucher(ActionEvent event) {
-
+    	//myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
     void Employee(ActionEvent event) {
-
+    	//myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
     void SignOut(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
-
+    	//myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
     void rSearchAction(ActionEvent event) {
-
+    	//myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
@@ -183,9 +184,9 @@ public class ManagerMainController implements Initializable, ControlledScreen{
     }
 
 	@Override
-	public void setScreenParent(ScreensController screenPage) {
+	public void setScreenParent(ScreensController screenParent) {
 		// TODO Auto-generated method stub
-		
+		myController = screenParent;
 	}
 
 	@Override
