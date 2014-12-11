@@ -6,11 +6,30 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id= "passengerflightsearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManagerFlightConditionController">
+<AnchorPane id="passengerflightsearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManagerFlightConditionController">
    <children>
       <SplitPane dividerPositions="0.2894736842105263, 0.6553884711779449" layoutX="-1.0" layoutY="1.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="1000.0">
         <items>
+            <TableView fx:id="rSearchResults" prefHeight="184.0" prefWidth="998.0">
+               <columns>
+                  <TableColumn id="rAirlineCol" fx:id="rAirlineCol" prefWidth="120.0" text="Airline" />
+                  <TableColumn id="rLeaveDateCol" fx:id="rLeaveDateCol" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
+                  <TableColumn id="rArriveDateCol" fx:id="rArriveDateCol" prefWidth="174.0" text="Arrival Date:Time" />
+                  <TableColumn id="rReturnDateCol" fx:id="rReturnDateCol" minWidth="3.0" prefWidth="177.0" text="Return Date:Time" />
+                  <TableColumn id="rArriveSrcDateCol" fx:id="rArriveSrcDateCol" prefWidth="234.0" text="Arrival Source Date:Time" />
+                  <TableColumn id="rPriceCol" fx:id="rPriceCol" minWidth="0.0" prefWidth="124.0" text="Price" />
+               </columns>
+            </TableView>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="998.0">
+               <children>
+                  <HBox layoutX="14.0" layoutY="2.0">
+                     <children>
+                        <Button fx:id="cancelReservation" layoutX="171.0" layoutY="2.0" mnemonicParsing="false" onAction="#CancelReservation" text="Cancel Reservation" />
+                        <Button fx:id="rescheduleReservation" layoutX="319.0" layoutY="2.0" mnemonicParsing="false" onAction="#RescheduleReservation" text="Reschedule Reservation" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <HBox layoutX="792.0" layoutY="4.0">
@@ -35,26 +54,6 @@
                   <TextField fx:id="resevationField" layoutX="103.0" layoutY="57.0" />
                   <TextField fx:id="nameField" layoutX="99.0" layoutY="117.0" />
                   <Label layoutX="14.0" layoutY="90.0" text="Or" />
-               </children>
-            </AnchorPane>
-            <TableView fx:id="rSearchResults" prefHeight="184.0" prefWidth="998.0">
-               <columns>
-                  <TableColumn id="rAirlineCol" fx:id="rAirlineCol" prefWidth="120.0" text="Airline" />
-                  <TableColumn id="rLeaveDateCol" fx:id="rLeaveDateCol" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
-                  <TableColumn id="rArriveDateCol" fx:id="rArriveDateCol" prefWidth="174.0" text="Arrival Date:Time" />
-                  <TableColumn id="rReturnDateCol" fx:id="rReturnDateCol" minWidth="3.0" prefWidth="177.0" text="Return Date:Time" />
-                  <TableColumn id="rArriveSrcDateCol" fx:id="rArriveSrcDateCol" prefWidth="234.0" text="Arrival Source Date:Time" />
-                  <TableColumn id="rPriceCol" fx:id="rPriceCol" minWidth="0.0" prefWidth="124.0" text="Price" />
-               </columns>
-            </TableView>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="998.0">
-               <children>
-                  <HBox layoutX="14.0" layoutY="2.0">
-                     <children>
-                        <Button fx:id="cancelReservation" layoutX="171.0" layoutY="2.0" mnemonicParsing="false" onAction="#CancelReservation" text="Cancel Reservation" />
-                        <Button fx:id="rescheduleReservation" layoutX="319.0" layoutY="2.0" mnemonicParsing="false" onAction="#RescheduleReservation" text="Reschedule Reservation" />
-                     </children>
-                  </HBox>
                </children>
             </AnchorPane>
         </items>
