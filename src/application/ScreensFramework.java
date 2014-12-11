@@ -10,11 +10,20 @@ import javafx.stage.Stage;
 
 public class ScreensFramework extends Application {
     
+	/*Customer*/
     public static String screen1ID = "signInPage";
     public static String screen2ID = "AccountPage";
     public static String screen3ID = "FlightSearch";
     public static String screen4ID = "CreateAccount";
     public static String screen5ID = "MyTrip";
+    
+    /*mangaer*/
+    public static String screen6ID = "ManagerMainPage";
+    public static String screen7ID = "ManagerMakePayment";
+    
+    /*Receptionist*/
+    public static String screen8ID = "ReceptionistMain";
+    public static String screen9ID = "ReceptionistFlightCondition";
     
     public static HashMap<String, String> screens = new HashMap<>();
   
@@ -24,11 +33,22 @@ public class ScreensFramework extends Application {
             	
         ScreensController mainContainer = new ScreensController();
 
+        /*Customer*/
         screens.put("signInPage", "/fxml/SignInPage.fxml");
         screens.put("AccountPage", "/fxml/CustomerAccountPage.fxml");
         screens.put("FlightSearch", "/fxml/PassengerFlightSearch.fxml");
         screens.put("CreateAccount", "/fxml/createAccountPage.fxml");
         screens.put("MyTrip", "/fxml/MyTrip.fxml");
+        
+        /*mangaer*/
+        screens.put("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
+        screens.put("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
+        
+        /*Receptionist*/
+        screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
+        screens.put("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
+        
+        
      
         mainContainer.setScreen(ScreensFramework.screen1ID);
       

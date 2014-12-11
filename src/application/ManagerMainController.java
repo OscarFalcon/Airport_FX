@@ -1,7 +1,11 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -11,8 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class ManagerMainController {
-
+public class ManagerMainController implements Initializable, ControlledScreen{
+	ScreensController myController;
     @FXML
     private TableColumn<?, ?> oAirlineCol;
 
@@ -177,5 +181,17 @@ public class ManagerMainController {
     void oSearchAction(ActionEvent event) {
 
     }
+
+	@Override
+	public void setScreenParent(ScreensController screenPage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
