@@ -20,6 +20,10 @@ public class ScreensFramework extends Application {
     /*mangaer*/
     public static String screen6ID = "ManagerMainPage";
     public static String screen7ID = "ManagerMakePayment";
+    public static String screen10ID = "ManagerAccountPage";
+    public static String screen11ID = "ManagerBoardingPass";
+    public static String screen12ID = "ManagerEmployee";
+    
     
     /*Receptionist*/
     public static String screen8ID = "ReceptionistMain";
@@ -42,7 +46,10 @@ public class ScreensFramework extends Application {
         
         /*mangaer*/
         screens.put("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
+        screens.put("ManagerAccountPage", "/fxml/ManagerAccountPage.fxml");
         screens.put("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
+        screens.put("ManagerBoardingPass", "/fxml/ManagerBoardingPass.fxml");
+        screens.put("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         
         /*Receptionist*/
         screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");

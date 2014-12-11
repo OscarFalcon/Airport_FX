@@ -1,11 +1,16 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class ManegerBoardingPassController {
+public class ManegerBoardingPassController implements Initializable, ControlledScreen{
+	ScreensController myController;
 
     @FXML
     private Label fromLabel;
@@ -59,5 +64,17 @@ public class ManegerBoardingPassController {
     void ViewBoardingPass(ActionEvent event) {
 
     }
+
+	@Override
+	public void setScreenParent(ScreensController screenParent) {
+		// TODO Auto-generated method stub
+		myController = screenParent;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

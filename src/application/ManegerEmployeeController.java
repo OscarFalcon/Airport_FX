@@ -1,10 +1,15 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class ManegerEmployeeController {
+public class ManegerEmployeeController implements Initializable, ControlledScreen{
+	ScreensController myController;
 
     @FXML
     private Button signout;
@@ -37,5 +42,17 @@ public class ManegerEmployeeController {
     void Signout(ActionEvent event) {
 
     }
+
+	@Override
+	public void setScreenParent(ScreensController screenParent) {
+		// TODO Auto-generated method stub
+		myController = screenParent;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
