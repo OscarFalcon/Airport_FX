@@ -1,5 +1,6 @@
 package airline;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class Solution
@@ -28,18 +29,15 @@ public class Solution
 	public Solution()
 	{
 		routes = new ArrayList<Route>();
-		
-		
-		
-		
 	}
 	
 	
-	public ArrayList<Route> getRoutes()
+	public ArrayList<Route> getRoutes() //ROUTES
 	{
 		return routes;
 	}
-	public void setSaleTotal(String total)
+	
+	public void setSaleTotal(String total)//SALE TOTAL
 	{
 		this.saleTotal = total;
 		
@@ -48,23 +46,46 @@ public class Solution
 	{
 		return saleTotal;
 	}
-	public void setArrivalTime(String time)
+	
+	
+	
+	public Date getArrivalDate()
 	{
-		this.arrivalTime = time;
+		return Date.valueOf(arrivalTime.split("T")[0]);
 	}
 	public String getArrivalTime()
 	{
-		return arrivalTime;
+		return arrivalTime.split("T")[1];
 	}
-	public void setdepartureTime(String time)
+	public Date getDepatureDate()
 	{
-		this.departureTime = time;
+		return Date.valueOf(departureTime.split("T")[0]);
 	}
 	public String getDepatureTime()
 	{
+		return departureTime.split("T")[1];
+	}
+	
+	
+	
+	
+	public void setArrivalTime(String time)//ARRIVAL TIME
+	{
+		this.arrivalTime = time;
+	}
+	public String getUnformattedArrivalTime()
+	{
+		return arrivalTime;
+	}
+	public void setdepartureTime(String time)//DEPARTURE TIME
+	{
+		this.departureTime = time;
+	}
+	public String getUnformattedDepatureTime()
+	{
 		return departureTime;
 	}
-	public void setOriginCityCode(String code)
+	public void setOriginCityCode(String code)//ORIGIN CITY CODE
 	{
 		this.originCityCode = code;
 	}
@@ -72,7 +93,7 @@ public class Solution
 	{
 		return originCityCode;
 	}
-	public void setOriginCity(String city)
+	public void setOriginCity(String city)//ORIGIN CITY
 	{
 		this.originCity = city;
 	}
@@ -80,7 +101,7 @@ public class Solution
 	{
 		return originCity;
 	}
-	public void setDestinationCityCode(String code)
+	public void setDestinationCityCode(String code)//DESTINATION CITY CODE
 	{
 		this.destinationCityCode = code;
 	}
@@ -88,7 +109,7 @@ public class Solution
 	{
 		return destinationCityCode;
 	}
-	public void setDestinationCity(String city)
+	public void setDestinationCity(String city)//DESTINATION CITY
 	{
 		this.destinationCity = city;
 	}
@@ -96,7 +117,7 @@ public class Solution
 	{
 		return destinationCity;
 	}
-	public void setDestinationAirportCode(String code)
+	public void setDestinationAirportCode(String code)//DESTINATION AIRPORT CODE
 	{
 		this.destinationAirportCode = code;
 	}
@@ -104,7 +125,7 @@ public class Solution
 	{
 		return destinationAirportCode;
 	}
-	public void setDestinationAirport(String airport)
+	public void setDestinationAirport(String airport)//DESTINATION AIRPORT
 	{
 		this.destinationAirport = airport;
 	}
@@ -112,7 +133,7 @@ public class Solution
 	{
 		return destinationAirport;
 	}
-	public void setOriginAriportCode(String code)
+	public void setOriginAriportCode(String code)//ORIGIN AIRPORT CODE
 	{
 		this.originAirportCode = code;
 	}
@@ -120,7 +141,7 @@ public class Solution
 	{
 		return originAirportCode;
 	}
-	public void setOriginAirport(String airport)
+	public void setOriginAirport(String airport)//ORIGIN AIRPORT
 	{
 		this.originAirport = airport;
 	}

@@ -76,10 +76,9 @@ public class QPXExpressRequest
 	{
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		HttpPost post = new HttpPost("https://www.googleapis.com/qpxExpress/v1/trips/search?key=AIzaSyBxYS0Q6TUnvCwAMMR7qemiOP_1BkfBx9w");
-		//HttpPost post = new HttpPost("http://localhost:8080/login");
-		post.setHeader("Referer", "http://localhost");
 		CloseableHttpResponse response = null;
 		
+		post.setHeader("Referer", "http://localhost");
 		try 
 		{
 			StringEntity requestEntity = new StringEntity(this.toJson());

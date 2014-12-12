@@ -5,27 +5,28 @@ import java.util.ArrayList;
 import database.MySQL;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Person 
+public class Person implements SavableObject
 {
 
 	
-	private  SimpleStringProperty id;
-	private  SimpleStringProperty firstName;
-    private  SimpleStringProperty lastName;
-    private  SimpleStringProperty username;
-    private  SimpleStringProperty email;
-    private  SimpleStringProperty phone;
-    private  SimpleStringProperty street;
-    private  SimpleStringProperty city;
-    private  SimpleStringProperty state;
-    private  SimpleStringProperty zip;
-    private  SimpleStringProperty type;
+	protected  SimpleStringProperty id;
+	protected  SimpleStringProperty firstName;
+	protected  SimpleStringProperty lastName;
+	protected  SimpleStringProperty username;
+	protected  SimpleStringProperty password;
+	protected  SimpleStringProperty email;
+	protected  SimpleStringProperty phone;
+	protected  SimpleStringProperty street;
+	protected  SimpleStringProperty city;
+	protected  SimpleStringProperty state;
+    protected  SimpleStringProperty zip;
+    
     
    
  
     
-    private Person(String id,String first,String last,String username,String email,String phone,
-    				String street, String city, String state, String zip, String type)
+    protected Person(String id,String first,String last,String username,String email,String phone,
+    				String street, String city, String state, String zip)
     {
     	this.id 		= new SimpleStringProperty(id);
     	this.firstName 	= new SimpleStringProperty(first);
@@ -37,14 +38,13 @@ public class Person
     	this.city       = new SimpleStringProperty(city);
     	this.state      = new SimpleStringProperty(state);
     	this.zip        = new SimpleStringProperty(zip);
-    	this.type 		= new SimpleStringProperty(type);
     
     }
     
 	public static Person retrievePerson(String username, String password)
     {
 		String query = "SELECT userID, firstName, lastName, userName, email, telephone, street, city, state, zip, type "
-							+ "FROM userinfo WHERE userName = ? && password = ?";
+							+ "FROM person WHERE userName = ? && password = ?";
 		
 		Object[] arguments = {username, password};
 		
@@ -60,24 +60,13 @@ public class Person
 		
 		Person person = new Person(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
 		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
-		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString());
+		tmp[7].toString(),tmp[8].toString(),tmp[9].toString());
 
 		return person;	
     }
 	
-	public boolean save()
+	public boolean resetPassword(String newPassword)
 	{
-		String statement = "UPDATE userinfo set firstName = ?, lastName = ?,email = ?, telephone = ?,"
-							+ "street = ?, city = ?, state = ?, zip = ? WHERE userID = ?";
-		
-		Object[] arguments = {firstName.get(),lastName.get(),email.get(),phone.get(), street.get(),
-				             city.get(), state.get(), zip.get(),id.get()};
-	
-		return MySQL.execute(statement, arguments);
-	}
-	
-	
-	public boolean resetPassword(String newPassword){
 		boolean reset = false;
 		String resetPassword = "UPDATE userinfo SET password = ? WHERE userName = ?";
 		Object[] arguments = {newPassword, username.get()};
@@ -85,6 +74,8 @@ public class Person
 		
 		return reset;
 	}
+	
+	
 	
 	/* Getters and Setters */
     
@@ -173,13 +164,28 @@ public class Person
     	this.zip.set(zip);
     }
     
-    public String getType()
-    {
-    	return type.get();
-    }
-    public void setType(String type)
-    {
-    	this.type.set(type);
-    }
+  
+
+    
+	@Override
+	public boolean insert()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean delete() {
+		return false;
+	}
+	
+	@Override
+	public boolean save()
+	{
+		return false;
+	}
+	
+	
+	
+	
     
 }
