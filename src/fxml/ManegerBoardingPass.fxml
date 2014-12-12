@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManegerBoardingPassController">
+   <children>
+      <SplitPane dividerPositions="0.41353383458646614" layoutX="1.0" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="335.0" prefWidth="1198.0">
+               <children>
+                  <AnchorPane layoutX="-1.0" prefHeight="264.0" prefWidth="1200.0">
+                     <children>
+                        <HBox layoutX="975.0" layoutY="14.0">
+                           <children>
+                              <Button fx:id="home" layoutX="548.0" layoutY="22.0" mnemonicParsing="false" onAction="#Home" text="Home" />
+                              <Button fx:id="myAccount" layoutX="617.0" layoutY="22.0" mnemonicParsing="false" onAction="#MyAccount" text="My Account" />
+                              <Button fx:id="signOut" layoutX="679.0" layoutY="22.0" mnemonicParsing="false" onAction="#SignOut" text="SignOut" />
+                           </children>
+                        </HBox>
+                        <Label layoutX="14.0" layoutY="79.0" text="Name" />
+                        <Label layoutX="14.0" layoutY="124.0" text="Or" />
+                        <Label layoutX="14.0" layoutY="169.0" text="Reservation Number" />
+                        <TextField layoutX="139.0" layoutY="75.0" />
+                        <TextField layoutX="139.0" layoutY="165.0" />
+                        <Button fx:id="viewBoardingPass" layoutX="20.0" layoutY="225.0" mnemonicParsing="false" onAction="#ViewBoardingPass" text="View Boarding Pass">
+                           <font>
+                              <Font name="System Bold" size="19.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="49.0" layoutY="18.0" text="Boarding Pass" underline="true">
+                           <font>
+                              <Font name="System Bold" size="28.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="1198.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="293.0" layoutX="54.0" layoutY="22.0" stroke="BLACK" strokeType="INSIDE" width="702.0" />
+                  <Label layoutX="74.0" layoutY="86.0" text="Name" />
+                  <Label layoutX="74.0" layoutY="128.0" text="From" />
+                  <Label layoutX="74.0" layoutY="167.0" text="To" />
+                  <Label layoutX="74.0" layoutY="212.0" text="Date" />
+                  <Label layoutX="75.0" layoutY="253.0" text="Flight" />
+                  <Label layoutX="74.0" layoutY="288.0" text="Departure time" />
+                  <Label fx:id="nameLabel" layoutX="249.0" layoutY="86.0" prefHeight="17.0" prefWidth="93.0" text="Name " />
+                  <Label fx:id="fromLabel" layoutX="249.0" layoutY="128.0" prefHeight="17.0" prefWidth="122.0" text="fromLabel" />
+                  <Label fx:id="toLabel" layoutX="249.0" layoutY="167.0" prefHeight="17.0" prefWidth="80.0" text="ToLabel" />
+                  <Label fx:id="dateLabel" layoutX="243.0" layoutY="212.0" prefHeight="17.0" prefWidth="80.0" text="DateLabel" />
+                  <Label fx:id="flgihtLebal" layoutX="243.0" layoutY="253.0" prefHeight="17.0" prefWidth="81.0" text="FlightLabel" />
+                  <Label fx:id="departureLebal" layoutX="249.0" layoutY="288.0" prefHeight="17.0" prefWidth="93.0" text="DepatureLabel" />
+                  <Label layoutX="296.0" layoutY="21.0" text="Boarding Pass">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="475.0" layoutY="86.0" text="Seat" />
+                  <Label fx:id="seatLebal" layoutX="549.0" layoutY="86.0" text="SeatLabel" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManegerAccountPageController">
+   <children>
+      <AnchorPane id="passengerflightsearch" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0">
+         <children>
+            <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="478.0" prefWidth="617.0">
+               <center>
+                  <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                     <tabs>
+                        <Tab fx:id="AccOverCusAcc" text="Account Overview">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="639.0">
+                                 <children>
+                                    <GridPane layoutX="220.0" layoutY="79.0" prefHeight="377.0" prefWidth="617.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="First Name:" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountFirstName" GridPane.columnIndex="1" />
+                                          <Label text="E-mail Address:" textFill="WHITE" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="Phone Number:" textFill="WHITE" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountPhone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label text="Street:" textFill="WHITE" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountStreet" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Label text="City:" textFill="WHITE" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountCity" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <Label text="State:" textFill="WHITE" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountState" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <Label text="Zip Code:" textFill="WHITE" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountZip" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Button fx:id="save" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Save" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label fx:id="AOerrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <Label text="Last Name:" textFill="WHITE" GridPane.rowIndex="1" />
+                                          <TextField fx:id="accountLastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="297.0" minWidth="10.0" prefWidth="149.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="511.0" minWidth="10.0" prefWidth="456.0" />
+                                       </columnConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="SignInCusAcc" text="Sign-in Settings">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="343.0" layoutY="80.0" prefHeight="377.0" prefWidth="617.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="Username:" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="accountUsername" GridPane.columnIndex="1" />
+                                          <Button fx:id="saveUserManeger" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SaveUserManeger" text="Save" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label text="Old Password:" textFill="WHITE" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="New Password:" textFill="WHITE" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Re-type Password:" textFill="WHITE" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="savePassword" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#SavePassword" text="Save" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label fx:id="usernameErrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label fx:id="passwordErrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <PasswordField fx:id="oldPassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <PasswordField fx:id="newPassword1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <PasswordField fx:id="newPassword2" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="149.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="448.0" />
+                                       </columnConstraints>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </TabPane>
+               </center>
+               <top>
+                  <AnchorPane prefHeight="68.0" prefWidth="643.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox layoutX="410.0" layoutY="22.0" maxWidth="1.7976931348623157E308">
+                           <children>
+                              <Button fx:id="myAccount" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" text="My Account" />
+                              <Button fx:id="signout" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#SignOut" text="Sign out" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </top>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
