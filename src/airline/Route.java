@@ -1,12 +1,17 @@
 package airline;
 
-public class Route
+import java.sql.Date;
+import java.util.ArrayList;
+
+import core.SavableObject;
+import database.MySQL;
+
+public class Route extends SavableObject
 {
 
 	private String airlineName;				// ex. "United Airlines, Inc."  							ok
 	private String airlineCode;				// ex. "UA" for UnitedAirlines								ok
 	private String airlineNumber;			// ex. "3518"  												ok
-	
 	
 	private String sourceAirport;			// ex. "Denver International"								ok
 	private String sourceAirportCode;		// ex. "ORD" for Chicago O'Hare International Airport		ok
@@ -25,7 +30,23 @@ public class Route
 	private String departureTime;			// ex. 2014-12-12T09:05-06:00								ok
 	
 	
-	public void setAirlineName(String airline)
+	private Integer routeID = null; 	    //the ID of the route in the database;
+	
+	
+	
+	public Integer getRouteID()
+	{
+		return routeID;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public void setAirlineName(String airline)	//AIRLINE NAME
 	{
 		this.airlineName = airline;
 	}
@@ -33,7 +54,7 @@ public class Route
 	{
 		return airlineName;
 	}
-	public void setAirlineCode(String code)
+	public void setAirlineCode(String code)	//AIRLINE CODE
 	{
 		this.airlineCode = code;
 	}
@@ -42,7 +63,7 @@ public class Route
 	{
 		return airlineCode;
 	}
-	public void setAirlineNumber(String no)
+	public void setAirlineNumber(String no)	//AIRLINE NUMBER
 	{
 		this.airlineNumber = no;
 	}
@@ -50,7 +71,7 @@ public class Route
 	{
 		return airlineNumber;
 	}
-	public void setSourceAirport(String airport)
+	public void setSourceAirport(String airport) //SOURCE AIRPORT
 	{
 		this.sourceAirport = airport;
 	}
@@ -58,7 +79,7 @@ public class Route
 	{
 		return sourceAirport;
 	}
-	public void setSourceAirportCode(String code)
+	public void setSourceAirportCode(String code) //SOURCE AIRPORT CODE
 	{
 		this.sourceAirportCode = code;
 	}
@@ -66,7 +87,7 @@ public class Route
 	{
 		return sourceAirportCode;
 	}
-	public void setSourceAirportCityCode(String code)
+	public void setSourceAirportCityCode(String code) //SOURCE AIRPORT CITY CODE
 	{
 		this.sourceAirportCityCode = code;
 	}
@@ -74,7 +95,7 @@ public class Route
 	{
 		return sourceAirportCityCode;
 	}
-	public void setSourceAirportCity(String city)
+	public void setSourceAirportCity(String city) //SOURCE AITPORT CITY
 	{
 		this.sourceAirportCity = city;
 	}
@@ -82,7 +103,7 @@ public class Route
 	{
 		return sourceAirportCity;
 	}
-	public void setDestinationAirportCode(String code)
+	public void setDestinationAirportCode(String code) // DESTINATION AIRPORT CODE
 	{
 		this.destinationAirportCode = code;
 	}
@@ -90,7 +111,7 @@ public class Route
 	{
 		return destinationAirportCode;
 	}
-	public void setDestinationAirport(String airport)
+	public void setDestinationAirport(String airport) //DESTINATION AIRPORT 
 	{
 		this.destinationAirport = airport;
 	}
@@ -98,7 +119,7 @@ public class Route
 	{
 		return destinationAirport;
 	}
-	public void setDestinationAirportCityCode(String code)
+	public void setDestinationAirportCityCode(String code) //DESTINATION AIRPORT CITY CODE
 	{
 		this.destinationAirportCityCode = code;
 	}
@@ -106,7 +127,7 @@ public class Route
 	{
 		return destinationAirportCityCode;
 	}
-	public void setDestinationAirportCity(String city)
+	public void setDestinationAirportCity(String city) //DESTINATION AIRPORT CITY
 	{
 		this.destinationAirportCity = city;
 	}
@@ -114,15 +135,15 @@ public class Route
 	{
 		return destinationAirportCity;
 	}
-	public void setAircraftCode(String code)
+	public void setAircraftCode(String code) // AIRCRAFT CODE
 	{
 		this.aircraftCode = code;
 	}
-	public String getAircraftCode()
+	public String getAircraftCode()			
 	{
 		return aircraftCode;
 	}
-	public void setAircraft(String aircraft)
+	public void setAircraft(String aircraft) // AIRCRAFT NAME 
 	{
 		this.aircraft = aircraft;
 	}
@@ -130,21 +151,74 @@ public class Route
 	{
 		return aircraft;
 	}
-	public void setArrivalTime(String time)
+	public void setArrivalTime(String time)	//UNFORMATTED ARRIVAL TIME
 	{
 		this.arrivalTime = time;
 	}
-	public String getArrivalTime()
-	{
-		return arrivalTime;
-	}
-	public void setDepartureTime(String time)
+	public void setUnformattedDepartureTime(String time) //UNFORMATTED DEPARTURE TIME
 	{
 		this.departureTime = time;
 	}
-	public String getDepartureTime()
+	public String getUnformattedDepartureTime()	
 	{
 		return departureTime;
+	}
+	
+	public Date getArrivalDate()			//ARRIVAL DATE	
+	{
+		return Date.valueOf(arrivalTime.split("T")[0]);
+	}
+	public String getArrivalTime()			// ARRIVAL TIME
+	{
+		return arrivalTime.split("T")[1];
+	}
+	public Date getDepatureDate()			// DEPARTURE DATE	
+	{
+		return Date.valueOf(departureTime.split("T")[0]);
+	}
+	public String getDepartureTime()		// DEPARTURE TIME
+	{
+		return departureTime.split("T")[1];
+	}
+	
+	
+	
+	
+	
+	@Override
+	public boolean save()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public boolean insert()
+	{
+		String mysql = "INSERT INTO route(airlineName,airlineCode,airlineNumber,sourceAirport,"
+						+ "sourceAirportCode,sourceAirportCityCode,sourceAirportCity,destinationAirportCode,"
+						+ "destinationAirport,destinationAirportCityCode,destinationAirportCity,aircraftName,"
+						+ "aircraft,arrivalTime,departureTime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		Object arguments[] = {airlineName,airlineCode,airlineNumber,sourceAirport,
+				sourceAirportCode,sourceAirportCityCode,sourceAirportCity,destinationAirportCode,
+				destinationAirport,destinationAirportCityCode,destinationAirportCity,aircraft,
+				aircraftCode,arrivalTime,departureTime};
+		
+		if( MySQL.execute(mysql, arguments) == false)
+		{
+			return false;
+		}
+		
+		routeID = MySQL.getLastInsertID();
+		return true;
+	}
+	
+	
+	@Override
+	public boolean delete() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import database.MySQL;
 
 
-public class Passenger extends Person implements SavableObject 
+public class Passenger extends Person
 {
 
 	public Passenger(String id,String first,String last,String username,String email,String phone,

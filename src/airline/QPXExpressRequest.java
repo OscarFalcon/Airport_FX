@@ -145,7 +145,7 @@ public class QPXExpressRequest
 			/** HEADER FOR SOLUTION **/
 			s.setSaleTotal(jsonObject.get("saleTotal").getAsString());
 			s.setdepartureTime(leg.get("departureTime").getAsString());
-			System.out.printf("%-25.25s ",s.getDepatureTime());
+			System.out.printf("%-25.25s ",s.getDepartureTime());
 			s.setOriginAriportCode(leg.get("origin").getAsString());
 			System.out.printf("%-4.4s ",s.getOriginAirportCode());
 			s.setOriginAirport(getAirport(s.getOriginAirportCode(),airportMetaData));
@@ -175,7 +175,7 @@ public class QPXExpressRequest
 				System.out.printf("%-3.3s   ",route.getAircraftCode());
 				route.setAircraft(getAircraft(route.getAircraftCode(),aircraftMetaData));				//AIRCRAFT NAME
 				System.out.printf("%-20.20s ",route.getAircraft());
-				route.setDepartureTime(sliceLeg.get("departureTime").getAsString());					//DEPARTURE TIME
+				route.setUnformattedDepartureTime(sliceLeg.get("departureTime").getAsString());					//DEPARTURE TIME
 				System.out.printf("%-30.30s ",route.getDepartureTime());
 				route.setArrivalTime(sliceLeg.get("arrivalTime").getAsString());						//ARRIVAL TIME
 				System.out.printf("%-30.30s ",route.getArrivalTime());

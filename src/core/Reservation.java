@@ -4,7 +4,7 @@ package core;
 import database.MySQL;
 import airline.Solution;
 
-public class Reservation implements SavableObject {
+public class Reservation extends SavableObject {
 
 	private Solution srcToDest;
 	private Solution destToSrc;

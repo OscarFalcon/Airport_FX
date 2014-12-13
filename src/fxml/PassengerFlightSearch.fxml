@@ -53,7 +53,7 @@
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
                               </GridPane>
-                              <TableView fx:id="rSearchResults" prefHeight="247.0" prefWidth="875.0">
+                              <TableView fx:id="roundTripSearchResultsTable" prefHeight="247.0" prefWidth="875.0">
                                 <columns>
                                   <TableColumn id="rAirlineCol" fx:id="rAirlineCol" prefWidth="120.0" text="Airline" />
                                   <TableColumn id="rLeaveDateCol" fx:id="rLeaveDateCol" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
@@ -104,14 +104,14 @@
                                     <Label text="Preferred Class" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     <TextField fx:id="oPassenger" GridPane.rowIndex="5" />
                                     <ChoiceBox fx:id="oPreferredClass" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <ChoiceBox fx:id="oFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
-                                    <ChoiceBox fx:id="oFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <DatePicker fx:id="oDepart" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
+                                    <ChoiceBox fx:id="oFlyFromChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
+                                    <ChoiceBox fx:id="oFlyToChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <DatePicker fx:id="oDepartDatePicker" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
                                     <Button fx:id="oSearch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#oSearchAction" text="Search" GridPane.rowIndex="7" />
                                     <Label fx:id="oErrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.rowIndex="6" />
                                  </children>
                               </GridPane>
-                              <TableView fx:id="searchResults" prefHeight="235.0" prefWidth="600.0">
+                              <TableView fx:id="onewaySearchResultsTableView" prefHeight="235.0" prefWidth="600.0">
                                 <columns>
                                   <TableColumn fx:id="oAirlineCol" prefWidth="75.0" text="Airline" />
                                   <TableColumn fx:id="oDepDateCol" prefWidth="75.0" text="Depart Date:Time" />

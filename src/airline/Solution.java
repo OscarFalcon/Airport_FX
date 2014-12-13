@@ -3,7 +3,10 @@ package airline;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Solution
+import core.SavableObject;
+import database.MySQL;
+
+public class Solution extends SavableObject
 {
 	
 	private String saleTotal; 				//ok
@@ -21,6 +24,8 @@ public class Solution
 	private String destinationAirport;		//ok?
 	private String destinationAirportCode;	//ok?
 	
+	private Integer solutionID = null;				//id of this solution in the database;
+	
 	
 	private ArrayList<Route> routes;
 	
@@ -29,6 +34,13 @@ public class Solution
 	public Solution()
 	{
 		routes = new ArrayList<Route>();
+	}
+	
+	
+	public Integer getSolutionID()
+	{
+		return solutionID;
+		
 	}
 	
 	
@@ -57,11 +69,11 @@ public class Solution
 	{
 		return arrivalTime.split("T")[1];
 	}
-	public Date getDepatureDate()
+	public Date getDepartureDate()
 	{
 		return Date.valueOf(departureTime.split("T")[0]);
 	}
-	public String getDepatureTime()
+	public String getDepartureTime()
 	{
 		return departureTime.split("T")[1];
 	}
@@ -153,6 +165,66 @@ public class Solution
 	public String toString()
 	{
 		return saleTotal + ": " + originCityCode;
+	}
+
+
+	@Override
+	public boolean save()
+	{
+		
+		return false;
+	}
+
+
+	@Override
+	public boolean insert()
+	{
+		String insertSolutionString = null;
+		String insertSolutionRouteString = null;
+		Integer solutionID = null;
+		
+		
+		
+		insertSolutionString = "INSERT INTO solution(saleTotal,arrivalTime,departureTime,originCityCode,originCity"
+				+"originAirportCode,originAirport,destinationCityCode,destinationCity,destinationAirportCode"
+				+ "destinationAirport) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+		Object arguments[] = {saleTotal,arrivalTime,departureTime,originCityCode,originCity,
+								originAirportCode,originAirport,destinationCityCode,destinationCity,
+								destinationAirportCode,destinationAirport};
+
+		if(MySQL.execute(insertSolutionString, arguments) == false)
+		{
+			return false;
+		}
+		
+		solutionID = MySQL.getLastInsertID();
+		
+		insertSolutionRouteString = "INSERT INTO solution_routes(solutionID,routeID) VALUES (?,?)";
+		
+		Integer routeID = null;
+		for(Route route : routes)
+		{
+			
+			
+			route.insert();
+			routeID = route.getRouteID();
+			
+			if( MySQL.execute(insertSolutionRouteString, new Object[]{solutionID,routeID}) == false )
+			{
+				return false;	
+			}
+	
+		}
+		
+		return true;		
+	}
+
+
+	@Override
+	public boolean delete() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	

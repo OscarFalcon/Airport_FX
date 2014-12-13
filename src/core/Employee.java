@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import database.MySQL;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Employee extends Person implements SavableObject  {
+public class Employee extends Person  {
 
 	private SimpleStringProperty type;
 	private SimpleStringProperty status;
@@ -15,6 +15,7 @@ public class Employee extends Person implements SavableObject  {
 	protected Employee(String id, String first, String last, String username,
 			String email, String phone, String street, String city,
 			String state, String zip, String type, String status, String availability) {
+		
 		super(id, first, last, username, email, phone, street, city, state, zip);
 		setType(type);
 		setStatus(status);

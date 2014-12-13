@@ -2,11 +2,13 @@ package application;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 import airline.QPXExpressRequest;
+import airline.Route;
 import airline.Solution;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -27,11 +29,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
-import core.Flight;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
-	MySQLData fetch = new MySQLData();
+	
 	
 	
 	@FXML
@@ -46,11 +47,15 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@FXML
     private ChoiceBox<String> rPreferredClass;
 
+	/** one way trip **/
     @FXML
-    private ChoiceBox<String> oFlyFrom;
+    private ChoiceBox<String> oFlyFromChoiceBox;
+    
+    @FXML
+    private ChoiceBox<String> oFlyToChoiceBox;
 
     @FXML
-    private DatePicker oDepart;
+    private DatePicker oDepartDatePicker;
 
     @FXML
     private Button oSearch;
@@ -61,14 +66,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     @FXML
     private Button myTripButtonPassFli;
 
-    @FXML
-    private ChoiceBox<String> oFlyTo;
+  
 
     @FXML
     private ChoiceBox<String> rFlyTo;
 
     @FXML
-    private TableView<Solution> searchResults;
+    private TableView<Solution> onewaySearchResultsTableView;
     
     @FXML
     private TableColumn<Solution,String> oAirlineCol;
@@ -83,25 +87,25 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private TableColumn<Solution,String> oPriceCol;
     
     @FXML
-    private TableView<Flight> rSearchResults;
+    private TableView<Solution> roundTripSearchResultsTable;
     
     @FXML
-    private TableColumn<Flight,String> rAirlineCol;
+    private TableColumn<Solution,String> rAirlineCol;
     
     @FXML
-    private TableColumn<Flight,String> rLeaveDateCol;
+    private TableColumn<Solution,String> rLeaveDateCol;
     
     @FXML
-    private TableColumn<Flight,String> rArriveDateCol;
+    private TableColumn<Solution,String> rArriveDateCol;
     
     @FXML
-    private TableColumn<Flight,String> rReturnDateCol;
+    private TableColumn<Solution,String> rReturnDateCol;
     
     @FXML
-    private TableColumn<Flight,String> rArriveSrcDateCol;
+    private TableColumn<Solution,String> rArriveSrcDateCol;
     
     @FXML
-    private TableColumn<Flight,String> rPriceCol;
+    private TableColumn<Solution,String> rPriceCol;
         
     @FXML
     private Label HeaderLabel;
@@ -148,6 +152,22 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     
     /**************************************** Beginning of roundtrip search ********************************************/
     
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		HeaderLabel.setText("WELCOME "+ myController.person.getFirstName());
+		populateSrcandDesFields();
+	    oneWayFlightTable();
+	    roundTripFlightTable();
+	    //selectFlightRow();
+	       
+	}
+    
+    
+    
+    
+    
     @FXML
     void rSearchAction(ActionEvent event) {
     	//Debug info
@@ -172,14 +192,14 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		    	
 	    	    QPXExpressRequest request = new QPXExpressRequest();
 	    	    request.setAdultCount(1);
-	    	    request.setDate(Date.valueOf(oDepart.getValue()));
-	    	    request.setDestination(oFlyTo.getValue());
-	    	    request.setOrigin(oFlyFrom.getValue());
+	    	    request.setDate(Date.valueOf(oDepartDatePicker.getValue()));
+	    	    request.setDestination(oFlyToChoiceBox.getValue());
+	    	    request.setOrigin(oFlyFromChoiceBox.getValue());
 	    	    request.setSolutions(20);
 	    	    flightList = request.getResponse();
 	    	    System.out.println("****************************");
 	    	    System.out.println(request.toJson());
-	    	    searchResults.setItems(flightList);
+	    	    onewaySearchResultsTableView.setItems(flightList);
 	    	    
 	    		if(flightList.isEmpty()){
 		    		rErrorLabel.setText("No Flights available");
@@ -196,32 +216,39 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     void oSearchAction(ActionEvent event) {
     	System.out.println("One Way Trip Seach Action");
     	
-    	if(oFlyFrom.getValue() == null || oFlyTo.getValue() == null)
+    	oErrorLabel.setText("");
+    	
+    	if(oFlyFromChoiceBox.getValue() == null || oFlyToChoiceBox.getValue() == null)
     	{
     		oErrorLabel.setText("Please specify Source and Destination of your trip!");
     		return;
     	}
-    	if(oDepart.getValue() == null )
+    	
+    	if(oDepartDatePicker.getValue() == null )
     	{
     		oErrorLabel.setText("Please specify departure and return date of your trip!");
     		return;
-    	}	
-    	oErrorLabel.setText("");
+    	}
+    	
+    	
 	    ObservableList<Solution> flightList;
-	    	
 	    QPXExpressRequest request = new QPXExpressRequest();
 	    
 	    request.setAdultCount(1);
-	    request.setDate(Date.valueOf(oDepart.getValue()));
-	    request.setDestination(oFlyTo.getValue());
-	    request.setOrigin(oFlyFrom.getValue());
+	    request.setDate(Date.valueOf(oDepartDatePicker.getValue()));
+	    request.setDestination(oFlyToChoiceBox.getValue());
+	    request.setOrigin(oFlyFromChoiceBox.getValue());
 	    request.setSolutions(500);
 	    flightList = request.getResponse();	    
-	    searchResults.setItems(flightList);
+	 
+	    onewaySearchResultsTableView.setItems(flightList);
+	   
 	    if(flightList.isEmpty())
 	    {
 	    	oErrorLabel.setText("No Flights available");
 	    }
+	    
+	    
 	    
 	    
     }
@@ -256,16 +283,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
-		HeaderLabel.setText("WELCOME "+ myController.person.getFirstName());
-		populateSrcandDesFields();
-	    oneWayFlightTable();
-	    roundTripFlightTable();
-	    selectFlightRow();
-	       
-	}
 	
 	
 	
@@ -275,62 +292,55 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	public void roundTripFlightTable()
 	{
 		
-
 		rAirlineCol.setMinWidth(150);
-		rAirlineCol
-			.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(
-							CellDataFeatures<Flight, String> p) {
-						return new ReadOnlyObjectWrapper<String>(p.getValue()
-								.getAirline());
-					}
-				});
+		rAirlineCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>,ObservableValue<String>>(){
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getRoutes().get(0).getAirlineName());
+			}
+		});
 
 		rLeaveDateCol.setMinWidth(150);
 
-		rLeaveDateCol
-				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(
-							CellDataFeatures<Flight, String> p) {
-						return new ReadOnlyObjectWrapper<String>(p.getValue()
-								.getDeptDate()
-								+ "     "
-								+ p.getValue().getDeptTime());
-					}
-				});
+		rLeaveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getDepartureDate().toString());
+			}
+		});
 
 		rArriveDateCol.setMinWidth(150);
 
-		rArriveDateCol
-				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(
-							CellDataFeatures<Flight, String> p) {
-						return new ReadOnlyObjectWrapper<String>(p.getValue()
-								.getArrivalDate()
-								+ "     "
-								+ p.getValue().getArrivalTime());
-					}
+		rArriveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				String value;				
+				ArrayList<Route> routes = p.getValue().getRoutes();
+				int size = routes.size();
+				
+				value = routes.get(size-1).getArrivalDate().toString()
+						+ " at "
+						+ routes.get(size-1).getArrivalTime().toString();
+				
+				return new ReadOnlyObjectWrapper<String>(value);
+								
+			}
 				});
 
 		rReturnDateCol.setMinWidth(150);
 
-		rReturnDateCol
-				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(
-							CellDataFeatures<Flight, String> p) {
-						return new ReadOnlyObjectWrapper<String>(p.getValue()
+		rReturnDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue()
 								.getArrivalDate()
 								+ "     "
 								+ p.getValue().getArrivalTime());
 					}
-				});
+		});
 
 		rArriveSrcDateCol.setMinWidth(150);
-
+/**
 		rArriveSrcDateCol
 				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
 					@Override
@@ -354,6 +364,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 								.getFlightPrice());
 					}
 				});
+				**/
 	}
 	/********************************** End Populate RoundTrip Table with Data ******************************************/
 
@@ -379,8 +390,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	oDepDateCol.setMinWidth(150);
 	oDepDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
 		@Override
-		public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
-			return new ReadOnlyObjectWrapper<String>(p.getValue().getDepatureTime());
+		public ObservableValue<String> call(CellDataFeatures<Solution, String> p)
+		{
+			String value = p.getValue().getDepartureDate().toString() +
+					 " at " +
+					 p.getValue().getDepartureTime();
+			
+			return new ReadOnlyObjectWrapper<String>(value);
 								
 		}
 	});
@@ -388,10 +404,22 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	oArrDateCol.setMinWidth(150);
 	oArrDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
 		@Override
-		public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
-			return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalTime());
+		public ObservableValue<String> call(CellDataFeatures<Solution, String> p)
+		{
+			String value;
+			ArrayList<Route> routes;
+			Route route;
+			int size;
+			
+			routes = p.getValue().getRoutes();
+			route = routes.get(routes.size()-1);
+			
+			value = route.getArrivalDate() +
+					" at " +
+					route.getArrivalTime();
+			return new ReadOnlyObjectWrapper<String>(value);
 							
-			}
+		}
 	});
 
 	oPriceCol.setMinWidth(150);
@@ -413,8 +441,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	/* Populates src and des fields for searching flights */
 	void populateSrcandDesFields()
 	{
-		oFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
-		oFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		oFlyFromChoiceBox.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
+		oFlyToChoiceBox.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
 		oPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
 		rFlyFrom.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
 		rFlyTo.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
@@ -427,14 +455,15 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	
 	
-	/********************************** Beginning of make reservation ******************************************/
+	/********************************** Beginning of make reservation ***************************************** **/
 
 	ObservableList<Solution> flightList;
 	// Select row for reservation for either oneway or roundtrip flights
 	public void selectFlightRow()
 	{
-		searchResults.setOnMouseClicked(new EventHandler<MouseEvent>() {
-    	    public void handle(MouseEvent event) {
+		onewaySearchResultsTableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent event) {
+				System.out.println("Table View Clicked");
     	    	if(event.getClickCount() > 1)
     	    	{
     	    		oneWayReserveFlightButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -443,8 +472,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	    	                //will store info from table using sql statement
     	    	            	reservationSubmitLabel.setText("Reservation Submitted");
     	    	            	System.out.println("\n\n\n " + "Reservation Submitted");
-    	    	            	System.out.println("Arrival Time Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalTime());
-    	    	            	System.out.println("Departure Time Selected: " + searchResults.getSelectionModel().getSelectedItem().getDepatureTime());
+    	    	            	System.out.println("Arrival Time Selected: " + onewaySearchResultsTableView.getSelectionModel().getSelectedItem().getArrivalTime());
+    	    	            //	System.out.println("Departure Time Selected: " + onewaySearchResultsTableView.getSelectionModel().getSelectedItem().getDepatureTime());
     	    	            //	System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
     	    	            //	System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
 
@@ -455,7 +484,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	});
 		
 
-		rSearchResults.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		roundTripSearchResultsTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			
     	    public void handle(MouseEvent event) {
     	    	if(event.getClickCount() > 1)
@@ -466,8 +495,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	                //will store info from table using sql statement
 	    	            	reservationSubmitLabel.setText("Reservation Submitted");
 	    	            	//System.out.println(searchResults.getSelectionModel().getSelectedItem().getArrivalTime());
-	    	            	System.out.println("Airline Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalTime());
-	    	            	System.out.println("Departure Selected: " + searchResults.getSelectionModel().getSelectedItem().getDepatureTime());
+	    	            	System.out.println("Airline Selected: " + onewaySearchResultsTableView.getSelectionModel().getSelectedItem().getArrivalTime());
+	    	            	//System.out.println("Departure Selected: " + onewaySearchResultsTableView.getSelectionModel().getSelectedItem().getDepatureTime());
 	    	            	//System.out.println("Arrival Selected: " + searchResults.getSelectionModel().getSelectedItem().getArrivalDate());
 	    	            	//System.out.println("Price Selected: " + searchResults.getSelectionModel().getSelectedItem().getFlightPrice());
 	    	            }
@@ -476,7 +505,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	    }
     	});
 		
-	}
+	} 
 	/********************************** End of make reservation ******************************************/
 
 }

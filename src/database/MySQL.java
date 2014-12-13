@@ -513,4 +513,26 @@ public class MySQL {
         }
         return true;
     }
+	
+	
+	public static Integer getLastInsertID()
+	{
+		int result_types[] = {MySQL.INTEGER};
+		String mysql = "SELECT LAST_INSERT_ID()";
+		
+		ArrayList<Object[]> results = MySQL.executeQuery(mysql, null, result_types);
+	
+		if(results == null || results.size() != 1)
+		{
+			return null;
+		}
+	
+		return (Integer)results.get(0)[0];
+	
+	}
+	
+	
+	
+	
+	
 }

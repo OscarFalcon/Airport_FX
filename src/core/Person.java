@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import database.MySQL;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Person implements SavableObject
+public class Person extends SavableObject
 {
 
 	
@@ -43,13 +43,13 @@ public class Person implements SavableObject
     
 	public static Person retrievePerson(String username, String password)
     {
-		String query = "SELECT userID, firstName, lastName, userName, email, telephone, street, city, state, zip, type "
+		String query = "SELECT userID, firstName, lastName, userName, email, telephone, street, city, state, zip "
 							+ "FROM person WHERE userName = ? && password = ?";
 		
 		Object[] arguments = {username, password};
 		
 		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
-		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING};
+		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
 		if(result.isEmpty())
