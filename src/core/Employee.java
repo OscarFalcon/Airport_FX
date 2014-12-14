@@ -9,12 +9,12 @@ public class Employee extends Person  {
 
 	private SimpleStringProperty type;
 	private SimpleStringProperty status;
-	private SimpleStringProperty availability;
+	private boolean availability;
 
 	
 	protected Employee(String id, String first, String last, String username,
 			String email, String phone, String street, String city,
-			String state, String zip, String type, String status, String availability) {
+			String state, String zip, String type, String status, boolean availability) {
 		
 		super(id, first, last, username, email, phone, street, city, state, zip);
 		setType(type);
@@ -75,7 +75,7 @@ public class Employee extends Person  {
 		
 		mysql = "UPDATE employee set type = ?, status = ?, availability = ?";
 		
-		Object arguments2[] = {type.get(), this.status.get(), availability.get()};
+		Object arguments2[] = {type.get(), this.status.get(), availability};
 		
 		status = MySQL.execute(mysql, arguments2);
 		return status;
@@ -97,7 +97,7 @@ public class Employee extends Person  {
 		MySQL.STRING, MySQL.STRING, MySQL.BOOLEAN};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
-		if(result.isEmpty())
+		if(result == null)
 		{
 			return null;
 		}
@@ -106,7 +106,7 @@ public class Employee extends Person  {
 		Employee employee = new Employee(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
 		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
 		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(), 
-		tmp[11].toString(), tmp[12].toString());
+		tmp[11].toString(), (boolean)tmp[12]);
 
 		return employee;	
     }
@@ -129,12 +129,12 @@ public class Employee extends Person  {
 		this.status.set(status);
 	}
 
-	public String getAvailability() {
-		return type.get();
+	public boolean getAvailability() {
+		return availability;
 	}
 
-	public void setAvailability(String availability) {
-		this.availability.get();
+	public void setAvailability(boolean availability) {
+		this.availability = availability;
 	}
 
 }

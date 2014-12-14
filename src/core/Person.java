@@ -77,6 +77,27 @@ public class Person extends SavableObject
 	
 	
 	
+	/* Person interface common methods */
+
+	@Override
+	public boolean insert()
+	{
+		return false;
+	}
+
+	@Override
+	public boolean delete() {
+		return false;
+	}
+	
+	@Override
+	public boolean save()
+	{
+		return false;
+	}
+	
+	
+	
 	/* Getters and Setters */
     
     public String getId()
@@ -163,29 +184,7 @@ public class Person extends SavableObject
     {
     	this.zip.set(zip);
     }
-    
-  
-
-    
-	@Override
-	public boolean insert()
-	{
-		return false;
-	}
-
-	@Override
-	public boolean delete() {
-		return false;
-	}
-	
-	@Override
-	public boolean save()
-	{
-		return false;
-	}
-	
-	
-	
+   
 	
     
 }

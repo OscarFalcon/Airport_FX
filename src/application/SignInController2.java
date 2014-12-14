@@ -2,6 +2,8 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import core.Employee;
+import core.Passenger;
 import core.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,15 +52,20 @@ public class SignInController2 implements Initializable, ControlledScreen{
         
     @FXML
     void signIn(ActionEvent event) {
-    	Person person;
+    	Person person = null;
+    	Passenger passenger;
+    	Employee employee;
+    	
+    	// Passenger login
+    	
     	if(userName.getText().equals("") || password.getText().equals(""))
     	{
     		error.setText("Please Enter all fields");
     	}
-    	else if( ((person = Person.retrievePerson(userName.getText(), password.getText())) != null))
+    	else if( ((passenger = Passenger.retrievePassenger(userName.getText(), password.getText())) != null))
     	{
     		error.setText("Login Successful");
-    		myController.setPerson(person);
+    		myController.setPerson(passenger);
     		myController.setScreen(ScreensFramework.screen3ID);
     		userName.setText("");
     		password.setText("");
@@ -70,8 +77,50 @@ public class SignInController2 implements Initializable, ControlledScreen{
     		password.setText("");
     	}
     	
+    	// Employee login
+    	
+    	if(userName.getText().equals("") || password.getText().equals(""))
+    	{
+    		error.setText("Please Enter all fields");
+    	}
+    	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null))
+    	{
+    		
+
+       		// need to setStatus and setAvailability
+    		String employeeType = employee.getType();
+    		switch(employeeType)
+    		{
+    		case "manager": 		employeeType = "manager";
+    		loginSuccessful(person,employee);
+    		myController.setScreen(ScreensFramework.screen6ID);
+    		break;
+    		case "receptionist":	employeeType = "receptionist";
+    		loginSuccessful(person,employee);
+    		myController.setScreen(ScreensFramework.screen8ID);
+    		break;
+    		case "bagger": 			employeeType = "bagger";
+    		break;
+    		case "sysadmin": 		employeeType = "sysAdmin";			
+    		}
+    	}
+    	else 
+    	{
+    		error.setText("Login Failed");
+    		userName.setText("");
+    		password.setText("");
+    	}
     }
 
+    public void loginSuccessful(Person person, Employee employee)
+    {
+    	error.setText("Login Successful");
+		myController.setPerson(employee);
+		employee.setAvailability(true);
+		userName.setText("");
+		password.setText("");
+    }
+    
     @FXML
     void forgotPassword(ActionEvent event) {
     	//myController.setScreen(ScreensFramework.screen2ID);
