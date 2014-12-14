@@ -34,8 +34,6 @@ import javafx.util.Callback;
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
 	
-	
-	
 	@FXML
 	private Button oneWayReserveFlightButton;
 	

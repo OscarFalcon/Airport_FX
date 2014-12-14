@@ -28,6 +28,7 @@ public class ScreensFramework extends Application {
     /*Receptionist*/
     public static String screen8ID = "ReceptionistMain";
     public static String screen9ID = "ReceptionistFlightCondition";
+    public static String screen13ID = "ChargesFees";
     
     public static HashMap<String, String> screens = new HashMap<>();
   
@@ -44,7 +45,7 @@ public class ScreensFramework extends Application {
         screens.put("CreateAccount", "/fxml/createAccountPage.fxml");
         screens.put("MyTrip", "/fxml/MyTrip.fxml");
         
-        /*mangaer*/
+        /*manager*/
         screens.put("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
         screens.put("ManagerAccountPage", "/fxml/ManagerAccountPage.fxml");
         screens.put("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
@@ -54,7 +55,7 @@ public class ScreensFramework extends Application {
         /*Receptionist*/
         screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
         screens.put("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
-        
+        screens.put("ChargesFees", "/fxml/ChargesFees.fxml");
         
      
         mainContainer.setScreen(ScreensFramework.screen1ID);

@@ -12,7 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 
-public class ManegerAccountPageController implements Initializable, ControlledScreen{
+public class ManagerAccountPageController implements Initializable, ControlledScreen{
 	ScreensController myController;
 
     @FXML

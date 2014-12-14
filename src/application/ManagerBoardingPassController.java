@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class ManegerBoardingPassController implements Initializable, ControlledScreen{
+public class ManagerBoardingPassController implements Initializable, ControlledScreen{
 	ScreensController myController;
 
     @FXML
