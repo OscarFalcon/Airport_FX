@@ -73,7 +73,6 @@ public class Passenger extends Person
 						+ "FROM person "
 						+ "WHERE person.userID = ? && person.password = ?"; 
 		
-		System.out.println("\nQUERY STRING: " + query);
 		
 		Object[] arguments = {username, password};
 		

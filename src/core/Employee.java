@@ -83,15 +83,15 @@ public class Employee extends Person  {
 	
 	public static Employee retrieveEmployee(String username, String password)
     {
-		String query = "SELECT person.userID, person.firstName,person.lastName,"
-						+"person.userName, person.email,person.telephone,person.street,"
+		String query = "SELECT person.userID,person.firstName,person.lastName,"
+						+"person.userName,person.email,person.telephone,person.street,"
 						+ "person.city,person.state,person.zip,employee.type,employee.status,"
-						+"employee.availability"
-						+ "FROM person INNER JOIN employee on person.userID = employee.employeeID"
-						+ "WHERE person.userID = ? AND person.password = ?";
+						+"employee.availability "
+						+ "FROM person INNER JOIN employee on person.userID = employee.employeeID "
+						+ "WHERE person.userID = ? && person.password = ?";
 		
 		Object[] arguments = {username, password};
-		
+		System.out.println("/n/nQUERY STATEMENT " + query +"/n/n");
 		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
 		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, 
 		MySQL.STRING, MySQL.STRING, MySQL.BOOLEAN};

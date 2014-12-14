@@ -58,10 +58,12 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	
     	// Passenger login
     	
+    	
     	if(userName.getText().equals("") || password.getText().equals(""))
     	{
     		error.setText("Please Enter all fields");
     	}
+    	
     	else if( ((passenger = Passenger.retrievePassenger(userName.getText(), password.getText())) != null))
     	{
     		error.setText("Login Successful");
@@ -70,19 +72,9 @@ public class SignInController2 implements Initializable, ControlledScreen{
     		userName.setText("");
     		password.setText("");
     	}
-    	else 
-    	{
-    		error.setText("Login Failed");
-    		userName.setText("");
-    		password.setText("");
-    	}
     	
     	// Employee login
     	
-    	if(userName.getText().equals("") || password.getText().equals(""))
-    	{
-    		error.setText("Please Enter all fields");
-    	}
     	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null))
     	{
     		
@@ -110,8 +102,10 @@ public class SignInController2 implements Initializable, ControlledScreen{
     		userName.setText("");
     		password.setText("");
     	}
+    	
+    	
     }
-
+    /* helper method for employee login */
     public void loginSuccessful(Person person, Employee employee)
     {
     	error.setText("Login Successful");
