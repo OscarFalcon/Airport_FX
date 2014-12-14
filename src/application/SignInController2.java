@@ -70,8 +70,6 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	// Employee login
     	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null))
     	{
-        	employee.setAvailability("1");
-    		//employee.save();
     		String employeeType = employee.getType();
     		switch(employeeType)
     		{
@@ -96,7 +94,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	{
     		
     		error.setText("Login Successful -- Passenger");
-    		myController.setPerson(passenger);
+    		myController.setPassenger(passenger);
     		myController.setScreen(ScreensFramework.screen3ID);
     		userName.setText("");
     		password.setText("");
@@ -115,8 +113,9 @@ public class SignInController2 implements Initializable, ControlledScreen{
     public void loginSuccessful(Person person, Employee employee)
     {
     	error.setText("Login Successful -- Employee");
-		myController.setPerson(employee);
-		//employee.setAvailability('1'));
+		myController.setEmployee(employee);
+		employee.setAvailability("1");
+		//employee.save();   Save method not functioning properly??
 		userName.setText("");
 		password.setText("");
     }

@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import core.Passenger;
 import airline.QPXExpressRequest;
 import airline.Route;
 import airline.Solution;
@@ -43,7 +44,10 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	private Button roundTripReserveFlightButton;
 	
 	@FXML
-	private Label reservationSubmitLabel;
+	private Label oReservationSubmitLabel;
+	
+	@FXML
+	private Label rReservationSubmitLabel;
 	
 	@FXML
     private ChoiceBox<String> rPreferredClass;
@@ -166,7 +170,28 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	}
     
     
+	
+	@FXML
+	void oReserveFlightAction(ActionEvent event){
+		Solution selected = onewaySearchResultsTableView.getSelectionModel().getSelectedItem();
+		String srcToDest = Integer.toString(selected.getSolutionID());
+		String destToSrc = "null";
+		String numberOfBags = "0";
+		String totalSale = selected.getSaleTotal();
+		String personID = myController.person.getId();
+		System.out.println("Reserve Flight: "+srcToDest+destToSrc+numberOfBags+totalSale+personID);
+		if(myController.passenger.addReservation(srcToDest, destToSrc, numberOfBags, totalSale, personID) == false){
+			System.out.println("Something went wrong here!");
+			oReservationSubmitLabel.setText("Could not reserve Flight!");
+		} else {
+			oReservationSubmitLabel.setText("Successfully reserved your flight!");
+		}
+	}
     
+	@FXML
+	void rReserveFlightAction(ActionEvent event){
+		
+	}
     
     
     @FXML
@@ -256,11 +281,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     /*********************************************End of Oneway search ********************************************/
 
     
-    
-    @FXML
-    void searchFlight(ActionEvent event){
-    	//do Nothing
-    }
 
     @FXML
     void myAccount(ActionEvent event) {
