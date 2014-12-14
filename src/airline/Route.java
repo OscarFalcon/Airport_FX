@@ -39,13 +39,6 @@ public class Route extends SavableObject
 		return routeID;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	public void setAirlineName(String airline)	//AIRLINE NAME
 	{
 		this.airlineName = airline;

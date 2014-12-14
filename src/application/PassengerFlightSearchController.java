@@ -439,8 +439,11 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	/********************************** Beginning of Populate src/des fields ******************************************/
 
 	/* Populates src and des fields for searching flights */
+	/* Node we need to populate the list from the QPX API */
 	void populateSrcandDesFields()
 	{
+		Route route = null;
+		
 		oFlyFromChoiceBox.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
 		oFlyToChoiceBox.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
 		oPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
@@ -464,7 +467,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		onewaySearchResultsTableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent event) {
 				System.out.println("Table View Clicked");
-    	    	if(event.getClickCount() > 1)
+    	    	if(event.getClickCount() >= 1)
     	    	{
     	    		oneWayReserveFlightButton.setOnAction(new EventHandler<ActionEvent>() {
     	    	            @Override

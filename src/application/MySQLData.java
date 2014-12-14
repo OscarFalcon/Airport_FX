@@ -5,8 +5,6 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import core.AirportLookups;
-import core.Flight;
 import database.MySQL;
 
 public class MySQLData {
@@ -57,6 +55,8 @@ public class MySQLData {
 	}
 	
 	/*Query database by src, des, srcDate, desDate (Get flight info for round trip */
+	
+	/*
 	public ObservableList<Flight> searchFlightRoundTrip(String srcLocation, String desLocation, Date srcDate, Date depDate){
 		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ? && depDate = ? ||"
 				+ "desLocation = ? && srcLocation = ? && depDate = ?";
@@ -85,9 +85,9 @@ public class MySQLData {
 		
 		
 	}
-
+*/
 	/* Get flight info for one way trips */
-	
+	/*
 	public ObservableList<Flight> searchFlightOneWay(String srcLocation, String desLocation, Date srcDate){
 		String flightDataTable = "SELECT flightID,airline,flightNumber,depDate,timeDep,arrDate,timeArr,srcLocation,desLocation,price FROM flightinfo WHERE srcLocation = ? && desLocation = ?"
 								+ "&& depDate = ?";
@@ -174,4 +174,5 @@ public class MySQLData {
 			}
 			return updated;
 		}
+		*/
 }
