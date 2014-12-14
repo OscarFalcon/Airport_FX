@@ -11,11 +11,11 @@
 
 <AnchorPane id="passengerflightsearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerAccountPageController">
    <children>
-      <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="478.0" prefWidth="617.0">
+      <BorderPane layoutX="205.0" layoutY="119.0" prefHeight="540.0" prefWidth="804.0">
          <top>
             <AnchorPane prefHeight="68.0" prefWidth="643.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="150.0" layoutY="21.0" maxWidth="1.7976931348623157E308">
+                  <HBox layoutX="233.0" layoutY="14.0" maxWidth="1.7976931348623157E308">
                      <children>
                         <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" text="Search Flight" />
                         <Button fx:id="MyAccButtCusAcc" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />

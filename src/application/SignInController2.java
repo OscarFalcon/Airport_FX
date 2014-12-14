@@ -56,35 +56,34 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	Employee employee;
     	Person person;
 
-    	    	
-    	if( ((person = Person.retrievePerson(userName.getText(), password.getText())) != null));
-    	
     	if(userName.getText().equals("") || password.getText().equals(""))
     	{
     		error.setText("Please Enter all fields");
+    	}	
+    	
+    	
+    	if( ((person = Person.retrievePerson(userName.getText(), password.getText())) == null)){
+    		System.out.println("Error retrieving person!!!");
     	}
     	
 
     	// Employee login
     	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null))
     	{
-        	
-    		
-       		// need to setStatus and setAvailability
     		String employeeType = employee.getType();
     		switch(employeeType)
     		{
-    		case "manager": 		employeeType = "manager";
+    		case "manager": 		//employeeType = "manager";
     		loginSuccessful(person,employee);
     		myController.setScreen(ScreensFramework.screen6ID);
     		break;
-    		case "receptionist":	employeeType = "receptionist";
+    		case "receptionist":	//employeeType = "receptionist";
     		loginSuccessful(person,employee);
     		myController.setScreen(ScreensFramework.screen8ID);
     		break;
-    		case "bagger": 			employeeType = "bagger";
+    		case "bagger": 			//employeeType = "bagger";
     		break;
-    		case "sysadmin": 		employeeType = "sysAdmin";			
+    		case "sysadmin": 		//employeeType = "sysAdmin";			
     		}
     		
     	}
@@ -95,7 +94,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	{
     		
     		error.setText("Login Successful -- Passenger");
-    		myController.setPerson(passenger);
+    		myController.setPassenger(passenger);
     		myController.setScreen(ScreensFramework.screen3ID);
     		userName.setText("");
     		password.setText("");
@@ -114,8 +113,9 @@ public class SignInController2 implements Initializable, ControlledScreen{
     public void loginSuccessful(Person person, Employee employee)
     {
     	error.setText("Login Successful -- Employee");
-		myController.setPerson(employee);
-		//employee.setAvailability('1'));
+		myController.setEmployee(employee);
+		employee.setAvailability("1");
+		//employee.save();   Save method not functioning properly??
 		userName.setText("");
 		password.setText("");
     }
