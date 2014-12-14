@@ -96,7 +96,7 @@ public class QPXExpressRequest
 			} 
 			rd.close();
 			
-			System.out.println(jsonResponse.toString());
+			//System.out.println(jsonResponse.toString());
 			EntityUtils.consume(response.getEntity());
 			return getResponse(jsonResponse.toString());
 			
@@ -145,16 +145,16 @@ public class QPXExpressRequest
 			/** HEADER FOR SOLUTION **/
 			s.setSaleTotal(jsonObject.get("saleTotal").getAsString());
 			s.setdepartureTime(leg.get("departureTime").getAsString());
-			System.out.printf("%-25.25s ",s.getDepartureTime());
+			//System.out.printf("%-25.25s ",s.getDepartureTime());
 			s.setOriginAriportCode(leg.get("origin").getAsString());
-			System.out.printf("%-4.4s ",s.getOriginAirportCode());
+			//System.out.printf("%-4.4s ",s.getOriginAirportCode());
 			s.setOriginAirport(getAirport(s.getOriginAirportCode(),airportMetaData));
-			System.out.printf("%-30.30s ",s.getOriginAirport());
+			//System.out.printf("%-30.30s ",s.getOriginAirport());
 			s.setOriginCityCode(getCityCodeFromAirportCode(s.getOriginAirportCode(),airportMetaData));
-			System.out.printf("%-5.5s ",s.getOriginCityCode());
+			//System.out.printf("%-5.5s ",s.getOriginCityCode());
 			s.setOriginCity(getCity(s.getOriginCityCode(),cityMetaData));
-			System.out.printf("%-15.15s ",s.getOriginCity());
-			System.out.printf("%-10.10s ",s.getSaleTotal());
+			//System.out.printf("%-15.15s ",s.getOriginCity());
+			//System.out.printf("%-10.10s ",s.getSaleTotal());
 			/** END OF HEADER SECTION **/
 			
 			
@@ -172,27 +172,27 @@ public class QPXExpressRequest
 				
 				route = new Route();
 				route.setAircraftCode(sliceLeg.get("aircraft").getAsString());							// AIRCRAFT CODE
-				System.out.printf("%-3.3s   ",route.getAircraftCode());
+				//System.out.printf("%-3.3s   ",route.getAircraftCode());
 				route.setAircraft(getAircraft(route.getAircraftCode(),aircraftMetaData));				//AIRCRAFT NAME
-				System.out.printf("%-20.20s ",route.getAircraft());
+				//System.out.printf("%-20.20s ",route.getAircraft());
 				route.setUnformattedDepartureTime(sliceLeg.get("departureTime").getAsString());					//DEPARTURE TIME
-				System.out.printf("%-30.30s ",route.getDepartureTime());
+				//System.out.printf("%-30.30s ",route.getDepartureTime());
 				route.setArrivalTime(sliceLeg.get("arrivalTime").getAsString());						//ARRIVAL TIME
-				System.out.printf("%-30.30s ",route.getArrivalTime());
+				//System.out.printf("%-30.30s ",route.getArrivalTime());
 				route.setAirlineCode(segment.get(0).getAsJsonObject().get("flight").getAsJsonObject().get("carrier").getAsString());//AIRLINE CODE
-				System.out.printf("%-3.3s   ", route.getAirlineCode());
+				//System.out.printf("%-3.3s   ", route.getAirlineCode());
 				route.setAirlineName(getAirline(route.getAirlineCode(),airlineMetaData));				//AIRLINE NAME
-				System.out.printf("%-15.15s   ", route.getAirlineName());
+				//System.out.printf("%-15.15s   ", route.getAirlineName());
 				route.setAirlineNumber(segment.get(0).getAsJsonObject().get("flight").getAsJsonObject().get("number").getAsString());//AIRLINE NUMBER
-				System.out.printf("%-6.6s   ",route.getAirlineNumber());
+				//System.out.printf("%-6.6s   ",route.getAirlineNumber());
 				route.setSourceAirportCode(sliceLeg.get("origin").getAsString());						//SOURCE AIRPORT CODE
-				System.out.printf("%-3.3s   ",route.getSourceAirportCode());
+				//System.out.printf("%-3.3s   ",route.getSourceAirportCode());
 				route.setSourceAirport(getAirport(route.getSourceAirportCode(),airportMetaData));		//SOURCE AIRPORT NAME
-				System.out.printf("%-30.30s   ",route.getSourceAirport());
+				//System.out.printf("%-30.30s   ",route.getSourceAirport());
 				route.setDestinationAirportCode(sliceLeg.get("destination").getAsString());				//DESTINATION AIRPORT CODE
-				System.out.printf("%-3.3s   ",route.getDestinationAirportCode());
+				//System.out.printf("%-3.3s   ",route.getDestinationAirportCode());
 				route.setDestinationAirport(getAirport(route.getDestinationAirportCode(),airportMetaData));//DESTINATION AIRPORT NAME
-				System.out.printf("%-30.30s   ",route.getDestinationAirport());
+				//System.out.printf("%-30.30s   ",route.getDestinationAirport());
 				
 				route.setSourceAirportCityCode(getCityCodeFromAirportCode(route.getSourceAirportCode(),airportMetaData)); //SOURCE AIRPORT CITY CODE
 				route.setSourceAirportCity(getCity(route.getSourceAirportCityCode(),cityMetaData));		//SOURCE AIRPORT CITY NAME
@@ -208,7 +208,7 @@ public class QPXExpressRequest
 			s.setDestinationAirportCode(route.getDestinationAirportCode());
 			s.setDestinationAirport(route.getDestinationAirport());
 			/** END OF FOOTER SECTION **/
-			System.out.println();	
+			//System.out.println();	
 		}
 		
 		

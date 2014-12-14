@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -160,7 +161,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		populateSrcandDesFields();
 	    oneWayFlightTable();
 	    roundTripFlightTable();
-	    //selectFlightRow();
+	    selectFlightRow();
 	       
 	}
     
@@ -460,10 +461,45 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	/********************************** Beginning of make reservation ***************************************** **/
 
+	
+	
 	ObservableList<Solution> flightList;
 	// Select row for reservation for either oneway or roundtrip flights
 	public void selectFlightRow()
 	{
+		
+		
+		Callback<TableView<Solution>,TableRow<Solution>> callBack = new Callback<TableView<Solution>,TableRow<Solution>>()
+		{
+			@Override
+			public TableRow<Solution> call(TableView<Solution> param) {
+				System.out.println("init tableRow");
+				TableRow<Solution> row = new TableRow<>();
+				row.setOnMouseClicked(new EventHandler<MouseEvent>(){
+					@Override
+					public void handle(MouseEvent event) {
+						System.out.println("Table Row clicked");
+						@SuppressWarnings("unchecked")
+						TableRow<Solution> row = (TableRow<Solution>) event.getSource();
+						System.out.println("Route Aricraft: " + row.getItem().getRoutes().get(0).getAircraft());
+						
+					}
+					
+				});
+				return row;
+			}
+			
+		};
+	
+		onewaySearchResultsTableView.setRowFactory(callBack);
+		    
+		
+		
+		
+		
+		
+		
+		/**
 		onewaySearchResultsTableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent event) {
 				System.out.println("Table View Clicked");
@@ -484,9 +520,9 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	    	     });
     	    	}
     	    }
-    	});
+    	});**/
 		
-
+		/**
 		roundTripSearchResultsTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			
     	    public void handle(MouseEvent event) {
@@ -506,7 +542,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    	        });	
     	    	}
     	    }
-    	});
+    	});**/
 		
 	} 
 	/********************************** End of make reservation ******************************************/
