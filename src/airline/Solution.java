@@ -185,8 +185,8 @@ public class Solution extends SavableObject
 		
 		
 		
-		insertSolutionString = "INSERT INTO solution(saleTotal,arrivalTime,departureTime,originCityCode,originCity"
-				+"originAirportCode,originAirport,destinationCityCode,destinationCity,destinationAirportCode"
+		insertSolutionString = "INSERT INTO solution(saleTotal,arrivalTime,departureTime,originCityCode,originCity,"
+				+"originAirportCode,originAirport,destinationCityCode,destinationCity,destinationAirportCode,"
 				+ "destinationAirport) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 		Object arguments[] = {saleTotal,arrivalTime,departureTime,originCityCode,originCity,
