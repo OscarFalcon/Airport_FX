@@ -52,33 +52,26 @@ public class SignInController2 implements Initializable, ControlledScreen{
         
     @FXML
     void signIn(ActionEvent event) {
-    	Person person = null;
     	Passenger passenger;
     	Employee employee;
-    	
-    	// Passenger login
-    	
+    	Person person;
+
+    	    	
+    	//need to error trap person
+    	if( ((person = Person.retrievePerson(userName.getText(), password.getText())) != null));
     	
     	if(userName.getText().equals("") || password.getText().equals(""))
     	{
     		error.setText("Please Enter all fields");
     	}
     	
-    	else if( ((passenger = Passenger.retrievePassenger(userName.getText(), password.getText())) != null))
-    	{
-    		error.setText("Login Successful");
-    		myController.setPerson(passenger);
-    		myController.setScreen(ScreensFramework.screen3ID);
-    		userName.setText("");
-    		password.setText("");
-    	}
-    	
+
     	// Employee login
     	
-    	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null))
+    	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null
+    			 && person.getId().toString() == employee.getEmployeeID()))
     	{
     		
-
        		// need to setStatus and setAvailability
     		String employeeType = employee.getType();
     		switch(employeeType)
@@ -96,6 +89,19 @@ public class SignInController2 implements Initializable, ControlledScreen{
     		case "sysadmin": 		employeeType = "sysAdmin";			
     		}
     	}
+    	
+    	// Passenger login
+
+    	else if( ((passenger = Passenger.retrievePassenger(userName.getText(), password.getText())) != null))
+    	{
+    		
+    		error.setText("Login Successful -- Passenger");
+    		myController.setPerson(passenger);
+    		myController.setScreen(ScreensFramework.screen3ID);
+    		userName.setText("");
+    		password.setText("");
+    	}
+    	
     	else 
     	{
     		error.setText("Login Failed");
@@ -108,9 +114,9 @@ public class SignInController2 implements Initializable, ControlledScreen{
     /* helper method for employee login */
     public void loginSuccessful(Person person, Employee employee)
     {
-    	error.setText("Login Successful");
+    	error.setText("Login Successful -- Employee");
 		myController.setPerson(employee);
-		employee.setAvailability(true);
+		//employee.setAvailability('1'));
 		userName.setText("");
 		password.setText("");
     }

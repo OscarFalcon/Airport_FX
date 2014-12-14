@@ -7,14 +7,17 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Employee extends Person  {
 
-	private SimpleStringProperty type;
+	public enum type { MANAGER, RECEPTIONIST, BAGGER, SYSADMIN }
+	type employeeType;
+	
+	//private SimpleStringProperty type;
 	private SimpleStringProperty status;
-	private boolean availability;
-
+	private SimpleStringProperty availability;
+	private SimpleStringProperty employeeID;
 	
 	protected Employee(String id, String first, String last, String username,
 			String email, String phone, String street, String city,
-			String state, String zip, String type, String status, boolean availability) {
+			String state, String zip, String type, String status, String availability) {
 		
 		super(id, first, last, username, email, phone, street, city, state, zip);
 		setType(type);
@@ -43,7 +46,7 @@ public class Employee extends Person  {
 		
 		mysql = "INSERT INTO employee(type) VALUES (?)";
 		
-		Object arguments2[] = {type.get()};
+		Object arguments2[] = {employeeType.name()};
 		
 		status = MySQL.execute(mysql, arguments2);
 		return status;
@@ -75,7 +78,7 @@ public class Employee extends Person  {
 		
 		mysql = "UPDATE employee set type = ?, status = ?, availability = ?";
 		
-		Object arguments2[] = {type.get(), this.status.get(), availability};
+		Object arguments2[] = {employeeType.name(), this.status.get(), availability};
 		
 		status = MySQL.execute(mysql, arguments2);
 		return status;
@@ -88,13 +91,13 @@ public class Employee extends Person  {
 						+ "person.city,person.state,person.zip,employee.type,employee.status,"
 						+"employee.availability "
 						+ "FROM person INNER JOIN employee on person.userID = employee.employeeID "
-						+ "WHERE person.userID = ? && person.password = ?";
+						+ "WHERE person.userName = ? && person.password = ?";
 		
 		Object[] arguments = {username, password};
 		System.out.println("/n/nQUERY STATEMENT " + query +"/n/n");
 		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
 		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, 
-		MySQL.STRING, MySQL.STRING, MySQL.BOOLEAN};
+		MySQL.STRING, MySQL.STRING, MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
 		if(result.isEmpty())
@@ -106,19 +109,24 @@ public class Employee extends Person  {
 		Employee employee = new Employee(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
 		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
 		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(), 
-		tmp[11].toString(), (boolean)tmp[12]);
+		tmp[11].toString(),tmp[12].toString());
 
 		return employee;	
     }
 
+	public String getEmployeeID(){
+		return employeeID.get();
+	}
 	
-	
+	public void setEmployeeID(String employeeID){
+		this.employeeID.set(employeeID);
+	}
 	public String getType() {
-		return type.get();
+		return employeeType.name();
 	}
 
-	public void setType(String type) {
-		this.type.set(type);
+	public void setType(String eType) {
+		  employeeType = type.valueOf(eType);
 	}
 
 	public String getStatus() {
@@ -129,12 +137,12 @@ public class Employee extends Person  {
 		this.status.set(status);
 	}
 
-	public boolean getAvailability() {
-		return availability;
+	public String getAvailability() {
+		return availability.get();
 	}
 
-	public void setAvailability(boolean availability) {
-		this.availability = availability;
+	public void setAvailability(String availability) {
+		this.availability.set(availability);
 	}
 
 }

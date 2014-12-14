@@ -105,6 +105,10 @@ public class Person extends SavableObject
     	return id.get();
     } 
     
+    public void setId(String id)
+    {
+    	this.id.set(id);
+    }
     
     public String getUserName()
     {

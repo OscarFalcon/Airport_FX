@@ -68,10 +68,10 @@ public class Passenger extends Person
 	public static Passenger retrievePassenger(String username, String password)
     {
 		String query = "SELECT person.userID,person.firstName,person.lastName,"
-						+"person.userName,person.email,person.telephone,person.street,"
+						+"person.username,person.email,person.telephone,person.street,"
 						+ "person.city,person.state,person.zip "
 						+ "FROM person "
-						+ "WHERE person.userID = ? && person.password = ?"; 
+						+ "WHERE person.userName = ? && person.password = ?"; 
 		
 		
 		Object[] arguments = {username, password};
