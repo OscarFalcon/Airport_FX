@@ -67,11 +67,13 @@ public class Passenger extends Person
 	
 	public static Passenger retrievePassenger(String username, String password)
     {
-		String query = "SELECT person.userID, person.firstName,person.lastName,"
-						+"person.userName, person.email,person.telephone,person.street,"
-						+ "person.city,person.state,person.zip"
-						+ "FROM person"
-						+ "WHERE person.userID = ? AND person.password = ?";
+		String query = "SELECT person.userID,person.firstName,person.lastName,"
+						+"person.userName,person.email,person.telephone,person.street,"
+						+ "person.city,person.state,person.zip "
+						+ "FROM person "
+						+ "WHERE person.userID = ? && person.password = ?"; 
+		
+		System.out.println("\nQUERY STRING: " + query);
 		
 		Object[] arguments = {username, password};
 		
@@ -79,10 +81,11 @@ public class Passenger extends Person
 		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
-		if(result == null)
+		if(result.isEmpty())
 		{
 			return null;
 		}
+		
 		Object[] tmp = result.get(0);
 		
 		Passenger passenger = new Passenger(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),

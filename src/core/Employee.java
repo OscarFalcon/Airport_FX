@@ -97,7 +97,7 @@ public class Employee extends Person  {
 		MySQL.STRING, MySQL.STRING, MySQL.BOOLEAN};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
-		if(result == null)
+		if(result.isEmpty())
 		{
 			return null;
 		}
