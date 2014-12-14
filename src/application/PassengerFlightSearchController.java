@@ -173,11 +173,11 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     void rSearchAction(ActionEvent event) {
     	//Debug info
     	
-    //	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
-    //		rErrorLabel.setText("Please specify Source and Destination of your trip!");
-    //	else if(rDepart.getValue() == null || rArrive.getValue() == null)
-    //		rErrorLabel.setText("Please specify departure and return date of your trip!");
-    //	else{
+    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    		rErrorLabel.setText("Please specify Source and Destination of your trip!");
+    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
+    		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    	else{
     		rErrorLabel.setText("");
 	    	System.out.println("RoundTrip Seach Action");
 	    	System.out.println("SRC: " + rFlyFrom.getValue());
@@ -193,9 +193,9 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		    	
 	    	    QPXExpressRequest request = new QPXExpressRequest();
 	    	    request.setAdultCount(1);
-	    	    request.setDate(Date.valueOf(oDepartDatePicker.getValue()));
-	    	    request.setDestination(oFlyToChoiceBox.getValue());
-	    	    request.setOrigin(oFlyFromChoiceBox.getValue());
+	    	    request.setDate(Date.valueOf(rDepart.getValue()));
+	    	    request.setDestination(rFlyTo.getValue());
+	    	    request.setOrigin(rFlyFrom.getValue());
 	    	    request.setSolutions(20);
 	    	    flightList = request.getResponse();
 	    	    System.out.println("****************************");
@@ -206,7 +206,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		    		rErrorLabel.setText("No Flights available");
 		    	} 
     	}
-    //}
+    }
     /****************************************** End of roundtrip search ********************************************/
 
     
