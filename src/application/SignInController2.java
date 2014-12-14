@@ -57,7 +57,6 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	Person person;
 
     	    	
-    	//need to error trap person
     	if( ((person = Person.retrievePerson(userName.getText(), password.getText())) != null));
     	
     	if(userName.getText().equals("") || password.getText().equals(""))
@@ -67,10 +66,9 @@ public class SignInController2 implements Initializable, ControlledScreen{
     	
 
     	// Employee login
-    	
-    	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null
-    			 && person.getId().toString() == employee.getEmployeeID()))
+    	else if( ((employee = Employee.retrieveEmployee(userName.getText(), password.getText())) != null))
     	{
+        	
     		
        		// need to setStatus and setAvailability
     		String employeeType = employee.getType();
@@ -88,6 +86,7 @@ public class SignInController2 implements Initializable, ControlledScreen{
     		break;
     		case "sysadmin": 		employeeType = "sysAdmin";			
     		}
+    		
     	}
     	
     	// Passenger login
