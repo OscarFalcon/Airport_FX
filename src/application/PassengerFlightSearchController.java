@@ -473,16 +473,17 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		{
 			@Override
 			public TableRow<Solution> call(TableView<Solution> param) {
-				System.out.println("init tableRow");
 				TableRow<Solution> row = new TableRow<>();
 				row.setOnMouseClicked(new EventHandler<MouseEvent>(){
 					@Override
 					public void handle(MouseEvent event) {
-						System.out.println("Table Row clicked");
-						@SuppressWarnings("unchecked")
-						TableRow<Solution> row = (TableRow<Solution>) event.getSource();
-						System.out.println("Route Aricraft: " + row.getItem().getRoutes().get(0).getAircraft());
-						
+						if(event.getClickCount() == 2){ 
+							System.out.println("Table Row clicked");
+							@SuppressWarnings("unchecked")
+							TableRow<Solution> row = (TableRow<Solution>) event.getSource();
+							myController.showFlightDetailsPage(row.getItem());
+							System.out.println("Route Aricraft: " + row.getItem().getRoutes().get(0).getAircraft());
+						}
 					}
 					
 				});
@@ -553,5 +554,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	public void reset() {
 		HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
 	}
+	
 
 }
