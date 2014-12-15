@@ -12,8 +12,6 @@ public class Person extends SavableObject
 	protected  SimpleStringProperty id;
 	protected  SimpleStringProperty firstName;
 	protected  SimpleStringProperty lastName;
-	protected  SimpleStringProperty username;
-	protected  SimpleStringProperty password;
 	protected  SimpleStringProperty email;
 	protected  SimpleStringProperty phone;
 	protected  SimpleStringProperty street;
@@ -31,7 +29,6 @@ public class Person extends SavableObject
     	this.id 		= new SimpleStringProperty(id);
     	this.firstName 	= new SimpleStringProperty(first);
     	this.lastName 	= new SimpleStringProperty(last);
-    	this.username 	= new SimpleStringProperty(username);
     	this.email 		= new SimpleStringProperty(email);
     	this.phone 		= new SimpleStringProperty(phone);
     	this.street     = new SimpleStringProperty(street);
@@ -65,18 +62,6 @@ public class Person extends SavableObject
 		return person;	
     }
 	
-	public boolean resetPassword(String newPassword)
-	{
-		boolean reset = false;
-		String resetPassword = "UPDATE userinfo SET password = ? WHERE userName = ?";
-		Object[] arguments = {newPassword, username.get()};
-		reset = MySQL.execute(resetPassword, arguments);
-		
-		return reset;
-	}
-	
-	
-	
 	/* Person interface common methods */
 
 	@Override
@@ -108,13 +93,7 @@ public class Person extends SavableObject
     public void setId(String id)
     {
     	this.id.set(id);
-    }
-    
-    public String getUserName()
-    {
-    	return username.get();
-    }
-    
+    }   
     
     public String getFirstName() 
     {
