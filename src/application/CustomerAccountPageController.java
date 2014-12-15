@@ -22,24 +22,7 @@ public class CustomerAccountPageController implements Initializable, ControlledS
 	
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	//Reset all error Labels
-    	AOerrorLabel.setText("");
-    	usernameErrorLabel.setText("");
-    	passwordErrorLabel.setText("");
     	
-    	/**
-    	accountFirstName.setText(myController.getPassenger().getFirstName());
-    	accountLastName.setText(myController.getPassenger().getLastName());
-    	accountEmail.setText(myController.getPassenger().getEmail());
-    	accountPhone.setText(myController.getPassenger().getPhone());
-    	accountStreet.setText(myController.getPassenger().getStreet());
-    	accountCity.setText(myController.getPassenger().getCity());
-    	accountState.setText(myController.getPassenger().getState());
-    	accountZip.setText(myController.getPassenger().getZip());
-    	
-    	accountUsername.setText(myController.getPassenger().getUserName());
-    	**/
-
     }
     
     @FXML
@@ -173,8 +156,21 @@ public class CustomerAccountPageController implements Initializable, ControlledS
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
-		
+		AOerrorLabel.setText("");
+    	usernameErrorLabel.setText("");
+    	passwordErrorLabel.setText("");
+    	
+    	
+    	accountFirstName.setText(myController.getPassenger().getFirstName());
+    	accountLastName.setText(myController.getPassenger().getLastName());
+    	accountEmail.setText(myController.getPassenger().getEmail());
+    	accountPhone.setText(myController.getPassenger().getPhone());
+    	accountStreet.setText(myController.getPassenger().getStreet());
+    	accountCity.setText(myController.getPassenger().getCity());
+    	accountState.setText(myController.getPassenger().getState());
+    	accountZip.setText(myController.getPassenger().getZip());
+    	
+    	accountUsername.setText(myController.getPassenger().getUserName());
 	}
 
 }

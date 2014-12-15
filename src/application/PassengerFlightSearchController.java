@@ -165,7 +165,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    oneWayFlightTable();
 	    roundTripFlightTable();
 	    selectFlightRow();
-	       
 	}
     
     
@@ -569,8 +568,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
-		
+		HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
 	}
 
 }
