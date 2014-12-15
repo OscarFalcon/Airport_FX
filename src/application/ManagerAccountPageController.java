@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import core.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -99,6 +100,18 @@ public class ManagerAccountPageController implements Initializable, ControlledSc
     @FXML
     void MyAccount(ActionEvent event) {
     	myController.setScreen(ScreensFramework.screen10ID);
+    	
+    	Employee employee = myController.getEmployee();
+    	
+    	employee.setFirstName();
+    	employee.setLastName(fName);
+    	employee.set
+    	
+    	
+    	employee.save();
+    	
+    	
+    	
     }
 
     @FXML

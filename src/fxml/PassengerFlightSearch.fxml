@@ -39,7 +39,7 @@
                                     <Label text="Flying To" textFill="WHITE" GridPane.columnIndex="1" />
                                     <Label text="Preferred Class" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     <ChoiceBox fx:id="rPreferredClass" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <TextField fx:id="rPassenger" GridPane.rowIndex="5" />
+                                    <TextField fx:id="roundTripPassengerCountTextField" GridPane.rowIndex="5" />
                                     <ChoiceBox fx:id="rFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
                                     <ChoiceBox fx:id="rFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <DatePicker fx:id="roundTripLeavingDatePicker" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
@@ -57,7 +57,7 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
                               </Label>
-                              <TableView fx:id="roundTripDepartingSearchResultsTable" prefHeight="247.0" prefWidth="875.0">
+                              <TableView fx:id="roundTripSrcToDestSearchResultsTable" prefHeight="247.0" prefWidth="875.0">
                                 <columns>
                                   <TableColumn id="rAirlineCol" fx:id="rAirlineCol" prefWidth="120.0" text="Airline" />
                                   <TableColumn id="rLeaveDateCol" fx:id="roundTripDepartureDateTimeCol" minWidth="0.0" prefWidth="170.0" text="Departure Date:Time" />
@@ -70,7 +70,7 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
                               </Label>
-                              <TableView fx:id="roundTripArrivingSearchResultsTable" prefHeight="247.0" prefWidth="875.0">
+                              <TableView fx:id="roundTripDestToSrcSearchResultsTable" prefHeight="247.0" prefWidth="875.0">
                                  <columns>
                                     <TableColumn id="rAirlineCol" fx:id="rAirlineCol2" prefWidth="120.0" text="Airline" />
                                     <TableColumn id="rLeaveDateCol" fx:id="roundTripDepartureDateTimeCol2" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
@@ -117,7 +117,7 @@
                                     <Label text="Passenger" textFill="WHITE" GridPane.rowIndex="4" />
                                     <Label text="Flying To" textFill="WHITE" GridPane.columnIndex="1" />
                                     <Label text="Preferred Class" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <TextField fx:id="oPassenger" GridPane.rowIndex="5" />
+                                    <TextField fx:id="oneWayPassengerCountTextField" GridPane.rowIndex="5" />
                                     <ChoiceBox fx:id="oPreferredClass" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                     <ChoiceBox fx:id="oFlyFromChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
                                     <ChoiceBox fx:id="oFlyToChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />

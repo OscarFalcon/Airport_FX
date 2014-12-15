@@ -31,16 +31,27 @@ import javafx.util.Callback;
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
 	
+	
+	@FXML
+	private Label HeaderLabel;
+	
 	@FXML
 	private Label oReservationSubmitLabel;
 	
 	@FXML
 	private Label rReservationSubmitLabel;
 	
-	@FXML
-    private ChoiceBox<String> rPreferredClass;
-
+	  
 	/** one way trip **/
+	@FXML
+	private ChoiceBox<String> oPreferredClass;
+
+	@FXML
+	private Label oErrorLabel;
+
+	@FXML
+	private TextField oneWayPassengerCountTextField;
+	
     @FXML
     private ChoiceBox<String> oFlyFromChoiceBox;
     
@@ -72,11 +83,27 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private TableColumn<Solution,String> oPriceCol;
     
     
+    /** ROUND TRIP **/
     
-    
-    /** round trip departing table view **/
     @FXML
-    private TableView<Solution> roundTripDepartingSearchResultsTable;
+    private ChoiceBox<String> rFlyFrom;
+
+    @FXML
+    private DatePicker roundTripArrivalDatePicker;
+    
+    @FXML
+    private DatePicker roundTripLeavingDatePicker;
+    
+    @FXML
+    private TextField roundTripPassengerCountTextField;
+    
+    @FXML
+    private ChoiceBox<String> rPreferredClass;
+    
+    
+    // round trip src to dest table view
+    @FXML
+    private TableView<Solution> roundTripSrcToDestSearchResultsTable;
     
     @FXML
     private TableColumn<Solution,String> rAirlineCol;
@@ -96,11 +123,9 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     @FXML
     private TableColumn<Solution,String> rPriceCol;
     
-    
-    
-    /** round trip arriving table view **/
+    // round trip dest tp src table view 
     @FXML
-    private TableView<Solution> roundTripArrivingSearchResultsTable;
+    private TableView<Solution> roundTripDestToSrcSearchResultsTable;
     
     @FXML
     private TableColumn<Solution,String> rAirlineCol2;
@@ -114,38 +139,10 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     @FXML
     private TableColumn<Solution,String> rPriceCol2;
     
-   
     
     
-    
-    
-    
-    
-    
-    @FXML
-    private Label HeaderLabel;
-
-    @FXML
-    private ChoiceBox<String> oPreferredClass;
-
-
-    @FXML
-    private TextField oPassenger;
-
-    @FXML
-    private DatePicker roundTripLeavingDatePicker;
-
-    @FXML
-    private Label oErrorLabel;
-
-    @FXML
-    private ChoiceBox<String> rFlyFrom;
-
-    @FXML
-    private DatePicker roundTripArrivalDatePicker;
-
-    @FXML
-    private TextField rPassenger;
+ 
+  
 
 
     
@@ -155,7 +152,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		//HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
 		populateSrcandDesFields();
 	    oneWayFlightTable();
 	    initRoundTripFlightTables();
@@ -165,7 +161,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     
 	
 	@FXML
-	void oReserveFlightAction(ActionEvent event){
+	void oReserveFlightAction(ActionEvent event)
+	{
 		Solution selected = onewaySearchResultsTableView.getSelectionModel().getSelectedItem();
 		Reservation reservation = new Reservation();
 		reservation.setSrcToDest(selected);
@@ -184,8 +181,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	}
     
 	@FXML
-	void rReserveFlightAction(ActionEvent event){
+	void rReserveFlightAction(ActionEvent event)
+	{
 		
+	
+	
+	
+	
 	}
     
     
@@ -210,26 +212,44 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     		return;
     	}
     	
+    	Integer count;
+    	try
+    	{
+    		count = Integer.parseInt(roundTripPassengerCountTextField.getText());
+    	}
+    	catch(Exception e)
+    	{
+    		rErrorLabel.setText("Passenger Count must be a valid number");
+    		return;
+    	}
+    	
+    	if(departingDate.after(returningDate))
+    	{
+    		rErrorLabel.setText("Departing date must be before returning date (: ");
+    		return;
+    		
+    	}
+	
     	rErrorLabel.setText("");
     	ObservableList<Solution> srcToDestFlightList;
     	ObservableList<Solution> destToSrcFlightList;
     	
     	//populate the departing table view 
     	QPXExpressRequest request = new QPXExpressRequest();
-    	request.setAdultCount(1);
+    	request.setAdultCount(count);
 	    request.setDate(departingDate);
 	    request.setDestination(destinationCityCode);
 	    request.setOrigin(sourceCityCode);
-	    request.setSolutions(500);
+	    request.setSolutions(50);
 	    srcToDestFlightList = request.getResponse();
-	    roundTripArrivingSearchResultsTable.setItems(srcToDestFlightList);
+	    roundTripSrcToDestSearchResultsTable.setItems(srcToDestFlightList);
 	     
 	    //populate the arrivaing table view
 	    request.setOrigin(destinationCityCode); //the new origin is the original destination (:
 	    request.setDestination(sourceCityCode); //same for the new destination  
 	    request.setDate(returningDate);
 	    destToSrcFlightList = request.getResponse();
-	    roundTripDepartingSearchResultsTable.setItems(destToSrcFlightList);
+	    roundTripDestToSrcSearchResultsTable.setItems(destToSrcFlightList);
 	      		
     	
     }
@@ -257,15 +277,28 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     		return;
     	}
     	
+    	Integer count;
+    	try
+    	{
+    		count = Integer.parseInt(oneWayPassengerCountTextField.getText());
+    	}
+    	catch(Exception e)
+    	{
+    		oErrorLabel.setText("Passenger Count must be a valid number");
+    		return;
+    	}
+    	
+    	
+    	
     	
 	    ObservableList<Solution> flightList;
 	    QPXExpressRequest request = new QPXExpressRequest();
 	    
-	    request.setAdultCount(1);
+	    request.setAdultCount(count);
 	    request.setDate(Date.valueOf(oneWayDepartDatePicker.getValue()));
 	    request.setDestination(oFlyToChoiceBox.getValue());
 	    request.setOrigin(oFlyFromChoiceBox.getValue());
-	    request.setSolutions(500);
+	    request.setSolutions(50);
 	    flightList = request.getResponse();	    
 	 
 	    onewaySearchResultsTableView.setItems(flightList);
@@ -327,7 +360,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
 				Solution s = p.getValue();
 				return new ReadOnlyObjectWrapper<String>(s.getDepartureDate().toString()
-							+ " @ " + s.getDepartureTime());
+							+ " at " + s.getDepartureTime());
 			}
 		});
 
@@ -372,7 +405,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
 				Solution s = p.getValue();
 				return new ReadOnlyObjectWrapper<String>(s.getDepartureDate().toString()
-							+ " @ " + s.getDepartureTime());
+							+ " at " + s.getDepartureTime());
 			}
 		});
 
@@ -536,8 +569,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		};
 	
 		onewaySearchResultsTableView.setRowFactory(callBack);
-		roundTripDepartingSearchResultsTable.setRowFactory(callBack);
-		roundTripArrivingSearchResultsTable.setRowFactory(callBack);
+		roundTripDestToSrcSearchResultsTable.setRowFactory(callBack);
+		roundTripDestToSrcSearchResultsTable.setRowFactory(callBack);
 		
 		
 	
