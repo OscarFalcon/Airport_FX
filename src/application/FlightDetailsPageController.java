@@ -55,13 +55,7 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 
 	@Override
 	public void reset() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
 		airlineCol.setCellValueFactory(new Callback<CellDataFeatures<Route, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Route, String> p) {
@@ -105,6 +99,12 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 		});
 		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
 		flightDetailsTable.setItems(list);
+		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
 	}
 
 }

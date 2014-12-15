@@ -181,7 +181,7 @@ public class ScreensController  extends StackPane {
             FlightDetailsPageController controller = loader.getController();
             controller.setScreenParent(this);
             controller.setSolution(solution);
-            //controller.reset();
+            controller.reset();
             
             detailsPage.showAndWait();
             return true;
