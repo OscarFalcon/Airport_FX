@@ -2,17 +2,22 @@ package core;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.SimpleStringProperty;
 import database.MySQL;
 
 
 public class Passenger extends Person
 {
+	
+	protected  SimpleStringProperty username;
+	protected  SimpleStringProperty password;
 
-	public Passenger(String id,String first,String last,String username,String email,String phone,
+	public Passenger(String id,String first,String last,String username,String password,String email,String phone,
 					String street, String city, String state, String zip)
 	{
 		super(id,first,last,username,email,phone,street,city, state,zip);
-
+		this.username = new SimpleStringProperty(username);
+		this.password = new SimpleStringProperty(password);
 	}
 	
 	
@@ -41,13 +46,34 @@ public class Passenger extends Person
 	@Override
 	public boolean insert()
 	{
-		String mysql = "INSERT INTO person(firstName,lastName,userName,password,email,telephone,street,city,state,zip)"
-						+ "VALUES (?,?,?,?,?,?,?,?,?,?)";
+		boolean created = false;
+	
+							
+		System.out.println("LAST INDEX USED IS: " + MySQL.getLastInsertID());
+	
+		String createAccount = "INSERT INTO person(firstName,lastName,email,telephone,street,city,state,zip)"
+						     + "VALUES (?,?,?,?,?,?,?,?)";
 		
-		Object arguments[] = {firstName.get(),lastName.get(),username.get(),password.get(),email.get(),
-							  phone.get(),street.get(),city.get(),state.get(),zip.get()};
+		Object personArguments[] = {firstName.get(),lastName.get(),email.get(),phone.get(),
+				                    street.get(),city.get(),state.get(),zip.get()};
 		
-		return MySQL.execute(mysql, arguments);
+		created = MySQL.execute(createAccount, personArguments);
+		
+		if(created == false)
+			return false;
+		
+		createAccount = "INSERT INTO passenger(userID,username,password)"
+					  + "VALUES (?,?,?)";
+		
+		Object passengerArguments[] = {MySQL.getLastInsertID(),username.get(),password.get()};
+		
+		created = MySQL.execute(createAccount, passengerArguments);
+		
+		if(created == false)
+			return false;
+
+		
+		return created;
 		
 	}
 
@@ -64,6 +90,7 @@ public class Passenger extends Person
 	@Override
 	public boolean save()
 	{
+		
 		String mysql = "UPDATE person set firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, telephone = ?,"
 							+ "street = ?, city = ?, state = ?, zip = ?";
 		
@@ -77,7 +104,7 @@ public class Passenger extends Person
 	public static Passenger retrievePassenger(String username, String password)
     {
 		String query = "SELECT person.userID,person.firstName,person.lastName,"
-						+"passenger.username,person.email,person.telephone,person.street,"
+						+"passenger.username,passenger.password,person.email,person.telephone,person.street,"
 						+ "person.city,person.state,person.zip "
 						+ "FROM person JOIN passenger ON person.userID = passenger.userID "
 						+ "WHERE passenger.userName = ? && passenger.password = ?"; 
@@ -86,7 +113,7 @@ public class Passenger extends Person
 		Object[] arguments = {username, password};
 		
 		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
-		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING};
+		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING,MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
 		if(result.isEmpty())
@@ -98,10 +125,30 @@ public class Passenger extends Person
 		
 		Passenger passenger = new Passenger(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
 		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
-		tmp[7].toString(),tmp[8].toString(),tmp[9].toString());
+		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString());
 
-		return passenger;	
+		return passenger;
+		
+		
     }
+	
+	public String getUserName()
+	{
+		return username.get();
+	}
+	public void setUserName(String username)
+	{
+		this.username.set(username);
+	}
+	
+	public String getPassword()
+	{
+		return password.get();
+	}
+	public void setPassword(String password)
+	{
+		this.password.set(password);
+	}
 
 	
 

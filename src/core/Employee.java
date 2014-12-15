@@ -3,26 +3,30 @@ package core;
 import java.util.ArrayList;
 
 import database.MySQL;
-import javafx.beans.property.SimpleStringProperty;
 
 public class Employee extends Person  {
 
-	private SimpleStringProperty type;
-	private SimpleStringProperty status;
-	private SimpleStringProperty availability;
-	private SimpleStringProperty employeeID;
+	private String type;
+	private String status;
+	private String availability;
+	private String employeeID;
+	private String userID;
+	private String username;
+	private String password;
 	
 	
 	
 	protected Employee(String id, String first, String last, String username,
-			String email, String phone, String street, String city,
+			String password, String email, String phone, String street, String city,
 			String state, String zip, String type, String status, String availability) {
 		
-		super(id, first, last, username, email, phone, street, city, state, zip);
-		this.type = new SimpleStringProperty(type);
-		this.status = new SimpleStringProperty(status);
-		this.availability = new SimpleStringProperty(availability);
-		this.employeeID = new SimpleStringProperty(id);
+		super(id, first, last,username,email, phone, street, city, state, zip);
+		this.type = type;
+		this.status  = status;
+		this.availability =  availability;
+		this.employeeID = id;
+		this.password = password;
+		this.username = username;
 	
 	}
 	
@@ -30,36 +34,32 @@ public class Employee extends Person  {
 	
 	@Override
 	public boolean insert() {
-		
-		boolean status = false;
-		
-		String mysql = "INSERT INTO person(firstName,lastName,userName,password,email,telephone,street,city,state,zip)"
-				+ "VALUES (?,?,?,?,?,?,?,?,?,?)";
+				
+		String mysql = "insert into person(firstName,lastName,email,telephone,street,city,state,zip) VALUES "
+				+ "(?,?,?,?,?,?,?,?);";
 
-		Object arguments1[] = { firstName.get(), lastName.get(), username.get(),
-				password.get(), email.get(), phone.get(), street.get(),
+		Object arguments1[] = {firstName.get(), lastName.get(), username,
+				password, email.get(), phone.get(), street.get(),
 				city.get(), state.get(), zip.get() };
 
-		status = MySQL.execute(mysql, arguments1);
-		if(status == false){
-			return status;
-		}
 		
-		mysql = "INSERT INTO employee(type) VALUES (?)";
+		 if(MySQL.execute(mysql, arguments1) == false)
+		 {
+			 return false;
+		 }
 		
-		Object arguments2[] = {type};
 		
-		status = MySQL.execute(mysql, arguments2);
-		return status;
+		mysql = "INSERT INTO employee(type,userID,username,password) VALUES (?,?,?,?);";
+		
+		Object arguments2[] = {type,userID,username,password};
+		
+		 return MySQL.execute(mysql, arguments2);
+	
 	}
 
 	@Override
 	public boolean delete() {
-		String mysql = "DELETE from employee where employeeID = ?";
-
-		Object arguments[] = { id.get() };
-
-		return MySQL.execute(mysql, arguments);
+		return false;
 	}
 
 	@Override
@@ -68,8 +68,8 @@ public class Employee extends Person  {
 		String mysql = "UPDATE person set firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, telephone = ?,"
 				+ "street = ?, city = ?, state = ?, zip = ?";
 
-		Object arguments1[] = { firstName.get(), lastName.get(), username.get(),
-				password.get(), email.get(), phone.get(), street.get(),
+		Object arguments1[] = { firstName.get(), lastName.get(), username,
+				password, email.get(), phone.get(), street.get(),
 				city.get(), state.get(), zip.get() };
 
 		status = MySQL.execute(mysql, arguments1);
@@ -88,7 +88,7 @@ public class Employee extends Person  {
 	public static Employee retrieveEmployee(String username, String password)
     {
 		String query = "SELECT person.userID,person.firstName,person.lastName,"
-						+"employee.username,person.email,person.telephone,person.street,"
+						+"employee.username,employee.password,person.email,person.telephone,person.street,"
 						+ "person.city,person.state,person.zip,employee.type,employee.status,"
 						+"employee.availability "
 						+ "FROM person INNER JOIN employee on person.userID = employee.userID "
@@ -97,7 +97,7 @@ public class Employee extends Person  {
 		Object[] arguments = {username, password};
 		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
 		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, 
-		MySQL.STRING, MySQL.STRING, MySQL.STRING};
+		MySQL.STRING, MySQL.STRING, MySQL.STRING,MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
 		
@@ -116,7 +116,7 @@ public class Employee extends Person  {
 		
 		Employee employee = new Employee(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
 		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
-		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(), 
+		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(),tmp[11].toString(), 
 		status,availability);
 		
 		
@@ -124,34 +124,34 @@ public class Employee extends Person  {
     }
 
 	public String getEmployeeID(){
-		return employeeID.get();
+		return employeeID;
 	}
 	
 	public void setEmployeeID(String employeeID){
-		this.employeeID.set(employeeID);
+		this.employeeID = (employeeID);
 	}
 	public String getType() {
-		return type.get();
+		return type;
 	}
 
 	public void setType(String employeeType) {
-		type.set(employeeType);
+		type = (employeeType);
 	}
 
 	public String getStatus() {
-		return status.get();
+		return status;
 	}
 
 	public void setStatus(String employeeStatus) {
-		status.set(employeeStatus);
+		status = (employeeStatus);
 	}
 
 	public String getAvailability() {
-		return availability.get();
+		return availability;
 	}
 
 	public void setAvailability(String employeeAvailability) {
-		availability.set(employeeAvailability);
+		availability = (employeeAvailability);
 	}
 
 }

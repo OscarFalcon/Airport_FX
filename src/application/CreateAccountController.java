@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import core.Passenger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,8 +13,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class CreateAccountController implements Initializable, ControlledScreen{
-	
-	MySQLData insert = new MySQLData();
 	
 	ScreensController myController;
 
@@ -61,20 +60,12 @@ public class CreateAccountController implements Initializable, ControlledScreen{
     
     @FXML
     void createAccount(ActionEvent event) {
-    	
-    	if (firstName.getText().equals("") || lastName.getText().equals("") || username.getText().equals("") || email.getText().equals("")
-       		 || street.getText().equals("") || state.getText().equals("") || zip.getText().equals("") || password.getText().equals("") || cPassword.getText().equals("")){
-       	 	ErrorLabel.setText("Please enter all fields!");
-    	 }else if(insert.checkUserName(username.getText(),null) == true){
-         	ErrorLabel.setText("Username Taken");
-         } else if (!password.getText().equals(cPassword.getText())){
-        	 ErrorLabel.setText("Passwords do not match!");
-         } else {
-         //	insert.createPassengerAccount(firstName.getText(), lastName.getText(), username.getText(), password.getText(),
-         //	email.getText(), phone.getText(), street.getText(), city.getText(), state.getText(), zip.getText());
+    
+        	Passenger passenger = new Passenger(null,firstName.getText(),lastName.getText(),username.getText(),password.getText(),email.getText(),phone.getText(),street.getText(),city.getText(),state.getText(),zip.getText());
+        	passenger.insert();
          	ErrorLabel.setText("Successfully Created Account!");
-         	myController.setScreen(ScreensFramework.screen3ID);
-         }
+         	myController.setScreen(ScreensFramework.screen1ID);
+        
     }
 
     @FXML
