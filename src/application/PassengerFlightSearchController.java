@@ -165,7 +165,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    oneWayFlightTable();
 	    roundTripFlightTable();
 	    selectFlightRow();
-	       
 	}
     
     
@@ -568,5 +567,12 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		
 	} 
 	/********************************** End of make reservation ******************************************/
+
+
+
+	@Override
+	public void reset() {
+		HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
+	}
 
 }

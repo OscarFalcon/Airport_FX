@@ -22,23 +22,7 @@ public class CustomerAccountPageController implements Initializable, ControlledS
 	
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	//Reset all error Labels
-    	AOerrorLabel.setText("");
-    	usernameErrorLabel.setText("");
-    	passwordErrorLabel.setText("");
     	
-    	/**
-    	accountFirstName.setText(myController.person.getFirstName());
-    	accountLastName.setText(myController.person.getLastName());
-    	accountEmail.setText(myController.person.getEmail());
-    	accountPhone.setText(myController.person.getPhone());
-    	accountStreet.setText(myController.person.getStreet());
-    	accountCity.setText(myController.person.getCity());
-    	accountState.setText(myController.person.getState());
-    	accountZip.setText(myController.person.getZip());
-    	
-    	accountUsername.setText(myController.person.getUserName()); **/
-
     }
     
     @FXML
@@ -115,12 +99,12 @@ public class CustomerAccountPageController implements Initializable, ControlledS
 
     @FXML
     void saveAO(ActionEvent event) {
-
+    	AOerrorLabel.setText("Successfully changed Account Information!");
     }
     
     @FXML
     void changeUsername(ActionEvent event) {
-    	usernameErrorLabel.setText("Successfully changed Username");
+    	usernameErrorLabel.setText("Successfully changed Username!");
     }
 
     @FXML
@@ -168,6 +152,25 @@ public class CustomerAccountPageController implements Initializable, ControlledS
 		// TODO Auto-generated method stub
 		 myController = screenParent;
 		
+	}
+
+	@Override
+	public void reset() {
+		AOerrorLabel.setText("");
+    	usernameErrorLabel.setText("");
+    	passwordErrorLabel.setText("");
+    	
+    	
+    	accountFirstName.setText(myController.getPassenger().getFirstName());
+    	accountLastName.setText(myController.getPassenger().getLastName());
+    	accountEmail.setText(myController.getPassenger().getEmail());
+    	accountPhone.setText(myController.getPassenger().getPhone());
+    	accountStreet.setText(myController.getPassenger().getStreet());
+    	accountCity.setText(myController.getPassenger().getCity());
+    	accountState.setText(myController.getPassenger().getState());
+    	accountZip.setText(myController.getPassenger().getZip());
+    	
+    	accountUsername.setText(myController.getPassenger().getUserName());
 	}
 
 }

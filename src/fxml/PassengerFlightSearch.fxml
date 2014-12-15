@@ -72,6 +72,16 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
                               </Label>
+                              <TableView fx:id="roundTripSearchResultsTable1" prefHeight="247.0" prefWidth="875.0">
+                                 <columns>
+                                    <TableColumn id="rAirlineCol" fx:id="rAirlineCol1" prefWidth="120.0" text="Airline" />
+                                    <TableColumn id="rLeaveDateCol" fx:id="rLeaveDateCol1" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
+                                    <TableColumn id="rArriveDateCol" fx:id="rArriveDateCol1" prefWidth="174.0" text="Arrival Date:Time" />
+                                    <TableColumn id="rReturnDateCol" fx:id="rReturnDateCol1" minWidth="3.0" prefWidth="177.0" text="Return Date:Time" />
+                                    <TableColumn id="rArriveSrcDateCol" fx:id="rArriveSrcDateCol1" prefWidth="234.0" text="Arrival Source Date:Time" />
+                                    <TableColumn id="rPriceCol" fx:id="rPriceCol1" minWidth="0.0" prefWidth="124.0" text="Price" />
+                                 </columns>
+                              </TableView>
                               <Label fx:id="rReservationSubmitLabel" prefHeight="25.0" prefWidth="563.0" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />

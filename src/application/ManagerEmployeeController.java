@@ -55,4 +55,10 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
 		
 	}
 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

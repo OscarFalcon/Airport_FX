@@ -195,4 +195,10 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 		
 	}
 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

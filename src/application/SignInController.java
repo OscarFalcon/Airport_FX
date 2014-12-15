@@ -67,8 +67,8 @@ public class SignInController implements Initializable, ControlledScreen{
 		 Passenger passenger = Passenger.retrievePassenger(username, passwordString);
 		 if(passenger != null )
 		 {
-			 myController.setScreen(ScreensFramework.screen3ID);
 			 myController.setPassenger(passenger);
+			 myController.setScreen(ScreensFramework.screen3ID);
 			 resetLabels();
 			 return;
 		 }
@@ -79,6 +79,7 @@ public class SignInController implements Initializable, ControlledScreen{
 			 switch(employee.getType())
 			 {
 			 	case "manager":
+			 		myController.setEmployee(employee);
 			 		myController.setScreen(ScreensFramework.screen6ID);
 			 		resetLabels();
 			 		break;
@@ -87,11 +88,8 @@ public class SignInController implements Initializable, ControlledScreen{
 			 return;
 			 
 		 }
-		 error.setText("Invalid Credentials");
+		 error.setText("Successfully Logged In!");
 		 
-		 
-		
-	 
 	 }
 	
  
@@ -111,9 +109,13 @@ public class SignInController implements Initializable, ControlledScreen{
 		password.setText("");
 		error.setText("");
 	}
+
+
+
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
 		
-
-
-
-
+	}
+		
 }
