@@ -127,7 +127,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private Button myAccountButtonPassFli;
 
     @FXML
-    private DatePicker rDepart;
+    private DatePicker roundTripLeavingDatePicker;
 
     @FXML
     private Label oErrorLabel;
@@ -139,7 +139,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private ChoiceBox<String> rFlyFrom;
 
     @FXML
-    private DatePicker rArrive;
+    private DatePicker roundTripArrivalDatePicker;
 
     @FXML
     private TextField rPassenger;
@@ -193,42 +193,46 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     
     
     @FXML
-    void rSearchAction(ActionEvent event) {
-    	//Debug info
+    void roundTripSearchAction(ActionEvent event) {
     	
-    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    	String sourceCityCode = rFlyFrom.getValue();
+    	String destinationCityCode = rFlyTo.getValue();
+    	Date departingDate = Date.valueOf(roundTripLeavingDatePicker.getValue());
+    	
+    	if(sourceCityCode == null || destinationCityCode == null)
+    	{
     		rErrorLabel.setText("Please specify Source and Destination of your trip!");
-    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
-    		rErrorLabel.setText("Please specify departure and return date of your trip!");
-    	else{
-    		rErrorLabel.setText("");
-	    	System.out.println("RoundTrip Seach Action");
-	    	System.out.println("SRC: " + rFlyFrom.getValue());
-	    	System.out.println("DES: " + rFlyTo.getValue());
-	    	System.out.println("LEAVE DATE: " + Date.valueOf(rDepart.getValue()).toString());
-	    	System.out.println("AFTER LEAVE DATE");
-	    	System.out.println("ARR DATE: " + Date.valueOf(rArrive.getValue()).toString());
-	
-	
-	    	/* Retrieve Data from mysql databases for round-trip search */
-	    
-	    		ObservableList<Solution> flightList;
-		    	
-	    	    QPXExpressRequest request = new QPXExpressRequest();
-	    	    request.setAdultCount(1);
-	    	    request.setDate(Date.valueOf(rDepart.getValue()));
-	    	    request.setDestination(rFlyTo.getValue());
-	    	    request.setOrigin(rFlyFrom.getValue());
-	    	    request.setSolutions(20);
-	    	    flightList = request.getResponse();
-	    	    System.out.println("****************************");
-	    	    System.out.println(request.toJson());
-	    	    onewaySearchResultsTableView.setItems(flightList);
-	    	    
-	    		if(flightList.isEmpty()){
-		    		rErrorLabel.setText("No Flights available");
-		    	} 
+    		return;
     	}
+    	
+    	if(roundTripLeavingDatePicker.getValue() == null || roundTripArrivalDatePicker.getValue() == null)
+    	{
+    		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    		return;
+    	}
+    	
+    	rErrorLabel.setText("");
+    	ObservableList<Solution> srcToDestFlightList;
+    	ObservableList<Solution> destToSrcFlightList;
+    	
+    	
+    	QPXExpressRequest request = new QPXExpressRequest();
+    	request.setAdultCount(1);
+	    request.setDate(departingDate);
+	    request.setDestination(destinationCityCode);
+	    request.setOrigin(sourceCityCode);
+	    request.setSolutions(500);
+	    srcToDestFlightList = request.getResponse();
+	    	    
+	    	 
+	    
+	    
+	    
+	    
+	    	    
+	    	    
+	    		
+    	
     }
     /****************************************** End of roundtrip search ********************************************/
 
@@ -237,8 +241,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     /****************************************** Beginning of Oneway search ********************************************/
 
     @FXML
-    void oSearchAction(ActionEvent event) {
-    	System.out.println("One Way Trip Seach Action");
+    void oSearchAction(ActionEvent event)
+    {
     	
     	oErrorLabel.setText("");
     	
@@ -481,7 +485,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 
 	
 	
-	ObservableList<Solution> flightList;
+	//ObservableList<Solution> flightList;
 	// Select row for reservation for either oneway or roundtrip flights
 	public void selectFlightRow()
 	{

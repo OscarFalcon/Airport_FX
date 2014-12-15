@@ -83,6 +83,8 @@ public class SignInController implements Initializable, ControlledScreen{
 			 		resetLabels();
 			 		break;
 			 }
+			 resetLabels();
+			 return;
 			 
 		 }
 		 error.setText("Invalid Credentials");
