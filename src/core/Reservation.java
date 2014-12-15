@@ -10,7 +10,7 @@ public class Reservation extends SavableObject {
 	private Solution destToSrc;
 	private int numberOfBags;
 	private String totalSale;
-	private Person primaryPassenger;
+	private Passenger primaryPassenger;
 	private int reservationID;
 	
 	
@@ -99,12 +99,12 @@ public class Reservation extends SavableObject {
 		this.totalSale = totalSale;
 	}
 	
-	public Person getPrimaryPerson()		//PRIMARY PERSON
+	public Passenger getPrimaryPassenger()		//PRIMARY PERSON
 	{
 		return primaryPassenger;
 	}
 	
-	public void setPrimaryPerson(Passenger primaryPassenger)
+	public void setPrimaryPassenger(Passenger primaryPassenger)
 	{
 		this.primaryPassenger = primaryPassenger;
 	}

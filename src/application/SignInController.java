@@ -2,7 +2,6 @@ package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import core.Employee;
 import core.Passenger;
 import javafx.event.ActionEvent;
@@ -53,8 +52,6 @@ public class SignInController implements Initializable, ControlledScreen{
 	 @FXML void signIn(ActionEvent event)
 	 {
 		 String username,passwordString;
-		 Passenger passenger;
-		 Employee employee;
 		 
 		 
 		 username = userName.getText();
@@ -66,43 +63,52 @@ public class SignInController implements Initializable, ControlledScreen{
 	    	 return;
 		 }
 	 
-		 passenger = Passenger.retrievePassenger(username, passwordString);
+		 
+		 Passenger passenger = Passenger.retrievePassenger(username, passwordString);
 		 if(passenger != null )
 		 {
 			 myController.setScreen(ScreensFramework.screen3ID);
+			 resetLabels();
 			 return;
 		 }
 		 
-		 employee = Employee.retrieveEmployee(username, passwordString);
-		 
+		 Employee employee = Employee.retrieveEmployee(username, passwordString);
 		 if(employee != null)
 		 {
 			 switch(employee.getType())
 			 {
 			 	case "manager":
 			 		myController.setScreen(ScreensFramework.screen6ID);
+			 		resetLabels();
 			 		break;
 			 }
 			 
 		 }
+		 error.setText("Invalid Credentials");
+		 
 		 
 		
 	 
 	 }
 	
-	 
-	    @FXML
-	    void forgotPassword(ActionEvent event) {
-	    	//myController.setScreen(ScreensFramework.screen2ID);
-	    }
+ 
+    @FXML
+    void forgotPassword(ActionEvent event) {
+    	//myController.setScreen(ScreensFramework.screen2ID);
+    }
 
-	    @FXML
-	    void createAccount(ActionEvent event) {
-	    	myController.setScreen(ScreensFramework.screen4ID);
-	    }
-	
-	
+    @FXML
+    void createAccount(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen4ID);
+    }
 
+	private void resetLabels()
+	{
+		userName.setText("");
+		password.setText("");
+		error.setText("");
+	}
+		
 
 
 
