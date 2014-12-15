@@ -30,19 +30,18 @@ public class Reservation extends SavableObject {
 	
 	public boolean book()
 	{
-		boolean b;
 		
-		b = srcToDest.insert();
-		
-		if(destToSrc != null)
-			b = destToSrc.insert();
-		
-		if(b == false)
+		if(srcToDest.insert() == false)
+		{
 			return false;
+		}
+		
+		if(destToSrc != null &&  destToSrc.insert() == false)
+		{
+			return false;
+		}
 		
 		return insert();
-		
-		
 		
 	}
 
@@ -59,9 +58,6 @@ public class Reservation extends SavableObject {
 		else
 			destToSrcId = destToSrc.getSolutionID();
 			
-		
-		
-		
 		Object arguments[] = {srcToDest.getSolutionID(),destToSrcId,numberOfBags,
 								totalSale,primaryPassenger.getId()};
 				
