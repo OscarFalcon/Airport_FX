@@ -3,7 +3,6 @@ package core;
 import java.util.ArrayList;
 
 import database.MySQL;
-import javafx.beans.property.SimpleStringProperty;
 
 public class Employee extends Person  {
 
@@ -12,6 +11,7 @@ public class Employee extends Person  {
 	private String availability;
 	private String employeeID;
 	private String userID;
+	private String username;
 	private String password;
 	
 	
@@ -21,10 +21,12 @@ public class Employee extends Person  {
 			String state, String zip, String type, String status, String availability) {
 		
 		super(id, first, last,username,email, phone, street, city, state, zip);
-		this.type = new SimpleStringProperty(type);
-		this.status = new SimpleStringProperty(status);
-		this.availability = new SimpleStringProperty(availability);
-		this.employeeID = new SimpleStringProperty(id);
+		this.type = type;
+		this.status  = status;
+		this.availability =  availability;
+		this.employeeID = id;
+		this.password = password;
+		this.username = username;
 	
 	}
 	
@@ -36,8 +38,7 @@ public class Employee extends Person  {
 		String mysql = "insert into person(firstName,lastName,email,telephone,street,city,state,zip) VALUES "
 				+ "(?,?,?,?,?,?,?,?);";
 
-		
-		Object arguments1[] = {firstName.get(), lastName.get(), username.get(),
+		Object arguments1[] = {firstName.get(), lastName.get(), username,
 				password, email.get(), phone.get(), street.get(),
 				city.get(), state.get(), zip.get() };
 
@@ -50,24 +51,15 @@ public class Employee extends Person  {
 		
 		mysql = "INSERT INTO employee(type,userID,username,password) VALUES (?,?,?,?);";
 		
-		Object arguments2[] = {type,userID,username,password,};
+		Object arguments2[] = {type,userID,username,password};
 		
-		status = MySQL.execute(mysql, arguments2);
-		return status;
-	
-	
-	
-	
+		 return MySQL.execute(mysql, arguments2);
 	
 	}
 
 	@Override
 	public boolean delete() {
-		String mysql = "DELETE from employee where employeeID = ?";
-
-		Object arguments[] = { id.get() };
-
-		return MySQL.execute(mysql, arguments);
+		return false;
 	}
 
 	@Override
@@ -76,8 +68,8 @@ public class Employee extends Person  {
 		String mysql = "UPDATE person set firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, telephone = ?,"
 				+ "street = ?, city = ?, state = ?, zip = ?";
 
-		Object arguments1[] = { firstName.get(), lastName.get(), username.get(),
-				password.get(), email.get(), phone.get(), street.get(),
+		Object arguments1[] = { firstName.get(), lastName.get(), username,
+				password, email.get(), phone.get(), street.get(),
 				city.get(), state.get(), zip.get() };
 
 		status = MySQL.execute(mysql, arguments1);
@@ -96,7 +88,7 @@ public class Employee extends Person  {
 	public static Employee retrieveEmployee(String username, String password)
     {
 		String query = "SELECT person.userID,person.firstName,person.lastName,"
-						+"employee.username,person.email,person.telephone,person.street,"
+						+"employee.username,employee.password,person.email,person.telephone,person.street,"
 						+ "person.city,person.state,person.zip,employee.type,employee.status,"
 						+"employee.availability "
 						+ "FROM person INNER JOIN employee on person.userID = employee.userID "
@@ -105,7 +97,7 @@ public class Employee extends Person  {
 		Object[] arguments = {username, password};
 		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
 		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, 
-		MySQL.STRING, MySQL.STRING, MySQL.STRING};
+		MySQL.STRING, MySQL.STRING, MySQL.STRING,MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
 		
