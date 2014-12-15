@@ -72,22 +72,12 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </padding>
                               </Label>
-                              <TableView fx:id="roundTripSearchResultsTable1" prefHeight="247.0" prefWidth="875.0">
-                                 <columns>
-                                    <TableColumn id="rAirlineCol" fx:id="rAirlineCol1" prefWidth="120.0" text="Airline" />
-                                    <TableColumn id="rLeaveDateCol" fx:id="rLeaveDateCol1" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
-                                    <TableColumn id="rArriveDateCol" fx:id="rArriveDateCol1" prefWidth="174.0" text="Arrival Date:Time" />
-                                    <TableColumn id="rReturnDateCol" fx:id="rReturnDateCol1" minWidth="3.0" prefWidth="177.0" text="Return Date:Time" />
-                                    <TableColumn id="rArriveSrcDateCol" fx:id="rArriveSrcDateCol1" prefWidth="234.0" text="Arrival Source Date:Time" />
-                                    <TableColumn id="rPriceCol" fx:id="rPriceCol1" minWidth="0.0" prefWidth="124.0" text="Price" />
-                                 </columns>
-                              </TableView>
                               <Label fx:id="rReservationSubmitLabel" prefHeight="25.0" prefWidth="175.0" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="roundTripReserveFlightButton" mnemonicParsing="false" onAction="#rReserveFlightButton" prefHeight="26.0" prefWidth="303.0" text="Reserve Flight" />
+                              <Button fx:id="roundTripReserveFlightButton" mnemonicParsing="false" onAction="#rReserveFlightAction" prefHeight="26.0" prefWidth="303.0" text="Reserve Flight" />
                            </children>
                         </VBox>
                      </content>
@@ -146,7 +136,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="oneWayReserveFlightButton" mnemonicParsing="false" onAction="#oReserveFlightAction" text="Reserve Flight" />
+                              <Button fx:id="oneWayReserveFlightButton" mnemonicParsing="false" onAction="#oReserveFlightAction" prefHeight="26.0" prefWidth="236.0" text="Reserve Flight" />
                            </children>
                         </VBox>
                      </content>
@@ -159,7 +149,7 @@
                <children>
                   <HBox layoutX="344.0" layoutY="10.0" maxWidth="1.7976931348623157E308">
                      <children>
-                        <Button fx:id="searchFlightButton" mnemonicParsing="false" onAction="#searchFlight" text="Search Flight" />
+                        <Button fx:id="searchFlightButton" mnemonicParsing="false" text="Search Flight" />
                         <Button fx:id="myAccountButtonPassFli" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onAction="#myAccount" text="My account" />
                         <Button fx:id="myTripButtonPassFli" layoutX="517.0" layoutY="14.0" mnemonicParsing="false" onAction="#myTrip" text="My trip" />
                         <Button fx:id="signOutButtonPassFli" mnemonicParsing="false" onAction="#signOut" text="Sign out" />
