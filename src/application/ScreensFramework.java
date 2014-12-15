@@ -43,6 +43,7 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen("FlightSearch", "/fxml/PassengerFlightSearch.fxml");
         mainContainer.loadScreen("CreateAccount", "/fxml/createAccountPage.fxml");
         mainContainer.loadScreen("MyTrip", "/fxml/MyTrip.fxml");
+        mainContainer.loadScreen("FlightDetails", "/fxml/FlightDetailsPage.fxml");
         
         /*mangaer*/
         mainContainer.loadScreen("ManagerMainPage", "/fxml/ManagerMainPage.fxml");

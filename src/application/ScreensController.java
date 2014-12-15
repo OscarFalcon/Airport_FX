@@ -1,7 +1,9 @@
 package application;
 
+import java.io.IOException;
 import java.util.HashMap;
 
+import airline.Solution;
 import core.Employee;
 import core.Passenger;
 import core.Person;
@@ -14,7 +16,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -158,4 +164,31 @@ public class ScreensController  extends StackPane {
             return true;
         }
     }
+    
+    
+    public boolean showFlightDetailsPage(Solution solution){
+    	try{
+    		FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/FlightDetailsPage.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            
+            Stage detailsPage = new Stage();
+            detailsPage.setTitle("Flight Details");
+            detailsPage.initModality(Modality.WINDOW_MODAL);
+            Scene scene = new Scene(page);
+            detailsPage.setScene(scene);
+            
+            FlightDetailsPageController controller = loader.getController();
+            controller.setScreenParent(this);
+            controller.setSolution(solution);
+            controller.reset();
+            
+            detailsPage.showAndWait();
+            return true;
+    	} catch(IOException e){
+    		e.printStackTrace();
+            return false;
+    	}
+    }
+    
 }
