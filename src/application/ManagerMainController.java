@@ -145,12 +145,12 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 
     @FXML
     void MakePayment(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen1ID);
+    	myController.setScreen(ScreensFramework.screen7ID);
     }
 
     @FXML
     void BoardingPass(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen1ID);
+    	myController.setScreen(ScreensFramework.screen11ID);
     }
 
     @FXML
@@ -160,7 +160,7 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 
     @FXML
     void Employee(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen1ID);
+    	myController.setScreen(ScreensFramework.screen12ID);
     }
 
     @FXML
@@ -170,7 +170,7 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 
     @FXML
     void MyAccount(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen1ID);
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML

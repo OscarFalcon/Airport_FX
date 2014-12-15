@@ -47,17 +47,17 @@ public class ManagerBoardingPassController implements Initializable, ControlledS
 
     @FXML
     void Home(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen6ID);
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML
     void SignOut(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML

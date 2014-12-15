@@ -30,17 +30,17 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
 
     @FXML
     void Home(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen6ID);
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML
     void Signout(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
 	@Override
