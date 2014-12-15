@@ -85,7 +85,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private TableColumn<Solution,String> roundTripDepartureDateTimeCol;
     
     @FXML
-    private TableColumn<Solution,String> rArriveDateCol;
+    private TableColumn<Solution,String> roundTripArrivalDateTimeCol;
     
     @FXML
     private TableColumn<Solution,String> rReturnDateCol;
@@ -332,15 +332,15 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			}
 		});
 
-		rArriveDateCol.setMinWidth(300);
-		rArriveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+		roundTripArrivalDateTimeCol.setMinWidth(300);
+		roundTripArrivalDateTimeCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
 				String value;				
 				ArrayList<Route> routes = p.getValue().getRoutes();
 				int size = routes.size();
 				
-				value = routes.get(size-1).getUnformattedArrivalTime()
+				value = routes.get(size-1).get
 						+ " at "
 						+ routes.get(size-1).getArrivalTime().toString();
 				

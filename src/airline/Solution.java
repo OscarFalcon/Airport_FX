@@ -63,6 +63,7 @@ public class Solution extends SavableObject
 	
 	public Date getArrivalDate()
 	{
+		System.out.println("arrival Date: " + arrivalTime);
 		return Date.valueOf(arrivalTime.split("T")[0]);
 	}
 	public String getArrivalTime()
@@ -71,6 +72,7 @@ public class Solution extends SavableObject
 	}
 	public Date getDepartureDate()
 	{
+		System.out.println("departureTime: " +  departureTime);
 		return Date.valueOf(departureTime.split("T")[0]);
 	}
 	public String getDepartureTime()

@@ -148,6 +148,12 @@ public class Route extends SavableObject
 	{
 		this.arrivalTime = time;
 	}
+	public String getUnformattedArrivalTime()
+	{
+		return this.arrivalTime;
+	}
+	
+	
 	public void setUnformattedDepartureTime(String time) //UNFORMATTED DEPARTURE TIME
 	{
 		this.departureTime = time;
@@ -165,6 +171,8 @@ public class Route extends SavableObject
 	{
 		return arrivalTime.split("T")[1];
 	}
+	
+	
 	public Date getDepatureDate()			// DEPARTURE DATE	
 	{
 		return Date.valueOf(departureTime.split("T")[0]);
