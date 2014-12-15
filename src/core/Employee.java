@@ -88,11 +88,11 @@ public class Employee extends Person  {
 	public static Employee retrieveEmployee(String username, String password)
     {
 		String query = "SELECT person.userID,person.firstName,person.lastName,"
-						+"person.userName,person.email,person.telephone,person.street,"
+						+"employee.username,person.email,person.telephone,person.street,"
 						+ "person.city,person.state,person.zip,employee.type,employee.status,"
 						+"employee.availability "
-						+ "FROM person INNER JOIN employee on person.userID = employee.employeeID "
-						+ "WHERE person.userName = ? && person.password = ?";
+						+ "FROM person INNER JOIN employee on person.userID = employee.userID "
+						+ "WHERE employee.username = ? && employee.password = ?";
 		
 		Object[] arguments = {username, password};
 		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
@@ -108,10 +108,16 @@ public class Employee extends Person  {
 		
 		Object[] tmp = result.get(0);
 		
+		String availability = (String) tmp[12], status = (String) tmp[11];
+		
+		if(availability == null) availability = "";
+		if(status == null ) status = "";
+		
+		
 		Employee employee = new Employee(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
 		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
 		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(), 
-		tmp[11].toString(),tmp[12].toString());
+		status,availability);
 		
 		
 		return employee;	

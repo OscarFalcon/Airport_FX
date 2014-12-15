@@ -199,13 +199,11 @@ public class Solution extends SavableObject
 		}
 		
 		solutionID = MySQL.getLastInsertID();
-		
 		insertSolutionRouteString = "INSERT INTO solution_routes(solutionID,routeID) VALUES (?,?)";
 		
 		Integer routeID = null;
 		for(Route route : routes)
 		{
-			
 			
 			route.insert();
 			routeID = route.getRouteID();

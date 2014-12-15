@@ -157,7 +157,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		HeaderLabel.setText("WELCOME "+ myController.person.getFirstName());
+		//HeaderLabel.setText("WELCOME "+ myController.person.getFirstName());
 		populateSrcandDesFields();
 	    oneWayFlightTable();
 	    roundTripFlightTable();

@@ -29,7 +29,6 @@ public class ScreensFramework extends Application {
     public static String screen8ID = "ReceptionistMain";
     public static String screen9ID = "ReceptionistFlightCondition";
     
-    public static HashMap<String, String> screens = new HashMap<>();
   
     
     @Override
@@ -38,23 +37,22 @@ public class ScreensFramework extends Application {
         ScreensController mainContainer = new ScreensController();
 
         /*Customer*/
-        screens.put("signInPage", "/fxml/SignInPage.fxml");
-        screens.put("AccountPage", "/fxml/CustomerAccountPage.fxml");
-        screens.put("FlightSearch", "/fxml/PassengerFlightSearch.fxml");
-        screens.put("CreateAccount", "/fxml/createAccountPage.fxml");
-        screens.put("MyTrip", "/fxml/MyTrip.fxml");
+        mainContainer.loadScreen("signInPage", "/fxml/SignInPage.fxml");
+        mainContainer.loadScreen("AccountPage", "/fxml/CustomerAccountPage.fxml");
+        mainContainer.loadScreen("FlightSearch", "/fxml/PassengerFlightSearch.fxml");
+        mainContainer.loadScreen("CreateAccount", "/fxml/createAccountPage.fxml");
+        mainContainer.loadScreen("MyTrip", "/fxml/MyTrip.fxml");
         
         /*mangaer*/
-        screens.put("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
-        screens.put("ManagerAccountPage", "/fxml/ManagerAccountPage.fxml");
-        screens.put("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
-        screens.put("ManagerBoardingPass", "/fxml/ManagerBoardingPass.fxml");
-        screens.put("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
+        mainContainer.loadScreen("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
+        //mainContainer.loadScreen("ManagerAccountPage", "/fxml/ManagerAccountPage.fxml");
+        //mainContainer.loadScreen("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
+       // mainContainer.loadScreen("ManagerBoardingPass", "/fxml/ManagerBoardingPass.fxml");
+        //mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         
         /*Receptionist*/
-        screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
-        screens.put("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
-        
+       // mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
+       // mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
         
      
         mainContainer.setScreen(ScreensFramework.screen1ID);

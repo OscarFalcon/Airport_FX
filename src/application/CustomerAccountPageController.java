@@ -27,7 +27,7 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     	usernameErrorLabel.setText("");
     	passwordErrorLabel.setText("");
     	
-    	
+    	/**
     	accountFirstName.setText(myController.person.getFirstName());
     	accountLastName.setText(myController.person.getLastName());
     	accountEmail.setText(myController.person.getEmail());
@@ -37,7 +37,7 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     	accountState.setText(myController.person.getState());
     	accountZip.setText(myController.person.getZip());
     	
-    	accountUsername.setText(myController.person.getUserName());
+    	accountUsername.setText(myController.person.getUserName()); **/
 
     }
     

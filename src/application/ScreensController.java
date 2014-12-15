@@ -57,7 +57,7 @@ public class ScreensController  extends StackPane {
             addScreen(name, loadScreen);
             return true;
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+        	e.printStackTrace();
             return false;
         }
     }
@@ -69,10 +69,11 @@ public class ScreensController  extends StackPane {
     public boolean setScreen(final String name) {
     	
     	//We keep loading screens, may need to unload the screen currently being displayed.
-    	loadScreen(name, ScreensFramework.screens.get(name));
+    	//loadScreen(name, ScreensFramework.screens.get(name));
     	
-    	System.out.print("this is "+name +" "+ScreensFramework.screens.get(name));
-        if (screens.get(name) != null) {   //screen loaded
+    	System.out.println("this is "+name +" " + screens.get(name));
+        
+    	if (screens.get(name) != null) {   //screen loaded
             final DoubleProperty opacity = opacityProperty();
             
             if (!getChildren().isEmpty()) {    //if there is more than one screen
