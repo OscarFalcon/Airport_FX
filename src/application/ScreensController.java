@@ -25,18 +25,13 @@ import javafx.util.Duration;
 public class ScreensController  extends StackPane {
     //Holds the screens to be displayed
 	
-	public static Person person;
-	public static Passenger passenger;
-	public static Employee employee;
+	private Passenger passenger = null;
+	private Employee employee = null;
 	
     private HashMap<String, Node> screens = new HashMap<>();
     
     public ScreensController() {
         super();
-    }
-
-    public void setPerson(Person obj){
-    	person = obj;
     }
     
     public void setPassenger(Passenger obj){
@@ -45,6 +40,14 @@ public class ScreensController  extends StackPane {
     
     public void setEmployee(Employee obj){
     	employee = obj;
+    }
+    
+    public Passenger getPassenger(){
+    	return this.passenger;
+    }
+    
+    public Employee getEmployee(){
+    	return this.employee;
     }
     
     //Add the screen to the collection

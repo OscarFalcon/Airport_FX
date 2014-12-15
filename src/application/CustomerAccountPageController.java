@@ -131,12 +131,12 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     		passwordErrorLabel.setText("Please enter new password!");
     	} else if (!newPassword1.getText().equals(newPassword2.getText())){
     		passwordErrorLabel.setText("Passwords do not match!");
-    	} else if(!update.authorizeUser(myController.person.getUserName(), oldPassword.getText())){ 
+    	} else if(!update.authorizeUser(myController.getPassenger().getUserName(), oldPassword.getText())){ 
     		passwordErrorLabel.setText("Wrong Password");
     	}else if (oldPassword.getText().equals(newPassword1.getText())) { 
     		passwordErrorLabel.setText("");
     	} else {
-    		if(!myController.person.resetPassword(newPassword1.getText())){
+    		if(!myController.getPassenger().resetPassword(newPassword1.getText())){
     			passwordErrorLabel.setText("Could not change Password");
     		}
     		else passwordErrorLabel.setText("Successfully changed Password!");
