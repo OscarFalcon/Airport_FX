@@ -333,21 +333,21 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		});
 
 		roundTripArrivalDateTimeCol.setMinWidth(300);
-		roundTripArrivalDateTimeCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+		/*roundTripArrivalDateTimeCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
 				String value;				
 				ArrayList<Route> routes = p.getValue().getRoutes();
 				int size = routes.size();
 				
-				value = routes.get(size-1).get
+				//value = routes.get(size-1).get
 						+ " at "
 						+ routes.get(size-1).getArrivalTime().toString();
 				
 				return new ReadOnlyObjectWrapper<String>(value);
 								
 			}
-		});
+		});*/
 		rPriceCol.setMinWidth(150);
 		rPriceCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>()
 		{
