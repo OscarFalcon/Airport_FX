@@ -511,8 +511,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	// Select row for reservation for either oneway or roundtrip flights
 	public void selectFlightRow()
 	{
-		
-		
+	
 		Callback<TableView<Solution>,TableRow<Solution>> callBack = new Callback<TableView<Solution>,TableRow<Solution>>()
 		{
 			@Override
@@ -537,13 +536,11 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		};
 	
 		onewaySearchResultsTableView.setRowFactory(callBack);
-		    
+		roundTripDepartingSearchResultsTable.setRowFactory(callBack);
+		roundTripArrivingSearchResultsTable.setRowFactory(callBack);
 		
 		
-		
-		
-		
-		
+	
 		/**
 		onewaySearchResultsTableView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent event) {
