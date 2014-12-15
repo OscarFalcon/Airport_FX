@@ -52,9 +52,9 @@ public class ScreensFramework extends Application {
         //mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         
         /*Receptionist*/
-        screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
-        screens.put("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
-        screens.put("ChargesFees", "/fxml/ChargesFees.fxml");
+        //screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
+        //screens.put("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
+        //screens.put("ChargesFees", "/fxml/ChargesFees.fxml");
         
      
         mainContainer.setScreen(ScreensFramework.screen1ID);
