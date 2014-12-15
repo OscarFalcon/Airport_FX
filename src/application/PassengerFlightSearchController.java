@@ -3,11 +3,8 @@ package application;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
 import java.util.ResourceBundle;
 
-import core.Passenger;
 import core.Reservation;
 import airline.QPXExpressRequest;
 import airline.Route;
@@ -20,11 +17,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableRow;
@@ -35,12 +30,6 @@ import javafx.util.Callback;
 
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
-	
-	@FXML
-	private Button oneWayReserveFlightButton;
-	
-	@FXML
-	private Button roundTripReserveFlightButton;
 	
 	@FXML
 	private Label oReservationSubmitLabel;
@@ -59,18 +48,10 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private ChoiceBox<String> oFlyToChoiceBox;
 
     @FXML
-    private DatePicker oDepartDatePicker;
-
-    @FXML
-    private Button oSearch;
+    private DatePicker oneWayDepartDatePicker;
 
     @FXML
     private Label rErrorLabel;
-
-    @FXML
-    private Button myTripButtonPassFli;
-
-  
 
     @FXML
     private ChoiceBox<String> rFlyTo;
@@ -90,14 +71,18 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     @FXML
     private TableColumn<Solution,String> oPriceCol;
     
+    
+    
+    
+    /** round trip departing table view **/
     @FXML
-    private TableView<Solution> roundTripSearchResultsTable;
+    private TableView<Solution> roundTripDepartingSearchResultsTable;
     
     @FXML
     private TableColumn<Solution,String> rAirlineCol;
     
     @FXML
-    private TableColumn<Solution,String> rLeaveDateCol;
+    private TableColumn<Solution,String> roundTripDepartureDateTimeCol;
     
     @FXML
     private TableColumn<Solution,String> rArriveDateCol;
@@ -110,30 +95,52 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     
     @FXML
     private TableColumn<Solution,String> rPriceCol;
-        
+    
+    
+    
+    /** round trip arriving table view **/
+    @FXML
+    private TableView<Solution> roundTripArrivingSearchResultsTable;
+    
+    @FXML
+    private TableColumn<Solution,String> rAirlineCol1;
+    
+    @FXML
+    private TableColumn<Solution,String> rLeaveDateCol1;
+    
+    @FXML
+    private TableColumn<Solution,String> rArriveDateCol1;
+    
+    @FXML
+    private TableColumn<Solution,String> rReturnDateCol1;
+    
+    @FXML
+    private TableColumn<Solution,String> rArriveSrcDateCol1;
+    
+    @FXML
+    private TableColumn<Solution,String> rPriceCol1;
+    
+    
+    
+    
+    
+    
+    
     @FXML
     private Label HeaderLabel;
 
     @FXML
     private ChoiceBox<String> oPreferredClass;
 
-    @FXML
-    private Button signOutButtonPassFli;
 
     @FXML
     private TextField oPassenger;
-
-    @FXML
-    private Button myAccountButtonPassFli;
 
     @FXML
     private DatePicker roundTripLeavingDatePicker;
 
     @FXML
     private Label oErrorLabel;
-
-    @FXML
-    private Tab oDepartingPassFli;
 
     @FXML
     private ChoiceBox<String> rFlyFrom;
@@ -144,14 +151,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     @FXML
     private TextField rPassenger;
 
-    @FXML
-    private Tab RoundTPassFli;
-
-    @FXML
-    private Button rSearch;
-    
-    @FXML
-    private Button searchFlightButton;
 
     
     /**************************************** Beginning of roundtrip search ********************************************/
@@ -163,7 +162,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		//HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
 		populateSrcandDesFields();
 	    oneWayFlightTable();
-	    roundTripFlightTable();
+	    initRoundTripFlightTables();
 	    selectFlightRow();
 	}
     
@@ -177,9 +176,12 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		reservation.setNumOfBags(0);
 		reservation.setTotalSale(selected.getSaleTotal());
 		reservation.setPrimaryPassenger(myController.getPassenger());
-		if(reservation.book()==false){
+		
+		if(reservation.book() == false)
+		{
 			oReservationSubmitLabel.setText("Error adding Reservation!");
-		} else {
+		} else
+		{
 			oReservationSubmitLabel.setText("Successfully Reserved Flight!");
 
 		}
@@ -214,7 +216,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	ObservableList<Solution> srcToDestFlightList;
     	ObservableList<Solution> destToSrcFlightList;
     	
-    	
+    	//populate the departing table view 
     	QPXExpressRequest request = new QPXExpressRequest();
     	request.setAdultCount(1);
 	    request.setDate(departingDate);
@@ -222,15 +224,14 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    request.setOrigin(sourceCityCode);
 	    request.setSolutions(500);
 	    srcToDestFlightList = request.getResponse();
-	    	    
-	    	 
-	    
-	    
-	    
-	    
-	    	    
-	    	    
-	    		
+	    roundTripArrivingSearchResultsTable.setItems(srcToDestFlightList);
+	     
+	    //populate the arrivaing table view
+	    request.setOrigin(destinationCityCode); //the new origin is the original destination (:
+	    request.setDestination(sourceCityCode); //same for the new destination  
+	    destToSrcFlightList = request.getResponse();
+	    roundTripDepartingSearchResultsTable.setItems(destToSrcFlightList);
+	      		
     	
     }
     /****************************************** End of roundtrip search ********************************************/
@@ -251,7 +252,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     		return;
     	}
     	
-    	if(oDepartDatePicker.getValue() == null )
+    	if(oneWayDepartDatePicker.getValue() == null )
     	{
     		oErrorLabel.setText("Please specify departure and return date of your trip!");
     		return;
@@ -262,7 +263,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    QPXExpressRequest request = new QPXExpressRequest();
 	    
 	    request.setAdultCount(1);
-	    request.setDate(Date.valueOf(oDepartDatePicker.getValue()));
+	    request.setDate(Date.valueOf(oneWayDepartDatePicker.getValue()));
 	    request.setDestination(oFlyToChoiceBox.getValue());
 	    request.setOrigin(oFlyFromChoiceBox.getValue());
 	    request.setSolutions(500);
@@ -308,13 +309,12 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	
 	
 	
-	/********************************** Beginning Populate RoundTrip Table with Data ******************************************/
-	
-	/* Populates a table based on round-trip search criteria */
-	public void roundTripFlightTable()
+	public void initRoundTripFlightTables()
 	{
 		
-		rAirlineCol.setMinWidth(150);
+		/** round trip departure search results table **/
+		
+		rAirlineCol.setMinWidth(200);
 		rAirlineCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
@@ -322,17 +322,17 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			}
 		});
 
-		rLeaveDateCol.setMinWidth(150);
-
-		rLeaveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+		roundTripDepartureDateTimeCol.setMinWidth(300);
+		roundTripDepartureDateTimeCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue().getDepartureDate().toString());
+				Solution s = p.getValue();
+				return new ReadOnlyObjectWrapper<String>(s.getDepartureDate().toString()
+							+ " @ " + s.getDepartureTime());
 			}
 		});
 
-		rArriveDateCol.setMinWidth(150);
-
+		rArriveDateCol.setMinWidth(300);
 		rArriveDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
@@ -340,53 +340,32 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 				ArrayList<Route> routes = p.getValue().getRoutes();
 				int size = routes.size();
 				
-				value = routes.get(size-1).getArrivalDate().toString()
+				value = routes.get(size-1).getUnformattedArrivalTime()
 						+ " at "
 						+ routes.get(size-1).getArrivalTime().toString();
 				
 				return new ReadOnlyObjectWrapper<String>(value);
 								
 			}
-				});
-
-		rReturnDateCol.setMinWidth(150);
-
-		rReturnDateCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+		});
+		rPriceCol.setMinWidth(150);
+		rPriceCol.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>()
+		{
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue()
-								.getArrivalDate()
-								+ "     "
-								+ p.getValue().getArrivalTime());
-					}
-		});
-
-		rArriveSrcDateCol.setMinWidth(150);
-/**
-		rArriveSrcDateCol
-				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(
-							CellDataFeatures<Flight, String> p) {
-						return new ReadOnlyObjectWrapper<String>(p.getValue()
-								.getDeptDate()
-								+ "     "
-								+ p.getValue().getDeptTime());
-					}
-				});
-
-		rPriceCol.setMinWidth(150);
-
-		rPriceCol
-				.setCellValueFactory(new Callback<CellDataFeatures<Flight, String>, ObservableValue<String>>() {
-					@Override
-					public ObservableValue<String> call(
-							CellDataFeatures<Flight, String> p) {
-						return new ReadOnlyObjectWrapper<String>(p.getValue()
-								.getFlightPrice());
-					}
-				});
-				**/
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getSaleTotal());
+						
+			}
+		})
+		
+		
+		
+		
+		
+		
+		
+		;
+				
 	}
 	/********************************** End Populate RoundTrip Table with Data ******************************************/
 
