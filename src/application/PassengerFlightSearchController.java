@@ -103,22 +103,18 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     private TableView<Solution> roundTripArrivingSearchResultsTable;
     
     @FXML
-    private TableColumn<Solution,String> rAirlineCol1;
+    private TableColumn<Solution,String> rAirlineCol2;
     
     @FXML
-    private TableColumn<Solution,String> rLeaveDateCol1;
+    private TableColumn<Solution,String> roundTripDepartureDateTimeCol2;
     
     @FXML
-    private TableColumn<Solution,String> rArriveDateCol1;
+    private TableColumn<Solution,String> roundTripArrivalDateTimeCol2;
     
     @FXML
-    private TableColumn<Solution,String> rReturnDateCol1;
+    private TableColumn<Solution,String> rPriceCol2;
     
-    @FXML
-    private TableColumn<Solution,String> rArriveSrcDateCol1;
-    
-    @FXML
-    private TableColumn<Solution,String> rPriceCol1;
+   
     
     
     
@@ -199,6 +195,8 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     	String sourceCityCode = rFlyFrom.getValue();
     	String destinationCityCode = rFlyTo.getValue();
     	Date departingDate = Date.valueOf(roundTripLeavingDatePicker.getValue());
+    	Date returningDate = Date.valueOf(roundTripArrivalDatePicker.getValue());
+    	
     	
     	if(sourceCityCode == null || destinationCityCode == null)
     	{
@@ -229,6 +227,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    //populate the arrivaing table view
 	    request.setOrigin(destinationCityCode); //the new origin is the original destination (:
 	    request.setDestination(sourceCityCode); //same for the new destination  
+	    request.setDate(returningDate);
 	    destToSrcFlightList = request.getResponse();
 	    roundTripDepartingSearchResultsTable.setItems(destToSrcFlightList);
 	      		
@@ -340,7 +339,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 				ArrayList<Route> routes = p.getValue().getRoutes();
 				int size = routes.size();
 				
-				value = routes.get(size-1).get
+				value = routes.get(size-1).getArrivalDate()
 						+ " at "
 						+ routes.get(size-1).getArrivalTime().toString();
 				
@@ -356,7 +355,52 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 				return new ReadOnlyObjectWrapper<String>(p.getValue().getSaleTotal());
 						
 			}
-		})
+		});
+		
+		/** round trip arriving search results table **/
+		rAirlineCol2.setMinWidth(200);
+		rAirlineCol2.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>,ObservableValue<String>>(){
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getRoutes().get(0).getAirlineName());
+			}
+		});
+
+		roundTripDepartureDateTimeCol2.setMinWidth(300);
+		roundTripDepartureDateTimeCol2.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				Solution s = p.getValue();
+				return new ReadOnlyObjectWrapper<String>(s.getDepartureDate().toString()
+							+ " @ " + s.getDepartureTime());
+			}
+		});
+
+		roundTripArrivalDateTimeCol2.setMinWidth(300);
+		roundTripArrivalDateTimeCol2.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				String value;				
+				ArrayList<Route> routes = p.getValue().getRoutes();
+				int size = routes.size();
+				
+				value = routes.get(size-1).getArrivalDate()
+						+ " at "
+						+ routes.get(size-1).getArrivalTime().toString();
+				
+				return new ReadOnlyObjectWrapper<String>(value);
+								
+			}
+		});
+		rPriceCol2.setMinWidth(150);
+		rPriceCol2.setCellValueFactory(new Callback<CellDataFeatures<Solution, String>, ObservableValue<String>>()
+		{
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Solution, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getSaleTotal());
+						
+			}
+		});
 		
 		
 		
@@ -364,7 +408,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		
 		
 		
-		;
+		
 				
 	}
 	/********************************** End Populate RoundTrip Table with Data ******************************************/
