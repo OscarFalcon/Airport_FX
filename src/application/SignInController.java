@@ -76,13 +76,17 @@ public class SignInController implements Initializable, ControlledScreen{
 		 Employee employee = Employee.retrieveEmployee(username, passwordString);
 		 if(employee != null)
 		 {
+			 myController.setEmployee(employee);
 			 switch(employee.getType())
 			 {
 			 	case "manager":
-			 		myController.setEmployee(employee);
+			 		
 			 		myController.setScreen(ScreensFramework.screen6ID);
-			 		resetLabels();
 			 		break;
+			 	case "receptionist":
+			 		myController.setScreen(ScreensFramework.screen8ID);
+			 		break;
+			 		
 			 }
 			 resetLabels();
 			 return;

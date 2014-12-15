@@ -47,15 +47,15 @@ public class ScreensFramework extends Application {
         
         /*mangaer*/
         mainContainer.loadScreen("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
-        //mainContainer.loadScreen("ManagerAccountPage", "/fxml/ManagerAccountPage.fxml");
-        //mainContainer.loadScreen("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
-       // mainContainer.loadScreen("ManagerBoardingPass", "/fxml/ManagerBoardingPass.fxml");
-        //mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
+        mainContainer.loadScreen("ManagerAccountPage", "/fxml/ManagerAccountPage.fxml");
+       mainContainer.loadScreen("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
+        mainContainer.loadScreen("ManagerBoardingPass", "/fxml/ManagerBoardingPass.fxml");
+        mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         
         /*Receptionist*/
-        //screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
-        //screens.put("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
-        //screens.put("ChargesFees", "/fxml/ChargesFees.fxml");
+        mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
+        mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
+        mainContainer.loadScreen("ChargesFees", "/fxml/ChargesFees.fxml");
         
      
         mainContainer.setScreen(ScreensFramework.screen1ID);
