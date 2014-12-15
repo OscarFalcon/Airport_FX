@@ -6,11 +6,11 @@ import airline.Solution;
 
 public class Reservation extends SavableObject {
 
-	private Solution srcToDest;
-	private Solution destToSrc;
-	private int numberOfBags;
+	private Solution srcToDest = null;
+	private Solution destToSrc = null;
+	private Passenger primaryPassenger = null;
 	private String totalSale;
-	private Passenger primaryPassenger;
+	private int numberOfBags;
 	private int reservationID;
 	
 	
@@ -42,7 +42,16 @@ public class Reservation extends SavableObject {
 		String mysql = "INSERT INTO reservation (srcToDest,destToSrc,numberOfBags,totalSale,personID) "
 					+ "	VALUES(?,?,?,?,?)";
 		
-		Object arguments[] = {srcToDest.getSolutionID(),destToSrc.getSolutionID(),numberOfBags,
+		Integer destToSrcId = null;
+		if(destToSrc == null)
+			destToSrcId = null;
+		else
+			destToSrcId = destToSrc.getSolutionID();
+			
+		
+		
+		
+		Object arguments[] = {srcToDest.getSolutionID(),destToSrcId,numberOfBags,
 								totalSale,primaryPassenger.getId()};
 				
 		return MySQL.execute(mysql, arguments);
@@ -52,9 +61,7 @@ public class Reservation extends SavableObject {
 	@Override
 	public boolean delete()
 	{
-		
 		return MySQL.execute("DELETE FROM reservation WHERE reservationID = ?", new Object[]{reservationID});
-
 	}
 	
 	
