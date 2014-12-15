@@ -188,4 +188,10 @@ public class ReceptionistMainController implements Initializable, ControlledScre
 		
 	}
 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

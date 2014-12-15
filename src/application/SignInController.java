@@ -109,6 +109,14 @@ public class SignInController implements Initializable, ControlledScreen{
 		password.setText("");
 		error.setText("");
 	}
+
+
+
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
 		
 
 

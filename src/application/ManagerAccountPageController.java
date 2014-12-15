@@ -118,4 +118,10 @@ public class ManagerAccountPageController implements Initializable, ControlledSc
 		
 	}
 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

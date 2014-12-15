@@ -565,4 +565,12 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	} 
 	/********************************** End of make reservation ******************************************/
 
+
+
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

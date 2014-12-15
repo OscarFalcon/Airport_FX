@@ -86,4 +86,10 @@ public class ChargesFeesController implements Initializable, ControlledScreen{
 		
 	}
 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

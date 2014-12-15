@@ -77,4 +77,10 @@ public class ManagerBoardingPassController implements Initializable, ControlledS
 		
 	}
 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

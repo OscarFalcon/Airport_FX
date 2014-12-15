@@ -102,4 +102,10 @@ public class ReceptionistFlightConditionController implements Initializable, Con
 		
 	}
 
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

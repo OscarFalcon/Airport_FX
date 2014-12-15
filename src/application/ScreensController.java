@@ -29,6 +29,7 @@ public class ScreensController  extends StackPane {
 	private Employee employee = null;
 	
     private HashMap<String, Node> screens = new HashMap<>();
+    private HashMap<String, ControlledScreen> screenControllers = new HashMap<>();
     
     public ScreensController() {
         super();
@@ -59,6 +60,10 @@ public class ScreensController  extends StackPane {
     public Node getScreen(String name) {
         return screens.get(name);
     }
+    
+    public ControlledScreen getScreenController(String name){
+    	return this.screenControllers.get(name);
+    }
 
     //Loads the fxml file, add the screen to the screens collection and
     //finally injects the screenPane to the controller.
@@ -67,8 +72,9 @@ public class ScreensController  extends StackPane {
         	//System.out.println("this is resource "+ resource);
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadScreen = (Parent) myLoader.load();
-            ControlledScreen myScreenControler = ((ControlledScreen) myLoader.getController());
-            myScreenControler.setScreenParent(this);
+            ControlledScreen myScreenController = ((ControlledScreen) myLoader.getController());
+            screenControllers.put(name, myScreenController);
+            myScreenController.setScreenParent(this);
             addScreen(name, loadScreen);
             return true;
         } catch (Exception e) {
@@ -82,14 +88,19 @@ public class ScreensController  extends StackPane {
     //one screen the new screen is been added second, and then the current screen is removed.
     // If there isn't any screen being displayed, the new screen is just added to the root.
     public boolean setScreen(final String name) {
-    	
+    	ControlledScreen screenController;
     	//We keep loading screens, may need to unload the screen currently being displayed.
-    	//loadScreen(name, ScreensFramework.screens.get(name));
+    	//loadScreen(name, screens.get(name));
     	
     	System.out.println("this is "+name +" " + screens.get(name));
         
     	if (screens.get(name) != null) {   //screen loaded
             final DoubleProperty opacity = opacityProperty();
+            
+            //call the reset method (this is similar to init screen)
+            if((screenController = screenControllers.get(name)) != null){
+            	screenController.reset();
+            }
             
             if (!getChildren().isEmpty()) {    //if there is more than one screen
                 Timeline fade = new Timeline(
