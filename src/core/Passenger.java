@@ -29,6 +29,15 @@ public class Passenger extends Person
 	}
 	
 	
+	public boolean addReservation(String srcToDest, String destToSrc, String numberOfBags, String totalSale, String personID){
+		String mysql = "INSERT INTO reservation(srcToDest, destToSrc, numberOfBags, totalSale, personID)"
+					+  "VALUES(?,?,?,?,?)";
+		Object arguments[] = {srcToDest, destToSrc, numberOfBags, totalSale, id};
+		
+		return MySQL.execute(mysql, arguments);
+	}
+	
+	
 	@Override
 	public boolean insert()
 	{

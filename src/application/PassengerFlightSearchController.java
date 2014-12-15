@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import core.Passenger;
 import airline.QPXExpressRequest;
 import airline.Route;
 import airline.Solution;
@@ -34,8 +35,6 @@ import javafx.util.Callback;
 public class PassengerFlightSearchController implements Initializable, ControlledScreen{
 	ScreensController myController;
 	
-	
-	
 	@FXML
 	private Button oneWayReserveFlightButton;
 	
@@ -43,7 +42,10 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	private Button roundTripReserveFlightButton;
 	
 	@FXML
-	private Label reservationSubmitLabel;
+	private Label oReservationSubmitLabel;
+	
+	@FXML
+	private Label rReservationSubmitLabel;
 	
 	@FXML
     private ChoiceBox<String> rPreferredClass;
@@ -166,18 +168,39 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	}
     
     
+	
+	@FXML
+	void oReserveFlightAction(ActionEvent event){
+		Solution selected = onewaySearchResultsTableView.getSelectionModel().getSelectedItem();
+		String srcToDest = Integer.toString(selected.getSolutionID());
+		String destToSrc = "null";
+		String numberOfBags = "0";
+		String totalSale = selected.getSaleTotal();
+		String personID = myController.person.getId();
+		System.out.println("Reserve Flight: "+srcToDest+destToSrc+numberOfBags+totalSale+personID);
+		if(myController.passenger.addReservation(srcToDest, destToSrc, numberOfBags, totalSale, personID) == false){
+			System.out.println("Something went wrong here!");
+			oReservationSubmitLabel.setText("Could not reserve Flight!");
+		} else {
+			oReservationSubmitLabel.setText("Successfully reserved your flight!");
+		}
+	}
     
+	@FXML
+	void rReserveFlightAction(ActionEvent event){
+		
+	}
     
     
     @FXML
     void rSearchAction(ActionEvent event) {
     	//Debug info
     	
-    //	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
-    //		rErrorLabel.setText("Please specify Source and Destination of your trip!");
-    //	else if(rDepart.getValue() == null || rArrive.getValue() == null)
-    //		rErrorLabel.setText("Please specify departure and return date of your trip!");
-    //	else{
+    	if(rFlyFrom.getValue() == null || rFlyTo.getValue() == null)
+    		rErrorLabel.setText("Please specify Source and Destination of your trip!");
+    	else if(rDepart.getValue() == null || rArrive.getValue() == null)
+    		rErrorLabel.setText("Please specify departure and return date of your trip!");
+    	else{
     		rErrorLabel.setText("");
 	    	System.out.println("RoundTrip Seach Action");
 	    	System.out.println("SRC: " + rFlyFrom.getValue());
@@ -193,9 +216,9 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		    	
 	    	    QPXExpressRequest request = new QPXExpressRequest();
 	    	    request.setAdultCount(1);
-	    	    request.setDate(Date.valueOf(oDepartDatePicker.getValue()));
-	    	    request.setDestination(oFlyToChoiceBox.getValue());
-	    	    request.setOrigin(oFlyFromChoiceBox.getValue());
+	    	    request.setDate(Date.valueOf(rDepart.getValue()));
+	    	    request.setDestination(rFlyTo.getValue());
+	    	    request.setOrigin(rFlyFrom.getValue());
 	    	    request.setSolutions(20);
 	    	    flightList = request.getResponse();
 	    	    System.out.println("****************************");
@@ -206,7 +229,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		    		rErrorLabel.setText("No Flights available");
 		    	} 
     	}
-    //}
+    }
     /****************************************** End of roundtrip search ********************************************/
 
     
@@ -256,11 +279,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     /*********************************************End of Oneway search ********************************************/
 
     
-    
-    @FXML
-    void searchFlight(ActionEvent event){
-    	//do Nothing
-    }
 
     @FXML
     void myAccount(ActionEvent event) {

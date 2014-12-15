@@ -1,7 +1,11 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -11,8 +15,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class ReceptionistMainController {
+public class ReceptionistMainController implements Initializable, ControlledScreen{
 
+	ScreensController myController;
+	
     @FXML
     private TableColumn<?, ?> oAirlineCol;
 
@@ -74,7 +80,7 @@ public class ReceptionistMainController {
     private ChoiceBox<?> rPreferredClass;
 
     @FXML
-    private Button MakePay;
+    private Button Chargesfees;
 
     @FXML
     private ChoiceBox<?> oFlyFrom;
@@ -98,7 +104,7 @@ public class ReceptionistMainController {
     private TableColumn<?, ?> rArriveSrcDateCol;
 
     @FXML
-    private Button flightCond;
+    private Button resStatus;
 
     @FXML
     private TableColumn<?, ?> rAirlineCol;
@@ -131,13 +137,13 @@ public class ReceptionistMainController {
     private Tab RoundTPassFli;
 
     @FXML
-    void FlightCondition(ActionEvent event) {
-
+    void ReservationStatus(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen9ID);
     }
 
     @FXML
-    void MakePayment(ActionEvent event) {
-
+    void ChargesFees(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen13ID);
     }
 
     @FXML
@@ -152,12 +158,12 @@ public class ReceptionistMainController {
 
     @FXML
     void SignOut(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML
@@ -169,5 +175,17 @@ public class ReceptionistMainController {
     void oSearchAction(ActionEvent event) {
 
     }
+
+	@Override
+	public void setScreenParent(ScreensController screenPage) {
+		// TODO Auto-generated method stub
+		myController = screenPage;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

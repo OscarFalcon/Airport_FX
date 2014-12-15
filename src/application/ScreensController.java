@@ -2,6 +2,8 @@ package application;
 
 import java.util.HashMap;
 
+import core.Employee;
+import core.Passenger;
 import core.Person;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -24,6 +26,8 @@ public class ScreensController  extends StackPane {
     //Holds the screens to be displayed
 	
 	public static Person person;
+	public static Passenger passenger;
+	public static Employee employee;
 	
     private HashMap<String, Node> screens = new HashMap<>();
     
@@ -33,6 +37,14 @@ public class ScreensController  extends StackPane {
 
     public void setPerson(Person obj){
     	person = obj;
+    }
+    
+    public void setPassenger(Passenger obj){
+    	passenger = obj;
+    }
+    
+    public void setEmployee(Employee obj){
+    	employee = obj;
     }
     
     //Add the screen to the collection

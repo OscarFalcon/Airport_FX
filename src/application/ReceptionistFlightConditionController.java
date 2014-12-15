@@ -1,14 +1,20 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class ResceptionistFlightConditionController {
+public class ReceptionistFlightConditionController implements Initializable, ControlledScreen{
 
+	ScreensController myController;
+	
     @FXML
     private TableColumn<?, ?> rPriceCol;
 
@@ -56,17 +62,17 @@ public class ResceptionistFlightConditionController {
 
     @FXML
     void Home(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen8ID);
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML
     void SignOut(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
@@ -83,5 +89,17 @@ public class ResceptionistFlightConditionController {
     void RescheduleReservation(ActionEvent event) {
 
     }
+
+	@Override
+	public void setScreenParent(ScreensController screenPage) {
+		// TODO Auto-generated method stub
+		myController = screenPage;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

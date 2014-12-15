@@ -28,6 +28,7 @@ public class ScreensFramework extends Application {
     /*Receptionist*/
     public static String screen8ID = "ReceptionistMain";
     public static String screen9ID = "ReceptionistFlightCondition";
+    public static String screen13ID = "ChargesFees";
     
   
     
@@ -51,8 +52,9 @@ public class ScreensFramework extends Application {
         //mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         
         /*Receptionist*/
-       // mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
-       // mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
+        screens.put("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
+        screens.put("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
+        screens.put("ChargesFees", "/fxml/ChargesFees.fxml");
         
      
         mainContainer.setScreen(ScreensFramework.screen1ID);

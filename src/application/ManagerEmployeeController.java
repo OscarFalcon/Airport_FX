@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class ManegerEmployeeController implements Initializable, ControlledScreen{
+public class ManagerEmployeeController implements Initializable, ControlledScreen{
 	ScreensController myController;
 
     @FXML

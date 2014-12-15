@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="passengerflightsearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-800" minWidth="-1000" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PassengerFlightSearchController">
+<AnchorPane id="passengerflightsearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-800" minWidth="-1000" prefHeight="781.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PassengerFlightSearchController">
    <children>
-      <BorderPane layoutX="117.0" layoutY="-6.0" prefHeight="800.0" prefWidth="1000.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="83.0">
+      <BorderPane layoutX="117.0" layoutY="-6.0" prefHeight="742.0" prefWidth="1000.0" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="83.0">
          <center>
             <TabPane prefHeight="377.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
               <tabs>
@@ -30,7 +30,6 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
@@ -53,6 +52,11 @@
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
                               </GridPane>
+                              <Label text="Flight To" textFill="WHITE">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </Label>
                               <TableView fx:id="roundTripSearchResultsTable" prefHeight="247.0" prefWidth="875.0">
                                 <columns>
                                   <TableColumn id="rAirlineCol" fx:id="rAirlineCol" prefWidth="120.0" text="Airline" />
@@ -63,12 +67,27 @@
                                     <TableColumn id="rPriceCol" fx:id="rPriceCol" minWidth="0.0" prefWidth="124.0" text="Price" />
                                 </columns>
                               </TableView>
-                              <Button fx:id="roundTripReserveFlightButton" mnemonicParsing="false" text="Reserve Flight" />
-                              <Label fx:id="reservationSubmitLabel" prefHeight="25.0" prefWidth="175.0" textFill="WHITE">
+                              <Label text="Flight back" textFill="WHITE">
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </Label>
+                              <TableView fx:id="roundTripSearchResultsTable1" prefHeight="247.0" prefWidth="875.0">
+                                 <columns>
+                                    <TableColumn id="rAirlineCol" fx:id="rAirlineCol1" prefWidth="120.0" text="Airline" />
+                                    <TableColumn id="rLeaveDateCol" fx:id="rLeaveDateCol1" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
+                                    <TableColumn id="rArriveDateCol" fx:id="rArriveDateCol1" prefWidth="174.0" text="Arrival Date:Time" />
+                                    <TableColumn id="rReturnDateCol" fx:id="rReturnDateCol1" minWidth="3.0" prefWidth="177.0" text="Return Date:Time" />
+                                    <TableColumn id="rArriveSrcDateCol" fx:id="rArriveSrcDateCol1" prefWidth="234.0" text="Arrival Source Date:Time" />
+                                    <TableColumn id="rPriceCol" fx:id="rPriceCol1" minWidth="0.0" prefWidth="124.0" text="Price" />
+                                 </columns>
+                              </TableView>
+                              <Label fx:id="rReservationSubmitLabel" prefHeight="25.0" prefWidth="175.0" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <Button fx:id="roundTripReserveFlightButton" mnemonicParsing="false" onAction="#rReserveFlightButton" prefHeight="26.0" prefWidth="303.0" text="Reserve Flight" />
                            </children>
                         </VBox>
                      </content>
@@ -122,12 +141,12 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="oneWayReserveFlightButton" mnemonicParsing="false" text="Reserve Flight" />
-                              <Label fx:id="reservationSubmitLabel" prefHeight="20.0" prefWidth="174.0" textFill="WHITE">
+                              <Label fx:id="oReservationSubmitLabel" prefHeight="20.0" prefWidth="174.0" textFill="WHITE">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <Button fx:id="oneWayReserveFlightButton" mnemonicParsing="false" onAction="#oReserveFlightAction" text="Reserve Flight" />
                            </children>
                         </VBox>
                      </content>
