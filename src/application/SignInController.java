@@ -68,6 +68,7 @@ public class SignInController implements Initializable, ControlledScreen{
 		 if(passenger != null )
 		 {
 			 myController.setScreen(ScreensFramework.screen3ID);
+			 myController.setPassenger(passenger);
 			 resetLabels();
 			 return;
 		 }

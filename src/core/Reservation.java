@@ -30,8 +30,19 @@ public class Reservation extends SavableObject {
 	
 	public boolean book()
 	{
+		boolean b;
 		
-		return srcToDest.insert() && destToSrc.insert() && insert();
+		b = srcToDest.insert();
+		
+		if(destToSrc != null)
+			b = destToSrc.insert();
+		
+		if(b == false)
+			return false;
+		
+		return insert();
+		
+		
 		
 	}
 

@@ -160,7 +160,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		//HeaderLabel.setText("WELCOME "+ myController.person.getFirstName());
+		//HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
 		populateSrcandDesFields();
 	    oneWayFlightTable();
 	    roundTripFlightTable();
@@ -175,8 +175,10 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		Solution selected = onewaySearchResultsTableView.getSelectionModel().getSelectedItem();
 		Reservation reservation = new Reservation();
 		reservation.setSrcToDest(selected);
+		reservation.setNumOfBags(0);
+		reservation.setTotalSale(selected.getSaleTotal());
 		reservation.setPrimaryPassenger(myController.getPassenger());
-		if(reservation.insert()==false){
+		if(reservation.book()==false){
 			oReservationSubmitLabel.setText("Error adding Reservation!");
 		} else {
 			oReservationSubmitLabel.setText("Successfully Reserved Flight!");

@@ -181,7 +181,6 @@ public class Solution extends SavableObject
 	{
 		String insertSolutionString = null;
 		String insertSolutionRouteString = null;
-		Integer solutionID = null;
 		
 		
 		
