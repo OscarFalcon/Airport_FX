@@ -15,10 +15,10 @@ public class Employee extends Person  {
 	
 	
 	protected Employee(String id, String first, String last, String username,
-			String email, String phone, String street, String city,
+			String password, String email, String phone, String street, String city,
 			String state, String zip, String type, String status, String availability) {
 		
-		super(id, first, last, username, email, phone, street, city, state, zip);
+		super(id, first, last,username,email, phone, street, city, state, zip);
 		this.type = new SimpleStringProperty(type);
 		this.status = new SimpleStringProperty(status);
 		this.availability = new SimpleStringProperty(availability);
@@ -116,7 +116,7 @@ public class Employee extends Person  {
 		
 		Employee employee = new Employee(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
 		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
-		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(), 
+		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(),tmp[11].toString(), 
 		status,availability);
 		
 		
