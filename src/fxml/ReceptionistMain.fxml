@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReceptionistMainController">
    <children>
-      <SplitPane dividerPositions="0.15184815184815184" layoutX="-3.0" prefHeight="797.0" prefWidth="1003.0">
+      <SplitPane dividerPositions="0.15184815184815184" layoutX="-3.0" prefHeight="894.0" prefWidth="1003.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="795.0" prefWidth="150.0">
                <children>
@@ -63,7 +63,7 @@
                                 <tabs>
                                     <Tab fx:id="RoundTPassFli" text="Roundtrip">
                                        <content>
-                                          <VBox prefHeight="716.0" prefWidth="811.0">
+                                          <VBox prefHeight="793.0" prefWidth="848.0">
                                              <children>
                                                 <GridPane hgap="10.0" vgap="5.0">
                                                    <children>
@@ -101,7 +101,7 @@
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                 </GridPane>
-                                                <TableView fx:id="rSearchResults" prefHeight="247.0" prefWidth="875.0">
+                                                <TableView fx:id="roundTripDepartingSearchResultsTable" prefHeight="247.0" prefWidth="875.0">
                                                    <columns>
                                                       <TableColumn id="rAirlineCol" fx:id="rAirlineCol" prefWidth="120.0" text="Airline" />
                                                       <TableColumn id="rLeaveDateCol" fx:id="rLeaveDateCol" minWidth="0.0" prefWidth="170.0" text="Leave Date:Time" />
@@ -111,12 +111,18 @@
                                                       <TableColumn id="rPriceCol" fx:id="rPriceCol" minWidth="0.0" prefWidth="124.0" text="Price" />
                                                    </columns>
                                                 </TableView>
-                                                <Button fx:id="roundTripReserveFlightButton" mnemonicParsing="false" text="Reserve Flight" />
                                                 <Label fx:id="reservationSubmitLabel" prefHeight="25.0" prefWidth="175.0" textFill="WHITE">
                                                    <font>
                                                       <Font size="16.0" />
                                                    </font>
                                                 </Label>
+                                                <TableView prefHeight="247.0" prefWidth="875.0">
+                                                  <columns>
+                                                    <TableColumn prefWidth="75.0" text="C1" />
+                                                    <TableColumn prefWidth="75.0" text="C2" />
+                                                  </columns>
+                                                </TableView>
+                                                <Button fx:id="roundTripReserveFlightButton" mnemonicParsing="false" text="Reserve Flight" />
                                              </children>
                                           </VBox>
                                        </content>
@@ -159,7 +165,7 @@
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                 </GridPane>
-                                                <TableView fx:id="searchResults" prefHeight="235.0" prefWidth="600.0">
+                                                <TableView fx:id="onewaySearchResultsTableView" prefHeight="235.0" prefWidth="600.0">
                                                    <columnResizePolicy>
                                                       <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                                    </columnResizePolicy>
@@ -179,6 +185,11 @@
                                              </children>
                                           </VBox>
                                        </content>
+                                    </Tab>
+                                    <Tab text="Pending Reservations">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                      </content>
                                     </Tab>
                                 </tabs>
                               </TabPane>
