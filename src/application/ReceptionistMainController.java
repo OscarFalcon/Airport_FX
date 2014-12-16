@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import airline.QPXExpressRequest;
@@ -621,6 +622,14 @@ public class ReceptionistMainController implements Initializable, ControlledScre
 */	
 	@Override
 	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
 		// TODO Auto-generated method stub
 		
 	}
