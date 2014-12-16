@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManagerEmployeeController">
    <children>
       <BorderPane layoutX="-1.0" prefHeight="800.0" prefWidth="1200.0">
@@ -15,13 +14,13 @@
                <children>
                   <TableView prefHeight="401.0" prefWidth="936.0" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn prefWidth="164.0" text="Name" />
-                      <TableColumn prefWidth="253.0" text="Job Title" />
-                        <TableColumn prefWidth="206.0" text="Status" />
-                        <TableColumn prefWidth="312.0" text="Availability" />
+                      <TableColumn fx:id="nameCol" prefWidth="164.0" text="Name" />
+                      <TableColumn fx:id="jobTitleCol" prefWidth="253.0" text="Job Title" />
+                        <TableColumn fx:id="statusCol" prefWidth="206.0" text="Status" />
+                        <TableColumn fx:id="availabilityCol" prefWidth="312.0" text="Availability" />
                     </columns>
                   </TableView>
-                  <Button fx:id="changeStatus" layoutX="29.0" layoutY="421.0" mnemonicParsing="false" onAction="#ChangeStatus" prefHeight="46.0" prefWidth="118.0" text="Change Status">
+                  <Button fx:id="changeStatus" layoutX="29.0" layoutY="421.0" mnemonicParsing="false" onAction="#ChangeStatus" prefHeight="46.0" prefWidth="163.0" text="Change Status">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

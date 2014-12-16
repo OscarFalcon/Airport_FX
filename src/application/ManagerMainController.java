@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import airline.Solution;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,125 +19,134 @@ import javafx.scene.control.TextField;
 public class ManagerMainController implements Initializable, ControlledScreen{
 	ScreensController myController;
 
-    @FXML
-    private TableColumn<?, ?> oAirlineCol;
+	 @FXML
+	    private TableColumn<Solution, String> oAirlineCol;
 
-    @FXML
-    private DatePicker rArrive;
+	    @FXML
+	    private DatePicker rArrive;
 
-    @FXML
-    private Button oSearch;
+	    @FXML
+	    private Button oSearch;
 
-    @FXML
-    private Label rErrorLabel;
+	    @FXML
+	    private Label rErrorLabel;
 
-    @FXML
-    private TableColumn<?, ?> rLeaveDateCol;
+	    @FXML
+	    private TableColumn<Solution, String> rLeaveDateCol;
 
-    @FXML
-    private Button oneWayReserveFlightButton;
+	    @FXML
+	    private Button oneWayReserveFlightButton;
 
-    @FXML
-    private Button employee;
+	    @FXML
+	    private Button employee;
 
-    @FXML
-    private Button myAcc;
+	    @FXML
+	    private Button myAcc;
+	    
+	    @FXML
+	    private Button manegeVoucher;
 
-    @FXML
-    private TableView<?> searchResults;
+	    @FXML
+	    private Button rSearch;
+	    
+	    @FXML
+	    private Button MakePay;
+	    
+	    @FXML
+	    private Button boarding;
+	    
+	    @FXML
+	    private Button signOut;
+	    
+	    @FXML
+	    private Button flightCond;
 
-    @FXML
-    private ChoiceBox<?> oPreferredClass;
+	    @FXML
+	    private Button roundTripReserveFlightButton;
+	    
+	    @FXML
+	    private TableView<Solution> searchResults;
 
-    @FXML
-    private TextField oPassenger;
+	    @FXML
+	    private ChoiceBox<String> oPreferredClass;
 
-    @FXML
-    private DatePicker rDepart;
+	    @FXML
+	    private TextField oPassenger;
 
-    @FXML
-    private Label reservationSubmitLabel1;
+	    @FXML
+	    private DatePicker rDepart;
 
-    @FXML
-    private Tab oDepartingPassFli;
+	    @FXML
+	    private Label reservationSubmitLabel1;
 
-    @FXML
-    private TableColumn<?, ?> oPriceCol;
+	    @FXML
+	    private Tab oDepartingPassFli;
 
-    @FXML
-    private TableView<?> rSearchResults;
+	    @FXML
+	    private TableColumn<Solution, String> oPriceCol;
 
-    @FXML
-    private TableColumn<?, ?> oDepDateCol;
+	    @FXML
+	    private TableView<Solution> rSearchResults;
 
-    @FXML
-    private Button manegeVoucher;
+	    @FXML
+	    private TableColumn<Solution, String> oDepDateCol;
 
-    @FXML
-    private TextField rPassenger;
+	    @FXML
+	    private TextField rPassenger;
 
-    @FXML
-    private Button rSearch;
+	    @FXML
+	    private ChoiceBox<String> rPreferredClass;
 
-    @FXML
-    private ChoiceBox<?> rPreferredClass;
+	    @FXML
+	    private ChoiceBox<String> oFlyFrom;
 
-    @FXML
-    private Button MakePay;
+	    @FXML
+	    private DatePicker oDepart;
 
-    @FXML
-    private ChoiceBox<?> oFlyFrom;
+	    @FXML
+	    private TableColumn<Solution, String> rPriceCol;
 
-    @FXML
-    private DatePicker oDepart;
+	    @FXML
+	    private ChoiceBox<String> oFlyTo;
 
-    @FXML
-    private TableColumn<?, ?> rPriceCol;
+	    @FXML
+	    private ChoiceBox<String> rFlyTo;
 
-    @FXML
-    private ChoiceBox<?> oFlyTo;
+	    @FXML
+	    private TableColumn<Solution, String> rArriveSrcDateCol;
 
-    @FXML
-    private Button signOut;
 
-    @FXML
-    private ChoiceBox<?> rFlyTo;
+	    @FXML
+	    private TableColumn<Solution, String> rAirlineCol;
 
-    @FXML
-    private TableColumn<?, ?> rArriveSrcDateCol;
+	    @FXML
+	    private TableColumn<Solution, String> rReturnDateCol;
 
-    @FXML
-    private Button flightCond;
+	    @FXML
+	    private TableColumn<Solution, String> oArrDateCol;
 
-    @FXML
-    private TableColumn<?, ?> rAirlineCol;
+	    @FXML
+	    private TableColumn<Solution, String> rArriveDateCol;
 
-    @FXML
-    private TableColumn<?, ?> rReturnDateCol;
+	    @FXML
+	    private Label oErrorLabel;
 
-    @FXML
-    private TableColumn<?, ?> oArrDateCol;
+	    @FXML
+	    private Label reservationSubmitLabel;
 
-    @FXML
-    private TableColumn<?, ?> rArriveDateCol;
+	    @FXML
+	    private ChoiceBox<String> rFlyFrom;
 
-    @FXML
-    private Label oErrorLabel;
+	    @FXML
+	    private Tab RoundTPassFli;
 
-    @FXML
-    private Label reservationSubmitLabel;
-
-    @FXML
-    private Button roundTripReserveFlightButton;
-
-    @FXML
-    private ChoiceBox<?> rFlyFrom;
-
-    @FXML
-    private Button boarding;
-
-    @FXML
-    private Tab RoundTPassFli;
+	    @FXML
+	    private Label HeaderLabel;
+	    
+	    
+	    
+	
+	
 
     @FXML
     void FlightCondition(ActionEvent event) {
@@ -182,6 +192,18 @@ public class ManagerMainController implements Initializable, ControlledScreen{
     void oSearchAction(ActionEvent event) {
 
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 	@Override
 	public void setScreenParent(ScreensController screenParent) {

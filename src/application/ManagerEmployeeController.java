@@ -3,13 +3,28 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import core.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 
-public class ManagerEmployeeController implements Initializable, ControlledScreen{
+public class ManagerEmployeeController {
+
 	ScreensController myController;
+
+
+    @FXML
+    private TableColumn<Employee, String> availabilityCol;
+
+    @FXML
+    private TableColumn<Employee, String> statusCol;
+
+    @FXML
+    private TableColumn<Employee, String> jobTitleCol;
+
+    @FXML
+    private TableColumn<Employee, String> nameCol;
 
     @FXML
     private Button signout;
@@ -23,11 +38,16 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
     @FXML
     private Button home;
 
-    @FXML
-    void ChangeStatus(ActionEvent event) {
-
+    public void getEmployees()
+    {
+    	Employee employee = Employee.retrieveEmployee("birdman", "password");
+    	
     }
-
+    
+    
+    
+    
+    
     @FXML
     void Home(ActionEvent event) {
     	myController.setScreen(ScreensFramework.screen6ID);
@@ -43,19 +63,19 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
     	myController.setScreen(ScreensFramework.screen1ID);
     }
 
-	@Override
+	
 	public void setScreenParent(ScreensController screenParent) {
 		// TODO Auto-generated method stub
 		myController = screenParent;
 	}
 
-	@Override
+	
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
-	@Override
+	
 	public void reset() {
 		// TODO Auto-generated method stub
 		
