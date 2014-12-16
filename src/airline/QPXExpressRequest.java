@@ -146,7 +146,7 @@ public class QPXExpressRequest
 			s.setSaleTotal(jsonObject.get("saleTotal").getAsString());
 			s.setdepartureTime(leg.get("departureTime").getAsString());
 			//System.out.printf("%-25.25s ",s.getDepartureTime());
-			s.setOriginAriportCode(leg.get("origin").getAsString());
+			s.setOriginAirportCode(leg.get("origin").getAsString());
 			//System.out.printf("%-4.4s ",s.getOriginAirportCode());
 			s.setOriginAirport(getAirport(s.getOriginAirportCode(),airportMetaData));
 			//System.out.printf("%-30.30s ",s.getOriginAirport());

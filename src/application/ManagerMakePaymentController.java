@@ -47,12 +47,12 @@ public class ManagerMakePaymentController implements Initializable, ControlledSc
 
     @FXML
     void Home(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen1ID);
+    	myController.setScreen(ScreensFramework.screen6ID);
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen1ID);
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML

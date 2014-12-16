@@ -84,7 +84,22 @@ public class ManagerAccountPageController implements Initializable, ControlledSc
 
     @FXML
     void Save(ActionEvent event) {
-
+    Employee employee = myController.getEmployee(); 
+     
+     employee.setFirstName(accountFirstName.getText());
+     employee.setLastName(accountLastName.getText());
+     employee.setPassword(oldPassword.getText());
+     employee.setPassword(newPassword1.getText());
+     employee.setPassword(newPassword2.getText());
+     employee.setEmail(accountEmail.getText());
+     employee.setPhone(accountPhone.getText());
+     employee.setStreet(accountStreet.getText());
+     employee.setCity(accountCity.getText());
+     employee.setState(accountState.getText());
+     employee.setZip(accountZip.getText());
+     
+                
+     employee.insert();
     }
 
     @FXML
@@ -94,24 +109,12 @@ public class ManagerAccountPageController implements Initializable, ControlledSc
 
     @FXML
     void SavePassword(ActionEvent event) {
-
+      
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
     	myController.setScreen(ScreensFramework.screen10ID);
-    	
-    	Employee employee = myController.getEmployee();
-    	
-    	employee.setFirstName();
-    	employee.setLastName(fName);
-    	employee.set
-    	
-    	
-    	employee.save();
-    	
-    	
-    	
     }
 
     @FXML

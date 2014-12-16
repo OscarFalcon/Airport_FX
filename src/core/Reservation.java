@@ -128,6 +128,11 @@ public class Reservation extends SavableObject {
 		return reservationID;
 	}
 	
+	public void setReservationId(int id)
+	{
+		this.reservationID = id;
+	}
+	
 	
 }
 
