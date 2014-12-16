@@ -97,6 +97,7 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 				return new ReadOnlyObjectWrapper<String>(p.getValue().getArrivalTime());
 			}
 		});
+		
 		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
 		flightDetailsTable.setItems(list);
 		

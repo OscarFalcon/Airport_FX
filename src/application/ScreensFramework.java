@@ -50,7 +50,7 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         
         /*Receptionist*/
-        mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
+        //mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
         mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
         mainContainer.loadScreen("ChargesFees", "/fxml/ChargesFees.fxml");
         

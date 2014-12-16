@@ -147,7 +147,7 @@ public class Solution extends SavableObject
 	{
 		return destinationAirport;
 	}
-	public void setOriginAriportCode(String code)//ORIGIN AIRPORT CODE
+	public void setOriginAirportCode(String code)//ORIGIN AIRPORT CODE
 	{
 		this.originAirportCode = code;
 	}

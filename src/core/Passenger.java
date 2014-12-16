@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 
+import airline.Solution;
 import javafx.beans.property.SimpleStringProperty;
 import database.MySQL;
 
@@ -11,7 +12,10 @@ public class Passenger extends Person
 	
 	protected  SimpleStringProperty username;
 	protected  SimpleStringProperty password;
-
+	private ArrayList<Reservation> reservations;
+	
+	
+	
 	public Passenger(String id,String first,String last,String username,String password,String email,String phone,
 					String street, String city, String state, String zip)
 	{
@@ -21,17 +25,75 @@ public class Passenger extends Person
 	}
 	
 	
-	public ArrayList<Reservation> getPastReservations()
+	public boolean cancelReservation(Integer reservationID){
+		String mysql_string = "DELETE FROM reservation WHERE reservationID = ?";
+		Object[] arguments = {reservationID.toString()};
+		System.out.println("Deleting reservationID: "+reservationID);
+		return MySQL.execute(mysql_string, arguments);
+	}
+	
+	
+	public ArrayList<Reservation> getReservations()
 	{
+		reservations = new ArrayList<Reservation>();
+		//First need to get Reservation data 
+		String query = "SELECT * FROM reservation WHERE personID = ?";
 		
-		return null;
+		Object arguments[] = {getId().toString()};
+		System.out.println(getId().toString());
+		
+		int [] resultType = {MySQL.INTEGER, MySQL.INTEGER,MySQL.INTEGER, MySQL.INTEGER, MySQL.STRING, MySQL.INTEGER};
+				
+		ArrayList<Object[]> results = MySQL.executeQuery(query, arguments, resultType);
+		if(results.isEmpty())
+		{
+			System.out.println("Reservations is empty");
+			return reservations;
+		}
+		
+		for(int i=0; i < results.size(); i++){
+			System.out.println("LOOP: "+ i);
+			Object[] reservationObj = results.get(i);
+			Reservation reservation = new Reservation();
+			reservation.setNumOfBags(Integer.parseInt(reservationObj[0].toString()));
+			String srcToDestID = reservationObj[1].toString();
+			String destToSrcID = reservationObj[2].toString();
+			
+			//Get Solution objects from reservation!!!!
+			Solution srcToDest = new Solution();
+			Solution destToSrc = new Solution();
+			query = "SELECT saleTotal,arrivalTime,departureTime,originAirportCode,originAirport,destinationAirportCode,destinationAirport "
+					+ "FROM solution WHERE SolutionID = ?";
+			
+			Object arguments1[] = {srcToDestID}; 
+			int [] resultType1 = {MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING};
+			ArrayList<Object[]> solutions = MySQL.executeQuery(query, arguments1, resultType1);
+			if(solutions.isEmpty()){
+				System.out.println("Reservation has no solutions");
+			}
+
+			Object[] solutionObj = solutions.get(0);
+			srcToDest.setSaleTotal(solutionObj[0].toString());
+			srcToDest.setArrivalTime(solutionObj[1].toString());
+			srcToDest.setdepartureTime(solutionObj[2].toString());
+			srcToDest.setOriginAirportCode(solutionObj[3].toString());
+			srcToDest.setOriginAirport(solutionObj[4].toString());
+			srcToDest.setDestinationAirportCode(solutionObj[5].toString());
+			srcToDest.setDestinationAirport(solutionObj[6].toString());
+			
+			
+			
+			reservation.setSrcToDest(srcToDest);
+			//reservation.setDestToSrc(destToSrc);
+			reservation.setNumOfBags(Integer.parseInt(reservationObj[3].toString()));
+			reservation.setTotalSale(reservationObj[4].toString());
+			
+			reservations.add(reservation);
+		}
+		
+		return reservations;
 	}
 	
-	
-	public ArrayList<Reservation> getFutureReservations()
-	{
-		return null;
-	}
 	
 	
 	public boolean addReservation(String srcToDest, String destToSrc, String numberOfBags, String totalSale, String personID){
