@@ -315,20 +315,6 @@ public class QPXExpressRequest
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	public String toJson()
 	{
 		return "{" 							+
