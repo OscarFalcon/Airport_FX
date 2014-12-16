@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import core.Person;
@@ -173,6 +174,12 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     	accountZip.setText(myController.getPassenger().getZip());
     	
     	accountUsername.setText(myController.getPassenger().getUserName());
+	}
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,7 +1,9 @@
 package application;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+
 import core.Employee;
 import core.Passenger;
 import javafx.event.ActionEvent;
@@ -22,7 +24,7 @@ public class SignInController implements Initializable, ControlledScreen{
 
     @FXML
     private Button forgotBotton;
-
+    
     @FXML
     private TextField userName;
 
@@ -99,7 +101,7 @@ public class SignInController implements Initializable, ControlledScreen{
  
     @FXML
     void forgotPassword(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen2ID);
+    	myController.setScreen(ScreensFramework.screen15ID);
     }
 
     @FXML
@@ -118,6 +120,14 @@ public class SignInController implements Initializable, ControlledScreen{
 
 	@Override
 	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
 		// TODO Auto-generated method stub
 		
 	}

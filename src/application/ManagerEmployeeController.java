@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import core.Employee;
@@ -77,6 +78,12 @@ public class ManagerEmployeeController {
 
 	
 	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
 		// TODO Auto-generated method stub
 		
 	}
