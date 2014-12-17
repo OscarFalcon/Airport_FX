@@ -138,21 +138,6 @@ public class ScreensController  extends StackPane {
             return false;
         }
 
-
-        /*Node screenToRemove;
-         if(screens.get(name) != null){   //screen loaded
-         if(!getChildren().isEmpty()){    //if there is more than one screen
-         getChildren().add(0, screens.get(name));     //add the screen
-         screenToRemove = getChildren().get(1);
-         getChildren().remove(1);                    //remove the displayed screen
-         }else{
-         getChildren().add(screens.get(name));       //no one else been displayed, then just show
-         }
-         return true;
-         }else {
-         System.out.println("screen hasn't been loaded!!! \n");
-         return false;
-         }*/
     }
 
     //This method will remove the screen with the given name from the collection of screens
@@ -166,29 +151,33 @@ public class ScreensController  extends StackPane {
     }
     
     
-    public boolean showFlightDetailsPage(Solution solution){
-    	try{
-    		FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/FlightDetailsPage.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            
-            Stage detailsPage = new Stage();
-            detailsPage.setTitle("Flight Details");
-            detailsPage.initModality(Modality.WINDOW_MODAL);
-            Scene scene = new Scene(page);
-            detailsPage.setScene(scene);
-            
-            FlightDetailsPageController controller = loader.getController();
-            controller.setScreenParent(this);
-            controller.setSolution(solution);
-            controller.reset();
-            
-            detailsPage.showAndWait();
-            return true;
-    	} catch(IOException e){
-    		e.printStackTrace();
-            return false;
-    	}
-    }
     
+    
+    
+    public ControlledScreen loadPopUp(String name)
+    {
+    	FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(name));
+        AnchorPane page;
+		try
+		{
+			page = (AnchorPane) loader.load();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
+    	
+    	Stage stage = new Stage();
+        //stage.setTitle("Flight Details");
+        stage.initModality(Modality.WINDOW_MODAL);
+        Scene scene = new Scene(page);
+        stage.setScene(scene);
+        
+        ControlledScreen controller = loader.getController();
+        controller.setScreenParent(this);
+        controller.reset();
+        stage.show();
+        return controller;
+    }	   
 }
