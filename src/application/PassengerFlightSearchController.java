@@ -177,7 +177,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		} else
 		{
 			oReservationSubmitLabel.setText("Successfully Reserved Flight!");
-
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			oReservationSubmitLabel.setText("Flight Reservation Number: " +  reservation.getReservationId());
 		}
 	}
     
@@ -216,6 +222,15 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 		}
 		
 		rReservationSubmitLabel.setText("Successfully Reserved Flight!");
+		try 
+		{
+			Thread.sleep(5000);
+		} catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+		rReservationSubmitLabel.setText("Flight Reservation Number:" + reservation.getReservationId());
+		
 		return;
 		
 	

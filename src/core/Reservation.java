@@ -103,7 +103,12 @@ public class Reservation extends SavableObject {
 			return false;
 		}
 		
-		return insert();
+		if(insert() == false)
+		{
+			return false;
+		}
+		reservationID = MySQL.getLastInsertID();
+		return true;
 		
 	}
 
