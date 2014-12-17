@@ -488,9 +488,11 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 							System.out.println("Table Row clicked");
 							@SuppressWarnings("unchecked")
 							TableRow<Solution> row = (TableRow<Solution>) event.getSource();
-							myController.showFlightDetailsPage(row.getItem());
-							System.out.println("Route Aricraft: " + row.getItem().getRoutes().get(0).getAircraft());
-						}
+							ControlledScreen controller = myController.loadPopUp(ScreensFramework.flightDetailsPage);
+							HashMap<String,Object> arguments = new HashMap<String,Object>();
+							arguments.put("solution",row.getItem());
+							controller.respawn(arguments);
+					}
 					}
 					
 				});
