@@ -10,26 +10,23 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TextField;
 import javafx.util.Callback;
 
-public class FlightDetailsPageController implements Initializable, ControlledScreen{
-	
-	@FXML
-    private TableView<Route> flightDetailsTable;
-	
+public class CustomerFlightDetailsController implements Initializable, ControlledScreen{
+
     @FXML
     private TableColumn<Route, String> departCol;
 
     @FXML
     private TableColumn<Route, String> airlineCol;
+
+    @FXML
+    private TableView<Route> flightDetailsTable;
 
     @FXML
     private TableColumn<Route, String> destCol;
@@ -42,28 +39,25 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 
     @FXML
     private TableColumn<Route, String> flightNumCol;
-    
-    @FXML
-    private TextField email;
 
-    @FXML
-    private ChoiceBox<String> bagNum;
-	
 	@Override
 	public void setScreenParent(ScreensController screenPage) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	 @FXML
-	    void Submit(ActionEvent event) {
-
-	    }
 
 	@Override
 	public void reset() {
-
+		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
+		// TODO Auto-generated method stub
+		Solution solution = (Solution) arguments.get("solution");
+		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
+		flightDetailsTable.setItems(list);
 	}
 
 	@Override
@@ -112,15 +106,6 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 		});
 		
 		
-	}
-
-
-	@Override
-	public void respawn(HashMap<String, Object> arguments)
-	{
-		Solution solution = (Solution) arguments.get("solution");
-		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
-		flightDetailsTable.setItems(list);
 	}
 
 }

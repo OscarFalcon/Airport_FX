@@ -581,7 +581,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 							ControlledScreen controller;
 							HashMap<String, Object> arguments = new HashMap<String, Object>();
 							arguments.put("solution",row.getItem());
-							controller = myController.loadPopUp(ScreensFramework.flightDetailsPage);
+							controller = myController.loadPopUp(ScreensFramework.customerflightDetailsPage);
 							controller.respawn(arguments);
 						}
 					}

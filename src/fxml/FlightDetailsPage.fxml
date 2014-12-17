@@ -35,10 +35,13 @@
             </Label>
          </top>
          <bottom>
-            <AnchorPane fx:id="bagNum" prefHeight="94.0" prefWidth="698.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="bagNum" prefHeight="114.0" prefWidth="698.0" BorderPane.alignment="CENTER">
                <children>
-                  <ChoiceBox fx:id="bagNum" layoutX="161.0" layoutY="13.0" prefWidth="150.0" />
-                  <Label layoutX="34.0" layoutY="14.0" prefHeight="24.0" prefWidth="107.0" text="Number of Bags  " />
+                  <ChoiceBox fx:id="bagNum" layoutX="160.0" layoutY="57.0" prefWidth="150.0" />
+                  <Label layoutX="34.0" layoutY="58.0" prefHeight="24.0" prefWidth="107.0" text="Number of Bags  " />
+                  <TextField fx:id="email" layoutX="158.0" layoutY="14.0" prefHeight="26.0" prefWidth="150.0" />
+                  <Label layoutX="34.0" layoutY="19.0" prefHeight="16.0" prefWidth="40.0" text="Email" />
+                  <Button fx:id="submit" layoutX="503.0" layoutY="35.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="125.0" text="Submit" />
                </children>
             </AnchorPane>
          </bottom>
