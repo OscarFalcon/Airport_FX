@@ -31,8 +31,8 @@ public class Reservation extends SavableObject {
 		int [] resultTypes = {MySQL.INTEGER,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING};
 		ArrayList<Object[]> solution = MySQL.executeQuery(query, arguments, resultTypes);
 		
+		srcToDest = new Solution();
 		if(!solution.isEmpty()){
-			srcToDest = new Solution();
 			Object[] solutionObj = solution.get(0);
 			srcToDest.setSolutionID(Integer.parseInt(solutionObj[0].toString()));
 			srcToDest.setSaleTotal(solutionObj[1].toString());
@@ -55,8 +55,8 @@ public class Reservation extends SavableObject {
 		
 		ArrayList<Object[]> solution2 = MySQL.executeQuery(query, arguments2, resultTypes);
 		
+		destToSrc = new Solution();
 		if(!solution2.isEmpty()){
-			destToSrc = new Solution();
 			Object[] solutionObj2 = solution2.get(0);
 			destToSrc.setSolutionID(Integer.parseInt(solutionObj2[0].toString()));
 			destToSrc.setSaleTotal(solutionObj2[1].toString());

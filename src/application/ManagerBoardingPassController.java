@@ -26,16 +26,7 @@ public class ManagerBoardingPassController implements Initializable, ControlledS
     private Label departureLebal;
 
     @FXML
-    private Button viewBoardingPass;
-
-    @FXML
     private Label flgihtLebal;
-
-    @FXML
-    private Button signOut;
-
-    @FXML
-    private Button myAccount;
 
     @FXML
     private Label seatLebal;
@@ -62,8 +53,9 @@ public class ManagerBoardingPassController implements Initializable, ControlledS
     }
 
     @FXML
-    void ViewBoardingPass(ActionEvent event) {
-
+    void ViewBoardingPass(ActionEvent event)
+    {
+    	System.out.println("actionevent");
     }
 
 	@Override
