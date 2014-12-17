@@ -170,7 +170,11 @@ public class MyTripController implements Initializable, ControlledScreen{
 							@SuppressWarnings("unchecked")
 							TableRow<Reservation> row = (TableRow<Reservation>) event.getSource();
 							System.out.println("Table Row clicked + " + row.getItem().getReservationId());
-						//	myController.showFlightDetailsPage(row.getItem().getSrcToDest());
+							
+							ControlledScreen controller = myController.loadPopUp(ScreensFramework.flightDetailsPage);
+							HashMap<String,Object> arguments = new HashMap<String,Object>();
+							arguments.put("solution",row.getItem().getSrcToDest());
+							controller.respawn(arguments);
 						}
 					}
 					
