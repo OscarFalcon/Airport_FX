@@ -52,42 +52,15 @@ public class Passenger extends Person
 		}
 		
 		for(int i=0; i < results.size(); i++){
-			System.out.println("LOOP: "+ i);
 			Object[] reservationObj = results.get(i);
 			Reservation reservation = new Reservation();
-			reservation.setNumOfBags(Integer.parseInt(reservationObj[0].toString()));
-			String srcToDestID = reservationObj[1].toString();
-			String destToSrcID = reservationObj[2].toString();
-			
-			//Get Solution objects from reservation!!!!
-			Solution srcToDest = new Solution();
-			Solution destToSrc = new Solution();
-			query = "SELECT saleTotal,arrivalTime,departureTime,originAirportCode,originAirport,destinationAirportCode,destinationAirport "
-					+ "FROM solution WHERE SolutionID = ?";
-			
-			Object arguments1[] = {srcToDestID}; 
-			int [] resultType1 = {MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING};
-			ArrayList<Object[]> solutions = MySQL.executeQuery(query, arguments1, resultType1);
-			if(solutions.isEmpty()){
-				System.out.println("Reservation has no solutions");
-			}
-
-			Object[] solutionObj = solutions.get(0);
-			srcToDest.setSaleTotal(solutionObj[0].toString());
-			srcToDest.setArrivalTime(solutionObj[1].toString());
-			srcToDest.setdepartureTime(solutionObj[2].toString());
-			srcToDest.setOriginAirportCode(solutionObj[3].toString());
-			srcToDest.setOriginAirport(solutionObj[4].toString());
-			srcToDest.setDestinationAirportCode(solutionObj[5].toString());
-			srcToDest.setDestinationAirport(solutionObj[6].toString());
-			
-			
-			
-			reservation.setSrcToDest(srcToDest);
-			//reservation.setDestToSrc(destToSrc);
+			reservation.setReservationId(Integer.parseInt(reservationObj[0].toString()));
+			System.out.println("Reservation: "+ reservationObj[0].toString());
+			reservation.setSrcToDestID(reservationObj[1].toString());
+			reservation.setDestToSrcID(reservationObj[2].toString());
 			reservation.setNumOfBags(Integer.parseInt(reservationObj[3].toString()));
 			reservation.setTotalSale(reservationObj[4].toString());
-			
+			reservation.getSolutions();
 			reservations.add(reservation);
 		}
 		
