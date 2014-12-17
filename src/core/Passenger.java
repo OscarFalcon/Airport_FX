@@ -67,17 +67,7 @@ public class Passenger extends Person
 		
 		return reservations;
 	}
-	
-	
-	
-	public boolean addReservation(String srcToDest, String destToSrc, String numberOfBags, String totalSale, String personID){
-		String mysql = "INSERT INTO reservation(srcToDest, destToSrc, numberOfBags, totalSale, personID)"
-					+  "VALUES(?,?,?,?,?)";
-		Object arguments[] = {srcToDest, destToSrc, numberOfBags, totalSale, id};
-		
-		return MySQL.execute(mysql, arguments);
-	}
-	
+
 	
 	@Override
 	public boolean insert()
@@ -127,14 +117,15 @@ public class Passenger extends Person
 	public boolean save()
 	{
 		
-		String mysql = "UPDATE person set firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, telephone = ?,"
-							+ "street = ?, city = ?, state = ?, zip = ?";
+		String mysql = "UPDATE person set firstName = ?, lastName = ?,email = ?, telephone = ?,"
+							+ "street = ?, city = ?, state = ?, zip = ? WHERE userID = ?";
 		
-		Object arguments[] = {firstName.get(),lastName.get(),username.get(),password.get(),email.get(),
-				  			  phone.get(),street.get(),city.get(),state.get(),zip.get()};
+		Object arguments[] = {firstName.get(),lastName.get(),email.get(),
+				  			  phone.get(),street.get(),city.get(),state.get(),zip.get(),id.get()};
 		
 		return MySQL.execute(mysql, arguments);
 	
+		
 	}
 	
 	public static Passenger retrievePassenger(String username, String password)
@@ -167,6 +158,35 @@ public class Passenger extends Person
 		
 		
     }
+	
+	public boolean changeUsername(String username)
+	{
+		String mysql = "UPDATE passenger SET username = ? WHERE userID = ?";
+		return MySQL.execute(mysql, new Object[]{username,id.get()});
+		
+		
+	}
+	
+	public boolean changePassword(String newPassword)
+	{
+		String mysql = "UPDATE passenger SET password = ? WHERE userID = ?";
+		Object[] arguments = {newPassword,id.get()};
+		return MySQL.execute(mysql, arguments);
+	}
+	
+	public boolean checkPassword(String password)
+	{
+		ArrayList<Object[]> results;
+		String mysql = "SELECT username FROM passenger WHERE username = ? AND password = ?";
+		results = MySQL.executeQuery(mysql, new Object[]{username.get(),password},new int[]{MySQL.STRING});
+		if(results != null && results.size() == 0)
+			return false;
+		return true;	
+	}
+	
+	
+	
+	
 	
 	public String getUserName()
 	{
