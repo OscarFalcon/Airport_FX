@@ -42,7 +42,7 @@ public class ResetPasswordController  implements Initializable, ControlledScreen
     @FXML
     void Save(ActionEvent event) {
     	Passenger passenger = null;
-    	passenger.resetPassword("blah");
+    	passenger.resetPassword("blah","mike");
     	myController.setScreen(ScreensFramework.screen1ID);
 
     }
