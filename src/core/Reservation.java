@@ -17,6 +17,7 @@ public class Reservation extends SavableObject {
 	private String totalSale;
 	private int numberOfBags;
 	private int reservationID;
+	private boolean isApproved;
 	
 	
 	
@@ -214,6 +215,16 @@ public class Reservation extends SavableObject {
 	{
 		this.reservationID = id;
 	}
+	public boolean isApproved()
+	{
+		return isApproved;
+	}
+	public void setIsApproved(boolean b)
+	{
+		this.isApproved = b;
+	}
+	
+	
 	
 	
 }

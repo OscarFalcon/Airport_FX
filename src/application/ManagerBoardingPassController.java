@@ -55,7 +55,16 @@ public class ManagerBoardingPassController implements Initializable, ControlledS
     @FXML
     void ViewBoardingPass(ActionEvent event)
     {
-    	System.out.println("actionevent");
+    //	String 
+    	
+    	
+    	//System.out.println("actionevent");
+    	
+    	
+    	
+    	
+    	
+    	
     }
 
 	@Override

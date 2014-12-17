@@ -55,10 +55,8 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         mainContainer.loadScreen("ManagerFlightCondition", "/fxml/ManagerFlightCondition.fxml");
         /*Receptionist*/
-<<<<<<< HEAD
-=======
+
         mainContainer.loadScreen(screen8ID, "/fxml/ReceptionistMain.fxml");
->>>>>>> 3a70db44c02a7b7e7671d0f58b7f667ec4f32435
         mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
         mainContainer.loadScreen("ChargesFees", "/fxml/ChargesFees.fxml");
         mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");

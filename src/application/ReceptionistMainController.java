@@ -592,11 +592,8 @@ public class ReceptionistMainController implements Initializable, ControlledScre
 		};
 		onewaySearchResultsTableView.setRowFactory(callBack);
 		//roundTripDestToSrcSearchResultsTable.setRowFactory(callBack);
-<<<<<<< HEAD
 		roundTripSrcToDestSearchResultsTable.setRowFactory(callBack);
-=======
 		//roundTripSrcToDestSearchResultsTable.setRowFactory(callBack);
->>>>>>> 3a70db44c02a7b7e7671d0f58b7f667ec4f32435
 		
 		
 	
@@ -652,11 +649,8 @@ public class ReceptionistMainController implements Initializable, ControlledScre
 
 	@Override
 	public void reset() {
-<<<<<<< HEAD
 	//	HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
-=======
 		//HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
->>>>>>> 3a70db44c02a7b7e7671d0f58b7f667ec4f32435
 	}
 
 
