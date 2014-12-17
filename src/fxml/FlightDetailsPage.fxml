@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="361.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FlightDetailsPageController">
+<AnchorPane prefHeight="306.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FlightDetailsPageController">
    <children>
       <BorderPane prefHeight="392.0" prefWidth="541.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView fx:id="flightDetailsTable" prefHeight="246.0" prefWidth="658.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="flightDetailsTable" prefHeight="233.0" prefWidth="706.0" BorderPane.alignment="CENTER">
               <columns>
                 <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Airline" />
                   <TableColumn fx:id="srcCol" prefWidth="75.0" text="Source" />
@@ -27,10 +28,13 @@
             </TableView>
          </center>
          <top>
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="39.0" prefWidth="541.0" text="Flight Details" BorderPane.alignment="CENTER">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="646.0" text="Flight Details" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets left="50.0" right="50.0" />
                </BorderPane.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Label>
          </top>
       </BorderPane>
