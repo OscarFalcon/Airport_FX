@@ -239,14 +239,32 @@ public class Solution extends SavableObject
 		ArrayList<Object[]> routeIDs = MySQL.executeQuery(mysql, arguments, result_types);
 		
 		for(int i = 0; i<routeIDs.size(); i++){
-			mysql = "SELECT ";
 			
+			Object[] routeID = routeIDs.get(i);
 			
+			mysql = "SELECT airlineName,sourceAirportCode,sourceAirportCity,destinationAirportCode,destinationAirportCity,arrivalTime,departureTime"
+					+ " FROM route WHERE routeID = ?";
+			
+			int[] result_types1 = {MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING};
+			
+			Object[] argumentsTMP = {routeID[0].toString()};
+			
+			ArrayList<Object[]> result = MySQL.executeQuery(mysql, argumentsTMP, result_types1);
+			
+			Object[] routeObj = result.get(0);
+			Route route = new Route();
+			route.setAirlineName(routeObj[0].toString());
+			route.setSourceAirportCode(routeObj[1].toString());
+			route.setSourceAirportCity(routeObj[2].toString());
+			route.setDestinationAirportCode(routeObj[3].toString());
+			route.setDestinationAirportCity(routeObj[4].toString());
+			route.setArrivalTime(routeObj[5].toString());
+			route.setDepartureTime(routeObj[6].toString());
+			
+			routes.add(route);
 		}
 		
-		
-		
-		return false;
+		return true;
 	}
 	
 	

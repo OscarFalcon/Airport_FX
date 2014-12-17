@@ -75,14 +75,14 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 		srcCol.setCellValueFactory(new Callback<CellDataFeatures<Route, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Route, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue().getSourceAirport() +" " + p.getValue().getSourceAirportCity());
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getSourceAirportCode() +" " + p.getValue().getSourceAirportCity());
 			}
 		});
 		
 		destCol.setCellValueFactory(new Callback<CellDataFeatures<Route, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Route, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue().getDestinationAirport()+" "+p.getValue().getDestinationAirportCity());
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getDestinationAirportCode()+" "+p.getValue().getDestinationAirportCity());
 			}
 		});
 		

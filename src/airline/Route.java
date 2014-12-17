@@ -148,6 +148,11 @@ public class Route extends SavableObject
 	{
 		this.arrivalTime = time;
 	}
+	
+	public void setDepartureTime(String time){
+		this.departureTime = time;
+	}
+	
 	public String getUnformattedArrivalTime()
 	{
 		return this.arrivalTime;
