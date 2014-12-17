@@ -227,6 +227,27 @@ public class Solution extends SavableObject
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+	public boolean retrieveRoutes() {
+		String mysql ="SELECT routeID FROM solution_routes WHERE solutionID = ?";
+		
+		int[] result_types = {MySQL.INTEGER};
+		
+		Object[] arguments = {getSolutionID().toString()};
+		
+		ArrayList<Object[]> routeIDs = MySQL.executeQuery(mysql, arguments, result_types);
+		
+		for(int i = 0; i<routeIDs.size(); i++){
+			mysql = "SELECT ";
+			
+			
+		}
+		
+		
+		
+		return false;
+	}
 	
 	
 	

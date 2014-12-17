@@ -20,53 +20,58 @@ public class Reservation extends SavableObject {
 	
 	
 	
-	public boolean getSolutions(){
+	public boolean retrieveSolutions(){
 		
-		String query = "SELECT solutionID, saleTotal,arrivalTime,departureTime,originAirportCode,originAirport,destinationAirportCode,destinationAirport "
+		String query = "SELECT solutionID,saleTotal,arrivalTime,departureTime,originAirportCode,originAirport,destinationAirportCode,destinationAirport "
 				+ "FROM solution WHERE SolutionID = ?";
 		
-		Object arguments[] = {srcToDestID}; 
+		Object arguments[] = {srcToDestID};
+		System.out.println("SolutionID: "+srcToDestID);
 		
 		int [] resultTypes = {MySQL.INTEGER,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING,MySQL.STRING};
 		ArrayList<Object[]> solution = MySQL.executeQuery(query, arguments, resultTypes);
 		
-		if(solution.isEmpty()){
-			System.out.println("Reservation has no solutions");
-			return false;
+		if(!solution.isEmpty()){
+			srcToDest = new Solution();
+			Object[] solutionObj = solution.get(0);
+			srcToDest.setSolutionID(Integer.parseInt(solutionObj[0].toString()));
+			srcToDest.setSaleTotal(solutionObj[1].toString());
+			srcToDest.setArrivalTime(solutionObj[2].toString());
+			srcToDest.setdepartureTime(solutionObj[3].toString());
+			srcToDest.setOriginAirportCode(solutionObj[4].toString());
+			srcToDest.setOriginAirport(solutionObj[5].toString());
+			srcToDest.setDestinationAirportCode(solutionObj[6].toString());
+			srcToDest.setDestinationAirport(solutionObj[7].toString());
+			
+			srcToDest.retrieveRoutes();
+		} else {
+			System.out.println("no solution for srcToDest");
 		}
 		
-		Object[] solutionObj = solution.get(0);
-		srcToDest.setSolutionID(Integer.parseInt(solutionObj[0].toString()));
-		srcToDest.setSaleTotal(solutionObj[1].toString());
-		srcToDest.setArrivalTime(solutionObj[2].toString());
-		srcToDest.setdepartureTime(solutionObj[3].toString());
-		srcToDest.setOriginAirportCode(solutionObj[4].toString());
-		srcToDest.setOriginAirport(solutionObj[5].toString());
-		srcToDest.setDestinationAirportCode(solutionObj[6].toString());
-		srcToDest.setDestinationAirport(solutionObj[7].toString());
-		
-		
-		//Second Solution
+
+		//**************Second Solution ***********************
 		
 		Object arguments2[] = {destToSrcID};
 		
 		ArrayList<Object[]> solution2 = MySQL.executeQuery(query, arguments2, resultTypes);
 		
-		if(solution2.isEmpty()){
+		if(!solution2.isEmpty()){
+			destToSrc = new Solution();
+			Object[] solutionObj2 = solution2.get(0);
+			destToSrc.setSolutionID(Integer.parseInt(solutionObj2[0].toString()));
+			destToSrc.setSaleTotal(solutionObj2[1].toString());
+			destToSrc.setArrivalTime(solutionObj2[2].toString());
+			destToSrc.setdepartureTime(solutionObj2[3].toString());
+			destToSrc.setOriginAirportCode(solutionObj2[4].toString());
+			destToSrc.setOriginAirport(solutionObj2[5].toString());
+			destToSrc.setDestinationAirportCode(solutionObj2[6].toString());
+			destToSrc.setDestinationAirport(solutionObj2[7].toString());
+			
+			destToSrc.retrieveRoutes();
+		} else {
 			System.out.println("Reservation has no solutions");
-			return false;
 		}
-		
-		Object[] solutionObj2 = solution2.get(0);
-		destToSrc.setSolutionID(Integer.parseInt(solutionObj2[0].toString()));
-		destToSrc.setSaleTotal(solutionObj2[1].toString());
-		destToSrc.setArrivalTime(solutionObj2[2].toString());
-		destToSrc.setdepartureTime(solutionObj2[3].toString());
-		destToSrc.setOriginAirportCode(solutionObj2[4].toString());
-		destToSrc.setOriginAirport(solutionObj2[5].toString());
-		destToSrc.setDestinationAirportCode(solutionObj2[6].toString());
-		destToSrc.setDestinationAirport(solutionObj2[7].toString());
-		
+	
 		return true;	
 	}
 	
