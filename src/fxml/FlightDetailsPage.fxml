@@ -14,8 +14,8 @@
               <columns>
                 <TableColumn fx:id="airlineCol" prefWidth="75.0" text="Airline" />
                 <TableColumn fx:id="flightNumCol" prefWidth="100.0" text="Flight Number" />
-                  <TableColumn fx:id="srcCol" prefWidth="75.0" text="Src" />
-                  <TableColumn fx:id="destCol" prefWidth="75.0" text="Dest" />
+                  <TableColumn fx:id="srcCol" prefWidth="75.0" text="Source" />
+                  <TableColumn fx:id="destCol" prefWidth="75.0" text="Destination" />
                   <TableColumn fx:id="departCol" prefWidth="75.0" text="Depart" />
                   <TableColumn fx:id="arriveCol" prefWidth="75.0" text="Arrive" />
               </columns>

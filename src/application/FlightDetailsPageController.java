@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import airline.Route;
@@ -17,7 +18,6 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 
 public class FlightDetailsPageController implements Initializable, ControlledScreen{
-	private Solution solution;
 	
 	@FXML
     private TableView<Route> flightDetailsTable;
@@ -40,13 +40,6 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
     @FXML
     private TableColumn<Route, String> flightNumCol;
 	
-	
-	
-	public void setSolution(Solution obj){
-		this.solution = obj;
-	}
-	
-	
 	@Override
 	public void setScreenParent(ScreensController screenPage) {
 		// TODO Auto-generated method stub
@@ -56,6 +49,12 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 	@Override
 	public void reset() {
 
+		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
 		airlineCol.setCellValueFactory(new Callback<CellDataFeatures<Route, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Route, String> p) {
@@ -98,14 +97,16 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 			}
 		});
 		
-		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
-		flightDetailsTable.setItems(list);
 		
 	}
 
+
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		
+	public void respawn(HashMap<String, Object> arguments)
+	{
+		Solution solution = (Solution) arguments.get("solution");
+		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
+		flightDetailsTable.setItems(list);
 	}
 
 }
