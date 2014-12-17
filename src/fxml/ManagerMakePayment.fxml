@@ -8,7 +8,7 @@
 
 <AnchorPane id="passengerflightsearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ManagerMakePaymentController">
    <children>
-      <SplitPane dividerPositions="0.31453634085213034" orientation="VERTICAL" prefHeight="800.0" prefWidth="1000.0">
+      <SplitPane dividerPositions="0.31453634085213034" orientation="VERTICAL" prefHeight="800.0" prefWidth="1200.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="998.0">
                <children>
@@ -30,7 +30,7 @@
                   <TextField fx:id="name" layoutX="160.0" layoutY="129.0" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="998.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="533.0" prefWidth="1050.0">
                <children>
                   <Label layoutX="14.0" layoutY="25.0" text="Enter Card Information..." underline="true">
                      <font>

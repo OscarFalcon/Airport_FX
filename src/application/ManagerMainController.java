@@ -286,7 +286,7 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 	    
     @FXML
     void FlightCondition(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen16ID);
     }
 
     @FXML
