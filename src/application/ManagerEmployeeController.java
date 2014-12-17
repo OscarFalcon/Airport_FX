@@ -3,28 +3,28 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import core.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 
-public class ManagerEmployeeController {
+public class ManagerEmployeeController implements Initializable, ControlledScreen{
 
 	ScreensController myController;
 
+	
+    @FXML
+    private TableColumn<?, ?> availabilityCol;
 
     @FXML
-    private TableColumn<Employee, String> availabilityCol;
+    private TableColumn<?, ?> statusCol;
 
     @FXML
-    private TableColumn<Employee, String> statusCol;
+    private TableColumn<?, ?> jobTitleCol;
 
     @FXML
-    private TableColumn<Employee, String> jobTitleCol;
-
-    @FXML
-    private TableColumn<Employee, String> nameCol;
+    private TableColumn<?, ?> nameCol;
 
     @FXML
     private Button signout;
@@ -38,45 +38,44 @@ public class ManagerEmployeeController {
     @FXML
     private Button home;
 
-    public void getEmployees()
-    {
-    	Employee employee = Employee.retrieveEmployee("birdman", "password");
-    	
+    @FXML
+    void ChangeStatus(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen6ID);
+
     }
-    
-    
-    
-    
-    
+
     @FXML
     void Home(ActionEvent event) {
     	myController.setScreen(ScreensFramework.screen6ID);
+
     }
 
     @FXML
     void MyAccount(ActionEvent event) {
     	myController.setScreen(ScreensFramework.screen10ID);
+
     }
 
     @FXML
     void Signout(ActionEvent event) {
     	myController.setScreen(ScreensFramework.screen1ID);
+
     }
 
-	
-	public void setScreenParent(ScreensController screenParent) {
+	@Override
+	public void setScreenParent(ScreensController screenPage) {
 		// TODO Auto-generated method stub
-		myController = screenParent;
-	}
-
-	
-	public void initialize(URL location, ResourceBundle resources) {
-		
 		
 	}
 
-	
+	@Override
 	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}

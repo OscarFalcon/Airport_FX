@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 public class ResetPasswordController  implements Initializable, ControlledScreen{
+	ScreensController myController;
 
     @FXML
     private Button cancel;
@@ -18,17 +19,19 @@ public class ResetPasswordController  implements Initializable, ControlledScreen
 
     @FXML
     void Save(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen1ID);
 
     }
 
     @FXML
     void Cancel(ActionEvent event) {
+    	myController.setScreen(ScreensFramework.screen1ID);
 
     }
 
 	@Override
-	public void setScreenParent(ScreensController screenPage) {
-		// TODO Auto-generated method stub
+	public void setScreenParent(ScreensController screenParent) {
+		myController = screenParent;
 		
 	}
 

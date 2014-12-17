@@ -3,10 +3,6 @@ package application;
 import java.io.IOException;
 import java.util.HashMap;
 
-import airline.Solution;
-import core.Employee;
-import core.Passenger;
-import core.Person;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -22,6 +18,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import airline.Solution;
+import core.Employee;
+import core.Passenger;
 
 
 //TODO
