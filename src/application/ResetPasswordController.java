@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -43,6 +44,12 @@ public class ResetPasswordController  implements Initializable, ControlledScreen
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
 		// TODO Auto-generated method stub
 		
 	}
