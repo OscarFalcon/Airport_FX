@@ -66,8 +66,8 @@ public class ManagerEmployeeController {
 
 	
 	public void setScreenParent(ScreensController screenParent) {
-		// TODO Auto-generated method stub
 		myController = screenParent;
+		
 	}
 
 	
