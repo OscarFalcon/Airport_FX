@@ -1,13 +1,15 @@
 package application;
 
 import java.net.URL;
-
 import java.sql.Date;
 import java.util.ArrayList;
-
 import java.util.HashMap;
-
 import java.util.ResourceBundle;
+
+
+
+
+
 
 
 
@@ -21,7 +23,6 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import airline.Solution;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -290,22 +291,22 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 
     @FXML
     void MakePayment(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen7ID);
     }
 
     @FXML
     void BoardingPass(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen11ID);
     }
 
     @FXML
     void Employee(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen12ID);
     }
 
     @FXML
     void SignOut(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen1ID);
     }
 
     @FXML
