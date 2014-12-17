@@ -7,10 +7,11 @@ import java.util.ResourceBundle;
 import core.Employee;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 
-public class ManagerEmployeeController {
+public class ManagerEmployeeController implements Initializable, ControlledScreen{
 
 	ScreensController myController;
 
@@ -70,6 +71,10 @@ public class ManagerEmployeeController {
 		myController = screenParent;
 	}
 
+	@FXML
+	public void ChangeStatus(ActionEvent event){
+		
+	}
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		
