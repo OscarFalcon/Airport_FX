@@ -16,6 +16,7 @@
                <children>
                   <TableView fx:id="myTripTable" layoutY="83.0" prefHeight="290.0" prefWidth="802.0" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="83.0">
                     <columns>
+                        <TableColumn fx:id="reservationCol" prefWidth="75.0" text="Reservation" />
                       <TableColumn fx:id="dateTimeCol" prefWidth="75.0" text="Date: Time" />
                         <TableColumn fx:id="srcCol" prefWidth="75.0" text="Src" />
                         <TableColumn fx:id="destCol" prefWidth="75.0" text="Dest" />

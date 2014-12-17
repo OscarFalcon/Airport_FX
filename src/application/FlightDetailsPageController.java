@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import core.Reservation;
 import airline.Route;
 import airline.Solution;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -107,9 +108,9 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 	@Override
 	public void respawn(HashMap<String, Object> arguments)
 	{
-		Solution solution = (Solution) arguments.get("solution");
-		System.out.println("Solution$: "+solution.getSaleTotal());
-		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
+		Reservation reservation = (Reservation) arguments.get("reservation");
+		ObservableList<Route> list = FXCollections.observableArrayList(reservation.getSrcToDest().getRoutes());
+		list.addAll(FXCollections.observableArrayList(reservation.getDestToSrc().getRoutes()));
 		flightDetailsTable.setItems(list);
 	}
 

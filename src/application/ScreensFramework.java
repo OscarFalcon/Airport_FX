@@ -32,7 +32,7 @@ public class ScreensFramework extends Application {
   
     /** pop ups **/
     public static String flightDetailsPage = "/fxml/FlightDetailsPage.fxml";
-   // public static String customerflightDetailsPage = "/fxml/customerflightDetailsPage.fxml";
+    public static String customerFlightDetailsPage = "/fxml/customerflightDetailsPage.fxml";
     
 
     @Override

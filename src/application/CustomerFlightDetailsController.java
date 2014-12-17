@@ -53,8 +53,8 @@ public class CustomerFlightDetailsController implements Initializable, Controlle
 	}
 
 	@Override
-	public void respawn(HashMap<String, Object> arguments) {
-		// TODO Auto-generated method stub
+	public void respawn(HashMap<String, Object> arguments)
+	{
 		Solution solution = (Solution) arguments.get("solution");
 		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
 		flightDetailsTable.setItems(list);
