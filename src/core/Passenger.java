@@ -167,6 +167,16 @@ public class Passenger extends Person
 		
 	}
 	
+	public boolean resetPassword(String newPassword, String username)
+	{
+		String mysql = "UPDATE passenger SET password = ? JOIN person ON person.userID = passenger.userID"
+				      +"WHERE passenger.username = ? && person.email = ?"; 
+		
+		Object[] arguments = {username, newPassword};
+		return MySQL.execute(mysql, arguments);
+		
+	}
+	
 	public boolean changePassword(String newPassword)
 	{
 		String mysql = "UPDATE passenger SET password = ? WHERE userID = ?";

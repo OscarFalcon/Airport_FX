@@ -4,22 +4,45 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import core.Passenger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class ResetPasswordController  implements Initializable, ControlledScreen{
 	ScreensController myController;
+	
+	  @FXML
+	    private Button cancel;
 
-    @FXML
-    private Button cancel;
+	    @FXML
+	    private Button save;
 
-    @FXML
-    private Button save;
+	    @FXML
+	    private PasswordField newPassword;
+
+	    @FXML
+	    private PasswordField confirmPassword;
+
+	    @FXML
+	    private TextField emailTextfield;
+
+	    @FXML
+	    private Label error;
+
+	    @FXML
+	    private TextField usernameTextfield;
+
+	   
 
     @FXML
     void Save(ActionEvent event) {
+    	Passenger passenger = null;
+    	passenger.resetPassword("blah");
     	myController.setScreen(ScreensFramework.screen1ID);
 
     }
@@ -53,5 +76,6 @@ public class ResetPasswordController  implements Initializable, ControlledScreen
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }
