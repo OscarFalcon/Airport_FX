@@ -467,13 +467,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			}
 		});
 		
-		
-		
-		
-		
-		
-		
-		
 				
 	}
 	/********************************** End Populate RoundTrip Table with Data ******************************************/

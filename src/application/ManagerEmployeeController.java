@@ -47,14 +47,15 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
     public void getEmployees()
     {
 
-Employee employee = Employee.retrieveEmployee("birdman", "password");
+    	Employee employee = Employee.retrieveEmployee("birdman", "password");
     	
 
 		nameCol.setMinWidth(200);
 		nameCol.setCellValueFactory(new Callback<CellDataFeatures<Employee, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Employee, String> p) {
-			return new ReadOnlyObjectWrapper<String>(p.getValue().getFirstName());
+			Employee e = p.getValue();
+			return new ReadOnlyObjectWrapper<String>(e.getFirstName() + e.getLastName());
 			}
 		});
 		
@@ -110,7 +111,7 @@ Employee employee = Employee.retrieveEmployee("birdman", "password");
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
+		getEmployees();
 	}
 
 	
