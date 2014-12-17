@@ -168,7 +168,7 @@
                      <children>
                         <HBox layoutX="410.0" layoutY="22.0" maxWidth="1.7976931348623157E308">
                            <children>
-                              <Button fx:id="myAccount" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" text="My Account" />
+                              <Button fx:id="myAccount" layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" text="Home" />
                               <Button fx:id="signout" layoutX="551.0" layoutY="14.0" mnemonicParsing="false" onAction="#SignOut" text="Sign out" />
                            </children>
                         </HBox>

@@ -115,7 +115,7 @@ public class ManagerAccountPageController implements Initializable, ControlledSc
 
     @FXML
     void MyAccount(ActionEvent event) {
-    	myController.setScreen(ScreensFramework.screen10ID);
+    	myController.setScreen(ScreensFramework.screen6ID);
     }
 
     @FXML

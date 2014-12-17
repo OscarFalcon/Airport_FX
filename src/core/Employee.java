@@ -126,40 +126,25 @@ public class Employee extends Person  {
 	
 	
 	
-	
+	/*
 	public static Employee retrieveAllEmployees()
     {
-		String query = "SELECT * FROM person";
+		String query = "SELECT * from person";
 		
 		Object[] arguments = {};
-		int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
-		MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, 
-		MySQL.STRING, MySQL.STRING, MySQL.STRING,MySQL.STRING};
+		
+		int [] resultType = {MySQL.INTEGER,MySQL.STRING,MySQL.STRING,
+							MySQL.STRING,MySQL.STRING,MySQL.STRING,
+							MySQL.STRING,MySQL.STRING,MySQL.STRING};
 		
 		ArrayList<Object[]> result = MySQL.executeQuery(query, null, resultType);
+
 		
-		if(result.isEmpty())
-		{
-			return null;
-		}
-		
-		Object[] tmp = result.get(0);
-		
-		String availability = (String) tmp[12], status = (String) tmp[11];
-		
-		if(availability == null) availability = "";
-		if(status == null ) status = "";
-		
-		
-		Employee employee = new Employee(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
-		tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
-		tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString(),tmp[11].toString(), 
-		status,availability);
-		
-		
-		return employee;	
+		Object [] tmp = result.get(0);
+		System.out.print("THIS IS A TEST: " + tmp[0].toString());
+		return employee;
     }
-	
+	*/
 	
 	
 	
