@@ -123,6 +123,41 @@ public class Employee extends Person  {
 		
 		return employee;	
     }
+	
+	
+	
+	/*
+	public static Employee retrieveAllEmployees()
+    {
+		String query = "SELECT * from person";
+		
+		Object[] arguments = {};
+		
+		int [] resultType = {MySQL.INTEGER,MySQL.STRING,MySQL.STRING,
+							MySQL.STRING,MySQL.STRING,MySQL.STRING,
+							MySQL.STRING,MySQL.STRING,MySQL.STRING};
+		
+		ArrayList<Object[]> result = MySQL.executeQuery(query, null, resultType);
+
+		
+		Object [] tmp = result.get(0);
+		System.out.print("THIS IS A TEST: " + tmp[0].toString());
+		return employee;
+    }
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public String getEmployeeID(){
 		return employeeID;

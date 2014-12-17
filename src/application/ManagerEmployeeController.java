@@ -4,14 +4,18 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
-import core.Employee;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.util.Callback;
+import core.Employee;
 
-public class ManagerEmployeeController implements Initializable, ControlledScreen{
+public class ManagerEmployeeController implements Initializable, ControlledScreen {
 
 	ScreensController myController;
 
@@ -42,14 +46,47 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
 
     public void getEmployees()
     {
+
     	Employee employee = Employee.retrieveEmployee("birdman", "password");
     	
+
+		nameCol.setMinWidth(200);
+		nameCol.setCellValueFactory(new Callback<CellDataFeatures<Employee, String>,ObservableValue<String>>(){
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Employee, String> p) {
+			Employee e = p.getValue();
+			return new ReadOnlyObjectWrapper<String>(e.getFirstName() + e.getLastName());
+			}
+		});
+		
+		jobTitleCol.setMinWidth(200);
+		jobTitleCol.setCellValueFactory(new Callback<CellDataFeatures<Employee, String>,ObservableValue<String>>(){
+		@Override
+		public ObservableValue<String> call(CellDataFeatures<Employee, String> p) {
+			return new ReadOnlyObjectWrapper<String>(p.getValue().getType());
+		}	
+		});
+		
+		statusCol.setMinWidth(200);
+		statusCol.setCellValueFactory(new Callback<CellDataFeatures<Employee, String>,ObservableValue<String>>(){
+		@Override
+		public ObservableValue<String> call(CellDataFeatures<Employee, String> p) {
+			return new ReadOnlyObjectWrapper<String>(p.getValue().getStatus());
+		}	
+		});
+		
+		
+		availabilityCol.setMinWidth(200);
+		availabilityCol.setCellValueFactory(new Callback<CellDataFeatures<Employee, String>,ObservableValue<String>>(){
+		@Override
+		public ObservableValue<String> call(CellDataFeatures<Employee, String> p) {
+			return new ReadOnlyObjectWrapper<String>(p.getValue().getAvailability());
+		}	
+		});
+
     }
     
-    
-    
-    
-    
+   
     @FXML
     void Home(ActionEvent event) {
     	myController.setScreen(ScreensFramework.screen6ID);
@@ -67,8 +104,8 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
 
 	
 	public void setScreenParent(ScreensController screenParent) {
-		// TODO Auto-generated method stub
 		myController = screenParent;
+		
 	}
 
 	@FXML
@@ -78,7 +115,7 @@ public class ManagerEmployeeController implements Initializable, ControlledScree
 	
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
+		getEmployees();
 	}
 
 	

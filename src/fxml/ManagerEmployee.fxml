@@ -12,7 +12,7 @@
          <center>
             <AnchorPane>
                <children>
-                  <TableView prefHeight="401.0" prefWidth="936.0" BorderPane.alignment="CENTER">
+                  <TableView prefHeight="401.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                     <columns>
                       <TableColumn fx:id="nameCol" prefWidth="164.0" text="Name" />
                       <TableColumn fx:id="jobTitleCol" prefWidth="253.0" text="Job Title" />
@@ -20,7 +20,7 @@
                         <TableColumn fx:id="availabilityCol" prefWidth="312.0" text="Availability" />
                     </columns>
                   </TableView>
-                  <Button fx:id="changeStatus" layoutX="29.0" layoutY="421.0" mnemonicParsing="false" onAction="#ChangeStatus" prefHeight="46.0" prefWidth="163.0" text="Change Status">
+                  <Button fx:id="changeStatus" layoutX="29.0" layoutY="421.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="163.0" text="Change Status">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -31,11 +31,11 @@
          <top>
             <AnchorPane prefHeight="81.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox layoutX="632.0" layoutY="15.0" prefHeight="25.0" prefWidth="264.0">
+                  <HBox layoutX="539.0" layoutY="15.0" prefHeight="26.0" prefWidth="400.0">
                      <children>
-                        <Button fx:id="home" layoutX="518.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" prefHeight="25.0" prefWidth="88.0" text="Home" />
-                        <Button fx:id="myAccount" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" prefHeight="25.0" prefWidth="94.0" text="My Account" />
-                        <Button fx:id="signout" layoutX="695.0" layoutY="14.0" mnemonicParsing="false" onAction="#Signout" prefHeight="25.0" prefWidth="81.0" text="Sign Out" />
+                        <Button fx:id="home" layoutX="518.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" prefHeight="26.0" prefWidth="143.0" text="Home" />
+                        <Button fx:id="myAccount" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" prefHeight="26.0" prefWidth="144.0" text="My Account" />
+                        <Button fx:id="signout" layoutX="695.0" layoutY="14.0" mnemonicParsing="false" onAction="#Signout" prefHeight="26.0" prefWidth="117.0" text="Sign Out" />
                      </children>
                   </HBox>
                   <Label layoutX="34.0" layoutY="27.0" prefHeight="40.0" prefWidth="352.0" text="Employee Information" underline="true">

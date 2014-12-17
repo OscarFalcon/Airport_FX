@@ -90,11 +90,13 @@ public class SignInController implements Initializable, ControlledScreen{
 			 		break;
 			 		
 			 }
+			 error.setText("Successfully Logged In!");
 			 resetLabels();
 			 return;
-			 
+		 }else{
+			 error.setText("You Entered Invalid Credentials");
+
 		 }
-		 error.setText("Successfully Logged In!");
 		 
 	 }
 	
@@ -126,7 +128,7 @@ public class SignInController implements Initializable, ControlledScreen{
 
 
 
-	@Override
+	
 	public void respawn(HashMap<String, Object> arguments) {
 		// TODO Auto-generated method stub
 		
