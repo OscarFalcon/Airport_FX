@@ -74,7 +74,7 @@
             </GridPane>
          </left>
       </BorderPane>
-      <TabPane layoutX="167.0" layoutY="65.0" prefHeight="694.0" prefWidth="691.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="167.0" layoutY="63.0" prefHeight="696.0" prefWidth="1029.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="Roundtrip">
                <content>
