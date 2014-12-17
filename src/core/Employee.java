@@ -48,7 +48,6 @@ public class Employee extends Person  {
 			 return false;
 		 }
 		
-		
 		mysql = "INSERT INTO employee(type,userID,username,password) VALUES (?,?,?,?);";
 		
 		Object arguments2[] = {type,userID,username,password};
@@ -58,12 +57,14 @@ public class Employee extends Person  {
 	}
 
 	@Override
-	public boolean delete() {
+	public boolean delete()
+	{
 		return false;
 	}
 
 	@Override
-	public boolean save() {
+	public boolean save()
+	{
 		boolean status = false;
 		String mysql = "UPDATE person set firstName = ?, lastName = ?, userName = ?, password = ?, email = ?, telephone = ?,"
 				+ "street = ?, city = ?, state = ?, zip = ?";

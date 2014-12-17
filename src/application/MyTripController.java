@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import core.Reservation;
@@ -180,6 +181,12 @@ public class MyTripController implements Initializable, ControlledScreen{
 			
 		};
 		myTripTable.setRowFactory(callBack);
+	}
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

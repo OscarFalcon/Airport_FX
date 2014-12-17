@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import core.Reservation;
@@ -183,21 +184,49 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@FXML
 	void rReserveFlightAction(ActionEvent event)
 	{
+		Reservation reservation = new Reservation();
 		
-	
-	
-	
+		if(roundTripSrcToDestSearchResultsTable.getSelectionModel().getSelectedIndex() < 0
+				|| roundTripDestToSrcSearchResultsTable.getSelectionModel().getSelectedIndex() < 0)
+		{
+			rReservationSubmitLabel.setText("Please specify two reservation solutions");
+			return;
+		}
+		
+		Solution srcToDest = roundTripSrcToDestSearchResultsTable.getSelectionModel().getSelectedItem();
+		Solution destToSrc = roundTripDestToSrcSearchResultsTable.getSelectionModel().getSelectedItem();
+		
+		String srcToDestPrice = srcToDest.getSaleTotal().substring(3);
+		String destToSrcPrice = destToSrc.getSaleTotal().substring(3);
+		
+		Double price1 = Double.parseDouble(srcToDestPrice);
+		Double price2 = Double.parseDouble(destToSrcPrice);
+		Double totalSale = price1 + price2;
+		
+		reservation.setSrcToDest(srcToDest);
+		reservation.setDestToSrc(destToSrc);
+		reservation.setTotalSale("USD" + totalSale.toString());
+		reservation.setPrimaryPassenger(myController.getPassenger());
+		reservation.setNumOfBags(0);
+		
+		if(reservation.book() == false)
+		{
+			rReservationSubmitLabel.setText("Opps something went wrong");
+			return;
+		}
+		
+		rReservationSubmitLabel.setText("Successfully Reserved Flight!");
+		return;
+		
 	
 	}
     
-    
     @FXML
-    void roundTripSearchAction(ActionEvent event) {
+    void roundTripSearchAction(ActionEvent event)
+    {
     	
     	String sourceCityCode = rFlyFrom.getValue();
     	String destinationCityCode = rFlyTo.getValue();
-    	Date departingDate = Date.valueOf(roundTripLeavingDatePicker.getValue());
-    	Date returningDate = Date.valueOf(roundTripArrivalDatePicker.getValue());
     	
     	
     	if(sourceCityCode == null || destinationCityCode == null)
@@ -211,6 +240,10 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     		rErrorLabel.setText("Please specify departure and return date of your trip!");
     		return;
     	}
+    	
+    	Date departingDate = Date.valueOf(roundTripLeavingDatePicker.getValue());
+    	Date returningDate = Date.valueOf(roundTripArrivalDatePicker.getValue());
+    	
     	
     	Integer count;
     	try
@@ -229,12 +262,11 @@ public class PassengerFlightSearchController implements Initializable, Controlle
     		return;
     		
     	}
-	
     	rErrorLabel.setText("");
     	ObservableList<Solution> srcToDestFlightList;
     	ObservableList<Solution> destToSrcFlightList;
     	
-    	//populate the departing table view 
+    	
     	QPXExpressRequest request = new QPXExpressRequest();
     	request.setAdultCount(count);
 	    request.setDate(departingDate);
@@ -244,7 +276,7 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	    srcToDestFlightList = request.getResponse();
 	    roundTripSrcToDestSearchResultsTable.setItems(srcToDestFlightList);
 	     
-	    //populate the arrivaing table view
+	    
 	    request.setOrigin(destinationCityCode); //the new origin is the original destination (:
 	    request.setDestination(sourceCityCode); //same for the new destination  
 	    request.setDate(returningDate);
@@ -487,7 +519,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			String value;
 			ArrayList<Route> routes;
 			Route route;
-			int size;
 			
 			routes = p.getValue().getRoutes();
 			route = routes.get(routes.size()-1);
@@ -520,8 +551,6 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	/* Node we need to populate the list from the QPX API */
 	void populateSrcandDesFields()
 	{
-		Route route = null;
-		
 		oFlyFromChoiceBox.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
 		oFlyToChoiceBox.setItems(FXCollections.observableArrayList("SAT", "ATL", "DEN", "BWI", "LAX", "PHX"));
 		oPreferredClass.setItems(FXCollections.observableArrayList("First Class","Coach"));
@@ -554,11 +583,13 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 					@Override
 					public void handle(MouseEvent event) {
 						if(event.getClickCount() == 2){ 
-							System.out.println("Table Row clicked");
 							@SuppressWarnings("unchecked")
-							TableRow<Solution> row = (TableRow<Solution>) event.getSource();
-							myController.showFlightDetailsPage(row.getItem());
-							System.out.println("Route Aricraft: " + row.getItem().getRoutes().get(0).getAircraft());
+							TableRow<Solution> row = (TableRow<Solution>) event.getSource();							
+							ControlledScreen controller;
+							HashMap<String, Object> arguments = new HashMap<String, Object>();
+							arguments.put("solution",row.getItem());
+							controller = myController.loadPopUp(ScreensFramework.flightDetailsPage);
+							controller.respawn(arguments);
 						}
 					}
 					
@@ -567,10 +598,9 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 			}
 			
 		};
-	
 		onewaySearchResultsTableView.setRowFactory(callBack);
 		roundTripDestToSrcSearchResultsTable.setRowFactory(callBack);
-		roundTripDestToSrcSearchResultsTable.setRowFactory(callBack);
+		roundTripSrcToDestSearchResultsTable.setRowFactory(callBack);
 		
 		
 	
@@ -627,6 +657,14 @@ public class PassengerFlightSearchController implements Initializable, Controlle
 	@Override
 	public void reset() {
 		HeaderLabel.setText("WELCOME "+ myController.getPassenger().getFirstName()+ " " +myController.getPassenger().getLastName());
+	}
+
+
+
+	@Override
+	public void respawn(HashMap<String, Object> arguments) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
