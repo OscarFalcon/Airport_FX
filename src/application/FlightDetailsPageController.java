@@ -10,11 +10,14 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TextField;
 import javafx.util.Callback;
 
 public class FlightDetailsPageController implements Initializable, ControlledScreen{
@@ -39,12 +42,23 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 
     @FXML
     private TableColumn<Route, String> flightNumCol;
+    
+    @FXML
+    private TextField email;
+
+    @FXML
+    private ChoiceBox<String> bagNum;
 	
 	@Override
 	public void setScreenParent(ScreensController screenPage) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	 @FXML
+	    void Submit(ActionEvent event) {
+
+	    }
 
 	@Override
 	public void reset() {
