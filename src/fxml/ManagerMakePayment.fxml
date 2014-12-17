@@ -12,11 +12,11 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="237.0" prefWidth="998.0">
                <children>
-                  <HBox layoutX="769.0" layoutY="14.0" prefHeight="25.0" prefWidth="205.0">
+                  <HBox layoutX="606.0" layoutY="14.0" prefHeight="25.0" prefWidth="351.0">
                      <children>
-                        <Button fx:id="home" layoutX="792.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" text="Home" />
-                        <Button fx:id="myAccount" layoutX="852.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" prefHeight="25.0" prefWidth="90.0" text="My Account" />
-                        <Button fx:id="signout" layoutX="932.0" layoutY="14.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="25.0" prefWidth="64.0" text="Sign Out" />
+                        <Button fx:id="home" layoutX="792.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" prefHeight="25.0" prefWidth="111.0" text="Home" />
+                        <Button fx:id="myAccount" layoutX="852.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" prefHeight="25.0" prefWidth="128.0" text="My Account" />
+                        <Button fx:id="signout" layoutX="932.0" layoutY="14.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="25.0" prefWidth="107.0" text="Sign Out" />
                      </children>
                   </HBox>
                   <Label layoutX="19.0" layoutY="13.0" text="Who's Traveling..." underline="true">
