@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="361.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FlightDetailsPageController">
+<AnchorPane prefHeight="361.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CustomerFlightDetailsController">
    <children>
       <BorderPane prefHeight="392.0" prefWidth="541.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -35,11 +35,7 @@
             </Label>
          </top>
          <bottom>
-            <AnchorPane prefHeight="94.0" prefWidth="698.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ChoiceBox layoutX="133.0" layoutY="13.0" prefWidth="150.0" />
-               </children>
-            </AnchorPane>
+            <AnchorPane prefHeight="94.0" prefWidth="698.0" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>
