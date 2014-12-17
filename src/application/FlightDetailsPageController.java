@@ -46,8 +46,7 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
     @FXML
     private TextField email;
 
-    @FXML
-    private ChoiceBox<String> bagNum;
+  
 	
 	@Override
 	public void setScreenParent(ScreensController screenPage) {
@@ -68,7 +67,6 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
 		airlineCol.setCellValueFactory(new Callback<CellDataFeatures<Route, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Route, String> p) {
