@@ -37,6 +37,10 @@ public class Solution extends SavableObject
 	}
 	
 	
+	public void setSolutionID(int ID){
+		this.solutionID = ID;
+	}
+	
 	public Integer getSolutionID()
 	{
 		return solutionID;

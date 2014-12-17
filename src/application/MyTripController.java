@@ -148,7 +148,6 @@ public class MyTripController implements Initializable, ControlledScreen{
 		list = FXCollections.observableArrayList(myController.getPassenger().getReservations());
 		myTripTable.setItems(list);
 		selectFlightRow();
-		
 	}
 	
 	
@@ -170,10 +169,9 @@ public class MyTripController implements Initializable, ControlledScreen{
 							@SuppressWarnings("unchecked")
 							TableRow<Reservation> row = (TableRow<Reservation>) event.getSource();
 							System.out.println("Table Row clicked + " + row.getItem().getReservationId());
-							
-							ControlledScreen controller = myController.loadPopUp(ScreensFramework.flightDetailsPage);
 							HashMap<String,Object> arguments = new HashMap<String,Object>();
 							arguments.put("solution",row.getItem().getSrcToDest());
+							ControlledScreen controller = myController.loadPopUp(ScreensFramework.flightDetailsPage);
 							controller.respawn(arguments);
 						}
 					}
