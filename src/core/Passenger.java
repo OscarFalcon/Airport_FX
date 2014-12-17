@@ -127,7 +127,35 @@ public class Passenger extends Person
 	
 		
 	}
-	
+	public static Passenger retrievePassengerByEmail(String username, String email)
+	{
+		String query = "SELECT person.userID,person.firstName,person.lastName,"
+				+"passenger.username,passenger.password,person.email,person.telephone,person.street,"
+				+ "person.city,person.state,person.zip "
+				+ "FROM person JOIN passenger ON person.userID = passenger.userID "
+				+ "WHERE passenger.userName = ? && person.email = ?"; 
+
+				Object[] arguments = {username, email};
+
+
+				int [] resultType = {MySQL.INTEGER, MySQL.STRING,MySQL.STRING, MySQL.STRING, 
+				MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING, MySQL.STRING,MySQL.STRING};
+				
+				
+				ArrayList<Object[]> result = MySQL.executeQuery(query, arguments, resultType);
+				if(result.isEmpty())
+				{
+					return null;
+				}
+				
+				Object[] tmp = result.get(0);
+				
+				Passenger passenger = new Passenger(tmp[0].toString(),tmp[1].toString(),tmp[2].toString(),
+				tmp[3].toString(),tmp[4].toString(),tmp[5].toString(),tmp[6].toString(),
+				tmp[7].toString(),tmp[8].toString(),tmp[9].toString(),tmp[10].toString());
+
+				return passenger;
+	}
 	public static Passenger retrievePassenger(String username, String password)
     {
 		String query = "SELECT person.userID,person.firstName,person.lastName,"
@@ -167,16 +195,7 @@ public class Passenger extends Person
 		
 	}
 	
-	public boolean resetPassword(String newPassword, String username)
-	{
-		String mysql = "UPDATE passenger SET password = ? JOIN person ON person.userID = passenger.userID"
-				      +"WHERE passenger.username = ? && person.email = ?"; 
-		
-		Object[] arguments = {username, newPassword};
-		return MySQL.execute(mysql, arguments);
-		
-	}
-	
+
 	public boolean changePassword(String newPassword)
 	{
 		String mysql = "UPDATE passenger SET password = ? WHERE userID = ?";
