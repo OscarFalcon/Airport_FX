@@ -34,7 +34,7 @@
                   <HBox layoutX="632.0" layoutY="15.0" prefHeight="25.0" prefWidth="264.0">
                      <children>
                         <Button fx:id="home" layoutX="518.0" layoutY="14.0" mnemonicParsing="false" onAction="#Home" prefHeight="25.0" prefWidth="88.0" text="Home" />
-                        <Button fx:id="myAccount" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" prefHeight="25.0" prefWidth="94.0" text="My Account" />
+                        <Button fx:id="myAccount" layoutX="608.0" layoutY="14.0" mnemonicParsing="false" onAction="#MyAccount" prefHeight="25.0" prefWidth="108.0" text="My Account" />
                         <Button fx:id="signout" layoutX="695.0" layoutY="14.0" mnemonicParsing="false" onAction="#Signout" prefHeight="25.0" prefWidth="81.0" text="Sign Out" />
                      </children>
                   </HBox>
