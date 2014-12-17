@@ -13,6 +13,7 @@ public class ScreensFramework extends Application {
     public static String screen3ID = "FlightSearch";
     public static String screen4ID = "CreateAccount";
     public static String screen5ID = "MyTrip";
+    public static String screen15ID = "resetPassword";
     
     /*mangaer*/
     public static String screen6ID = "ManagerMainPage";
@@ -41,6 +42,7 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen("CreateAccount", "/fxml/createAccountPage.fxml");
         mainContainer.loadScreen("MyTrip", "/fxml/MyTrip.fxml");
         mainContainer.loadScreen("FlightDetails", "/fxml/FlightDetailsPage.fxml");
+        mainContainer.loadScreen("resetPassword", "/fxml/resetPassword.fxml");
         
         /*mangaer*/
         mainContainer.loadScreen("ManagerMainPage", "/fxml/ManagerMainPage.fxml");

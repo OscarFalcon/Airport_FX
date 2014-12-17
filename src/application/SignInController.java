@@ -22,7 +22,7 @@ public class SignInController implements Initializable, ControlledScreen{
 
     @FXML
     private Button forgotBotton;
-
+    
     @FXML
     private TextField userName;
 
@@ -99,7 +99,7 @@ public class SignInController implements Initializable, ControlledScreen{
  
     @FXML
     void forgotPassword(ActionEvent event) {
-    	//myController.setScreen(ScreensFramework.screen2ID);
+    	myController.setScreen(ScreensFramework.screen15ID);
     }
 
     @FXML
