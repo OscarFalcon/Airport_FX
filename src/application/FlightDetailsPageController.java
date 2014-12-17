@@ -105,6 +105,7 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 	public void respawn(HashMap<String, Object> arguments)
 	{
 		Solution solution = (Solution) arguments.get("solution");
+		System.out.println("Solution$: "+solution.getSaleTotal());
 		ObservableList<Route> list = FXCollections.observableArrayList(solution.getRoutes());
 		flightDetailsTable.setItems(list);
 	}
