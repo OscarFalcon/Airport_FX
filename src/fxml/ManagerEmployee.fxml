@@ -20,7 +20,7 @@
                         <TableColumn fx:id="availabilityCol" prefWidth="312.0" text="Availability" />
                     </columns>
                   </TableView>
-                  <Button fx:id="changeStatus" layoutX="29.0" layoutY="421.0" mnemonicParsing="false" onAction="#ChangeStatus" prefHeight="46.0" prefWidth="163.0" text="Change Status">
+                  <Button fx:id="changeStatus" layoutX="29.0" layoutY="421.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="163.0" text="Change Status">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

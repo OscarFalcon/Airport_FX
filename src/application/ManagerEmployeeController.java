@@ -8,13 +8,14 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.util.Callback;
 import core.Employee;
 
-public class ManagerEmployeeController {
+public class ManagerEmployeeController implements Initializable, ControlledScreen {
 
 	ScreensController myController;
 
