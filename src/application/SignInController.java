@@ -126,7 +126,7 @@ public class SignInController implements Initializable, ControlledScreen{
 
 
 
-	@Override
+	
 	public void respawn(HashMap<String, Object> arguments) {
 		// TODO Auto-generated method stub
 		
