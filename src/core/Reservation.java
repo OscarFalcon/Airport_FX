@@ -205,7 +205,7 @@ public class Reservation extends SavableObject {
 		this.primaryPassenger = primaryPassenger;
 	}
 	
-	public int getReservationId()		//RESERVATION ID
+	public Integer getReservationId()		//RESERVATION ID
 	{
 		return reservationID;
 	}

@@ -39,6 +39,9 @@ public class MyTripController implements Initializable, ControlledScreen{
     private Button cancelReservationButton;
     
     @FXML
+    private TableColumn<Reservation, String> reservationCol;
+    
+    @FXML
     private TableColumn<Reservation, String> dateTimeCol;
 
     @FXML
@@ -110,6 +113,13 @@ public class MyTripController implements Initializable, ControlledScreen{
 	
 	@Override
 	public void reset() {
+		reservationCol.setCellValueFactory(new Callback<CellDataFeatures<Reservation, String>,ObservableValue<String>>(){
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Reservation, String> p) {
+				return new ReadOnlyObjectWrapper<String>(p.getValue().getReservationId().toString());
+			}
+		});
+		
 		dateTimeCol.setCellValueFactory(new Callback<CellDataFeatures<Reservation, String>,ObservableValue<String>>(){
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Reservation, String> p) {
@@ -170,7 +180,7 @@ public class MyTripController implements Initializable, ControlledScreen{
 							TableRow<Reservation> row = (TableRow<Reservation>) event.getSource();
 							System.out.println("Table Row clicked + " + row.getItem().getReservationId());
 							HashMap<String,Object> arguments = new HashMap<String,Object>();
-							arguments.put("solution",row.getItem().getSrcToDest());
+							arguments.put("reservation",row.getItem());
 							ControlledScreen controller = myController.loadPopUp(ScreensFramework.flightDetailsPage);
 							controller.respawn(arguments);
 						}
