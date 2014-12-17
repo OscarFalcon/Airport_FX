@@ -34,9 +34,7 @@ public class ScreensFramework extends Application {
     public static String flightDetailsPage = "/fxml/FlightDetailsPage.fxml";
     public static String customerflightDetailsPage = "/fxml/customerflightDetailsPage.fxml";
     
-    
-    
-    
+
     @Override
     public void start(Stage primaryStage) {
             	
@@ -50,15 +48,13 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen("MyTrip", "/fxml/MyTrip.fxml");
         mainContainer.loadScreen("FlightDetails", "/fxml/FlightDetailsPage.fxml");
         mainContainer.loadScreen("resetPassword", "/fxml/resetPassword.fxml");
-        
         /*mangaer*/
         mainContainer.loadScreen("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
         mainContainer.loadScreen("ManagerAccountPage", "/fxml/ManagerAccountPage.fxml");
-       mainContainer.loadScreen("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
+        mainContainer.loadScreen("ManagerMakePayment", "/fxml/ManagerMakePayment.fxml");
         mainContainer.loadScreen("ManagerBoardingPass", "/fxml/ManagerBoardingPass.fxml");
         mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         mainContainer.loadScreen("ManagerFlightCondition", "/fxml/ManagerFlightCondition.fxml");
-        
         /*Receptionist*/
         //mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
         mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
@@ -73,21 +69,12 @@ public class ScreensFramework extends Application {
         root.getChildren().addAll(mainContainer);
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.setTitle("Airport Management System");
-      //  primaryStage.setFullScreen(true);
         primaryStage.setFullScreenExitHint("ESC to exit full screen");
         primaryStage.show();
-        
-        // Setting background image
-        //root.setStyle("-fx-background-image: url('application/Plane.jpg')");
        
-        
         // Applying css
         root.getStylesheets().add("/application/application.css");
         
-        
-       // Person person = Person.retrievePerson("oscar", "oscarpass");
-       // person.setFirstName("BIRDMAN");
-       // person.save();
      }
 
     
