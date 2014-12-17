@@ -40,8 +40,6 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
     @FXML
     private TableColumn<Route, String> srcCol;
 
-    @FXML
-    private TableColumn<Route, String> flightNumCol;
     
     @FXML
     private TextField email;
@@ -73,13 +71,6 @@ public class FlightDetailsPageController implements Initializable, ControlledScr
 			@Override
 			public ObservableValue<String> call(CellDataFeatures<Route, String> p) {
 				return new ReadOnlyObjectWrapper<String>(p.getValue().getAirlineName());
-			}
-		});
-		
-		flightNumCol.setCellValueFactory(new Callback<CellDataFeatures<Route, String>,ObservableValue<String>>(){
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<Route, String> p) {
-				return new ReadOnlyObjectWrapper<String>(p.getValue().getAirlineNumber());
 			}
 		});
 		

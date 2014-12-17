@@ -60,7 +60,8 @@ public class Passenger extends Person
 			reservation.setDestToSrcID(reservationObj[2].toString());
 			reservation.setNumOfBags(Integer.parseInt(reservationObj[3].toString()));
 			reservation.setTotalSale(reservationObj[4].toString());
-			reservation.getSolutions();
+			
+			reservation.retrieveSolutions();
 			reservations.add(reservation);
 		}
 		
