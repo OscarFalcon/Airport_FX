@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import core.Passenger;
+import core.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,14 +38,34 @@ public class ResetPasswordController  implements Initializable, ControlledScreen
 	    @FXML
 	    private TextField usernameTextfield;
 
-	   
+	  
 
     @FXML
     void Save(ActionEvent event) {
-    	Passenger passenger = null;
-    	passenger.resetPassword("blah","mike");
-    	myController.setScreen(ScreensFramework.screen1ID);
+       String username = usernameTextfield.getText();
+  	   String email = emailTextfield.getText();
+  	   String password = newPassword.getText();
+  	   String cpassword = confirmPassword.getText();
+  	   
+  	   if(username.equals("") || email.equals("") || password.equals("") || cpassword.equals(""))
+  	   {
+  		   error.setText("Please Enter all fields");
+  		   return;
+  	   }
+  	   
 
+  		   Passenger passenger = Passenger.retrievePassengerByEmail(username, email);
+  		   if(passenger != null)
+  		   {
+  			   passenger.changePassword(password);
+  			   myController.setScreen(ScreensFramework.screen1ID);
+  		   }
+  		   if(password != cpassword)
+  		   {
+  			   error.setText("Passwords did not match");
+  	   			resetLabel();
+  		   }
+  	   	
     }
 
     @FXML
@@ -76,6 +97,9 @@ public class ResetPasswordController  implements Initializable, ControlledScreen
 		// TODO Auto-generated method stub
 		
 	}
-	
+	public void resetLabel()
+	{
+		error.setText("");
+	}
 
 }
