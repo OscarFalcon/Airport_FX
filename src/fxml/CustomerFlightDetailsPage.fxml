@@ -35,10 +35,9 @@
             </Label>
          </top>
          <bottom>
-            <AnchorPane fx:id="bagNum" prefHeight="94.0" prefWidth="698.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="94.0" prefWidth="698.0" BorderPane.alignment="CENTER">
                <children>
-                  <ChoiceBox fx:id="bagNum" layoutX="161.0" layoutY="13.0" prefWidth="150.0" />
-                  <Label layoutX="34.0" layoutY="14.0" prefHeight="24.0" prefWidth="107.0" text="Number of Bags  " />
+                  <ChoiceBox layoutX="133.0" layoutY="13.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
          </bottom>

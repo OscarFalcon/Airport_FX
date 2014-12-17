@@ -311,7 +311,7 @@ public class ManagerMainController implements Initializable, ControlledScreen{
 
     @FXML
     void MyAccount(ActionEvent event) {
-
+    	myController.setScreen(ScreensFramework.screen10ID);
     }
 
     @FXML
