@@ -76,8 +76,8 @@
                                                       <TextField fx:id="roundTripPassengerCountTextField" GridPane.rowIndex="5" />
                                                       <ChoiceBox fx:id="rFlyFrom" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
                                                       <ChoiceBox fx:id="rFlyTo" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                      <DatePicker fx:id="roundTripLeavingDatePIcker" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
-                                                      <Button fx:id="rSearch" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#roundTripSearchAction" text="Search" GridPane.rowIndex="7" />
+                                                      <DatePicker fx:id="roundTripLeavingDatePicker" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
+                                                      <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#roundTripSearchAction" text="Search" GridPane.rowIndex="7" />
                                                       <Label fx:id="rErrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.rowIndex="6" />
                                                       <Label text="Returning" textFill="#0a0a0a" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <DatePicker fx:id="roundTripArrivalDatePicker" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -122,7 +122,7 @@
                                                     <TableColumn fx:id="rPriceCol2" minWidth="0.0" prefWidth="124.0" text="Price" />
                                                   </columns>
                                                 </TableView>
-                                                <Button fx:id="roundTripReserveFlightButton" mnemonicParsing="false" onAction="#rReserveFlightAction" text="Reserve Flight">
+                                                <Button mnemonicParsing="false" onAction="#rReserveFlightAction" text="Reserve Flight">
                                                    <padding>
                                                       <Insets bottom="30.0" left="30.0" right="30.0" top="10.0" />
                                                    </padding></Button>
@@ -146,7 +146,7 @@
                                                       <ChoiceBox fx:id="oFlyFromChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.rowIndex="1" />
                                                       <ChoiceBox fx:id="oFlyToChoiceBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                       <DatePicker fx:id="oneWayDepartDatePicker" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
-                                                      <Button fx:id="oSearch" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#oSearchAction" text="Search" GridPane.rowIndex="7" />
+                                                      <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#oSearchAction" text="Search" GridPane.rowIndex="7" />
                                                       <Label fx:id="oErrorLabel" maxWidth="1.7976931348623157E308" textFill="RED" GridPane.rowIndex="6" />
                                                    </children>
                                                    <columnConstraints>

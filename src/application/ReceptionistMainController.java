@@ -323,9 +323,6 @@ public class ReceptionistMainController implements Initializable, ControlledScre
     		return;
     	}
     	
-    	
-    	
-    	
 	    ObservableList<Solution> flightList;
 	    QPXExpressRequest request = new QPXExpressRequest();
 	    

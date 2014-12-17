@@ -42,7 +42,7 @@ public class Passenger extends Person
 		Object arguments[] = {getId().toString()};
 		System.out.println(getId().toString());
 		
-		int [] resultType = {MySQL.INTEGER, MySQL.INTEGER,MySQL.INTEGER, MySQL.INTEGER, MySQL.STRING, MySQL.INTEGER};
+		int [] resultType = {MySQL.INTEGER, MySQL.INTEGER,MySQL.INTEGER, MySQL.INTEGER, MySQL.STRING, MySQL.INTEGER,MySQL.INTEGER};
 				
 		ArrayList<Object[]> results = MySQL.executeQuery(query, arguments, resultType);
 		if(results.isEmpty())
@@ -61,6 +61,16 @@ public class Passenger extends Person
 			reservation.setNumOfBags(Integer.parseInt(reservationObj[3].toString()));
 			reservation.setTotalSale(reservationObj[4].toString());
 			
+			Boolean isApproved;
+			if( ((int)reservationObj[5]) == 0)
+			{
+				isApproved = false;
+			}
+			else
+			{
+				isApproved = true;
+			}
+			reservation.setIsApproved(isApproved);
 			reservation.retrieveSolutions();
 			reservations.add(reservation);
 		}
@@ -162,8 +172,12 @@ public class Passenger extends Person
 	public boolean changeUsername(String username)
 	{
 		String mysql = "UPDATE passenger SET username = ? WHERE userID = ?";
-		return MySQL.execute(mysql, new Object[]{username,id.get()});
-		
+		if(MySQL.execute(mysql, new Object[]{username,id.get()})==false)
+		{
+			return false;
+		}
+		this.username.set(username);
+		return true;
 		
 	}
 	
