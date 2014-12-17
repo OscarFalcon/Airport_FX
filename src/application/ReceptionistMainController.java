@@ -358,10 +358,6 @@ public class ReceptionistMainController implements Initializable, ControlledScre
 
     }
 
-    @FXML
-    void AssignVoucher(ActionEvent event) {
-
-    }
     
     @FXML
     void ReservationStatus(ActionEvent event) {
