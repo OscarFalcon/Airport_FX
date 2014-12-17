@@ -33,6 +33,21 @@ import core.Reservation;
 
 public class ReceptionistMainController implements Initializable, ControlledScreen{
 
+
+	@FXML
+    void ReservationStatus(ActionEvent event)
+	{
+		return;
+    }
+
+	@FXML
+    void ChargesFees(ActionEvent event)
+	{
+		return;
+    }
+	
+	
+	
 	@Override
 	public void setScreenParent(ScreensController screenPage) {
 		// TODO Auto-generated method stub

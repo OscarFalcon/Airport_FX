@@ -60,7 +60,8 @@ public class CreateAccountController implements Initializable, ControlledScreen{
     private Button logInButton;
     
     @FXML
-    void createAccount(ActionEvent event) {
+    void createAccount(ActionEvent event)
+    {
     
         	Passenger passenger = new Passenger(null,firstName.getText(),lastName.getText(),username.getText(),password.getText(),email.getText(),phone.getText(),street.getText(),city.getText(),state.getText(),zip.getText());
         	passenger.insert();

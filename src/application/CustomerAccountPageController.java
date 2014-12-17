@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+import core.Passenger;
 import core.Person;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,8 +26,7 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     	
     }
     
-    @FXML
-    private Tab AccOverCusAcc;
+  
 
     @FXML
     private TextField accountCity;
@@ -34,9 +34,7 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     @FXML
     private TextField accountState;
 
-    @FXML
-    private Button saveAO;
-
+ 
     @FXML
     private Label passwordErrorLabel;
 
@@ -80,12 +78,6 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     private TextField accountPhone;
 
     @FXML
-    private Button saveUsername;
-
-    @FXML
-    private Button SignInSavePassCusAcc;
-
-    @FXML
     private TextField accountUsername;
 
     @FXML
@@ -98,36 +90,92 @@ public class CustomerAccountPageController implements Initializable, ControlledS
     private Button SignoutCusAcc;
 
     @FXML
-    void saveAO(ActionEvent event) {
-    	AOerrorLabel.setText("Successfully changed Account Information!");
+    void saveAO(ActionEvent event)
+    {
+    	Passenger passenger;
+    	String first,last,email,phone,street,city,state,zip;
+    	
+    	passenger = myController.getPassenger();
+    	
+    	first = accountFirstName.getText();
+    	last = accountLastName.getText();
+    	email = accountEmail.getText();
+    	phone = accountPhone.getText();
+    	street = accountStreet.getText();
+    	city = accountCity.getText();
+    	state = accountState.getText();
+    	zip = accountZip.getText();
+    	
+    	passenger.setFirstName(first);
+    	passenger.setLastName(last);
+    	passenger.setEmail(email);
+    	passenger.setPhone(phone);
+    	passenger.setStreet(street);
+    	passenger.setCity(city);
+    	passenger.setState(state);
+    	passenger.setZip(zip);
+    	
+    	if(passenger.save())
+    	{
+    		AOerrorLabel.setText("Successfully changed Account Information!");
+
+    	}
+    	else
+    	{
+    		AOerrorLabel.setText("Opps something went wrong");
+    	}
+    	
+    	
+    	
+    	return;
+    	
+    	
     }
     
     @FXML
-    void changeUsername(ActionEvent event) {
-    	usernameErrorLabel.setText("Successfully changed Username!");
+    void changeUsername(ActionEvent event)
+    {
+    	if(myController.getPassenger().changeUsername(accountUsername.getText()))
+    	{
+    		usernameErrorLabel.setText("Successfully changed Username!");
+    	}
+    	else
+    	{
+    		usernameErrorLabel.setText("Opps something went wrong!");
+    	}
+    	return;
     }
 
     @FXML
     void changePassword(ActionEvent event) {
-    	if (oldPassword.getText().equals("")){
-    		passwordErrorLabel.setText("Please enter Old Password!");
-    	} else if(newPassword1.getText().equals("") || newPassword2.getText().equals("")){
+    	Passenger passenger = myController.getPassenger();
+    	
+    	if (oldPassword.getText().equals(""))
+    	{
+    		passwordErrorLabel.setText("Please enter current password!");
+    	} 
+    	else if(newPassword1.getText().equals("") || newPassword2.getText().equals(""))
+    	{
     		passwordErrorLabel.setText("Please enter new password!");
-    	} else if (!newPassword1.getText().equals(newPassword2.getText())){
-    		passwordErrorLabel.setText("Passwords do not match!");
-    	/*} else if(!update.authorizeUser(myController.getPassenger().getUserName(), oldPassword.getText())){ 
-    		passwordErrorLabel.setText("Wrong Password");
-    	}else if (oldPassword.getText().equals(newPassword1.getText())) { 
-    		passwordErrorLabel.setText("");
-    		*/
-    	} else {
-    		/*
-    		if(!myController.getPassenger().resetPassword(newPassword1.getText())){
-    			passwordErrorLabel.setText("Could not change Password");
-    		}
-    		else passwordErrorLabel.setText("Successfully changed Password!");
-    		*/
+    	} 
+    	else if (!newPassword1.getText().equals(newPassword2.getText()))
+    	{
+    		passwordErrorLabel.setText("passwords do not match");
+    		
+    	} 
+    	else if(passenger.checkPassword(oldPassword.getText()) == false)
+    	{
+    		passwordErrorLabel.setText("Incorrect Password");
     	}
+    	else if(passenger.changePassword(newPassword1.getText()) == false)
+    	{
+    		passwordErrorLabel.setText("Oops something went wrong");
+    	}
+    	else
+    	{
+    		passwordErrorLabel.setText("Successfully changed password");
+    	}
+    	
     }
     
     @FXML 
@@ -162,7 +210,10 @@ public class CustomerAccountPageController implements Initializable, ControlledS
 		AOerrorLabel.setText("");
     	usernameErrorLabel.setText("");
     	passwordErrorLabel.setText("");
-    	
+    	oldPassword.setText("");
+    	newPassword1.setText("");
+    	newPassword2.setText("");
+
     	
     	accountFirstName.setText(myController.getPassenger().getFirstName());
     	accountLastName.setText(myController.getPassenger().getLastName());

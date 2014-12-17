@@ -46,7 +46,6 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen("FlightSearch", "/fxml/PassengerFlightSearch.fxml");
         mainContainer.loadScreen("CreateAccount", "/fxml/createAccountPage.fxml");
         mainContainer.loadScreen("MyTrip", "/fxml/MyTrip.fxml");
-        //mainContainer.loadScreen("FlightDetails", "/fxml/FlightDetailsPage.fxml");
         mainContainer.loadScreen("resetPassword", "/fxml/resetPassword.fxml");
         /*mangaer*/
         mainContainer.loadScreen("ManagerMainPage", "/fxml/ManagerMainPage.fxml");
@@ -56,7 +55,7 @@ public class ScreensFramework extends Application {
         mainContainer.loadScreen("ManagerEmployee", "/fxml/ManagerEmployee.fxml");
         mainContainer.loadScreen("ManagerFlightCondition", "/fxml/ManagerFlightCondition.fxml");
         /*Receptionist*/
-        //mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
+        mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
         mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
         mainContainer.loadScreen("ChargesFees", "/fxml/ChargesFees.fxml");
         
