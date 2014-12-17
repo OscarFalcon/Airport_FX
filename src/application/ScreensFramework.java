@@ -29,6 +29,11 @@ public class ScreensFramework extends Application {
     public static String screen13ID = "ChargesFees";
     
   
+    /** pop ups **/
+    public static String flightDetailsPage = "/fxml/FlightDetailsPage.fxml";
+    
+    
+    
     
     @Override
     public void start(Stage primaryStage) {
@@ -55,6 +60,8 @@ public class ScreensFramework extends Application {
         //mainContainer.loadScreen("ReceptionistMain", "/fxml/ReceptionistMain.fxml");
         mainContainer.loadScreen("ReceptionistFlightCondition", "/fxml/ReceptionistFlightCondition.fxml");
         mainContainer.loadScreen("ChargesFees", "/fxml/ChargesFees.fxml");
+        
+  
         
      
         mainContainer.setScreen(ScreensFramework.screen1ID);
