@@ -167,7 +167,6 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints prefHeight="10.0" vgrow="SOMETIMES" />
                 <RowConstraints prefHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints prefHeight="10.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
@@ -176,27 +175,22 @@
                   <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="flightCond" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#FlightCondition" text="Flight Condition" GridPane.rowIndex="1">
+                  <Button fx:id="flightCond" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#FlightCondition" text="Flight Condition">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="MakePay" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MakePayment" text="Make Payment" GridPane.rowIndex="4">
+                  <Button fx:id="MakePay" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#MakePayment" text="Make Payment" GridPane.rowIndex="3">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="boarding" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BoardingPass" text="Boarding Pass" GridPane.rowIndex="3">
+                  <Button fx:id="boarding" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#BoardingPass" text="Boarding Pass" GridPane.rowIndex="2">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="manegeVoucher" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ManegeVoucher" text="Manege Voucher">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="employee" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Employee" text="Employee" GridPane.rowIndex="2">
+                  <Button fx:id="employee" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Employee" text="Employee" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
